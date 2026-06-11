@@ -104,13 +104,29 @@ function aggregate(text, { amountFromEnd, capMap, withArea }) {
 }
 
 async function fetchCsv(url, cacheName) {
-  const r = await fetch(url, { redirect: "follow" });
+  // Algunos CDN/portales devuelven una página interstitial a peticiones sin
+  // User-Agent (lo que rompía la descarga en el runner de CI). Simulamos un
+  // navegador y validamos que el contenido es realmente el CSV esperado.
+  const r = await fetch(url, {
+    redirect: "follow",
+    headers: {
+      "user-agent":
+        "Mozilla/5.0 (compatible; CuentasClarasETL/1.0; +https://github.com/blackstardigitalstudio/cuentas-claras)",
+      accept: "text/csv,application/octet-stream,*/*",
+    },
+  });
   if (!r.ok) throw new Error(`Descarga falló (${r.status}) para ${cacheName}`);
   const buf = Buffer.from(await r.arrayBuffer());
+  const text = buf.toString("utf8");
+  if (!text.startsWith("Codi_Capitol")) {
+    throw new Error(
+      `Contenido inesperado en ${cacheName} (no es el CSV esperado). Primeros 80 chars: ${text.slice(0, 80)}`
+    );
+  }
   const rawDir = join(__dirname, "raw");
   mkdirSync(rawDir, { recursive: true });
   writeFileSync(join(rawDir, cacheName), buf); // cache para depurar
-  return buf.toString("utf8");
+  return text;
 }
 
 async function main() {
@@ -140,6 +156,17 @@ async function main() {
     gastosByCat: gas.areas, // vista funcional: "a dónde va"
     gastosByEconomic: gas.cats, // vista económica: "en qué forma se gasta"
   };
+
+  // Validación: nunca sobrescribir con datos absurdos (descarga fallida que
+  // devuelve 200 con HTML/interstitial se parsea a 0). Si pasa, lanzamos error
+  // y el workflow conserva el barcelona.json bueno ya commiteado.
+  const MIN_PLAUSIBLE = 100_000_000; // Barcelona ronda los 3.700 M€
+  if (out.ingresos < MIN_PLAUSIBLE || out.gastos < MIN_PLAUSIBLE) {
+    throw new Error(
+      `Totales sospechosos (ingresos=${out.ingresos}, gastos=${out.gastos}). ` +
+        `Probable fallo de descarga; NO se sobrescribe barcelona.json.`
+    );
+  }
 
   const outDir = join(__dirname, "..", "web", "src", "data", "real");
   mkdirSync(outDir, { recursive: true });

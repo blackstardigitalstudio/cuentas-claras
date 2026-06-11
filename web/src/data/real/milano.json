@@ -1,0 +1,468 @@
+{
+  "id": "milano",
+  "name": "Milano",
+  "provincia": "Milano",
+  "country": "it",
+  "slug": "milano",
+  "year": 2024,
+  "isSample": false,
+  "basis": "Rendiconto 2024 (esecuzione reale)",
+  "source": {
+    "name": "Comune di Milano · Open Data",
+    "url": "https://dati.comune.milano.it/dataset/ds2956_ammcomunale-bilancio-rendiconto-previsioni-triennale-2023-2027"
+  },
+  "ingresos": 4960707142,
+  "gastos": 4401642341,
+  "ingresosByCat": [
+    {
+      "key": "e2",
+      "label": "Entrate extratributarie",
+      "color": "#a3e635",
+      "amount": 1685805666
+    },
+    {
+      "key": "e0",
+      "label": "Entrate correnti di natura tributaria, contributiva e perequativa",
+      "color": "#22d3ee",
+      "amount": 1535365731
+    },
+    {
+      "key": "e1",
+      "label": "Trasferimenti correnti",
+      "color": "#f472b6",
+      "amount": 619634435
+    },
+    {
+      "key": "e3",
+      "label": "Entrate in conto capitale",
+      "color": "#818cf8",
+      "amount": 413149104
+    },
+    {
+      "key": "e6",
+      "label": "Entrate per conto terzi e partite di giro",
+      "color": "#fb7185",
+      "amount": 357155430
+    },
+    {
+      "key": "e4",
+      "label": "Entrate da riduzione di attivita' finanziarie",
+      "color": "#fbbf24",
+      "amount": 184477683
+    },
+    {
+      "key": "e5",
+      "label": "Accensione prestiti",
+      "color": "#34d399",
+      "amount": 165119093
+    }
+  ],
+  "gastosByCat": [
+    {
+      "key": "m10",
+      "label": "Trasporti e diritto alla mobilita'",
+      "color": "#f59e0b",
+      "amount": 1599329480,
+      "children": [
+        {
+          "key": "m10-1",
+          "label": "Trasporto pubblico locale",
+          "color": "#f59e0b",
+          "amount": 1389571047
+        },
+        {
+          "key": "m10-0",
+          "label": "Viabilita' e infrastrutture stradali",
+          "color": "#f59e0b",
+          "amount": 209758433
+        }
+      ]
+    },
+    {
+      "key": "m0",
+      "label": "Servizi istituzionali, generali e di gestione",
+      "color": "#22d3ee",
+      "amount": 691237903,
+      "children": [
+        {
+          "key": "m0-2",
+          "label": "Gestione economica, finanziaria, programmazione e provveditorato",
+          "color": "#22d3ee",
+          "amount": 285047051
+        },
+        {
+          "key": "m0-3",
+          "label": "Risorse umane",
+          "color": "#22d3ee",
+          "amount": 158027251
+        },
+        {
+          "key": "m0-4",
+          "label": "Statistica e sistemi informativi",
+          "color": "#22d3ee",
+          "amount": 50073079
+        },
+        {
+          "key": "m0-6",
+          "label": "Gestione delle entrate tributarie e servizi fiscali",
+          "color": "#22d3ee",
+          "amount": 46228700
+        },
+        {
+          "key": "m0-8",
+          "label": "Ufficio tecnico",
+          "color": "#22d3ee",
+          "amount": 45782070
+        },
+        {
+          "key": "m0-0",
+          "label": "Organi istituzionali",
+          "color": "#22d3ee",
+          "amount": 34721697
+        },
+        {
+          "key": "m0-7",
+          "label": "Gestione dei beni demaniali e patrimoniali",
+          "color": "#22d3ee",
+          "amount": 23308262
+        },
+        {
+          "key": "m0-9",
+          "label": "Elezioni e consultazioni popolari - anagrafe e stato civile",
+          "color": "#22d3ee",
+          "amount": 20239977
+        },
+        {
+          "key": "m0-5",
+          "label": "Altri servizi generali",
+          "color": "#22d3ee",
+          "amount": 17571807
+        },
+        {
+          "key": "m0-1",
+          "label": "Segreteria generale",
+          "color": "#22d3ee",
+          "amount": 10238010
+        }
+      ]
+    },
+    {
+      "key": "m6",
+      "label": "Diritti sociali, politiche sociali e famiglia",
+      "color": "#fb7185",
+      "amount": 436082052,
+      "children": [
+        {
+          "key": "m6-0",
+          "label": "Interventi per l'infanzia e i minori e per asili nido",
+          "color": "#fb7185",
+          "amount": 192319807
+        },
+        {
+          "key": "m6-3",
+          "label": "Interventi per la disabilita'",
+          "color": "#fb7185",
+          "amount": 80698899
+        },
+        {
+          "key": "m6-2",
+          "label": "Interventi per gli anziani",
+          "color": "#fb7185",
+          "amount": 58956662
+        },
+        {
+          "key": "m6-4",
+          "label": "Interventi per soggetti a rischio di esclusione sociale",
+          "color": "#fb7185",
+          "amount": 55614500
+        },
+        {
+          "key": "m6-7",
+          "label": "Servizio necroscopico e cimiteriale",
+          "color": "#fb7185",
+          "amount": 29188446
+        },
+        {
+          "key": "m6-1",
+          "label": "Programmazione e governo della rete dei servizi sociosanitari e sociali",
+          "color": "#fb7185",
+          "amount": 17143502
+        },
+        {
+          "key": "m6-5",
+          "label": "Interventi per il diritto alla casa",
+          "color": "#fb7185",
+          "amount": 1995252
+        },
+        {
+          "key": "m6-6",
+          "label": "Cooperazione e associazionismo",
+          "color": "#fb7185",
+          "amount": 164983
+        }
+      ]
+    },
+    {
+      "key": "m12",
+      "label": "Sviluppo sostenibile e tutela del territorio e dell'ambiente",
+      "color": "#fb923c",
+      "amount": 384045721,
+      "children": [
+        {
+          "key": "m12-5",
+          "label": "Rifiuti",
+          "color": "#fb923c",
+          "amount": 284933259
+        },
+        {
+          "key": "m12-2",
+          "label": "Tutela, valorizzazione e recupero ambientale",
+          "color": "#fb923c",
+          "amount": 73138830
+        },
+        {
+          "key": "m12-0",
+          "label": "Difesa del suolo",
+          "color": "#fb923c",
+          "amount": 11799464
+        },
+        {
+          "key": "m12-3",
+          "label": "Servizio idrico integrato",
+          "color": "#fb923c",
+          "amount": 5945902
+        },
+        {
+          "key": "m12-1",
+          "label": "Qualita' dell'aria e riduzione dell'inquinamento",
+          "color": "#fb923c",
+          "amount": 3618949
+        },
+        {
+          "key": "m12-4",
+          "label": "Tutela e valorizzazione delle risorse idriche",
+          "color": "#fb923c",
+          "amount": 2708844
+        },
+        {
+          "key": "m12-6",
+          "label": "Aree protette, parchi naturali, protezione naturalistica e forestazione",
+          "color": "#fb923c",
+          "amount": 1900474
+        }
+      ]
+    },
+    {
+      "key": "m19",
+      "label": "Servizi per conto terzi",
+      "color": "#818cf8",
+      "amount": 357155430
+    },
+    {
+      "key": "m4",
+      "label": "Istruzione e diritto allo studio",
+      "color": "#fbbf24",
+      "amount": 315664023,
+      "children": [
+        {
+          "key": "m4-0",
+          "label": "Istruzione prescolastica",
+          "color": "#fbbf24",
+          "amount": 129446234
+        },
+        {
+          "key": "m4-1",
+          "label": "Altri ordini di istruzione non universitaria",
+          "color": "#fbbf24",
+          "amount": 99829178
+        },
+        {
+          "key": "m4-2",
+          "label": "Servizi ausiliari all'istruzione",
+          "color": "#fbbf24",
+          "amount": 86388611
+        }
+      ]
+    },
+    {
+      "key": "m3",
+      "label": "Ordine pubblico e sicurezza",
+      "color": "#818cf8",
+      "amount": 182638693,
+      "children": [
+        {
+          "key": "m3-0",
+          "label": "Polizia locale e amministrativa",
+          "color": "#818cf8",
+          "amount": 179706312
+        },
+        {
+          "key": "m3-1",
+          "label": "Sistema integrato di sicurezza urbana",
+          "color": "#818cf8",
+          "amount": 2932381
+        }
+      ]
+    },
+    {
+      "key": "m13",
+      "label": "Assetto del territorio ed edilizia abitativa",
+      "color": "#4ade80",
+      "amount": 171538587,
+      "children": [
+        {
+          "key": "m13-1",
+          "label": "Edilizia residenziale pubblica e locale e piani di edilizia economico-popolare",
+          "color": "#4ade80",
+          "amount": 140724206
+        },
+        {
+          "key": "m13-0",
+          "label": "Urbanistica e assetto del territorio",
+          "color": "#4ade80",
+          "amount": 30814382
+        }
+      ]
+    },
+    {
+      "key": "m7",
+      "label": "Tutela e valorizzazione dei beni e delle attivita' culturali",
+      "color": "#38bdf8",
+      "amount": 128131522,
+      "children": [
+        {
+          "key": "m7-0",
+          "label": "Attivita' culturali e interventi diversi nel settore culturale",
+          "color": "#38bdf8",
+          "amount": 117508976
+        },
+        {
+          "key": "m7-1",
+          "label": "Valorizzazione dei beni di interesse storico",
+          "color": "#38bdf8",
+          "amount": 10622546
+        }
+      ]
+    },
+    {
+      "key": "m18",
+      "label": "Debito pubblico",
+      "color": "#a3e635",
+      "amount": 46816923
+    },
+    {
+      "key": "m8",
+      "label": "Politiche giovanili, sport e tempo libero",
+      "color": "#c084fc",
+      "amount": 39079765,
+      "children": [
+        {
+          "key": "m8-0",
+          "label": "Sport e tempo libero",
+          "color": "#c084fc",
+          "amount": 35657629
+        },
+        {
+          "key": "m8-1",
+          "label": "Giovani",
+          "color": "#c084fc",
+          "amount": 3422137
+        }
+      ]
+    },
+    {
+      "key": "m5",
+      "label": "Politiche per il lavoro e la formazione professionale",
+      "color": "#34d399",
+      "amount": 19909937,
+      "children": [
+        {
+          "key": "m5-0",
+          "label": "Formazione professionale",
+          "color": "#34d399",
+          "amount": 16623608
+        },
+        {
+          "key": "m5-1",
+          "label": "Sostegno all'occupazione",
+          "color": "#34d399",
+          "amount": 3225380
+        },
+        {
+          "key": "m5-2",
+          "label": "Servizi per lo sviluppo del mercato del lavoro",
+          "color": "#34d399",
+          "amount": 60949
+        }
+      ]
+    },
+    {
+      "key": "m16",
+      "label": "Sviluppo economico e competitivita'",
+      "color": "#22d3ee",
+      "amount": 15420185,
+      "children": [
+        {
+          "key": "m16-1",
+          "label": "Commercio - reti distributive - tutela dei consumatori",
+          "color": "#22d3ee",
+          "amount": 9127601
+        },
+        {
+          "key": "m16-0",
+          "label": "Reti e altri servizi di pubblica utilita'",
+          "color": "#22d3ee",
+          "amount": 3874230
+        },
+        {
+          "key": "m16-2",
+          "label": "Industria, pmi e artigianato",
+          "color": "#22d3ee",
+          "amount": 2418354
+        }
+      ]
+    },
+    {
+      "key": "m1",
+      "label": "Relazioni internazionali",
+      "color": "#f472b6",
+      "amount": 3791917
+    },
+    {
+      "key": "m15",
+      "label": "Soccorso civile",
+      "color": "#94a3b8",
+      "amount": 2858953
+    },
+    {
+      "key": "m2",
+      "label": "Giustizia",
+      "color": "#a3e635",
+      "amount": 2437293
+    },
+    {
+      "key": "m9",
+      "label": "Turismo",
+      "color": "#2dd4bf",
+      "amount": 2238506
+    },
+    {
+      "key": "m17",
+      "label": "Agricoltura, politiche agroalimentari e pesca",
+      "color": "#f472b6",
+      "amount": 1579351
+    },
+    {
+      "key": "m14",
+      "label": "Tutela della salute",
+      "color": "#e879f9",
+      "amount": 1350162
+    },
+    {
+      "key": "m11",
+      "label": "Energia e diversificazione delle fonti energetiche",
+      "color": "#a78bfa",
+      "amount": 335938
+    }
+  ]
+}

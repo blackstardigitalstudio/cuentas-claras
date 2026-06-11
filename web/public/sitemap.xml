@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sitemap base. Se ampliará con una página por municipio (SEO programática)
+     y con las versiones por idioma (es/it) cuando se implemente la i18n. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://blackstardigitalstudio.github.io/cuentas-claras/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

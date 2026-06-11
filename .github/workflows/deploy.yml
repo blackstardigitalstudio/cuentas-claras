@@ -12,11 +12,9 @@ name: Build & Deploy (Cloudflare Pages)
 #   CLOUDFLARE_ACCOUNT_ID  (ID de cuenta de Cloudflare)
 
 on:
-  push:
-    branches: [main]
+  # Manual por ahora: actívalo cuando hayas añadido los secrets de Cloudflare.
+  # Cuando esté listo, puedes volver a añadir push/schedule.
   workflow_dispatch:
-  schedule:
-    - cron: "0 5 3 * *" # día 3 de cada mes, 05:00 UTC
 
 jobs:
   deploy:

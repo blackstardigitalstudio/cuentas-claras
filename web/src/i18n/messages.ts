@@ -38,6 +38,7 @@ export type Messages = {
     howSpent: string;
   };
   footer: { data: string; tagline: string };
+  news: { title: string; subtitle: string; readMore: string };
 };
 
 const es: Messages = {
@@ -95,6 +96,11 @@ const es: Messages = {
     data: "Datos:",
     tagline: "Hecho con datos públicos, para la ciudadanía",
   },
+  news: {
+    title: "El dinero público en las noticias",
+    subtitle: "Titulares recientes de medios sobre presupuestos y gasto público. Cada noticia enlaza al medio original.",
+    readMore: "Leer en la fuente",
+  },
 };
 
 const it: Messages = {
@@ -151,6 +157,11 @@ const it: Messages = {
   footer: {
     data: "Dati:",
     tagline: "Fatto con dati pubblici, per i cittadini",
+  },
+  news: {
+    title: "Il denaro pubblico nelle notizie",
+    subtitle: "Titoli recenti dai media su bilanci e spesa pubblica. Ogni notizia rimanda alla testata originale.",
+    readMore: "Leggi sulla fonte",
   },
 };
 

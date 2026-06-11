@@ -1,6 +1,7 @@
 "use client";
 
 import Explorer from "@/components/Explorer";
+import News from "@/components/News";
 import { CountUp, Reveal } from "@/components/Motion";
 import LangSwitch from "@/components/LangSwitch";
 import { useMessages } from "@/i18n/LocaleProvider";
@@ -92,6 +93,9 @@ export default function Home() {
           </Reveal>
         ))}
       </section>
+
+      {/* Noticias */}
+      <News />
 
       {/* Footer */}
       <footer className="mt-16 pt-8 border-t border-[var(--panel-border)] text-sm text-muted flex flex-col md:flex-row items-center justify-between gap-3">

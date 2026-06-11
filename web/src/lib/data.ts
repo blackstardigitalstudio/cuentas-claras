@@ -10,6 +10,7 @@
 
 import provincesGeo from "@/data/spain-provinces.json";
 import barcelonaReal from "@/data/real/barcelona.json";
+import valenciaReal from "@/data/real/valencia.json";
 
 export const DATA_YEAR = 2024;
 export const DATA_IS_SAMPLE = true;
@@ -122,17 +123,31 @@ export const REGIONS: Record<string, RegionData> = Object.fromEntries(
 );
 
 // Sustituye provincias por datos REALES de ciudades cuando estén disponibles.
-// (Por ahora Barcelona, con datos del Ajuntament de Barcelona 2024.)
-const REAL_CITIES = [barcelonaReal];
+// Barcelona (Ajuntament 2024) y València (Ajuntament 2025).
+type RealCity = {
+  name: string;
+  provincia: string;
+  slug: string;
+  ingresos: number;
+  gastos: number;
+  ingresosByCat: CategoryDatum[];
+  gastosByCat: CategoryDatum[];
+  gastosByEconomic?: CategoryDatum[];
+  year: number;
+  basis?: string;
+  source?: { name: string; url: string };
+};
+
+const REAL_CITIES: RealCity[] = [barcelonaReal as RealCity, valenciaReal as RealCity];
 for (const c of REAL_CITIES) {
   REGIONS[c.provincia] = {
     name: `${c.name} (ciudad)`,
     slug: c.slug,
     ingresos: c.ingresos,
     gastos: c.gastos,
-    ingresosByCat: c.ingresosByCat as CategoryDatum[],
-    gastosByCat: c.gastosByCat as CategoryDatum[],
-    gastosByEconomic: c.gastosByEconomic as CategoryDatum[],
+    ingresosByCat: c.ingresosByCat,
+    gastosByCat: c.gastosByCat,
+    gastosByEconomic: c.gastosByEconomic,
     year: c.year,
     isSample: false,
     source: c.source,

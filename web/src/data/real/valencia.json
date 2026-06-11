@@ -1,0 +1,127 @@
+{
+  "id": "valencia",
+  "name": "València",
+  "provincia": "València/Valencia",
+  "slug": "valencia",
+  "year": 2025,
+  "isSample": false,
+  "basis": "Presupuesto inicial (clasificación económica)",
+  "source": {
+    "name": "Ajuntament de València · Open Data VLCi",
+    "url": "https://valencia.opendatasoft.com/explore/dataset/presupuesto-de-gastos/"
+  },
+  "ingresos": 1210887282,
+  "gastos": 1210887280,
+  "ingresosByCat": [
+    {
+      "key": "i4",
+      "label": "Transferencias corrientes (Estado/CCAA)",
+      "color": "#a78bfa",
+      "amount": 558332156
+    },
+    {
+      "key": "i1",
+      "label": "Impuestos directos (IBI, plusvalía…)",
+      "color": "#34d399",
+      "amount": 333299505
+    },
+    {
+      "key": "i3",
+      "label": "Tasas y precios públicos",
+      "color": "#38bdf8",
+      "amount": 152732596
+    },
+    {
+      "key": "i2",
+      "label": "Impuestos indirectos (ICIO…)",
+      "color": "#2dd4bf",
+      "amount": 50365906
+    },
+    {
+      "key": "i7",
+      "label": "Transferencias de capital",
+      "color": "#c084fc",
+      "amount": 40881948
+    },
+    {
+      "key": "i6",
+      "label": "Venta de inversiones",
+      "color": "#f59e0b",
+      "amount": 35868620
+    },
+    {
+      "key": "i9",
+      "label": "Pasivos financieros (deuda)",
+      "color": "#f87171",
+      "amount": 24000000
+    },
+    {
+      "key": "i5",
+      "label": "Ingresos patrimoniales",
+      "color": "#fb923c",
+      "amount": 15106551
+    },
+    {
+      "key": "i8",
+      "label": "Activos financieros",
+      "color": "#94a3b8",
+      "amount": 300000
+    }
+  ],
+  "gastosByCat": [
+    {
+      "key": "g1",
+      "label": "Personal",
+      "color": "#f472b6",
+      "amount": 386000000
+    },
+    {
+      "key": "g2",
+      "label": "Bienes corrientes y servicios",
+      "color": "#22d3ee",
+      "amount": 327316886
+    },
+    {
+      "key": "g4",
+      "label": "Transferencias corrientes",
+      "color": "#a78bfa",
+      "amount": 221982207
+    },
+    {
+      "key": "g6",
+      "label": "Inversiones reales",
+      "color": "#a3e635",
+      "amount": 164260082
+    },
+    {
+      "key": "g7",
+      "label": "Transferencias de capital",
+      "color": "#c084fc",
+      "amount": 56278105
+    },
+    {
+      "key": "g9",
+      "label": "Pasivos financieros (amortización deuda)",
+      "color": "#fb7185",
+      "amount": 24250000
+    },
+    {
+      "key": "g5",
+      "label": "Fondo de contingencia",
+      "color": "#94a3b8",
+      "amount": 18000000
+    },
+    {
+      "key": "g3",
+      "label": "Gastos financieros (intereses)",
+      "color": "#f87171",
+      "amount": 12500000
+    },
+    {
+      "key": "g8",
+      "label": "Activos financieros",
+      "color": "#64748b",
+      "amount": 300000
+    }
+  ]
+}

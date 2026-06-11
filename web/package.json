@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "etl": "node ../data/etl-barcelona.mjs",
+    "etl": "node ../data/etl-all.mjs",
     "serve": "npx --yes serve out",
     "lint": "eslint"
   },

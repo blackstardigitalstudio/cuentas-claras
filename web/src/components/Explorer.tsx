@@ -25,10 +25,10 @@ export default function Explorer() {
               onChange={(e) => setSelected(e.target.value)}
               className="bg-[var(--bg-2)] border border-[var(--panel-border)] rounded-lg px-3 py-1.5 text-fg text-sm focus:outline-none focus:border-cyan"
             >
-              {[...REGION_LIST]
-                .sort((a, b) => a.name.localeCompare(b.name, "es"))
-                .map((r) => (
-                  <option key={r.slug} value={r.name}>
+              {Object.entries(REGIONS)
+                .sort(([, a], [, b]) => a.name.localeCompare(b.name, "es"))
+                .map(([key, r]) => (
+                  <option key={key} value={key}>
                     {r.name}
                   </option>
                 ))}

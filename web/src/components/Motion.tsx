@@ -42,8 +42,15 @@ export function CountUp({
       duration,
       ease: [0.22, 1, 0.36, 1],
       onUpdate: (v) => setDisplay(v),
+      onComplete: () => setDisplay(value),
     });
-    return () => controls.stop();
+    // Red de seguridad: si la animación se congela (pestaña en segundo plano,
+    // rAF throttled), forzamos la cifra real. Nunca mostrar un valor a medias.
+    const safety = setTimeout(() => setDisplay(value), duration * 1000 + 600);
+    return () => {
+      controls.stop();
+      clearTimeout(safety);
+    };
   }, [inView, value, reduce, duration]);
 
   return (

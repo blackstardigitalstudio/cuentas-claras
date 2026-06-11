@@ -1,0 +1,5 @@
+Contact: https://github.com/blackstardigitalstudio/cuentas-claras/security/advisories/new
+Expires: 2027-06-11T00:00:00.000Z
+Preferred-Languages: es, it, en
+Canonical: https://blackstardigitalstudio.github.io/cuentas-claras/.well-known/security.txt
+Policy: https://github.com/blackstardigitalstudio/cuentas-claras/blob/main/SECURITY.md

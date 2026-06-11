@@ -1,0 +1,25 @@
+# Dependencies / build (web app has its own .gitignore too)
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# Datos crudos descargados (se regeneran con el ETL)
+data/raw/
+*.tmp
+
+# Capturas de previsualización
+preview-*.png
+
+# Entorno
+.env*
+!.env.example
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Impostazioni locali personali di Claude Code
+.claude/settings.local.json

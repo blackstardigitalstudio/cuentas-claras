@@ -1,0 +1,153 @@
+{
+  "id": "barcelona",
+  "name": "Barcelona",
+  "provincia": "Barcelona",
+  "slug": "barcelona",
+  "year": 2024,
+  "isSample": false,
+  "basis": "Ejecución: obligaciones reconocidas (gasto) y derechos liquidados (ingreso)",
+  "source": {
+    "name": "Ajuntament de Barcelona · Open Data BCN",
+    "url": "https://opendata-ajuntament.barcelona.cat/data/ca/dataset/pressupost-despeses"
+  },
+  "ingresos": 3746429450,
+  "gastos": 3646517086,
+  "ingresosByCat": [
+    {
+      "key": "c4",
+      "label": "Transferencias corrientes (Estado/CCAA)",
+      "color": "#a78bfa",
+      "amount": 1773157105
+    },
+    {
+      "key": "c1",
+      "label": "Impuestos directos (IBI, plusvalía…)",
+      "color": "#34d399",
+      "amount": 1164440292
+    },
+    {
+      "key": "c3",
+      "label": "Tasas y precios públicos",
+      "color": "#38bdf8",
+      "amount": 411902711
+    },
+    {
+      "key": "c2",
+      "label": "Impuestos indirectos (ICIO…)",
+      "color": "#2dd4bf",
+      "amount": 177686362
+    },
+    {
+      "key": "c7",
+      "label": "Transferencias de capital",
+      "color": "#c084fc",
+      "amount": 85418647
+    },
+    {
+      "key": "c9",
+      "label": "Pasivos financieros (deuda)",
+      "color": "#f87171",
+      "amount": 76394822
+    },
+    {
+      "key": "c5",
+      "label": "Ingresos patrimoniales",
+      "color": "#fb923c",
+      "amount": 57199264
+    },
+    {
+      "key": "c6",
+      "label": "Venta de inversiones",
+      "color": "#f59e0b",
+      "amount": 230248
+    }
+  ],
+  "gastosByCat": [
+    {
+      "key": "a1",
+      "label": "Servicios públicos básicos",
+      "color": "#22d3ee",
+      "amount": 1570808670
+    },
+    {
+      "key": "a9",
+      "label": "Administración general",
+      "color": "#818cf8",
+      "amount": 627429806
+    },
+    {
+      "key": "a3",
+      "label": "Sanidad, educación y cultura",
+      "color": "#a3e635",
+      "amount": 476696896
+    },
+    {
+      "key": "a2",
+      "label": "Protección y promoción social",
+      "color": "#f472b6",
+      "amount": 462746098
+    },
+    {
+      "key": "a4",
+      "label": "Actuaciones económicas",
+      "color": "#fbbf24",
+      "amount": 425317903
+    },
+    {
+      "key": "a0",
+      "label": "Deuda pública",
+      "color": "#f87171",
+      "amount": 83517714
+    }
+  ],
+  "gastosByEconomic": [
+    {
+      "key": "c4",
+      "label": "Transferencias corrientes",
+      "color": "#a78bfa",
+      "amount": 1612170068
+    },
+    {
+      "key": "c2",
+      "label": "Bienes corrientes y servicios",
+      "color": "#22d3ee",
+      "amount": 736170427
+    },
+    {
+      "key": "c1",
+      "label": "Personal",
+      "color": "#f472b6",
+      "amount": 551366460
+    },
+    {
+      "key": "c6",
+      "label": "Inversiones reales",
+      "color": "#a3e635",
+      "amount": 512280583
+    },
+    {
+      "key": "c7",
+      "label": "Transferencias de capital",
+      "color": "#c084fc",
+      "amount": 145175469
+    },
+    {
+      "key": "c9",
+      "label": "Pasivos financieros (amortización deuda)",
+      "color": "#fb7185",
+      "amount": 52528714
+    },
+    {
+      "key": "c3",
+      "label": "Gastos financieros (intereses)",
+      "color": "#f87171",
+      "amount": 31556167
+    },
+    {
+      "key": "c8",
+      "label": "Activos financieros",
+      "color": "#64748b",
+      "amount": 5269197
+    }
+  ]
+}

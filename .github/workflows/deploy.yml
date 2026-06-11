@@ -1,0 +1,63 @@
+name: Build & Deploy (GitHub Pages)
+
+# Despliegue 100% gratuito del sitio estático.
+# - En cada push a main
+# - Manualmente (workflow_dispatch)
+# - Cada día 3 del mes (cron): reconstruye con los datos más recientes.
+#   Esto es la "actualización automática" honesta: no es tiempo real,
+#   sino una reconstrucción periódica con la última publicación oficial.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 3 * *" # día 3 de cada mes, 05:00 UTC
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - run: npm ci
+
+      # Refresca los datos reales (descarga CSV de los portales open data).
+      # Si una fuente falla, no abortamos: se reutiliza el JSON ya commiteado.
+      - name: Actualizar datos (ETL)
+        run: npm run etl || echo "ETL falló; se usa el dataset existente."
+
+      - name: Build (export estático)
+        run: npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

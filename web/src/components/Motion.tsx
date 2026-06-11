@@ -30,14 +30,14 @@ export function CountUp({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const reduce = useReducedMotion();
-  const [display, setDisplay] = useState(reduce ? value : 0);
+  // Inicial = valor final: el HTML pre-renderizado (SEO / sin JS) muestra la
+  // cifra real. La animación desde 0 es solo un realce en el cliente.
+  const [display, setDisplay] = useState(value);
+  const animated = useRef(false);
 
   useEffect(() => {
-    if (!inView) return;
-    if (reduce) {
-      setDisplay(value);
-      return;
-    }
+    if (!inView || reduce || animated.current) return;
+    animated.current = true;
     const controls = animate(0, value, {
       duration,
       ease: [0.22, 1, 0.36, 1],

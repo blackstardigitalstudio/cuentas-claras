@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { animate, useInView, useReducedMotion } from "motion/react";
+import { useRef } from "react";
+import { useInView, useReducedMotion } from "motion/react";
 import { formatCompact } from "@/lib/format";
 
 // Formateadores por clave (evita pasar funciones a través del límite RSC).
@@ -11,53 +11,21 @@ const FORMATTERS: Record<string, (n: number) => string> = {
 };
 
 /**
- * CountUp — anima un número subiendo desde 0 cuando entra en viewport.
- * El motion "tiene sentido": el valor se construye ante el usuario.
- * Respeta prefers-reduced-motion (muestra el valor final al instante).
+ * Cifra formateada. En un sitio sobre dinero público la cifra correcta debe
+ * estar SIEMPRE visible (SEO, sin JS, durante la hidratación). El movimiento lo
+ * aportan los contenedores (Reveal / panel animado), no el propio número.
  */
 export function CountUp({
   value,
   kind = "compact",
   className,
-  duration = 1.4,
 }: {
   value: number;
   kind?: "compact" | "int";
   className?: string;
   duration?: number;
 }) {
-  const format = FORMATTERS[kind];
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const reduce = useReducedMotion();
-  // Inicial = valor final: el HTML pre-renderizado (SEO / sin JS) muestra la
-  // cifra real. La animación desde 0 es solo un realce en el cliente.
-  const [display, setDisplay] = useState(value);
-  const animated = useRef(false);
-
-  useEffect(() => {
-    if (!inView || reduce || animated.current) return;
-    animated.current = true;
-    const controls = animate(0, value, {
-      duration,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => setDisplay(v),
-      onComplete: () => setDisplay(value),
-    });
-    // Red de seguridad: si la animación se congela (pestaña en segundo plano,
-    // rAF throttled), forzamos la cifra real. Nunca mostrar un valor a medias.
-    const safety = setTimeout(() => setDisplay(value), duration * 1000 + 600);
-    return () => {
-      controls.stop();
-      clearTimeout(safety);
-    };
-  }, [inView, value, reduce, duration]);
-
-  return (
-    <span ref={ref} className={className}>
-      {format(display)}
-    </span>
-  );
+  return <span className={className}>{FORMATTERS[kind](value)}</span>;
 }
 
 /**

@@ -9,8 +9,10 @@
 // ---------------------------------------------------------------------------
 
 import provincesGeo from "@/data/spain-provinces.json";
+import italyGeo from "@/data/italy-provinces.json";
 import barcelonaReal from "@/data/real/barcelona.json";
 import valenciaReal from "@/data/real/valencia.json";
+import milanoReal from "@/data/real/milano.json";
 
 export const DATA_YEAR = 2024;
 export const DATA_IS_SAMPLE = true;
@@ -86,7 +88,14 @@ const GASTO_SUB: Record<string, string[]> = {
   general: ["Órganos de gobierno", "Administración", "Deuda e intereses"],
 };
 
-function buildRegion(name: string): RegionData {
+type CatSet = {
+  gasto: { key: string; label: string; color: string; weight: number }[];
+  ingreso: { key: string; label: string; color: string; weight: number }[];
+  sub: Record<string, string[]>;
+};
+const CATS_ES: CatSet = { gasto: GASTO_CATS, ingreso: INGRESO_CATS, sub: GASTO_SUB };
+
+function buildRegion(name: string, C: CatSet = CATS_ES): RegionData {
   const seed = hash(name);
   // "Presupuesto" base de ejemplo: entre ~40M€ y ~6.000M€ según el hash.
   const base = 40_000_000 + Math.pow(seed, 3) * 6_000_000_000;
@@ -115,7 +124,7 @@ function buildRegion(name: string): RegionData {
   // Añade subcategorías de ejemplo a cada área de gasto (desglose).
   const withSub = (cats: CategoryDatum[]): CategoryDatum[] =>
     cats.map((c) => {
-      const labels = GASTO_SUB[c.key];
+      const labels = C.sub[c.key];
       if (!labels) return c;
       const noisy = labels.map((l, i) => ({ l, w: 0.5 + hash(name + c.key + i) }));
       const wsum = noisy.reduce((a, x) => a + x.w, 0);
@@ -133,23 +142,38 @@ function buildRegion(name: string): RegionData {
     slug: slugify(name),
     ingresos,
     gastos,
-    ingresosByCat: split(ingresos, INGRESO_CATS, "ing"),
-    gastosByCat: withSub(split(gastos, GASTO_CATS, "gas")),
+    ingresosByCat: split(ingresos, C.ingreso, "ing"),
+    gastosByCat: withSub(split(gastos, C.gasto, "gas")),
     year: DATA_YEAR,
     isSample: DATA_IS_SAMPLE,
   };
 }
 
-const PROVINCE_NAMES: string[] = (provincesGeo as { features: { properties: { name: string } }[] }).features
-  .map((f) => f.properties.name)
-  .sort((a, b) => a.localeCompare(b, "es"));
+// Categorías de ejemplo en italiano (para las provincias italianas de muestra).
+const CATS_IT: CatSet = {
+  gasto: [
+    { key: "social", label: "Diritti sociali e famiglia", color: "#f472b6", weight: 0.18 },
+    { key: "basicos", label: "Servizi pubblici di base", color: "#22d3ee", weight: 0.27 },
+    { key: "preferente", label: "Istruzione, cultura e sanità", color: "#a3e635", weight: 0.21 },
+    { key: "economico", label: "Sviluppo economico e trasporti", color: "#fbbf24", weight: 0.14 },
+    { key: "general", label: "Amministrazione e debito", color: "#818cf8", weight: 0.2 },
+  ],
+  ingreso: [
+    { key: "directos", label: "Imposte (IMU, IRPEF…)", color: "#34d399", weight: 0.3 },
+    { key: "indirectos", label: "Imposte indirette", color: "#2dd4bf", weight: 0.06 },
+    { key: "tasas", label: "Tasse e tariffe", color: "#38bdf8", weight: 0.16 },
+    { key: "transfer", label: "Trasferimenti dallo Stato", color: "#a78bfa", weight: 0.4 },
+    { key: "patrim", label: "Entrate patrimoniali", color: "#fb923c", weight: 0.08 },
+  ],
+  sub: {
+    social: ["Servizi sociali", "Politiche per il lavoro", "Altre prestazioni"],
+    basicos: ["Sicurezza e mobilità", "Urbanistica e abitazioni", "Pulizia e illuminazione", "Ambiente"],
+    preferente: ["Istruzione", "Cultura", "Sport", "Sanità"],
+    economico: ["Commercio e turismo", "Trasporti", "Infrastrutture"],
+    general: ["Organi di governo", "Amministrazione", "Debito e interessi"],
+  },
+};
 
-export const REGIONS: Record<string, RegionData> = Object.fromEntries(
-  PROVINCE_NAMES.map((n) => [n, buildRegion(n)])
-);
-
-// Sustituye provincias por datos REALES de ciudades cuando estén disponibles.
-// Barcelona (Ajuntament 2024) y València (Ajuntament 2025).
 type RealCity = {
   name: string;
   provincia: string;
@@ -164,30 +188,59 @@ type RealCity = {
   source?: { name: string; url: string };
 };
 
-const REAL_CITIES: RealCity[] = [barcelonaReal as RealCity, valenciaReal as RealCity];
-for (const c of REAL_CITIES) {
-  REGIONS[c.provincia] = {
-    name: `${c.name} (ciudad)`,
-    slug: c.slug,
-    ingresos: c.ingresos,
-    gastos: c.gastos,
-    ingresosByCat: c.ingresosByCat,
-    gastosByCat: c.gastosByCat,
-    gastosByEconomic: c.gastosByEconomic,
-    year: c.year,
-    isSample: false,
-    source: c.source,
-    basis: c.basis,
-    isCity: true,
+type GeoFC = { features: { properties: { name: string } }[] };
+
+function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[]) {
+  const names = geo.features.map((f) => f.properties.name).sort((a, b) => a.localeCompare(b, "es"));
+  const regions: Record<string, RegionData> = Object.fromEntries(names.map((n) => [n, buildRegion(n, cats)]));
+  for (const c of reals) {
+    regions[c.provincia] = {
+      name: c.name,
+      slug: c.slug,
+      ingresos: c.ingresos,
+      gastos: c.gastos,
+      ingresosByCat: c.ingresosByCat,
+      gastosByCat: c.gastosByCat,
+      gastosByEconomic: c.gastosByEconomic,
+      year: c.year,
+      isSample: false,
+      source: c.source,
+      basis: c.basis,
+      isCity: true,
+    };
+  }
+  return {
+    regions,
+    list: Object.values(regions).sort((a, b) => b.gastos - a.gastos),
+    realNames: reals.map((c) => c.provincia),
   };
 }
 
-export const REAL_REGION_NAMES = REAL_CITIES.map((c) => c.provincia);
+export type CountryCode = "es" | "it";
+export type Country = {
+  code: CountryCode;
+  mapKind: "spain" | "italy";
+  defaultRegion: string;
+  geo: GeoFC;
+  regions: Record<string, RegionData>;
+  list: RegionData[];
+  realNames: string[];
+};
 
-export const REGION_LIST = Object.values(REGIONS).sort((a, b) => b.gastos - a.gastos);
+const ES = buildCountry(provincesGeo as GeoFC, CATS_ES, [barcelonaReal as RealCity, valenciaReal as RealCity]);
+const IT = buildCountry(italyGeo as GeoFC, CATS_IT, [milanoReal as RealCity]);
 
+export const COUNTRIES: Record<CountryCode, Country> = {
+  es: { code: "es", mapKind: "spain", defaultRegion: "Barcelona", geo: provincesGeo as GeoFC, ...ES },
+  it: { code: "it", mapKind: "italy", defaultRegion: "Milano", geo: italyGeo as GeoFC, ...IT },
+};
+
+// Compatibilidad (la portada usa España).
+export const REGIONS = ES.regions;
+export const REGION_LIST = ES.list;
+export const REAL_REGION_NAMES = ES.realNames;
 export const TOTALS = {
-  ingresos: REGION_LIST.reduce((a, r) => a + r.ingresos, 0),
-  gastos: REGION_LIST.reduce((a, r) => a + r.gastos, 0),
-  count: REGION_LIST.length,
+  ingresos: ES.list.reduce((a, r) => a + r.ingresos, 0),
+  gastos: ES.list.reduce((a, r) => a + r.gastos, 0),
+  count: ES.list.length,
 };

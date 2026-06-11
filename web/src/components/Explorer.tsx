@@ -1,31 +1,54 @@
 "use client";
 
 import { useState } from "react";
-import SpainMap from "./SpainMap";
+import RegionMap from "./RegionMap";
 import RegionPanel from "./RegionPanel";
-import { REGIONS, REGION_LIST, REAL_REGION_NAMES } from "@/lib/data";
+import { COUNTRIES, type CountryCode } from "@/lib/data";
 import { formatCompact } from "@/lib/format";
 import { useMessages } from "@/i18n/LocaleProvider";
 
 export default function Explorer() {
   const m = useMessages();
-  const [selected, setSelected] = useState<string>("Barcelona");
-  const region = REGIONS[selected] ?? REGION_LIST[0];
+  const [country, setCountry] = useState<CountryCode>("es");
+  const C = COUNTRIES[country];
+  const [selected, setSelected] = useState<string>(C.defaultRegion);
+
+  const region = C.regions[selected] ?? C.list[0];
+
+  const switchCountry = (code: CountryCode) => {
+    setCountry(code);
+    setSelected(COUNTRIES[code].defaultRegion);
+  };
 
   return (
     <div id="explorar" className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start">
       {/* Mapa + controles */}
       <div className="glass p-5 md:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-          <h2 className="text-lg font-semibold">{m.explorer.mapTitle}</h2>
+          {/* Selector de país */}
+          <div className="inline-flex rounded-full border border-[var(--panel-border)] overflow-hidden text-sm">
+            {(["es", "it"] as CountryCode[]).map((code) => (
+              <button
+                key={code}
+                onClick={() => switchCountry(code)}
+                aria-pressed={country === code}
+                className={`px-3.5 py-1.5 transition ${
+                  country === code ? "bg-[rgba(34,211,238,0.15)] text-fg" : "text-muted hover:text-fg"
+                }`}
+              >
+                {code === "es" ? `🇪🇸 ${m.explorer.spain}` : `🇮🇹 ${m.explorer.italy}`}
+              </button>
+            ))}
+          </div>
+
           <label className="text-sm text-muted flex items-center gap-2">
             {m.explorer.province}
             <select
               value={selected}
               onChange={(e) => setSelected(e.target.value)}
-              className="bg-[var(--bg-2)] border border-[var(--panel-border)] rounded-lg px-3 py-1.5 text-fg text-sm focus:outline-none focus:border-cyan"
+              className="bg-[var(--bg-2)] border border-[var(--panel-border)] rounded-lg px-3 py-1.5 text-fg text-sm focus:outline-none focus:border-cyan max-w-[180px]"
             >
-              {Object.entries(REGIONS)
+              {Object.entries(C.regions)
                 .sort(([, a], [, b]) => a.name.localeCompare(b.name, "es"))
                 .map(([key, r]) => (
                   <option key={key} value={key}>
@@ -36,13 +59,13 @@ export default function Explorer() {
           </label>
         </div>
 
-        <SpainMap selected={selected} onSelect={setSelected} />
+        <RegionMap country={C} selected={selected} onSelect={setSelected} />
 
         {/* Ciudades con datos reales */}
         <div className="mt-4">
           <p className="text-xs uppercase tracking-widest text-green mb-2">● {m.explorer.withReal}</p>
           <div className="flex flex-wrap gap-2">
-            {REAL_REGION_NAMES.map((name) => (
+            {C.realNames.map((name) => (
               <button
                 key={name}
                 onClick={() => setSelected(name)}
@@ -52,7 +75,7 @@ export default function Explorer() {
                     : "border-[rgba(52,211,153,0.4)] text-green hover:bg-[rgba(52,211,153,0.08)]"
                 }`}
               >
-                {REGIONS[name].name} · <span className="tabular">{formatCompact(REGIONS[name].gastos)}</span>
+                {C.regions[name].name} · <span className="tabular">{formatCompact(C.regions[name].gastos)}</span>
               </button>
             ))}
           </div>
@@ -60,16 +83,14 @@ export default function Explorer() {
 
         {/* Ranking rápido */}
         <div className="mt-4">
-          <p className="text-xs uppercase tracking-widest text-muted mb-2">
-            {m.explorer.topSpending}
-          </p>
+          <p className="text-xs uppercase tracking-widest text-muted mb-2">{m.explorer.topSpending}</p>
           <div className="flex flex-wrap gap-2">
-            {REGION_LIST.slice(0, 6).map((r) => (
+            {C.list.slice(0, 6).map((r) => (
               <button
                 key={r.slug}
                 onClick={() => setSelected(r.name)}
                 className={`text-xs px-3 py-1.5 rounded-full border transition ${
-                  selected === r.name
+                  region === r
                     ? "border-cyan text-fg bg-[rgba(34,211,238,0.12)]"
                     : "border-[var(--panel-border)] text-muted hover:text-fg"
                 }`}

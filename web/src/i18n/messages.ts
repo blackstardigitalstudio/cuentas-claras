@@ -21,7 +21,7 @@ export type Messages = {
   };
   stats: { provinces: string; income: string; expense: string; realLabel: string };
   how: { t1: string; d1: string; t2: string; d2: string; t3: string; d3: string };
-  explorer: { mapTitle: string; province: string; withReal: string; topSpending: string };
+  explorer: { mapTitle: string; province: string; withReal: string; topSpending: string; spain: string; italy: string };
   panel: {
     municipality: string;
     province: string;
@@ -77,6 +77,8 @@ const es: Messages = {
     province: "Provincia",
     withReal: "Con datos reales",
     topSpending: "Mayor gasto (ejemplo)",
+    spain: "España",
+    italy: "Italia",
   },
   panel: {
     municipality: "Ayuntamiento",
@@ -140,6 +142,8 @@ const it: Messages = {
     province: "Provincia",
     withReal: "Con dati reali",
     topSpending: "Spesa maggiore (esempio)",
+    spain: "Spagna",
+    italy: "Italia",
   },
   panel: {
     municipality: "Comune",

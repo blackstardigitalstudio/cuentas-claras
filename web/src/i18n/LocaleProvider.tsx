@@ -21,12 +21,17 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  // Mantén <html lang> sincronizado con el idioma activo (autodetección o toggle),
+  // por accesibilidad y SEO.
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
+
   const setLocale = (l: Locale) => {
     setLocaleState(l);
     try {
       window.localStorage.setItem("cc-locale", l);
     } catch {}
-    document.documentElement.lang = l;
   };
 
   return (

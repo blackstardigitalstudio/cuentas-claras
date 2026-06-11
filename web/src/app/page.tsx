@@ -1,6 +1,6 @@
 import Explorer from "@/components/Explorer";
+import { CountUp, Reveal } from "@/components/Motion";
 import { REGIONS, TOTALS, DATA_SOURCE_URL } from "@/lib/data";
-import { formatCompact } from "@/lib/format";
 
 const bcn = REGIONS["Barcelona"];
 
@@ -21,7 +21,7 @@ export default function Home() {
         <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-cyan/80 mb-4">
           Transparencia · Datos públicos · España
         </p>
-        <h1 className="text-4xl md:text-6xl font-bold leading-[1.05]">
+        <h1 className="title-glow text-4xl md:text-6xl font-bold leading-[1.05] inline-block">
           ¿A dónde va <span className="neon-text">el dinero público</span>?
         </h1>
         <p className="mt-5 text-base md:text-lg text-muted max-w-2xl mx-auto">
@@ -51,15 +51,19 @@ export default function Home() {
       {/* Tira de estadísticas */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
         {[
-          { label: "Provincias en el mapa", value: String(TOTALS.count) },
-          { label: "Barcelona · ingresos 2024", value: formatCompact(bcn.ingresos) },
-          { label: "Barcelona · gastos 2024", value: formatCompact(bcn.gastos) },
-          { label: "Datos reales", value: "Open Data" },
-        ].map((s) => (
-          <div key={s.label} className="glass px-4 py-5 text-center">
-            <p className="tabular text-xl md:text-2xl font-semibold neon-text">{s.value}</p>
-            <p className="text-xs text-muted mt-1">{s.label}</p>
-          </div>
+          { label: "Provincias en el mapa", value: TOTALS.count, kind: "int" as const },
+          { label: "Barcelona · ingresos 2024", value: bcn.ingresos, kind: "compact" as const },
+          { label: "Barcelona · gastos 2024", value: bcn.gastos, kind: "compact" as const },
+          { label: "Datos reales", value: null, text: "Open Data" },
+        ].map((s, i) => (
+          <Reveal key={s.label} delay={i * 0.08}>
+            <div className="glass px-4 py-5 text-center">
+              <p className="tabular text-xl md:text-2xl font-semibold neon-text">
+                {s.value === null ? s.text : <CountUp value={s.value} kind={s.kind} />}
+              </p>
+              <p className="text-xs text-muted mt-1">{s.label}</p>
+            </div>
+          </Reveal>
         ))}
       </section>
 
@@ -81,11 +85,13 @@ export default function Home() {
             t: "Lenguaje claro",
             d: "Traducimos la clasificación técnica a categorías que cualquier ciudadano entiende: educación, social, servicios básicos…",
           },
-        ].map((c) => (
-          <div key={c.t} className="glass p-5">
-            <h3 className="font-semibold mb-2">{c.t}</h3>
-            <p className="text-sm text-muted">{c.d}</p>
-          </div>
+        ].map((c, i) => (
+          <Reveal key={c.t} delay={i * 0.1}>
+            <div className="glass p-5 h-full">
+              <h3 className="font-semibold mb-2">{c.t}</h3>
+              <p className="text-sm text-muted">{c.d}</p>
+            </div>
+          </Reveal>
         ))}
       </section>
 

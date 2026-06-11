@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import type { RegionData } from "@/lib/data";
 import { formatCompact, formatEuro, formatPct } from "@/lib/format";
+import { CountUp } from "./Motion";
 import Sankey from "./Sankey";
 
 export default function RegionPanel({ region }: { region: RegionData }) {
@@ -50,13 +51,13 @@ export default function RegionPanel({ region }: { region: RegionData }) {
         <div className="rounded-2xl p-4 bg-[rgba(52,211,153,0.08)] border border-[rgba(52,211,153,0.25)]">
           <p className="text-xs text-muted">Ingresos</p>
           <p className="tabular text-xl md:text-2xl font-semibold text-green mt-1">
-            {formatCompact(region.ingresos)}
+            <CountUp value={region.ingresos} kind="compact" duration={1.1} />
           </p>
         </div>
         <div className="rounded-2xl p-4 bg-[rgba(244,114,182,0.08)] border border-[rgba(244,114,182,0.25)]">
           <p className="text-xs text-muted">Gastos</p>
           <p className="tabular text-xl md:text-2xl font-semibold text-magenta mt-1">
-            {formatCompact(region.gastos)}
+            <CountUp value={region.gastos} kind="compact" duration={1.1} />
           </p>
         </div>
       </div>

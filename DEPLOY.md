@@ -19,21 +19,24 @@ puede alojar gratis en varias plataformas. Aquí está la recomendación y los p
 | **Vercel (Hobby)** | Gratis | 100 GB/mes | Hecho por los creadores de Next.js | Hobby = solo no comercial |
 | **Netlify** | Gratis | 100 GB/mes | Muy buena DX | Límite de minutos de build |
 
-**Recomendación:** empezar con **GitHub Pages** (incluido, sin cuentas extra; el
-workflow ya está listo) y, si el tráfico crece, migrar a **Cloudflare Pages** por
-su ancho de banda ilimitado.
+**Configurado:** el workflow [deploy.yml](.github/workflows/deploy.yml) ya despliega
+en **Cloudflare Pages** (ancho de banda ilimitado) en cada push y una vez al mes.
 
-### GitHub Pages — pasos
-1. Sube el repo a GitHub (rama `main`).
-2. Settings → Pages → Source: **GitHub Actions**.
-3. El workflow [deploy.yml](.github/workflows/deploy.yml) construye y publica solo.
-4. Si es una *project page* (`usuario.github.io/repo`), define la variable de repo
-   `NEXT_PUBLIC_BASE_PATH = /repo`. Con dominio propio o *user page*, déjala vacía.
+### Cloudflare Pages vía GitHub Actions — pasos (el actual)
+1. El repo ya está en GitHub (`blackstardigitalstudio/cuentas-claras`).
+2. En **Cloudflare → Pages**, crea un proyecto llamado `cuentas-claras` (Direct Upload
+   o déjalo que lo cree el primer deploy).
+3. Crea un **API Token** (plantilla "Edit Cloudflare Pages") y copia el **Account ID**.
+4. En GitHub → Settings → Secrets and variables → Actions, añade:
+   - `CLOUDFLARE_API_TOKEN`
+   - `CLOUDFLARE_ACCOUNT_ID`
+5. Lanza el workflow (push o "Run workflow"). Tu **dominio** se conecta en
+   Cloudflare Pages → Custom domains.
 
-### Cloudflare Pages — pasos (alternativa)
-1. Cuenta gratis en Cloudflare → Pages → Connect to Git.
-2. Build command: `npm run etl && npm run build` · Output dir: `out` · Root: `web`.
-3. Dominio `*.pages.dev` gratis al instante.
+### Alternativa sin secrets: integración Git de Cloudflare
+Cloudflare → Pages → Connect to Git → repo `cuentas-claras`.
+Build command: `npm run etl && npm run build` · Output: `out` · Root directory: `web`.
+(En este modo, el cron mensual de actualización se hace con un *Deploy Hook*.)
 
 ---
 

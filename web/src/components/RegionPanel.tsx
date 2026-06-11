@@ -5,8 +5,10 @@ import type { RegionData } from "@/lib/data";
 import { formatCompact, formatEuro, formatPct } from "@/lib/format";
 import { CountUp } from "./Motion";
 import Sankey from "./Sankey";
+import { useMessages } from "@/i18n/LocaleProvider";
 
 export default function RegionPanel({ region }: { region: RegionData }) {
+  const m = useMessages();
   const balance = region.ingresos - region.gastos;
   const positivo = balance >= 0;
   const maxCat = Math.max(...region.gastosByCat.map((c) => c.amount));
@@ -22,23 +24,23 @@ export default function RegionPanel({ region }: { region: RegionData }) {
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-xs uppercase tracking-widest text-muted">
-            {region.isCity ? "Ayuntamiento" : "Provincia"}
+            {region.isCity ? m.panel.municipality : m.panel.province}
           </p>
           <h2 className="text-2xl md:text-3xl font-semibold mt-1">{region.name}</h2>
         </div>
         {region.isSample ? (
           <span className="shrink-0 text-[11px] font-mono px-2.5 py-1 rounded-full border border-[rgba(251,191,36,0.4)] text-amber bg-[rgba(251,191,36,0.08)]">
-            Ejemplo {region.year}
+            {m.panel.sample} {region.year}
           </span>
         ) : (
           <span className="shrink-0 text-[11px] font-mono px-2.5 py-1 rounded-full border border-[rgba(52,211,153,0.4)] text-green bg-[rgba(52,211,153,0.08)]">
-            ● Datos reales {region.year}
+            ● {m.panel.real} {region.year}
           </span>
         )}
       </div>
       {region.source && (
         <p className="text-[11px] text-muted mt-2">
-          Fuente:{" "}
+          {m.panel.source}{" "}
           <a href={region.source.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">
             {region.source.name}
           </a>
@@ -49,35 +51,35 @@ export default function RegionPanel({ region }: { region: RegionData }) {
       {/* Ingresos / Gastos */}
       <div className="grid grid-cols-2 gap-3 mt-5">
         <div className="rounded-2xl p-4 bg-[rgba(52,211,153,0.08)] border border-[rgba(52,211,153,0.25)]">
-          <p className="text-xs text-muted">Ingresos</p>
+          <p className="text-xs text-muted">{m.panel.income}</p>
           <p className="tabular text-xl md:text-2xl font-semibold text-green mt-1">
             <CountUp value={region.ingresos} kind="compact" duration={1.1} />
           </p>
         </div>
         <div className="rounded-2xl p-4 bg-[rgba(244,114,182,0.08)] border border-[rgba(244,114,182,0.25)]">
-          <p className="text-xs text-muted">Gastos</p>
+          <p className="text-xs text-muted">{m.panel.expense}</p>
           <p className="tabular text-xl md:text-2xl font-semibold text-magenta mt-1">
             <CountUp value={region.gastos} kind="compact" duration={1.1} />
           </p>
         </div>
       </div>
       <p className="text-xs text-muted mt-2 tabular">
-        Saldo:{" "}
+        {m.panel.balance}{" "}
         <span className={positivo ? "text-green" : "text-amber"}>
           {positivo ? "+" : ""}
-          {formatCompact(balance)} {positivo ? "(superávit)" : "(déficit)"}
+          {formatCompact(balance)} {positivo ? m.panel.surplus : m.panel.deficit}
         </span>
       </p>
 
       {/* Sankey */}
       <div className="mt-6">
-        <h3 className="text-sm font-medium text-muted mb-1">Sigue el euro: del ingreso al gasto</h3>
+        <h3 className="text-sm font-medium text-muted mb-1">{m.panel.sankeyTitle}</h3>
         <Sankey region={region} />
       </div>
 
       {/* Desglose del gasto */}
       <div className="mt-4">
-        <h3 className="text-sm font-medium text-muted mb-3">¿A dónde va el gasto?</h3>
+        <h3 className="text-sm font-medium text-muted mb-3">{m.panel.whereGoes}</h3>
         <ul className="space-y-2.5">
           {[...region.gastosByCat]
             .sort((a, b) => b.amount - a.amount)
@@ -110,7 +112,7 @@ export default function RegionPanel({ region }: { region: RegionData }) {
       {/* Vista económica: en qué forma se gasta (personal, inversión, etc.) */}
       {region.gastosByEconomic && region.gastosByEconomic.length > 0 && (
         <div className="mt-6">
-          <h3 className="text-sm font-medium text-muted mb-3">¿En qué forma se gasta?</h3>
+          <h3 className="text-sm font-medium text-muted mb-3">{m.panel.howSpent}</h3>
           <div className="flex flex-wrap gap-2">
             {[...region.gastosByEconomic]
               .sort((a, b) => b.amount - a.amount)

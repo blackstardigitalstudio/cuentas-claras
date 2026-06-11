@@ -5,8 +5,10 @@ import SpainMap from "./SpainMap";
 import RegionPanel from "./RegionPanel";
 import { REGIONS, REGION_LIST, REAL_REGION_NAMES } from "@/lib/data";
 import { formatCompact } from "@/lib/format";
+import { useMessages } from "@/i18n/LocaleProvider";
 
 export default function Explorer() {
+  const m = useMessages();
   const [selected, setSelected] = useState<string>("Barcelona");
   const region = REGIONS[selected] ?? REGION_LIST[0];
 
@@ -15,9 +17,9 @@ export default function Explorer() {
       {/* Mapa + controles */}
       <div className="glass p-5 md:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-          <h2 className="text-lg font-semibold">Mapa de España</h2>
+          <h2 className="text-lg font-semibold">{m.explorer.mapTitle}</h2>
           <label className="text-sm text-muted flex items-center gap-2">
-            Provincia
+            {m.explorer.province}
             <select
               value={selected}
               onChange={(e) => setSelected(e.target.value)}
@@ -38,7 +40,7 @@ export default function Explorer() {
 
         {/* Ciudades con datos reales */}
         <div className="mt-4">
-          <p className="text-xs uppercase tracking-widest text-green mb-2">● Con datos reales</p>
+          <p className="text-xs uppercase tracking-widest text-green mb-2">● {m.explorer.withReal}</p>
           <div className="flex flex-wrap gap-2">
             {REAL_REGION_NAMES.map((name) => (
               <button
@@ -59,7 +61,7 @@ export default function Explorer() {
         {/* Ranking rápido */}
         <div className="mt-4">
           <p className="text-xs uppercase tracking-widest text-muted mb-2">
-            Mayor gasto (ejemplo)
+            {m.explorer.topSpending}
           </p>
           <div className="flex flex-wrap gap-2">
             {REGION_LIST.slice(0, 6).map((r) => (

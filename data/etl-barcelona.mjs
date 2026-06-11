@@ -62,6 +62,37 @@ const AREAS = {
 const AREA_NAMES =
   "DEUTE PUBLIC|SERVEIS PUBLICS BASICS|ACTUACIONS DE PROTECCIO I PROMOCIO SOCIAL|PRODUCCIO DE BENS PUBLICS DE CARACTER PREFERENT|ACTUACIONS DE CARACTER ECONOMIC|ACTUACIONS DE CARACTER GENERAL";
 const AREA_RE = new RegExp(`,([012349]),(?:${AREA_NAMES}),`);
+// Captura también el código de POLÍTICA (2 dígitos) que sigue al nombre de área.
+const AREA_POL_RE = new RegExp(`,([012349]),(?:${AREA_NAMES}),(\\d{2}),`);
+
+// Políticas de gasto (clasificación por programas, Orden EHA/3565/2008) -> etiqueta.
+const POLITICAS = {
+  "00": "Otras (sin desglosar)",
+  "01": "Deuda pública",
+  "13": "Seguridad y movilidad ciudadana",
+  "15": "Vivienda y urbanismo",
+  "16": "Bienestar comunitario (limpieza, agua, alumbrado…)",
+  "17": "Medio ambiente",
+  "21": "Pensiones",
+  "22": "Otras prestaciones sociales",
+  "23": "Servicios sociales y promoción social",
+  "24": "Fomento del empleo",
+  "31": "Sanidad",
+  "32": "Educación",
+  "33": "Cultura",
+  "34": "Deporte",
+  "41": "Agricultura y pesca",
+  "42": "Industria y energía",
+  "43": "Comercio y turismo",
+  "44": "Transporte público",
+  "45": "Infraestructuras",
+  "46": "Investigación y desarrollo",
+  "49": "Otras actuaciones económicas",
+  "91": "Órganos de gobierno",
+  "92": "Servicios de carácter general",
+  "93": "Administración financiera y tributaria",
+  "94": "Transferencias a otras administraciones",
+};
 
 // Quita acentos y pasa a mayúsculas para que los nombres de área casen siempre.
 function norm(s) {
@@ -77,6 +108,7 @@ function aggregate(text, { amountFromEnd, capMap, withArea }) {
   const lines = text.split(/\r?\n/);
   const byCap = {};
   const byArea = {};
+  const byAreaPol = {}; // { area: { politica: amount } } — nivel de detalle
   let total = 0;
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i];
@@ -89,16 +121,42 @@ function aggregate(text, { amountFromEnd, capMap, withArea }) {
     total += amount;
     byCap[cap] = (byCap[cap] || 0) + amount;
     if (withArea) {
-      const m = norm(line).match(AREA_RE);
+      const nline = norm(line);
+      const m = nline.match(AREA_RE);
       const area = m ? m[1] : "9";
       byArea[area] = (byArea[area] || 0) + amount;
+      if (m) {
+        // La política son los 2 dígitos JUSTO tras el nombre de área (mismo match,
+        // así la política siempre pertenece a su área). Su 1er dígito = área.
+        const after = nline.slice(m.index + m[0].length);
+        const pm = after.match(/^(\d{2}),/);
+        const pol = pm && pm[1][0] === area ? pm[1] : "00";
+        byAreaPol[area] = byAreaPol[area] || {};
+        byAreaPol[area][pol] = (byAreaPol[area][pol] || 0) + amount;
+      }
     }
   }
   const cats = Object.entries(byCap)
     .map(([k, amount]) => ({ key: "c" + k, label: capMap[k][0], color: capMap[k][1], amount: Math.round(amount) }))
     .sort((a, b) => b.amount - a.amount);
   const areas = Object.entries(byArea)
-    .map(([k, amount]) => ({ key: "a" + k, label: AREAS[k][0], color: AREAS[k][1], amount: Math.round(amount) }))
+    .map(([k, amount]) => {
+      const children = Object.entries(byAreaPol[k] || {})
+        .map(([pol, amt]) => ({
+          key: "p" + pol,
+          label: POLITICAS[pol] || `Política ${pol}`,
+          color: AREAS[k][1],
+          amount: Math.round(amt),
+        }))
+        .sort((a, b) => b.amount - a.amount);
+      return {
+        key: "a" + k,
+        label: AREAS[k][0],
+        color: AREAS[k][1],
+        amount: Math.round(amount),
+        ...(children.length ? { children } : {}),
+      };
+    })
     .sort((a, b) => b.amount - a.amount);
   return { total: Math.round(total), cats, areas };
 }

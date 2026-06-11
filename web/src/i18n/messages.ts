@@ -35,6 +35,7 @@ export type Messages = {
     deficit: string;
     sankeyTitle: string;
     whereGoes: string;
+    whereGoesHint: string;
     howSpent: string;
   };
   footer: { data: string; tagline: string };
@@ -90,6 +91,7 @@ const es: Messages = {
     deficit: "(déficit)",
     sankeyTitle: "Sigue el euro: del ingreso al gasto",
     whereGoes: "¿A dónde va el gasto?",
+    whereGoesHint: "Toca una categoría para ver el detalle",
     howSpent: "¿En qué forma se gasta?",
   },
   footer: {
@@ -152,6 +154,7 @@ const it: Messages = {
     deficit: "(disavanzo)",
     sankeyTitle: "Segui l'euro: dall'entrata alla spesa",
     whereGoes: "Dove va la spesa?",
+    whereGoesHint: "Tocca una categoria per vederne il dettaglio",
     howSpent: "In che forma si spende?",
   },
   footer: {

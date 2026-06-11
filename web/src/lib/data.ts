@@ -22,6 +22,7 @@ export type CategoryDatum = {
   label: string;
   color: string;
   amount: number; // en euros
+  children?: CategoryDatum[]; // nivel de detalle (subcategorías)
 };
 
 export type RegionData = {
@@ -76,6 +77,15 @@ export function slugify(name: string): string {
     .replace(/(^-|-$)/g, "");
 }
 
+// Subcategorías de ejemplo por área de gasto (para el desglose en la demo).
+const GASTO_SUB: Record<string, string[]> = {
+  social: ["Servicios sociales", "Fomento del empleo", "Otras prestaciones"],
+  basicos: ["Seguridad y movilidad", "Vivienda y urbanismo", "Limpieza y alumbrado", "Medio ambiente"],
+  preferente: ["Educación", "Cultura", "Deporte", "Sanidad"],
+  economico: ["Comercio y turismo", "Transporte público", "Infraestructuras"],
+  general: ["Órganos de gobierno", "Administración", "Deuda e intereses"],
+};
+
 function buildRegion(name: string): RegionData {
   const seed = hash(name);
   // "Presupuesto" base de ejemplo: entre ~40M€ y ~6.000M€ según el hash.
@@ -102,13 +112,29 @@ function buildRegion(name: string): RegionData {
     }));
   };
 
+  // Añade subcategorías de ejemplo a cada área de gasto (desglose).
+  const withSub = (cats: CategoryDatum[]): CategoryDatum[] =>
+    cats.map((c) => {
+      const labels = GASTO_SUB[c.key];
+      if (!labels) return c;
+      const noisy = labels.map((l, i) => ({ l, w: 0.5 + hash(name + c.key + i) }));
+      const wsum = noisy.reduce((a, x) => a + x.w, 0);
+      let acc = 0;
+      const children = noisy.map((x, i) => {
+        const amt = i === noisy.length - 1 ? c.amount - acc : Math.round((x.w / wsum) * c.amount);
+        acc += amt;
+        return { key: `${c.key}-${i}`, label: x.l, color: c.color, amount: amt };
+      });
+      return { ...c, children };
+    });
+
   return {
     name,
     slug: slugify(name),
     ingresos,
     gastos,
     ingresosByCat: split(ingresos, INGRESO_CATS, "ing"),
-    gastosByCat: split(gastos, GASTO_CATS, "gas"),
+    gastosByCat: withSub(split(gastos, GASTO_CATS, "gas")),
     year: DATA_YEAR,
     isSample: DATA_IS_SAMPLE,
   };

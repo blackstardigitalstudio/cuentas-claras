@@ -67,37 +67,163 @@
       "key": "a1",
       "label": "Servicios públicos básicos",
       "color": "#22d3ee",
-      "amount": 1570808670
+      "amount": 1570808670,
+      "children": [
+        {
+          "key": "p15",
+          "label": "Vivienda y urbanismo",
+          "color": "#22d3ee",
+          "amount": 570806208
+        },
+        {
+          "key": "p16",
+          "label": "Bienestar comunitario (limpieza, agua, alumbrado…)",
+          "color": "#22d3ee",
+          "amount": 440374960
+        },
+        {
+          "key": "p13",
+          "label": "Seguridad y movilidad ciudadana",
+          "color": "#22d3ee",
+          "amount": 432797316
+        },
+        {
+          "key": "p17",
+          "label": "Medio ambiente",
+          "color": "#22d3ee",
+          "amount": 126830187
+        }
+      ]
     },
     {
       "key": "a9",
       "label": "Administración general",
       "color": "#818cf8",
-      "amount": 627429806
+      "amount": 627429806,
+      "children": [
+        {
+          "key": "p92",
+          "label": "Servicios de carácter general",
+          "color": "#818cf8",
+          "amount": 250366914
+        },
+        {
+          "key": "p93",
+          "label": "Administración financiera y tributaria",
+          "color": "#818cf8",
+          "amount": 180384575
+        },
+        {
+          "key": "p94",
+          "label": "Transferencias a otras administraciones",
+          "color": "#818cf8",
+          "amount": 162653750
+        },
+        {
+          "key": "p91",
+          "label": "Órganos de gobierno",
+          "color": "#818cf8",
+          "amount": 34024567
+        }
+      ]
     },
     {
       "key": "a3",
       "label": "Sanidad, educación y cultura",
       "color": "#a3e635",
-      "amount": 476696896
+      "amount": 476696896,
+      "children": [
+        {
+          "key": "p32",
+          "label": "Educación",
+          "color": "#a3e635",
+          "amount": 212271596
+        },
+        {
+          "key": "p33",
+          "label": "Cultura",
+          "color": "#a3e635",
+          "amount": 179662496
+        },
+        {
+          "key": "p34",
+          "label": "Deporte",
+          "color": "#a3e635",
+          "amount": 48458943
+        },
+        {
+          "key": "p31",
+          "label": "Sanidad",
+          "color": "#a3e635",
+          "amount": 36303860
+        }
+      ]
     },
     {
       "key": "a2",
       "label": "Protección y promoción social",
       "color": "#f472b6",
-      "amount": 462746098
+      "amount": 462746098,
+      "children": [
+        {
+          "key": "p23",
+          "label": "Servicios sociales y promoción social",
+          "color": "#f472b6",
+          "amount": 462532293
+        },
+        {
+          "key": "p21",
+          "label": "Pensiones",
+          "color": "#f472b6",
+          "amount": 213805
+        }
+      ]
     },
     {
       "key": "a4",
       "label": "Actuaciones económicas",
       "color": "#fbbf24",
-      "amount": 425317903
+      "amount": 425317903,
+      "children": [
+        {
+          "key": "p44",
+          "label": "Transporte público",
+          "color": "#fbbf24",
+          "amount": 246260720
+        },
+        {
+          "key": "p43",
+          "label": "Comercio y turismo",
+          "color": "#fbbf24",
+          "amount": 147419360
+        },
+        {
+          "key": "p49",
+          "label": "Otras actuaciones económicas",
+          "color": "#fbbf24",
+          "amount": 30243101
+        },
+        {
+          "key": "p46",
+          "label": "Investigación y desarrollo",
+          "color": "#fbbf24",
+          "amount": 1394721
+        }
+      ]
     },
     {
       "key": "a0",
       "label": "Deuda pública",
       "color": "#f87171",
-      "amount": 83517714
+      "amount": 83517714,
+      "children": [
+        {
+          "key": "p00",
+          "label": "Otras (sin desglosar)",
+          "color": "#f87171",
+          "amount": 83517714
+        }
+      ]
     }
   ],
   "gastosByEconomic": [

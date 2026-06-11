@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "motion/react";
 import type { RegionData } from "@/lib/data";
 import { formatCompact, formatEuro, formatPct } from "@/lib/format";
@@ -9,6 +10,7 @@ import { useMessages } from "@/i18n/LocaleProvider";
 
 export default function RegionPanel({ region }: { region: RegionData }) {
   const m = useMessages();
+  const [openCat, setOpenCat] = useState<string | null>(null);
   const balance = region.ingresos - region.gastos;
   const positivo = balance >= 0;
   const maxCat = Math.max(...region.gastosByCat.map((c) => c.amount));
@@ -79,33 +81,77 @@ export default function RegionPanel({ region }: { region: RegionData }) {
 
       {/* Desglose del gasto */}
       <div className="mt-4">
-        <h3 className="text-sm font-medium text-muted mb-3">{m.panel.whereGoes}</h3>
+        <div className="mb-3">
+          <h3 className="text-sm font-medium text-muted">{m.panel.whereGoes}</h3>
+          <p className="text-[11px] text-cyan/60">{m.panel.whereGoesHint}</p>
+        </div>
         <ul className="space-y-2.5">
           {[...region.gastosByCat]
             .sort((a, b) => b.amount - a.amount)
-            .map((c) => (
-              <li key={c.key}>
-                <div className="flex items-center justify-between text-sm mb-1">
-                  <span className="flex items-center gap-2">
-                    <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: c.color }} />
-                    {c.label}
-                  </span>
-                  <span className="tabular text-muted">
-                    {formatPct(c.amount / region.gastos)}
-                  </span>
-                </div>
-                <div className="h-2 rounded-full bg-white/5 overflow-hidden">
-                  <motion.div
-                    className="h-full rounded-full"
-                    style={{ background: c.color, boxShadow: `0 0 10px ${c.color}` }}
-                    initial={{ width: 0 }}
-                    animate={{ width: `${(c.amount / maxCat) * 100}%` }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  />
-                </div>
-                <p className="tabular text-[11px] text-muted mt-0.5">{formatEuro(c.amount)}</p>
-              </li>
-            ))}
+            .map((c) => {
+              const hasKids = !!c.children && c.children.length > 0;
+              const isOpen = openCat === c.key;
+              return (
+                <li key={c.key}>
+                  <button
+                    type="button"
+                    onClick={() => hasKids && setOpenCat(isOpen ? null : c.key)}
+                    aria-expanded={hasKids ? isOpen : undefined}
+                    className={`w-full text-left ${hasKids ? "cursor-pointer" : "cursor-default"}`}
+                  >
+                    <div className="flex items-center justify-between text-sm mb-1">
+                      <span className="flex items-center gap-2">
+                        <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: c.color }} />
+                        {c.label}
+                        {hasKids && (
+                          <span className={`text-muted text-xs transition-transform ${isOpen ? "rotate-90" : ""}`}>
+                            ›
+                          </span>
+                        )}
+                      </span>
+                      <span className="tabular text-muted">{formatPct(c.amount / region.gastos)}</span>
+                    </div>
+                    <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+                      <motion.div
+                        className="h-full rounded-full"
+                        style={{ background: c.color, boxShadow: `0 0 10px ${c.color}` }}
+                        initial={{ width: 0 }}
+                        animate={{ width: `${(c.amount / maxCat) * 100}%` }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                      />
+                    </div>
+                    <p className="tabular text-[11px] text-muted mt-0.5">{formatEuro(c.amount)}</p>
+                  </button>
+
+                  {hasKids && isOpen && (
+                    <motion.ul
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="mt-2 ml-4 pl-3 border-l border-[var(--panel-border)] space-y-2"
+                    >
+                      {[...c.children!]
+                        .sort((a, b) => b.amount - a.amount)
+                        .map((sc) => (
+                          <li key={sc.key}>
+                            <div className="flex items-center justify-between text-xs mb-0.5">
+                              <span className="text-fg/80">{sc.label}</span>
+                              <span className="tabular text-muted">{formatPct(sc.amount / c.amount)}</span>
+                            </div>
+                            <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                              <div
+                                className="h-full rounded-full"
+                                style={{ background: sc.color, opacity: 0.65, width: `${(sc.amount / c.amount) * 100}%` }}
+                              />
+                            </div>
+                            <p className="tabular text-[10px] text-muted mt-0.5">{formatEuro(sc.amount)}</p>
+                          </li>
+                        ))}
+                    </motion.ul>
+                  )}
+                </li>
+              );
+            })}
         </ul>
       </div>
 

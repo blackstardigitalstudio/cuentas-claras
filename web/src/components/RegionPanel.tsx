@@ -11,6 +11,7 @@ import { useMessages } from "@/i18n/LocaleProvider";
 export default function RegionPanel({ region }: { region: RegionData }) {
   const m = useMessages();
   const [openCat, setOpenCat] = useState<string | null>(null);
+  const [openSub, setOpenSub] = useState<string | null>(null);
   const balance = region.ingresos - region.gastos;
   const positivo = balance >= 0;
   const maxCat = Math.max(...region.gastosByCat.map((c) => c.amount));
@@ -132,21 +133,57 @@ export default function RegionPanel({ region }: { region: RegionData }) {
                     >
                       {[...c.children!]
                         .sort((a, b) => b.amount - a.amount)
-                        .map((sc) => (
-                          <li key={sc.key}>
-                            <div className="flex items-center justify-between text-xs mb-0.5">
-                              <span className="text-fg/80">{sc.label}</span>
-                              <span className="tabular text-muted">{formatPct(sc.amount / c.amount)}</span>
-                            </div>
-                            <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
-                              <div
-                                className="h-full rounded-full"
-                                style={{ background: sc.color, opacity: 0.65, width: `${(sc.amount / c.amount) * 100}%` }}
-                              />
-                            </div>
-                            <p className="tabular text-[10px] text-muted mt-0.5">{formatEuro(sc.amount)}</p>
-                          </li>
-                        ))}
+                        .map((sc) => {
+                          const subKids = !!sc.children && sc.children.length > 0;
+                          const subOpen = openSub === sc.key;
+                          return (
+                            <li key={sc.key}>
+                              <button
+                                type="button"
+                                onClick={() => subKids && setOpenSub(subOpen ? null : sc.key)}
+                                aria-expanded={subKids ? subOpen : undefined}
+                                className={`w-full text-left ${subKids ? "cursor-pointer" : "cursor-default"}`}
+                              >
+                                <div className="flex items-center justify-between text-xs mb-0.5">
+                                  <span className="text-fg/80 flex items-center gap-1.5">
+                                    {sc.label}
+                                    {subKids && (
+                                      <span className={`text-muted text-[10px] transition-transform ${subOpen ? "rotate-90" : ""}`}>›</span>
+                                    )}
+                                  </span>
+                                  <span className="tabular text-muted">{formatPct(sc.amount / c.amount)}</span>
+                                </div>
+                                <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                                  <div
+                                    className="h-full rounded-full"
+                                    style={{ background: sc.color, opacity: 0.65, width: `${(sc.amount / c.amount) * 100}%` }}
+                                  />
+                                </div>
+                                <p className="tabular text-[10px] text-muted mt-0.5">{formatEuro(sc.amount)}</p>
+                              </button>
+
+                              {subKids && subOpen && (
+                                <motion.ul
+                                  initial={{ opacity: 0, y: -3 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="mt-1.5 ml-3 pl-3 border-l border-[var(--panel-border)] space-y-1"
+                                >
+                                  {[...sc.children!]
+                                    .sort((a, b) => b.amount - a.amount)
+                                    .map((gc) => (
+                                      <li key={gc.key} className="flex items-center justify-between gap-2 text-[11px]">
+                                        <span className="text-fg/70 truncate">{gc.label}</span>
+                                        <span className="tabular text-muted shrink-0">
+                                          {formatEuro(gc.amount)} · {formatPct(gc.amount / sc.amount)}
+                                        </span>
+                                      </li>
+                                    ))}
+                                </motion.ul>
+                              )}
+                            </li>
+                          );
+                        })}
                     </motion.ul>
                   )}
                 </li>

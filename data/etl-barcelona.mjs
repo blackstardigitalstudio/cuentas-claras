@@ -94,6 +94,12 @@ const POLITICAS = {
   "94": "Transferencias a otras administraciones",
 };
 
+// "ADMINISTRACIO GENERAL" -> "Administració general" (capitaliza solo la inicial).
+const sentence = (s) => {
+  s = String(s || "").trim().toLowerCase();
+  return s ? s[0].toUpperCase() + s.slice(1) : s;
+};
+
 // Quita acentos y pasa a mayúsculas para que los nombres de área casen siempre.
 function norm(s) {
   return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase();
@@ -109,6 +115,7 @@ function aggregate(text, { amountFromEnd, capMap, withArea }) {
   const byCap = {};
   const byArea = {};
   const byAreaPol = {}; // { area: { politica: amount } } — nivel de detalle
+  const byAreaPolGrp = {}; // { area: { politica: { grupo: {amount,label} } } } — 3er nivel
   let total = 0;
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i];
@@ -126,13 +133,28 @@ function aggregate(text, { amountFromEnd, capMap, withArea }) {
       const area = m ? m[1] : "9";
       byArea[area] = (byArea[area] || 0) + amount;
       if (m) {
-        // La política son los 2 dígitos JUSTO tras el nombre de área (mismo match,
-        // así la política siempre pertenece a su área). Su 1er dígito = área.
+        // Tras el nombre de área viene: {política 2d},{texto},{grupo de programa 3d},{texto},…
+        // Capturamos política (nivel 2) y grupo de programa (nivel 3) en un solo match,
+        // anclado al nombre de área, así nunca se cruzan datos de áreas distintas.
         const after = nline.slice(m.index + m[0].length);
-        const pm = after.match(/^(\d{2}),/);
-        const pol = pm && pm[1][0] === area ? pm[1] : "00";
-        byAreaPol[area] = byAreaPol[area] || {};
-        byAreaPol[area][pol] = (byAreaPol[area][pol] || 0) + amount;
+        const gm = after.match(/^(\d{2}),[^,]*,(\d{3}),([^,]+),/);
+        if (gm && gm[1][0] === area) {
+          const pol = gm[1];
+          const grpCode = gm[2];
+          const grpLabel = sentence(gm[3]);
+          byAreaPol[area] = byAreaPol[area] || {};
+          byAreaPol[area][pol] = (byAreaPol[area][pol] || 0) + amount;
+          byAreaPolGrp[area] = byAreaPolGrp[area] || {};
+          byAreaPolGrp[area][pol] = byAreaPolGrp[area][pol] || {};
+          byAreaPolGrp[area][pol][grpCode] = byAreaPolGrp[area][pol][grpCode] || { amount: 0, label: grpLabel };
+          byAreaPolGrp[area][pol][grpCode].amount += amount;
+        } else {
+          // Fallback: al menos la política (2 dígitos) o "00" sin desglosar.
+          const pm = after.match(/^(\d{2}),/);
+          const pol = pm && pm[1][0] === area ? pm[1] : "00";
+          byAreaPol[area] = byAreaPol[area] || {};
+          byAreaPol[area][pol] = (byAreaPol[area][pol] || 0) + amount;
+        }
       }
     }
   }
@@ -142,12 +164,20 @@ function aggregate(text, { amountFromEnd, capMap, withArea }) {
   const areas = Object.entries(byArea)
     .map(([k, amount]) => {
       const children = Object.entries(byAreaPol[k] || {})
-        .map(([pol, amt]) => ({
-          key: "p" + pol,
-          label: POLITICAS[pol] || `Política ${pol}`,
-          color: AREAS[k][1],
-          amount: Math.round(amt),
-        }))
+        .map(([pol, amt]) => {
+          // 3er nivel: grupos de programa dentro de la política (p.ej. 92 → 920 Administración general).
+          const grandkids = Object.entries((byAreaPolGrp[k] && byAreaPolGrp[k][pol]) || {})
+            .map(([gc, o]) => ({ key: `g${k}-${pol}-${gc}`, label: o.label, color: AREAS[k][1], amount: Math.round(o.amount) }))
+            .filter((g) => g.amount > 0)
+            .sort((a, b) => b.amount - a.amount);
+          return {
+            key: "p" + pol,
+            label: POLITICAS[pol] || `Política ${pol}`,
+            color: AREAS[k][1],
+            amount: Math.round(amt),
+            ...(grandkids.length > 1 ? { children: grandkids } : {}),
+          };
+        })
         .sort((a, b) => b.amount - a.amount);
       return {
         key: "a" + k,

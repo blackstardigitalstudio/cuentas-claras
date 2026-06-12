@@ -73,25 +73,159 @@
           "key": "p15",
           "label": "Vivienda y urbanismo",
           "color": "#22d3ee",
-          "amount": 570806208
+          "amount": 570806208,
+          "children": [
+            {
+              "key": "g1-15-153",
+              "label": "Vies publiques",
+              "color": "#22d3ee",
+              "amount": 242790053
+            },
+            {
+              "key": "g1-15-151",
+              "label": "\"urbanisme:planejament",
+              "color": "#22d3ee",
+              "amount": 175986817
+            },
+            {
+              "key": "g1-15-152",
+              "label": "Habitatge",
+              "color": "#22d3ee",
+              "amount": 109937556
+            },
+            {
+              "key": "g1-15-150",
+              "label": "Administracio general d'habtatge i urbanisme",
+              "color": "#22d3ee",
+              "amount": 42039996
+            },
+            {
+              "key": "g1-15-155",
+              "label": "Vies publiques",
+              "color": "#22d3ee",
+              "amount": 51786
+            }
+          ]
         },
         {
           "key": "p16",
           "label": "Bienestar comunitario (limpieza, agua, alumbrado…)",
           "color": "#22d3ee",
-          "amount": 440374960
+          "amount": 440374960,
+          "children": [
+            {
+              "key": "g1-16-163",
+              "label": "Neteja viaria",
+              "color": "#22d3ee",
+              "amount": 226679388
+            },
+            {
+              "key": "g1-16-162",
+              "label": "\"recollida",
+              "color": "#22d3ee",
+              "amount": 126290940
+            },
+            {
+              "key": "g1-16-160",
+              "label": "Clavegueram",
+              "color": "#22d3ee",
+              "amount": 35785581
+            },
+            {
+              "key": "g1-16-165",
+              "label": "Enllumentat public",
+              "color": "#22d3ee",
+              "amount": 31428364
+            },
+            {
+              "key": "g1-16-161",
+              "label": "Abastament domiciliari d'aigua potable",
+              "color": "#22d3ee",
+              "amount": 10736757
+            },
+            {
+              "key": "g1-16-164",
+              "label": "Cementiris i serveis funeraris",
+              "color": "#22d3ee",
+              "amount": 5999136
+            },
+            {
+              "key": "g1-16-169",
+              "label": "Altres serveis de benestar comunitari",
+              "color": "#22d3ee",
+              "amount": 3454794
+            }
+          ]
         },
         {
           "key": "p13",
           "label": "Seguridad y movilidad ciudadana",
           "color": "#22d3ee",
-          "amount": 432797316
+          "amount": 432797316,
+          "children": [
+            {
+              "key": "g1-13-132",
+              "label": "Seguretat i ordre public",
+              "color": "#22d3ee",
+              "amount": 273847943
+            },
+            {
+              "key": "g1-13-136",
+              "label": "Servei de prevencio i extincio d'incendis",
+              "color": "#22d3ee",
+              "amount": 64972582
+            },
+            {
+              "key": "g1-13-133",
+              "label": "Ordenacio del trafic i de l'estacionament",
+              "color": "#22d3ee",
+              "amount": 56972065
+            },
+            {
+              "key": "g1-13-134",
+              "label": "Mobilitat urbana",
+              "color": "#22d3ee",
+              "amount": 19658292
+            },
+            {
+              "key": "g1-13-130",
+              "label": "Administracio general seguretat i proteccio civil",
+              "color": "#22d3ee",
+              "amount": 16173412
+            },
+            {
+              "key": "g1-13-135",
+              "label": "Proteccio civil",
+              "color": "#22d3ee",
+              "amount": 1173022
+            }
+          ]
         },
         {
           "key": "p17",
           "label": "Medio ambiente",
           "color": "#22d3ee",
-          "amount": 126830187
+          "amount": 126830187,
+          "children": [
+            {
+              "key": "g1-17-171",
+              "label": "Parcs i jardins",
+              "color": "#22d3ee",
+              "amount": 103555042
+            },
+            {
+              "key": "g1-17-172",
+              "label": "Proteccio i millora del medi ambient",
+              "color": "#22d3ee",
+              "amount": 18851244
+            },
+            {
+              "key": "g1-17-179",
+              "label": "Altres actuacions relacionades amb el medi ambient",
+              "color": "#22d3ee",
+              "amount": 4423901
+            }
+          ]
         }
       ]
     },
@@ -105,13 +239,83 @@
           "key": "p92",
           "label": "Servicios de carácter general",
           "color": "#818cf8",
-          "amount": 250366914
+          "amount": 250366914,
+          "children": [
+            {
+              "key": "g9-92-920",
+              "label": "Administracio general",
+              "color": "#818cf8",
+              "amount": 85834779
+            },
+            {
+              "key": "g9-92-926",
+              "label": "Comunicacions internes",
+              "color": "#818cf8",
+              "amount": 73082000
+            },
+            {
+              "key": "g9-92-925",
+              "label": "Atencio als ciutadans",
+              "color": "#818cf8",
+              "amount": 58541850
+            },
+            {
+              "key": "g9-92-924",
+              "label": "Participacio ciutadana",
+              "color": "#818cf8",
+              "amount": 18239136
+            },
+            {
+              "key": "g9-92-922",
+              "label": "Coordinacio-organitzacio institucional ent. locals",
+              "color": "#818cf8",
+              "amount": 11568485
+            },
+            {
+              "key": "g9-92-923",
+              "label": "Informacio basica i estadistica",
+              "color": "#818cf8",
+              "amount": 3093300
+            },
+            {
+              "key": "g9-92-929",
+              "label": "Imprevistos i funcions no classificades",
+              "color": "#818cf8",
+              "amount": 7364
+            }
+          ]
         },
         {
           "key": "p93",
           "label": "Administración financiera y tributaria",
           "color": "#818cf8",
-          "amount": 180384575
+          "amount": 180384575,
+          "children": [
+            {
+              "key": "g9-93-933",
+              "label": "Gestio del patrimoni",
+              "color": "#818cf8",
+              "amount": 129975862
+            },
+            {
+              "key": "g9-93-932",
+              "label": "Gestio del sistema tributari",
+              "color": "#818cf8",
+              "amount": 43105812
+            },
+            {
+              "key": "g9-93-931",
+              "label": "Politica economica i fiscal",
+              "color": "#818cf8",
+              "amount": 6272829
+            },
+            {
+              "key": "g9-93-934",
+              "label": "Gestio del deute i la tresoreria",
+              "color": "#818cf8",
+              "amount": 1030072
+            }
+          ]
         },
         {
           "key": "p94",
@@ -137,25 +341,147 @@
           "key": "p32",
           "label": "Educación",
           "color": "#a3e635",
-          "amount": 212271596
+          "amount": 212271596,
+          "children": [
+            {
+              "key": "g3-32-323",
+              "label": "Funcio.centres educacio infantil-primaria-especial",
+              "color": "#a3e635",
+              "amount": 70715499
+            },
+            {
+              "key": "g3-32-329",
+              "label": "Funcionament d'escoles bressol municipals",
+              "color": "#a3e635",
+              "amount": 51287006
+            },
+            {
+              "key": "g3-32-320",
+              "label": "Administracio general d'educacio",
+              "color": "#a3e635",
+              "amount": 48173705
+            },
+            {
+              "key": "g3-32-326",
+              "label": "Serveis complementaris d'educacio",
+              "color": "#a3e635",
+              "amount": 23598137
+            },
+            {
+              "key": "g3-32-328",
+              "label": "Altres ensenyaments",
+              "color": "#a3e635",
+              "amount": 9950021
+            },
+            {
+              "key": "g3-32-324",
+              "label": "Funcionament centres docents ensenyament secundari",
+              "color": "#a3e635",
+              "amount": 8547228
+            }
+          ]
         },
         {
           "key": "p33",
           "label": "Cultura",
           "color": "#a3e635",
-          "amount": 179662496
+          "amount": 179662496,
+          "children": [
+            {
+              "key": "g3-33-333",
+              "label": "Equipaments culturals i museus",
+              "color": "#a3e635",
+              "amount": 79740410
+            },
+            {
+              "key": "g3-33-334",
+              "label": "Promocio cultural",
+              "color": "#a3e635",
+              "amount": 26349268
+            },
+            {
+              "key": "g3-33-330",
+              "label": "Administracio general de cultura",
+              "color": "#a3e635",
+              "amount": 21520171
+            },
+            {
+              "key": "g3-33-337",
+              "label": "Instal·lacions d'ocupacio del temps lliure",
+              "color": "#a3e635",
+              "amount": 21283719
+            },
+            {
+              "key": "g3-33-332",
+              "label": "Biblioteques i arxius",
+              "color": "#a3e635",
+              "amount": 19974084
+            },
+            {
+              "key": "g3-33-338",
+              "label": "Festes populars i festejos",
+              "color": "#a3e635",
+              "amount": 10583358
+            },
+            {
+              "key": "g3-33-336",
+              "label": "Proteccio i gestio del patrimoni historic-artistic",
+              "color": "#a3e635",
+              "amount": 211487
+            }
+          ]
         },
         {
           "key": "p34",
           "label": "Deporte",
           "color": "#a3e635",
-          "amount": 48458943
+          "amount": 48458943,
+          "children": [
+            {
+              "key": "g3-34-340",
+              "label": "Administracio general d'esports",
+              "color": "#a3e635",
+              "amount": 29619662
+            },
+            {
+              "key": "g3-34-342",
+              "label": "Instal·lacions esportives",
+              "color": "#a3e635",
+              "amount": 15423817
+            },
+            {
+              "key": "g3-34-341",
+              "label": "Promocio i foment de l'esport",
+              "color": "#a3e635",
+              "amount": 3415464
+            }
+          ]
         },
         {
           "key": "p31",
           "label": "Sanidad",
           "color": "#a3e635",
-          "amount": 36303860
+          "amount": 36303860,
+          "children": [
+            {
+              "key": "g3-31-311",
+              "label": "Proteccio de la salubritat publica",
+              "color": "#a3e635",
+              "amount": 27284056
+            },
+            {
+              "key": "g3-31-312",
+              "label": "\"hospitals",
+              "color": "#a3e635",
+              "amount": 7951877
+            },
+            {
+              "key": "g3-31-313",
+              "label": "Accions publiques relatives a la salut",
+              "color": "#a3e635",
+              "amount": 1067927
+            }
+          ]
         }
       ]
     },
@@ -169,7 +495,33 @@
           "key": "p23",
           "label": "Servicios sociales y promoción social",
           "color": "#f472b6",
-          "amount": 462532293
+          "amount": 462532293,
+          "children": [
+            {
+              "key": "g2-23-231",
+              "label": "Asistencia social primaria",
+              "color": "#f472b6",
+              "amount": 364376836
+            },
+            {
+              "key": "g2-23-232",
+              "label": "Promocio social",
+              "color": "#f472b6",
+              "amount": 52354472
+            },
+            {
+              "key": "g2-23-230",
+              "label": "Administracio general de serveis socials",
+              "color": "#f472b6",
+              "amount": 30463444
+            },
+            {
+              "key": "g2-23-234",
+              "label": "Atencio a persones discapacitades",
+              "color": "#f472b6",
+              "amount": 15337541
+            }
+          ]
         },
         {
           "key": "p21",
@@ -201,7 +553,21 @@
           "key": "p49",
           "label": "Otras actuaciones económicas",
           "color": "#fbbf24",
-          "amount": 30243101
+          "amount": 30243101,
+          "children": [
+            {
+              "key": "g4-49-491",
+              "label": "Societat de la informacio",
+              "color": "#fbbf24",
+              "amount": 28572830
+            },
+            {
+              "key": "g4-49-493",
+              "label": "Proteccio de consumidors i usuaris",
+              "color": "#fbbf24",
+              "amount": 1670271
+            }
+          ]
         },
         {
           "key": "p46",

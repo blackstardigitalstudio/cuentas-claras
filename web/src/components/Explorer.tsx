@@ -63,9 +63,14 @@ export default function Explorer() {
 
         {/* Ciudades con datos reales */}
         <div className="mt-4">
-          <p className="text-xs uppercase tracking-widest text-green mb-2">● {m.explorer.withReal}</p>
+          <p className="text-xs uppercase tracking-widest text-green mb-2">
+            ● {m.explorer.withReal} <span className="text-muted">({C.realNames.length})</span>
+          </p>
           <div className="flex flex-wrap gap-2">
-            {C.realNames.map((name) => (
+            {[...C.realNames]
+              .sort((a, b) => C.regions[b].gastos - C.regions[a].gastos)
+              .slice(0, 10)
+              .map((name) => (
               <button
                 key={name}
                 onClick={() => setSelected(name)}

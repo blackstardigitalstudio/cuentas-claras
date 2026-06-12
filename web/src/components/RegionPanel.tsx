@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import type { RegionData } from "@/lib/data";
 import { formatCompact, formatEuro, formatPct } from "@/lib/format";
 import { CountUp } from "./Motion";
-import FlowBars from "./FlowBars";
+import Donuts from "./Donuts";
 import { useMessages } from "@/i18n/LocaleProvider";
 
 export default function RegionPanel({ region }: { region: RegionData }) {
@@ -76,7 +76,7 @@ export default function RegionPanel({ region }: { region: RegionData }) {
       {/* Entradas y salidas: composición clara en dos barras */}
       <div className="mt-6">
         <h3 className="text-sm font-medium text-muted mb-3">{m.panel.sankeyTitle}</h3>
-        <FlowBars region={region} />
+        <Donuts region={region} />
       </div>
 
       {/* Desglose del gasto */}

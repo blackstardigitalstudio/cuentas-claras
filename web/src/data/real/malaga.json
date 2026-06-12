@@ -1,0 +1,128 @@
+{
+  "id": "malaga",
+  "name": "Málaga",
+  "provincia": "Málaga",
+  "country": "es",
+  "slug": "malaga",
+  "year": 2024,
+  "isSample": false,
+  "basis": "Presupuesto consolidado 2024 (clasificación económica, del PDF oficial)",
+  "source": {
+    "name": "Ayuntamiento de Málaga · Presupuestos",
+    "url": "https://www.malaga.eu/el-ayuntamiento/economia-y-presupuestos/presupuestos/presupuestos-2024/"
+  },
+  "ingresos": 1070381823,
+  "gastos": 1068249279,
+  "ingresosByCat": [
+    {
+      "key": "c4",
+      "label": "Transferencias corrientes (Estado/CCAA)",
+      "color": "#a78bfa",
+      "amount": 420946853
+    },
+    {
+      "key": "c1",
+      "label": "Impuestos directos (IBI, plusvalía…)",
+      "color": "#34d399",
+      "amount": 243767057
+    },
+    {
+      "key": "c3",
+      "label": "Tasas y precios públicos",
+      "color": "#38bdf8",
+      "amount": 230196285
+    },
+    {
+      "key": "c9",
+      "label": "Pasivos financieros (deuda)",
+      "color": "#f87171",
+      "amount": 46679549
+    },
+    {
+      "key": "c7",
+      "label": "Transferencias de capital",
+      "color": "#c084fc",
+      "amount": 33545412
+    },
+    {
+      "key": "c6",
+      "label": "Venta de inversiones",
+      "color": "#f59e0b",
+      "amount": 32842647
+    },
+    {
+      "key": "c2",
+      "label": "Impuestos indirectos (ICIO…)",
+      "color": "#2dd4bf",
+      "amount": 29339433
+    },
+    {
+      "key": "c5",
+      "label": "Ingresos patrimoniales",
+      "color": "#fb923c",
+      "amount": 22967087
+    },
+    {
+      "key": "c8",
+      "label": "Activos financieros",
+      "color": "#94a3b8",
+      "amount": 10097500
+    }
+  ],
+  "gastosByCat": [
+    {
+      "key": "c1",
+      "label": "Personal",
+      "color": "#f472b6",
+      "amount": 477390305
+    },
+    {
+      "key": "c2",
+      "label": "Bienes corrientes y servicios",
+      "color": "#22d3ee",
+      "amount": 335739339
+    },
+    {
+      "key": "c6",
+      "label": "Inversiones reales",
+      "color": "#a3e635",
+      "amount": 158155346
+    },
+    {
+      "key": "c9",
+      "label": "Pasivos financieros (amortización deuda)",
+      "color": "#fb7185",
+      "amount": 37366171
+    },
+    {
+      "key": "c4",
+      "label": "Transferencias corrientes",
+      "color": "#a78bfa",
+      "amount": 27220349
+    },
+    {
+      "key": "c3",
+      "label": "Gastos financieros (intereses)",
+      "color": "#f87171",
+      "amount": 15835551
+    },
+    {
+      "key": "c8",
+      "label": "Activos financieros",
+      "color": "#64748b",
+      "amount": 7749002
+    },
+    {
+      "key": "c7",
+      "label": "Transferencias de capital",
+      "color": "#c084fc",
+      "amount": 5243216
+    },
+    {
+      "key": "c5",
+      "label": "Fondo de contingencia",
+      "color": "#94a3b8",
+      "amount": 3550000
+    }
+  ]
+}

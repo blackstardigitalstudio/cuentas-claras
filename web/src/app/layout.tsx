@@ -12,8 +12,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://cuentas-claras-3cg.pages.dev";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://cuentas-claras-3cg.pages.dev"),
+  metadataBase: new URL(SITE),
   title: {
     default: "Cuentas Claras — ¿A dónde va el dinero público en España?",
     template: "%s · Cuentas Claras",
@@ -48,6 +50,25 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  name: "Cuentas Claras",
+                  url: SITE,
+                  inLanguage: ["es", "it"],
+                  description:
+                    "Visualización clara de los presupuestos públicos de los ayuntamientos de España e Italia: ingresos y gastos con datos oficiales.",
+                },
+                { "@type": "Organization", name: "Cuentas Claras", url: SITE },
+              ],
+            }),
+          }}
+        />
         <div className="aurora" aria-hidden />
         <div className="grid-overlay" aria-hidden />
         {children}

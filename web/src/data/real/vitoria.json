@@ -1,0 +1,266 @@
+{
+  "id": "vitoria",
+  "name": "Vitoria-Gasteiz",
+  "provincia": "Araba/Álava",
+  "country": "es",
+  "slug": "vitoria-gasteiz",
+  "year": 2024,
+  "isSample": false,
+  "basis": "Ejecución 2024 (obligaciones reconocidas / derechos liquidados)",
+  "source": {
+    "name": "Ayuntamiento de Vitoria-Gasteiz · Open Data",
+    "url": "https://www.vitoria-gasteiz.org/j34-01w/catalogo/portada"
+  },
+  "ingresos": 457943836,
+  "gastos": 464092104,
+  "ingresosByCat": [
+    {
+      "key": "i4",
+      "label": "Transferencias corrientes (Estado/CCAA)",
+      "color": "#a78bfa",
+      "amount": 250862567
+    },
+    {
+      "key": "i1",
+      "label": "Impuestos directos (IBI, plusvalía…)",
+      "color": "#34d399",
+      "amount": 90989653
+    },
+    {
+      "key": "i3",
+      "label": "Tasas y precios públicos",
+      "color": "#38bdf8",
+      "amount": 63190627
+    },
+    {
+      "key": "i2",
+      "label": "Impuestos indirectos (ICIO…)",
+      "color": "#2dd4bf",
+      "amount": 19647118
+    },
+    {
+      "key": "i9",
+      "label": "Pasivos financieros (deuda)",
+      "color": "#f87171",
+      "amount": 15289806
+    },
+    {
+      "key": "i7",
+      "label": "Transferencias de capital",
+      "color": "#c084fc",
+      "amount": 11505697
+    },
+    {
+      "key": "i5",
+      "label": "Ingresos patrimoniales",
+      "color": "#fb923c",
+      "amount": 4153101
+    },
+    {
+      "key": "i6",
+      "label": "Venta de inversiones",
+      "color": "#f59e0b",
+      "amount": 2305267
+    }
+  ],
+  "gastosByCat": [
+    {
+      "key": "a1",
+      "label": "Servicios públicos básicos",
+      "color": "#22d3ee",
+      "amount": 150175914,
+      "children": [
+        {
+          "key": "p16",
+          "label": "Bienestar comunitario (limpieza, agua, alumbrado…)",
+          "color": "#22d3ee",
+          "amount": 51867891
+        },
+        {
+          "key": "p13",
+          "label": "Seguridad y movilidad ciudadana",
+          "color": "#22d3ee",
+          "amount": 44767269
+        },
+        {
+          "key": "p15",
+          "label": "Vivienda y urbanismo",
+          "color": "#22d3ee",
+          "amount": 32116250
+        },
+        {
+          "key": "p17",
+          "label": "Medio ambiente",
+          "color": "#22d3ee",
+          "amount": 21424504
+        }
+      ]
+    },
+    {
+      "key": "a2",
+      "label": "Protección y promoción social",
+      "color": "#f472b6",
+      "amount": 103559154,
+      "children": [
+        {
+          "key": "p23",
+          "label": "Servicios sociales y promoción social",
+          "color": "#f472b6",
+          "amount": 93455860
+        },
+        {
+          "key": "p24",
+          "label": "Fomento del empleo",
+          "color": "#f472b6",
+          "amount": 10051973
+        },
+        {
+          "key": "p21",
+          "label": "Pensiones",
+          "color": "#f472b6",
+          "amount": 51321
+        }
+      ]
+    },
+    {
+      "key": "a9",
+      "label": "Administración general",
+      "color": "#818cf8",
+      "amount": 91864787,
+      "children": [
+        {
+          "key": "p92",
+          "label": "Servicios de carácter general",
+          "color": "#818cf8",
+          "amount": 77631613
+        },
+        {
+          "key": "p93",
+          "label": "Administración financiera y tributaria",
+          "color": "#818cf8",
+          "amount": 8102800
+        },
+        {
+          "key": "p91",
+          "label": "Órganos de gobierno",
+          "color": "#818cf8",
+          "amount": 6130374
+        }
+      ]
+    },
+    {
+      "key": "a3",
+      "label": "Sanidad, educación y cultura",
+      "color": "#a3e635",
+      "amount": 66440215,
+      "children": [
+        {
+          "key": "p33",
+          "label": "Cultura",
+          "color": "#a3e635",
+          "amount": 34994709
+        },
+        {
+          "key": "p34",
+          "label": "Deporte",
+          "color": "#a3e635",
+          "amount": 17223369
+        },
+        {
+          "key": "p32",
+          "label": "Educación",
+          "color": "#a3e635",
+          "amount": 10206036
+        },
+        {
+          "key": "p31",
+          "label": "Sanidad",
+          "color": "#a3e635",
+          "amount": 4016101
+        }
+      ]
+    },
+    {
+      "key": "a4",
+      "label": "Actuaciones económicas",
+      "color": "#fbbf24",
+      "amount": 36321231,
+      "children": [
+        {
+          "key": "p44",
+          "label": "Transporte público",
+          "color": "#fbbf24",
+          "amount": 26026867
+        },
+        {
+          "key": "p43",
+          "label": "Comercio y turismo",
+          "color": "#fbbf24",
+          "amount": 9790195
+        },
+        {
+          "key": "p42",
+          "label": "Industria y energía",
+          "color": "#fbbf24",
+          "amount": 504169
+        }
+      ]
+    },
+    {
+      "key": "a0",
+      "label": "Deuda pública",
+      "color": "#f87171",
+      "amount": 15730803
+    }
+  ],
+  "gastosByEconomic": [
+    {
+      "key": "c1",
+      "label": "Personal",
+      "color": "#f472b6",
+      "amount": 182769240
+    },
+    {
+      "key": "c2",
+      "label": "Bienes corrientes y servicios",
+      "color": "#22d3ee",
+      "amount": 172284647
+    },
+    {
+      "key": "c4",
+      "label": "Transferencias corrientes",
+      "color": "#a78bfa",
+      "amount": 49847199
+    },
+    {
+      "key": "c6",
+      "label": "Inversiones reales",
+      "color": "#a3e635",
+      "amount": 28470680
+    },
+    {
+      "key": "c7",
+      "label": "Transferencias de capital",
+      "color": "#c084fc",
+      "amount": 14509167
+    },
+    {
+      "key": "c9",
+      "label": "Pasivos financieros (amortización deuda)",
+      "color": "#fb7185",
+      "amount": 12930473
+    },
+    {
+      "key": "c3",
+      "label": "Gastos financieros (intereses)",
+      "color": "#f87171",
+      "amount": 3246233
+    },
+    {
+      "key": "c8",
+      "label": "Activos financieros",
+      "color": "#64748b",
+      "amount": 34465
+    }
+  ]
+}

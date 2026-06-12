@@ -12,6 +12,7 @@ import provincesGeo from "@/data/spain-provinces.json";
 import italyGeo from "@/data/italy-provinces.json";
 import barcelonaReal from "@/data/real/barcelona.json";
 import valenciaReal from "@/data/real/valencia.json";
+import vitoriaReal from "@/data/real/vitoria.json";
 import milanoReal from "@/data/real/milano.json";
 
 export const DATA_YEAR = 2024;
@@ -227,7 +228,11 @@ export type Country = {
   realNames: string[];
 };
 
-const ES = buildCountry(provincesGeo as GeoFC, CATS_ES, [barcelonaReal as RealCity, valenciaReal as RealCity]);
+const ES = buildCountry(provincesGeo as GeoFC, CATS_ES, [
+  barcelonaReal as RealCity,
+  valenciaReal as RealCity,
+  vitoriaReal as RealCity,
+]);
 const IT = buildCountry(italyGeo as GeoFC, CATS_IT, [milanoReal as RealCity]);
 
 export const COUNTRIES: Record<CountryCode, Country> = {

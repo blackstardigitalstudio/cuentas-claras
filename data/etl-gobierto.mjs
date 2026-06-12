@@ -13,7 +13,8 @@ import { dirname, join } from "path";
 import { writeFileSync, mkdirSync } from "fs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const S3 = (ine) => `https://gobierto-populate-production.s3.eu-west-1.amazonaws.com/gobierto_budgets/${ine}/data/bubbles.json`;
+// Gobierto guarda el código INE SIN ceros a la izquierda (p.ej. 07040 → 7040).
+const S3 = (ine) => `https://gobierto-populate-production.s3.eu-west-1.amazonaws.com/gobierto_budgets/${parseInt(ine, 10)}/data/bubbles.json`;
 
 // Ciudades en provincias distintas (las ya añadidas a mano se excluyen).
 const CITIES = [
@@ -59,6 +60,10 @@ const CITIES = [
   { name: "Soria", ine: "42173", provincia: "Soria" },
   { name: "Palencia", ine: "34120", provincia: "Palencia" },
   { name: "Zamora", ine: "49275", provincia: "Zamora" },
+  { name: "Las Palmas de Gran Canaria", ine: "35016", provincia: "Las Palmas" },
+  { name: "Santa Cruz de Tenerife", ine: "38038", provincia: "Santa Cruz De Tenerife" },
+  { name: "Ceuta", ine: "51001", provincia: "Ceuta" },
+  { name: "Melilla", ine: "52001", provincia: "Melilla" },
 ];
 
 const ING_CAP = {

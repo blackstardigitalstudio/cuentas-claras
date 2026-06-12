@@ -1,8 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import RegionMap from "./RegionMap";
+import dynamic from "next/dynamic";
 import RegionPanel from "./RegionPanel";
+
+// MapLibre usa WebGL → solo cliente (sin SSR).
+const RegionMapGL = dynamic(() => import("./RegionMapGL"), {
+  ssr: false,
+  loading: () => <div className="w-full h-[420px] md:h-[480px] rounded-xl bg-[var(--bg-2)] animate-pulse" />,
+});
 import { COUNTRIES, type CountryCode } from "@/lib/data";
 import { formatCompact } from "@/lib/format";
 import { useMessages } from "@/i18n/LocaleProvider";
@@ -59,7 +65,7 @@ export default function Explorer() {
           </label>
         </div>
 
-        <RegionMap country={C} selected={selected} onSelect={setSelected} />
+        <RegionMapGL country={C} selected={selected} onSelect={setSelected} />
 
         {/* Ciudades con datos reales */}
         <div className="mt-4">

@@ -45,8 +45,8 @@ export type Messages = {
 const es: Messages = {
   langName: "Español",
   banner: {
-    real: "Barcelona: datos reales 2024",
-    sample: "resto de provincias: cifras de ejemplo (carga en curso)",
+    real: "Datos reales en 50 ciudades de España + Italia",
+    sample: "otras provincias: cifras de ejemplo",
   },
   hero: {
     eyebrow: "Transparencia · Datos públicos · España",
@@ -110,8 +110,8 @@ const es: Messages = {
 const it: Messages = {
   langName: "Italiano",
   banner: {
-    real: "Barcellona: dati reali 2024",
-    sample: "resto delle province: dati di esempio (caricamento in corso)",
+    real: "Dati reali in 50 città di Spagna + Italia",
+    sample: "altre province: dati di esempio",
   },
   hero: {
     eyebrow: "Trasparenza · Dati pubblici · Spagna",

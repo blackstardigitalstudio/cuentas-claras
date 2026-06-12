@@ -1,5 +1,233 @@
 [
  {
+  "id": "28079",
+  "name": "Madrid",
+  "provincia": "Madrid",
+  "country": "es",
+  "slug": "madrid",
+  "year": 2025,
+  "isSample": false,
+  "basis": "Presupuesto 2025 (datos Min. de Hacienda vía Gobierto)",
+  "source": {
+   "name": "Gobierto Presupuestos Municipales",
+   "url": "https://presupuestos.gobierto.es/municipios/28079/2025"
+  },
+  "ingresos": 6551092864,
+  "gastos": 6551092864,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Impuestos directos (IBI, plusvalía…)",
+    "color": "#34d399",
+    "amount": 2513704879
+   },
+   {
+    "key": "i4",
+    "label": "Transferencias corrientes (Estado/CCAA)",
+    "color": "#a78bfa",
+    "amount": 2365451120
+   },
+   {
+    "key": "i3",
+    "label": "Tasas y precios públicos",
+    "color": "#38bdf8",
+    "amount": 1008203494
+   },
+   {
+    "key": "i2",
+    "label": "Impuestos indirectos (ICIO…)",
+    "color": "#2dd4bf",
+    "amount": 246361728
+   },
+   {
+    "key": "i9",
+    "label": "Pasivos financieros (deuda)",
+    "color": "#f87171",
+    "amount": 220000000
+   },
+   {
+    "key": "i6",
+    "label": "Venta de inversiones",
+    "color": "#f59e0b",
+    "amount": 116599361
+   },
+   {
+    "key": "i5",
+    "label": "Ingresos patrimoniales",
+    "color": "#fb923c",
+    "amount": 80068994
+   },
+   {
+    "key": "i8",
+    "label": "Activos financieros",
+    "color": "#94a3b8",
+    "amount": 471347
+   },
+   {
+    "key": "i7",
+    "label": "Transferencias de capital",
+    "color": "#c084fc",
+    "amount": 231941
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "a1",
+    "label": "Servicios públicos básicos",
+    "color": "#22d3ee",
+    "amount": 3301561426,
+    "children": [
+     {
+      "key": "a1-0",
+      "label": "Seguridad y movilidad ciudadana",
+      "color": "#22d3ee",
+      "amount": 1066812263
+     },
+     {
+      "key": "a1-2",
+      "label": "Bienestar comunitario",
+      "color": "#22d3ee",
+      "amount": 954949473
+     },
+     {
+      "key": "a1-1",
+      "label": "Vivienda y urbanismo",
+      "color": "#22d3ee",
+      "amount": 944481613
+     },
+     {
+      "key": "a1-3",
+      "label": "Medio ambiente",
+      "color": "#22d3ee",
+      "amount": 335318077
+     }
+    ]
+   },
+   {
+    "key": "a9",
+    "label": "Administración general",
+    "color": "#818cf8",
+    "amount": 916527194,
+    "children": [
+     {
+      "key": "a9-1",
+      "label": "Servicios de carácter general",
+      "color": "#818cf8",
+      "amount": 488477420
+     },
+     {
+      "key": "a9-2",
+      "label": "Administración financiera y tributaria",
+      "color": "#818cf8",
+      "amount": 384402281
+     },
+     {
+      "key": "a9-0",
+      "label": "Órganos de gobierno",
+      "color": "#818cf8",
+      "amount": 43647493
+     }
+    ]
+   },
+   {
+    "key": "a3",
+    "label": "Sanidad, educación y cultura",
+    "color": "#a3e635",
+    "amount": 779593401,
+    "children": [
+     {
+      "key": "a3-2",
+      "label": "Cultura",
+      "color": "#a3e635",
+      "amount": 246877577
+     },
+     {
+      "key": "a3-3",
+      "label": "Deporte",
+      "color": "#a3e635",
+      "amount": 220341260
+     },
+     {
+      "key": "a3-1",
+      "label": "Educación",
+      "color": "#a3e635",
+      "amount": 182993603
+     },
+     {
+      "key": "a3-0",
+      "label": "Sanidad",
+      "color": "#a3e635",
+      "amount": 129380961
+     }
+    ]
+   },
+   {
+    "key": "a2",
+    "label": "Protección y promoción social",
+    "color": "#f472b6",
+    "amount": 757812706,
+    "children": [
+     {
+      "key": "a2-1",
+      "label": "Servicios Sociales y promoción social",
+      "color": "#f472b6",
+      "amount": 660837363
+     },
+     {
+      "key": "a2-0",
+      "label": "Otras prestaciones económicas a favor de empleados",
+      "color": "#f472b6",
+      "amount": 49612140
+     },
+     {
+      "key": "a2-2",
+      "label": "Fomento del Empleo",
+      "color": "#f472b6",
+      "amount": 47363203
+     }
+    ]
+   },
+   {
+    "key": "a4",
+    "label": "Actuaciones económicas",
+    "color": "#fbbf24",
+    "amount": 544334015,
+    "children": [
+     {
+      "key": "a4-1",
+      "label": "Transporte público",
+      "color": "#fbbf24",
+      "amount": 280514381
+     },
+     {
+      "key": "a4-2",
+      "label": "Otras actuaciones de carácter económico",
+      "color": "#fbbf24",
+      "amount": 186725086
+     },
+     {
+      "key": "a4-0",
+      "label": "Comercio, turismo y pequeñas y medianas empresas",
+      "color": "#fbbf24",
+      "amount": 57087973
+     },
+     {
+      "key": "a4-3",
+      "label": "Investigación, desarrollo e innovación",
+      "color": "#fbbf24",
+      "amount": 20006575
+     }
+    ]
+   },
+   {
+    "key": "a0",
+    "label": "Deuda pública",
+    "color": "#f87171",
+    "amount": 251264122
+   }
+  ]
+ },
+ {
   "id": "50297",
   "name": "Zaragoza",
   "provincia": "Zaragoza",

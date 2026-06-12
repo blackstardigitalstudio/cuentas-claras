@@ -18,6 +18,7 @@ const S3 = (ine) => `https://gobierto-populate-production.s3.eu-west-1.amazonaws
 
 // Ciudades en provincias distintas (las ya añadidas a mano se excluyen).
 const CITIES = [
+  { name: "Madrid", ine: "28079", provincia: "Madrid" },
   { name: "Zaragoza", ine: "50297", provincia: "Zaragoza" },
   { name: "Murcia", ine: "30030", provincia: "Murcia" },
   { name: "Palma", ine: "07040", provincia: "Illes Balears" },

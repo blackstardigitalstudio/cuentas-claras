@@ -1,0 +1,512 @@
+{
+  "id": "bologna",
+  "name": "Bologna",
+  "provincia": "Bologna",
+  "country": "it",
+  "slug": "bologna",
+  "year": 2026,
+  "isSample": false,
+  "basis": "Bilancio di previsione 2026",
+  "source": {
+    "name": "Comune di Bologna · Open Data",
+    "url": "https://opendata.comune.bologna.it/explore/dataset/bilancio-di-previsione-previsione-uscite/"
+  },
+  "ingresos": 1466317409,
+  "gastos": 1487999998,
+  "ingresosByCat": [
+    {
+      "key": "k0",
+      "label": "Entrate correnti di natura tributaria contributiva e perequativa",
+      "color": "#22d3ee",
+      "amount": 390887535
+    },
+    {
+      "key": "k5",
+      "label": "Entrate in conto capitale",
+      "color": "#34d399",
+      "amount": 364871139
+    },
+    {
+      "key": "k4",
+      "label": "Entrate per conto terzi e partite di giro",
+      "color": "#fbbf24",
+      "amount": 267088615
+    },
+    {
+      "key": "k2",
+      "label": "Entrate extratributarie",
+      "color": "#a3e635",
+      "amount": 201613158
+    },
+    {
+      "key": "k1",
+      "label": "Trasferimenti correnti",
+      "color": "#f472b6",
+      "amount": 135256962
+    },
+    {
+      "key": "k3",
+      "label": "Anticipazioni da istituto tesoriere/cassiere",
+      "color": "#818cf8",
+      "amount": 50000000
+    },
+    {
+      "key": "k6",
+      "label": "Entrate da riduzione di attività finanziarie",
+      "color": "#fb7185",
+      "amount": 30000000
+    },
+    {
+      "key": "k7",
+      "label": "Accensione prestiti",
+      "color": "#38bdf8",
+      "amount": 26600000
+    }
+  ],
+  "gastosByCat": [
+    {
+      "key": "k0",
+      "label": "Servizi istituzionali generali e di gestione",
+      "color": "#22d3ee",
+      "amount": 293400482,
+      "children": [
+        {
+          "key": "0-3",
+          "label": "Ufficio tecnico",
+          "color": "#22d3ee",
+          "amount": 105866916
+        },
+        {
+          "key": "0-0",
+          "label": "Gestione economica finanziariaprogrammazione e provveditorato",
+          "color": "#22d3ee",
+          "amount": 63985023
+        },
+        {
+          "key": "0-6",
+          "label": "Altri servizi generali",
+          "color": "#22d3ee",
+          "amount": 45201489
+        },
+        {
+          "key": "0-2",
+          "label": "Gestione dei beni demaniali e patrimoniali",
+          "color": "#22d3ee",
+          "amount": 24460482
+        },
+        {
+          "key": "0-5",
+          "label": "Statistica e sistemi informativi",
+          "color": "#22d3ee",
+          "amount": 14108981
+        },
+        {
+          "key": "0-1",
+          "label": "Gestione delle entrate tributarie e servizi fiscali",
+          "color": "#22d3ee",
+          "amount": 12747455
+        },
+        {
+          "key": "0-7",
+          "label": "Organi istituzionali",
+          "color": "#22d3ee",
+          "amount": 11791475
+        },
+        {
+          "key": "0-4",
+          "label": "Elezioni e consultazioni popolari 0 anagrafe e stato civile",
+          "color": "#22d3ee",
+          "amount": 6225227
+        },
+        {
+          "key": "0-10",
+          "label": "Risorse umane",
+          "color": "#22d3ee",
+          "amount": 4316033
+        },
+        {
+          "key": "0-8",
+          "label": "Segreteria generale",
+          "color": "#22d3ee",
+          "amount": 3873796
+        },
+        {
+          "key": "0-9",
+          "label": "Assistenza tecnico0amministrativa agli enti locali",
+          "color": "#22d3ee",
+          "amount": 823606
+        }
+      ]
+    },
+    {
+      "key": "k18",
+      "label": "Servizi per conto terzi",
+      "color": "#a3e635",
+      "amount": 267088615
+    },
+    {
+      "key": "k9",
+      "label": "Trasporti e diritto alla mobilità",
+      "color": "#2dd4bf",
+      "amount": 251825619,
+      "children": [
+        {
+          "key": "9-2",
+          "label": "Trasporto pubblico locale",
+          "color": "#2dd4bf",
+          "amount": 215590331
+        },
+        {
+          "key": "9-1",
+          "label": "Viabilità e infrastrutture stradali",
+          "color": "#2dd4bf",
+          "amount": 35832688
+        },
+        {
+          "key": "9-0",
+          "label": "Altre modalità di trasporto",
+          "color": "#2dd4bf",
+          "amount": 402600
+        }
+      ]
+    },
+    {
+      "key": "k11",
+      "label": "Diritti sociali politiche sociali e famiglia",
+      "color": "#a78bfa",
+      "amount": 172728941,
+      "children": [
+        {
+          "key": "11-0",
+          "label": "Interventi per l''infanzia e i minori",
+          "color": "#a78bfa",
+          "amount": 68211358
+        },
+        {
+          "key": "11-3",
+          "label": "Interventi per soggetti a rischio di esclusione sociale",
+          "color": "#a78bfa",
+          "amount": 59373858
+        },
+        {
+          "key": "11-6",
+          "label": "Programmazione e governo della rete dei servizi sociosanitari e sociali",
+          "color": "#a78bfa",
+          "amount": 15047222
+        },
+        {
+          "key": "11-2",
+          "label": "Interventi per gli anziani",
+          "color": "#a78bfa",
+          "amount": 12380562
+        },
+        {
+          "key": "11-1",
+          "label": "Interventi per la disabilità",
+          "color": "#a78bfa",
+          "amount": 10247283
+        },
+        {
+          "key": "11-7",
+          "label": "Interventi per asili nido",
+          "color": "#a78bfa",
+          "amount": 4696911
+        },
+        {
+          "key": "11-4",
+          "label": "Interventi per le famiglie",
+          "color": "#a78bfa",
+          "amount": 1825231
+        },
+        {
+          "key": "11-5",
+          "label": "Interventi per il diritto alla casa",
+          "color": "#a78bfa",
+          "amount": 470000
+        },
+        {
+          "key": "11-8",
+          "label": "Cooperazione e associazionismo",
+          "color": "#a78bfa",
+          "amount": 275508
+        },
+        {
+          "key": "11-9",
+          "label": "Servizio necroscopico e cimiteriale",
+          "color": "#a78bfa",
+          "amount": 201008
+        }
+      ]
+    },
+    {
+      "key": "k8",
+      "label": "Sviluppo sostenibile e tutela del territorio e dell''ambiente",
+      "color": "#c084fc",
+      "amount": 103306358,
+      "children": [
+        {
+          "key": "8-1",
+          "label": "Rifiuti",
+          "color": "#c084fc",
+          "amount": 85327545
+        },
+        {
+          "key": "8-0",
+          "label": "Tutela valorizzazione e recupero ambientale",
+          "color": "#c084fc",
+          "amount": 15735898
+        },
+        {
+          "key": "8-4",
+          "label": "Qualità dell''aria e riduzione dell''inquinamento",
+          "color": "#c084fc",
+          "amount": 1729915
+        },
+        {
+          "key": "8-2",
+          "label": "Servizio idrico integrato",
+          "color": "#c084fc",
+          "amount": 403000
+        },
+        {
+          "key": "8-3",
+          "label": "Aree protette parchi naturali protezione naturalistica e forestazione",
+          "color": "#c084fc",
+          "amount": 100000
+        },
+        {
+          "key": "8-5",
+          "label": "Tutela e valorizzazione delle risorse idriche",
+          "color": "#c084fc",
+          "amount": 10000
+        }
+      ]
+    },
+    {
+      "key": "k3",
+      "label": "Istruzione e diritto allo studio",
+      "color": "#818cf8",
+      "amount": 102784831,
+      "children": [
+        {
+          "key": "3-0",
+          "label": "Servizi ausiliari all''istruzione",
+          "color": "#818cf8",
+          "amount": 57678402
+        },
+        {
+          "key": "3-1",
+          "label": "Istruzione prescolastica",
+          "color": "#818cf8",
+          "amount": 28775600
+        },
+        {
+          "key": "3-2",
+          "label": "Altri ordini di istruzione non universitaria",
+          "color": "#818cf8",
+          "amount": 16330829
+        }
+      ]
+    },
+    {
+      "key": "k14",
+      "label": "Fondi e accantonamenti",
+      "color": "#e879f9",
+      "amount": 70805403,
+      "children": [
+        {
+          "key": "14-2",
+          "label": "Fondo crediti di dubbia esigibilità",
+          "color": "#e879f9",
+          "amount": 45950649
+        },
+        {
+          "key": "14-1",
+          "label": "Altri fondi",
+          "color": "#e879f9",
+          "amount": 18878209
+        },
+        {
+          "key": "14-0",
+          "label": "Fondo di riserva",
+          "color": "#e879f9",
+          "amount": 5976545
+        }
+      ]
+    },
+    {
+      "key": "k7",
+      "label": "Assetto del territorio ed edilizia abitativa",
+      "color": "#38bdf8",
+      "amount": 56054497,
+      "children": [
+        {
+          "key": "7-1",
+          "label": "Edilizia residenziale pubblica e locale e piani di edilizia economico0popolare",
+          "color": "#38bdf8",
+          "amount": 44918910
+        },
+        {
+          "key": "7-0",
+          "label": "Urbanistica e assetto del territorio",
+          "color": "#38bdf8",
+          "amount": 11135587
+        }
+      ]
+    },
+    {
+      "key": "k15",
+      "label": "Anticipazioni finanziarie",
+      "color": "#94a3b8",
+      "amount": 50000000
+    },
+    {
+      "key": "k4",
+      "label": "Tutela e valorizzazione dei beni e delle attività culturali",
+      "color": "#fbbf24",
+      "amount": 45047220,
+      "children": [
+        {
+          "key": "4-1",
+          "label": "Attività culturali e interventi diversi nel settore culturale",
+          "color": "#fbbf24",
+          "amount": 33606461
+        },
+        {
+          "key": "4-0",
+          "label": "Valorizzazione dei beni di interesse storico.",
+          "color": "#fbbf24",
+          "amount": 11440759
+        }
+      ]
+    },
+    {
+      "key": "k2",
+      "label": "Ordine pubblico e sicurezza",
+      "color": "#a3e635",
+      "amount": 42589574,
+      "children": [
+        {
+          "key": "2-0",
+          "label": "Polizia locale e amministrativa",
+          "color": "#a3e635",
+          "amount": 42549574
+        },
+        {
+          "key": "2-1",
+          "label": "Sistema integrato di sicurezza urbana",
+          "color": "#a3e635",
+          "amount": 40000
+        }
+      ]
+    },
+    {
+      "key": "k5",
+      "label": "Politiche giovanili sport e tempo libero",
+      "color": "#34d399",
+      "amount": 11612676,
+      "children": [
+        {
+          "key": "5-0",
+          "label": "Sport e tempo libero",
+          "color": "#34d399",
+          "amount": 8869856
+        },
+        {
+          "key": "5-1",
+          "label": "Giovani",
+          "color": "#34d399",
+          "amount": 2742820
+        }
+      ]
+    },
+    {
+      "key": "k17",
+      "label": "Debito pubblico",
+      "color": "#f472b6",
+      "amount": 8027672
+    },
+    {
+      "key": "k6",
+      "label": "Turismo",
+      "color": "#fb7185",
+      "amount": 3793731
+    },
+    {
+      "key": "k13",
+      "label": "Sviluppo economico e competitività",
+      "color": "#4ade80",
+      "amount": 3647976,
+      "children": [
+        {
+          "key": "13-2",
+          "label": "Ricerca e innovazione",
+          "color": "#4ade80",
+          "amount": 2668683
+        },
+        {
+          "key": "13-0",
+          "label": "Commercio 0 reti distributive 0 tutela dei consumatori",
+          "color": "#4ade80",
+          "amount": 836170
+        },
+        {
+          "key": "13-1",
+          "label": "Industria pmi e artigianato",
+          "color": "#4ade80",
+          "amount": 143122
+        }
+      ]
+    },
+    {
+      "key": "k19",
+      "label": "Politiche per il lavoro e la formazione professionale",
+      "color": "#818cf8",
+      "amount": 2080000,
+      "children": [
+        {
+          "key": "19-1",
+          "label": "Sostegno all''occupazione",
+          "color": "#818cf8",
+          "amount": 1982500
+        },
+        {
+          "key": "19-0",
+          "label": "Servizi per lo sviluppo del mercato del lavoro",
+          "color": "#818cf8",
+          "amount": 97500
+        }
+      ]
+    },
+    {
+      "key": "k12",
+      "label": "Tutela della salute",
+      "color": "#fb923c",
+      "amount": 1627043
+    },
+    {
+      "key": "k10",
+      "label": "Soccorso civile",
+      "color": "#f59e0b",
+      "amount": 922704
+    },
+    {
+      "key": "k20",
+      "label": "Relazioni internazionali",
+      "color": "#fbbf24",
+      "amount": 413792
+    },
+    {
+      "key": "k16",
+      "label": "Energia e diversificazione delle fonti energetiche",
+      "color": "#22d3ee",
+      "amount": 211200
+    },
+    {
+      "key": "k1",
+      "label": "Giustizia",
+      "color": "#f472b6",
+      "amount": 31664
+    }
+  ]
+}

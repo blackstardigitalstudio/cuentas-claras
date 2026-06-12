@@ -17,6 +17,7 @@ import sevillaReal from "@/data/real/sevilla.json";
 import malagaReal from "@/data/real/malaga.json";
 import gobiertoCities from "@/data/real/gobierto-cities.json";
 import milanoReal from "@/data/real/milano.json";
+import bolognaReal from "@/data/real/bologna.json";
 
 export const DATA_YEAR = 2024;
 export const DATA_IS_SAMPLE = true;
@@ -239,7 +240,7 @@ const ES = buildCountry(provincesGeo as GeoFC, CATS_ES, [
   malagaReal as RealCity,
   ...(gobiertoCities as RealCity[]),
 ]);
-const IT = buildCountry(italyGeo as GeoFC, CATS_IT, [milanoReal as RealCity]);
+const IT = buildCountry(italyGeo as GeoFC, CATS_IT, [milanoReal as RealCity, bolognaReal as RealCity]);
 
 export const COUNTRIES: Record<CountryCode, Country> = {
   es: { code: "es", mapKind: "spain", defaultRegion: "Barcelona", geo: provincesGeo as GeoFC, ...ES },

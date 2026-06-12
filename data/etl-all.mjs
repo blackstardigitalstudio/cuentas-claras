@@ -15,6 +15,7 @@ const scripts = [
   "etl-malaga.mjs",
   "etl-gobierto.mjs",
   "etl-milano.mjs",
+  "etl-bologna.mjs",
   "etl-news.mjs",
 ];
 

@@ -56,3 +56,11 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Avisar a buscadores (IndexNow)
+        run: node data/ping-indexnow.mjs || echo "IndexNow falló (no crítico)"
+        env:
+          SITE_URL: https://cuentas-claras-3cg.pages.dev

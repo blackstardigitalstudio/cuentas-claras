@@ -75,6 +75,54 @@ export default async function CityPage({ params }: Props) {
     .sort((a, b) => b.gastos - a.gastos)
     .slice(0, 24);
 
+  // FAQ con le domande che la gente cerca davvero, costruite dai dati reali della città.
+  const topG = [...r.gastosByCat].sort((a, b) => b.amount - a.amount).slice(0, 3);
+  const topI = [...r.ingresosByCat].sort((a, b) => b.amount - a.amount)[0];
+  const bal = r.ingresos - r.gastos;
+  const subj = `${r.isCity ? (es ? "el Ayuntamiento de " : "il Comune di ") : ""}${r.name}`;
+  const gList = topG.map((c) => `${c.label} (${formatPct(c.amount / r.gastos)})`).join(", ");
+  const faqs = es
+    ? [
+        {
+          q: `¿Cuánto ingresa y cuánto gasta ${subj} en ${r.year}?`,
+          a: `En ${r.year}, ${r.name} tiene unos ingresos de ${formatEuro(r.ingresos)} y unos gastos de ${formatEuro(r.gastos)}, ${bal === 0 ? "con un presupuesto equilibrado (ingresos = gastos)" : `con un ${bal > 0 ? "superávit" : "déficit"} de ${formatCompact(Math.abs(bal))}`}.`,
+        },
+        { q: `¿En qué se gasta el dinero público en ${r.name}?`, a: `Las principales áreas de gasto son: ${gList}.` },
+        topI && {
+          q: `¿De dónde vienen los ingresos de ${r.name}?`,
+          a: `La mayor fuente de ingresos es ${topI.label}, que supone ${formatPct(topI.amount / r.ingresos)} del total.`,
+        },
+        {
+          q: `¿Los datos del presupuesto de ${r.name} son oficiales?`,
+          a: r.isSample
+            ? `Por ahora son cifras de ejemplo, a la espera de publicar los datos oficiales de ${r.name}.`
+            : `Sí. Proceden de ${r.source?.name || "fuentes oficiales"}${r.basis ? ` (${r.basis})` : ""}, y verificamos que ingresos y gastos cuadren.`,
+        },
+      ].filter(Boolean as unknown as (x: unknown) => x is { q: string; a: string })
+    : [
+        {
+          q: `Quanto incassa e quanto spende ${subj} nel ${r.year}?`,
+          a: `Nel ${r.year}, ${r.name} ha entrate per ${formatEuro(r.ingresos)} e spese per ${formatEuro(r.gastos)}, ${bal === 0 ? "con un bilancio in pareggio (entrate = spese)" : `con un ${bal > 0 ? "avanzo" : "disavanzo"} di ${formatCompact(Math.abs(bal))}`}.`,
+        },
+        { q: `Dove vanno i soldi pubblici a ${r.name}?`, a: `Le principali aree di spesa sono: ${gList}.` },
+        topI && {
+          q: `Da dove arrivano le entrate di ${r.name}?`,
+          a: `La principale fonte di entrate è ${topI.label}, pari al ${formatPct(topI.amount / r.ingresos)} del totale.`,
+        },
+        {
+          q: `I dati di bilancio di ${r.name} sono ufficiali?`,
+          a: r.isSample
+            ? `Per ora sono dati di esempio, in attesa di pubblicare i dati ufficiali di ${r.name}.`
+            : `Sì. Provengono da ${r.source?.name || "fonti ufficiali"}${r.basis ? ` (${r.basis})` : ""}, e verifichiamo che entrate e spese quadrino.`,
+        },
+      ].filter(Boolean as unknown as (x: unknown) => x is { q: string; a: string });
+
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Dataset",
@@ -95,6 +143,7 @@ export default async function CityPage({ params }: Props) {
   return (
     <main className="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
       <nav className="text-sm text-muted mb-6">
         <Link href="/" className="hover:text-fg neon-text font-semibold">
@@ -176,6 +225,18 @@ export default async function CityPage({ params }: Props) {
           {es ? "Ver en el mapa interactivo →" : "Vedi sulla mappa interattiva →"}
         </Link>
       </p>
+
+      <section className="mt-12">
+        <h2 className="text-lg font-semibold mb-3">{es ? "Preguntas frecuentes" : "Domande frequenti"}</h2>
+        <div className="space-y-2.5">
+          {faqs.map((f, i) => (
+            <details key={i} className="glass p-4" {...(i === 0 ? { open: true } : {})}>
+              <summary className="font-medium cursor-pointer marker:text-cyan">{f.q}</summary>
+              <p className="text-sm text-muted mt-2">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
 
       {others.length > 0 && (
         <nav className="mt-12 pt-6 border-t border-[var(--panel-border)]">

@@ -8,10 +8,59 @@ import { CountUp } from "./Motion";
 import BubbleFlow from "./BubbleFlow";
 import { useMessages } from "@/i18n/LocaleProvider";
 
+type Cat = { key: string; label: string; color: string; amount: number; children?: Cat[] };
+
+// Rama recursiva del gasto: soporta cualquier profundidad (área→política→grupo→programa→subprograma).
+// Cada nodo gestiona su propio estado abierto/cerrado.
+function GastoBranch({ node, parent, total, siblingMax, depth }: { node: Cat; parent: number; total: number; siblingMax: number; depth: number }) {
+  const [open, setOpen] = useState(false);
+  const hasKids = !!node.children && node.children.length > 0;
+  const top = depth === 0;
+  const pct = top ? (total > 0 ? node.amount / total : 0) : parent > 0 ? node.amount / parent : 0;
+  const width = siblingMax > 0 ? (node.amount / siblingMax) * 100 : 0;
+  const childMax = hasKids ? Math.max(...node.children!.map((c) => c.amount)) : 0;
+  return (
+    <li>
+      <button
+        type="button"
+        onClick={() => hasKids && setOpen(!open)}
+        aria-expanded={hasKids ? open : undefined}
+        className={`w-full text-left ${hasKids ? "cursor-pointer" : "cursor-default"}`}
+      >
+        <div className={`flex items-center justify-between ${top ? "text-sm mb-1" : "text-xs mb-0.5"}`}>
+          <span className="flex items-center gap-2 min-w-0">
+            {top && <span className="inline-block w-2.5 h-2.5 rounded-full shrink-0" style={{ background: node.color }} />}
+            <span className={top ? "" : "text-fg/80 truncate"}>{node.label}</span>
+            {hasKids && (
+              <span className={`text-muted ${top ? "text-xs" : "text-[10px]"} shrink-0 transition-transform ${open ? "rotate-90" : ""}`}>›</span>
+            )}
+          </span>
+          <span className="tabular text-muted shrink-0">{formatPct(pct)}</span>
+        </div>
+        <div className={`${top ? "h-2" : "h-1.5"} rounded-full bg-white/5 overflow-hidden`}>
+          <div
+            className="h-full rounded-full"
+            style={{ background: node.color, opacity: top ? 1 : 0.6, width: `${width}%`, boxShadow: top ? `0 0 10px ${node.color}` : "none" }}
+          />
+        </div>
+        <p className={`tabular ${top ? "text-[11px]" : "text-[10px]"} text-muted mt-0.5`}>{formatEuro(node.amount)}</p>
+      </button>
+
+      {hasKids && open && (
+        <ul className="mt-1.5 ml-3 pl-3 border-l border-[var(--panel-border)] space-y-1.5">
+          {[...node.children!]
+            .sort((a, b) => b.amount - a.amount)
+            .map((ch) => (
+              <GastoBranch key={ch.key} node={ch} parent={node.amount} total={total} siblingMax={childMax} depth={depth + 1} />
+            ))}
+        </ul>
+      )}
+    </li>
+  );
+}
+
 export default function RegionPanel({ region }: { region: RegionData }) {
   const m = useMessages();
-  const [openCat, setOpenCat] = useState<string | null>(null);
-  const [openSub, setOpenSub] = useState<string | null>(null);
   const balance = region.ingresos - region.gastos;
   const positivo = balance >= 0;
   const maxCat = Math.max(...region.gastosByCat.map((c) => c.amount));
@@ -89,106 +138,9 @@ export default function RegionPanel({ region }: { region: RegionData }) {
         <ul className="space-y-2.5">
           {[...region.gastosByCat]
             .sort((a, b) => b.amount - a.amount)
-            .map((c) => {
-              const hasKids = !!c.children && c.children.length > 0;
-              const isOpen = openCat === c.key;
-              return (
-                <li key={c.key}>
-                  <button
-                    type="button"
-                    onClick={() => hasKids && setOpenCat(isOpen ? null : c.key)}
-                    aria-expanded={hasKids ? isOpen : undefined}
-                    className={`w-full text-left ${hasKids ? "cursor-pointer" : "cursor-default"}`}
-                  >
-                    <div className="flex items-center justify-between text-sm mb-1">
-                      <span className="flex items-center gap-2">
-                        <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: c.color }} />
-                        {c.label}
-                        {hasKids && (
-                          <span className={`text-muted text-xs transition-transform ${isOpen ? "rotate-90" : ""}`}>
-                            ›
-                          </span>
-                        )}
-                      </span>
-                      <span className="tabular text-muted">{formatPct(c.amount / region.gastos)}</span>
-                    </div>
-                    <div className="h-2 rounded-full bg-white/5 overflow-hidden">
-                      <motion.div
-                        className="h-full rounded-full"
-                        style={{ background: c.color, boxShadow: `0 0 10px ${c.color}` }}
-                        initial={{ width: 0 }}
-                        animate={{ width: `${(c.amount / maxCat) * 100}%` }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                      />
-                    </div>
-                    <p className="tabular text-[11px] text-muted mt-0.5">{formatEuro(c.amount)}</p>
-                  </button>
-
-                  {hasKids && isOpen && (
-                    <motion.ul
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.25 }}
-                      className="mt-2 ml-4 pl-3 border-l border-[var(--panel-border)] space-y-2"
-                    >
-                      {[...c.children!]
-                        .sort((a, b) => b.amount - a.amount)
-                        .map((sc) => {
-                          const subKids = !!sc.children && sc.children.length > 0;
-                          const subOpen = openSub === sc.key;
-                          return (
-                            <li key={sc.key}>
-                              <button
-                                type="button"
-                                onClick={() => subKids && setOpenSub(subOpen ? null : sc.key)}
-                                aria-expanded={subKids ? subOpen : undefined}
-                                className={`w-full text-left ${subKids ? "cursor-pointer" : "cursor-default"}`}
-                              >
-                                <div className="flex items-center justify-between text-xs mb-0.5">
-                                  <span className="text-fg/80 flex items-center gap-1.5">
-                                    {sc.label}
-                                    {subKids && (
-                                      <span className={`text-muted text-[10px] transition-transform ${subOpen ? "rotate-90" : ""}`}>›</span>
-                                    )}
-                                  </span>
-                                  <span className="tabular text-muted">{formatPct(sc.amount / c.amount)}</span>
-                                </div>
-                                <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
-                                  <div
-                                    className="h-full rounded-full"
-                                    style={{ background: sc.color, opacity: 0.65, width: `${(sc.amount / c.amount) * 100}%` }}
-                                  />
-                                </div>
-                                <p className="tabular text-[10px] text-muted mt-0.5">{formatEuro(sc.amount)}</p>
-                              </button>
-
-                              {subKids && subOpen && (
-                                <motion.ul
-                                  initial={{ opacity: 0, y: -3 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  transition={{ duration: 0.2 }}
-                                  className="mt-1.5 ml-3 pl-3 border-l border-[var(--panel-border)] space-y-1"
-                                >
-                                  {[...sc.children!]
-                                    .sort((a, b) => b.amount - a.amount)
-                                    .map((gc) => (
-                                      <li key={gc.key} className="flex items-center justify-between gap-2 text-[11px]">
-                                        <span className="text-fg/70 truncate">{gc.label}</span>
-                                        <span className="tabular text-muted shrink-0">
-                                          {formatEuro(gc.amount)} · {formatPct(gc.amount / sc.amount)}
-                                        </span>
-                                      </li>
-                                    ))}
-                                </motion.ul>
-                              )}
-                            </li>
-                          );
-                        })}
-                    </motion.ul>
-                  )}
-                </li>
-              );
-            })}
+            .map((c) => (
+              <GastoBranch key={c.key} node={c} parent={region.gastos} total={region.gastos} siblingMax={maxCat} depth={0} />
+            ))}
         </ul>
       </div>
 

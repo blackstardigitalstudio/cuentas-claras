@@ -110,12 +110,35 @@ function parseNum(s) {
   return Number.isFinite(n) ? n : 0;
 }
 
+// Árbol de gasto funcional: cada nodo { amount, label, color, kids }.
+function bump(container, code, label, color, amount) {
+  const n = container[code] || (container[code] = { amount: 0, label, color, kids: {} });
+  n.amount += amount;
+  if (!n.label && label) n.label = label;
+  return n;
+}
+// Convierte el árbol a CategoryDatum recursivo. Solo anida si hay >1 hijo
+// (evita cadenas redundantes donde un nivel repite al padre).
+function toCats(container, prefix) {
+  return Object.entries(container)
+    .map(([code, n]) => {
+      const children = toCats(n.kids, `${prefix}${code}-`);
+      return {
+        key: `${prefix}${code}`,
+        label: n.label,
+        color: n.color,
+        amount: Math.round(n.amount),
+        ...(children.length > 1 ? { children } : {}),
+      };
+    })
+    .filter((c) => c.amount > 0)
+    .sort((a, b) => b.amount - a.amount);
+}
+
 function aggregate(text, { amountFromEnd, capMap, withArea }) {
   const lines = text.split(/\r?\n/);
   const byCap = {};
-  const byArea = {};
-  const byAreaPol = {}; // { area: { politica: amount } } — nivel de detalle
-  const byAreaPolGrp = {}; // { area: { politica: { grupo: {amount,label} } } } — 3er nivel
+  const forest = {}; // código de área -> nodo raíz del árbol funcional
   let total = 0;
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i];
@@ -131,29 +154,26 @@ function aggregate(text, { amountFromEnd, capMap, withArea }) {
       const nline = norm(line);
       const m = nline.match(AREA_RE);
       const area = m ? m[1] : "9";
-      byArea[area] = (byArea[area] || 0) + amount;
+      const color = (AREAS[area] || AREAS["9"])[1];
+      const aNode = bump(forest, area, (AREAS[area] || AREAS["9"])[0], color, amount);
       if (m) {
-        // Tras el nombre de área viene: {política 2d},{texto},{grupo de programa 3d},{texto},…
-        // Capturamos política (nivel 2) y grupo de programa (nivel 3) en un solo match,
-        // anclado al nombre de área, así nunca se cruzan datos de áreas distintas.
-        const after = nline.slice(m.index + m[0].length);
-        const gm = after.match(/^(\d{2}),[^,]*,(\d{3}),([^,]+),/);
-        if (gm && gm[1][0] === area) {
-          const pol = gm[1];
-          const grpCode = gm[2];
-          const grpLabel = sentence(gm[3]);
-          byAreaPol[area] = byAreaPol[area] || {};
-          byAreaPol[area][pol] = (byAreaPol[area][pol] || 0) + amount;
-          byAreaPolGrp[area] = byAreaPolGrp[area] || {};
-          byAreaPolGrp[area][pol] = byAreaPolGrp[area][pol] || {};
-          byAreaPolGrp[area][pol][grpCode] = byAreaPolGrp[area][pol][grpCode] || { amount: 0, label: grpLabel };
-          byAreaPolGrp[area][pol][grpCode].amount += amount;
-        } else {
-          // Fallback: al menos la política (2 dígitos) o "00" sin desglosar.
-          const pm = after.match(/^(\d{2}),/);
-          const pol = pm && pm[1][0] === area ? pm[1] : "00";
-          byAreaPol[area] = byAreaPol[area] || {};
-          byAreaPol[area][pol] = (byAreaPol[area][pol] || 0) + amount;
+        // Tras el nombre de área, campos sin comas:
+        //   {pol 2d},{txt},{grupo 3d},{txt},{programa 4d},{txt},{subprograma 5d},{txt},…amounts
+        // Split seguro; anidamos TODOS los niveles disponibles (2→5).
+        const seg = nline.slice(m.index + m[0].length).split(",");
+        const pol = seg[0];
+        if (/^\d{2}$/.test(pol) && pol[0] === area) {
+          let node = bump(aNode.kids, pol, POLITICAS[pol] || `Política ${pol}`, color, amount);
+          // Niveles 3-5: grupo de programa (3d), programa (4d), subprograma (5d).
+          const deeper = [
+            [seg[2], seg[3], 3],
+            [seg[4], seg[5], 4],
+            [seg[6], seg[7], 5],
+          ];
+          for (const [code, label, len] of deeper) {
+            if (!code || !new RegExp(`^\\d{${len}}$`).test(code)) break;
+            node = bump(node.kids, code, sentence(label) || `Código ${code}`, color, amount);
+          }
         }
       }
     }
@@ -161,33 +181,7 @@ function aggregate(text, { amountFromEnd, capMap, withArea }) {
   const cats = Object.entries(byCap)
     .map(([k, amount]) => ({ key: "c" + k, label: capMap[k][0], color: capMap[k][1], amount: Math.round(amount) }))
     .sort((a, b) => b.amount - a.amount);
-  const areas = Object.entries(byArea)
-    .map(([k, amount]) => {
-      const children = Object.entries(byAreaPol[k] || {})
-        .map(([pol, amt]) => {
-          // 3er nivel: grupos de programa dentro de la política (p.ej. 92 → 920 Administración general).
-          const grandkids = Object.entries((byAreaPolGrp[k] && byAreaPolGrp[k][pol]) || {})
-            .map(([gc, o]) => ({ key: `g${k}-${pol}-${gc}`, label: o.label, color: AREAS[k][1], amount: Math.round(o.amount) }))
-            .filter((g) => g.amount > 0)
-            .sort((a, b) => b.amount - a.amount);
-          return {
-            key: "p" + pol,
-            label: POLITICAS[pol] || `Política ${pol}`,
-            color: AREAS[k][1],
-            amount: Math.round(amt),
-            ...(grandkids.length > 1 ? { children: grandkids } : {}),
-          };
-        })
-        .sort((a, b) => b.amount - a.amount);
-      return {
-        key: "a" + k,
-        label: AREAS[k][0],
-        color: AREAS[k][1],
-        amount: Math.round(amount),
-        ...(children.length ? { children } : {}),
-      };
-    })
-    .sort((a, b) => b.amount - a.amount);
+  const areas = toCats(forest, "a");
   return { total: Math.round(total), cats, areas };
 }
 

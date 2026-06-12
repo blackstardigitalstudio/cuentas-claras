@@ -1,0 +1,128 @@
+{
+  "id": "sevilla",
+  "name": "Sevilla",
+  "provincia": "Sevilla",
+  "country": "es",
+  "slug": "sevilla",
+  "year": 2024,
+  "isSample": false,
+  "basis": "Presupuesto 2024 (clasificación económica, leído del PDF oficial)",
+  "source": {
+    "name": "Ayuntamiento de Sevilla · Presupuestos municipales",
+    "url": "https://www.sevilla.org/ayuntamiento/unidad-organica/servicio-de-gestion-presupuestaria/presupuestos-municipales/presupuesto-2024"
+  },
+  "ingresos": 1032345800,
+  "gastos": 1032345800,
+  "ingresosByCat": [
+    {
+      "key": "c4",
+      "label": "Transferencias corrientes (Estado/CCAA)",
+      "color": "#a78bfa",
+      "amount": 477091104
+    },
+    {
+      "key": "c1",
+      "label": "Impuestos directos (IBI, plusvalía…)",
+      "color": "#34d399",
+      "amount": 306657671
+    },
+    {
+      "key": "c3",
+      "label": "Tasas y precios públicos",
+      "color": "#38bdf8",
+      "amount": 121837282
+    },
+    {
+      "key": "c9",
+      "label": "Pasivos financieros (deuda)",
+      "color": "#f87171",
+      "amount": 60878502
+    },
+    {
+      "key": "c2",
+      "label": "Impuestos indirectos (ICIO…)",
+      "color": "#2dd4bf",
+      "amount": 35186747
+    },
+    {
+      "key": "c7",
+      "label": "Transferencias de capital",
+      "color": "#c084fc",
+      "amount": 18556716
+    },
+    {
+      "key": "c5",
+      "label": "Ingresos patrimoniales",
+      "color": "#fb923c",
+      "amount": 9712073
+    },
+    {
+      "key": "c8",
+      "label": "Activos financieros",
+      "color": "#94a3b8",
+      "amount": 2425705
+    },
+    {
+      "key": "c6",
+      "label": "Venta de inversiones",
+      "color": "#f59e0b",
+      "amount": 0
+    }
+  ],
+  "gastosByCat": [
+    {
+      "key": "c4",
+      "label": "Transferencias corrientes",
+      "color": "#a78bfa",
+      "amount": 354007219
+    },
+    {
+      "key": "c1",
+      "label": "Personal",
+      "color": "#f472b6",
+      "amount": 337671840
+    },
+    {
+      "key": "c2",
+      "label": "Bienes corrientes y servicios",
+      "color": "#22d3ee",
+      "amount": 197872857
+    },
+    {
+      "key": "c9",
+      "label": "Pasivos financieros (amortización deuda)",
+      "color": "#fb7185",
+      "amount": 43532685
+    },
+    {
+      "key": "c7",
+      "label": "Transferencias de capital",
+      "color": "#c084fc",
+      "amount": 41663585
+    },
+    {
+      "key": "c6",
+      "label": "Inversiones reales",
+      "color": "#a3e635",
+      "amount": 41240015
+    },
+    {
+      "key": "c3",
+      "label": "Gastos financieros (intereses)",
+      "color": "#f87171",
+      "amount": 13531894
+    },
+    {
+      "key": "c8",
+      "label": "Activos financieros",
+      "color": "#64748b",
+      "amount": 2425705
+    },
+    {
+      "key": "c5",
+      "label": "Fondo de contingencia",
+      "color": "#94a3b8",
+      "amount": 400000
+    }
+  ]
+}

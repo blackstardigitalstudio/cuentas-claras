@@ -7,7 +7,14 @@ import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const scripts = ["etl-barcelona.mjs", "etl-valencia.mjs", "etl-vitoria.mjs", "etl-milano.mjs", "etl-news.mjs"];
+const scripts = [
+  "etl-barcelona.mjs",
+  "etl-valencia.mjs",
+  "etl-vitoria.mjs",
+  "etl-sevilla.mjs",
+  "etl-milano.mjs",
+  "etl-news.mjs",
+];
 
 let ok = 0;
 for (const f of scripts) {

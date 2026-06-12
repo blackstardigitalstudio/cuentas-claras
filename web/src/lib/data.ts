@@ -13,6 +13,7 @@ import italyGeo from "@/data/italy-provinces.json";
 import barcelonaReal from "@/data/real/barcelona.json";
 import valenciaReal from "@/data/real/valencia.json";
 import vitoriaReal from "@/data/real/vitoria.json";
+import sevillaReal from "@/data/real/sevilla.json";
 import milanoReal from "@/data/real/milano.json";
 
 export const DATA_YEAR = 2024;
@@ -232,6 +233,7 @@ const ES = buildCountry(provincesGeo as GeoFC, CATS_ES, [
   barcelonaReal as RealCity,
   valenciaReal as RealCity,
   vitoriaReal as RealCity,
+  sevillaReal as RealCity,
 ]);
 const IT = buildCountry(italyGeo as GeoFC, CATS_IT, [milanoReal as RealCity]);
 

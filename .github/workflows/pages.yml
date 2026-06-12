@@ -9,7 +9,7 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: "0 5 3 * *" # día 3 de cada mes: reconstruye con datos frescos
+    - cron: "0 5 * * 1" # cada lunes: reconstruye con los datos más recientes
 
 permissions:
   contents: read

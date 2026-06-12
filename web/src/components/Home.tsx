@@ -1,16 +1,17 @@
 "use client";
 
+import Link from "next/link";
 import Explorer from "@/components/Explorer";
 import News from "@/components/News";
 import { CountUp, Reveal } from "@/components/Motion";
 import LangSwitch from "@/components/LangSwitch";
-import { useMessages } from "@/i18n/LocaleProvider";
-import { REGIONS, TOTALS, DATA_SOURCE_URL } from "@/lib/data";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { REGIONS, TOTALS, DATA_SOURCE_URL, COUNTRIES, type CountryCode } from "@/lib/data";
 
 const bcn = REGIONS["Barcelona"];
 
 export default function Home() {
-  const m = useMessages();
+  const { locale, m } = useLocale();
   return (
     <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 pb-24">
       {/* Barra superior: marca + idioma */}
@@ -96,6 +97,35 @@ export default function Home() {
 
       {/* Noticias */}
       <News />
+
+      {/* Directorio de ciudades (enlaces internos para SEO + navegación) */}
+      <section className="mt-16">
+        <h2 className="text-xl md:text-2xl font-semibold">{locale === "it" ? "Tutte le città" : "Todas las ciudades"}</h2>
+        <p className="text-sm text-muted mt-1 mb-5">
+          {locale === "it"
+            ? "Apri la pagina di ogni città per il dettaglio di entrate e spese."
+            : "Abre la página de cada ciudad para el detalle de ingresos y gastos."}
+        </p>
+        <div className="space-y-4">
+          {(["es", "it"] as CountryCode[]).map((p) => (
+            <div key={p}>
+              <h3 className="text-xs uppercase tracking-widest text-cyan/80 mb-2">
+                {p === "es" ? "🇪🇸 España" : "🇮🇹 Italia"}
+              </h3>
+              <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-sm">
+                {Object.values(COUNTRIES[p].regions)
+                  .filter((r) => !r.isSample)
+                  .sort((a, b) => a.name.localeCompare(b.name, "es"))
+                  .map((r) => (
+                    <Link key={r.slug} href={`/${p}/${r.slug}`} className="text-cyan/75 hover:text-fg transition">
+                      {r.name}
+                    </Link>
+                  ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="mt-16 pt-8 border-t border-[var(--panel-border)] text-sm text-muted flex flex-col md:flex-row items-center justify-between gap-3">

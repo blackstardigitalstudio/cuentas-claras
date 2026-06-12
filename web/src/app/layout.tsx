@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cuentasclaras.example"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://cuentas-claras-3cg.pages.dev"),
   title: {
     default: "Cuentas Claras — ¿A dónde va el dinero público en España?",
     template: "%s · Cuentas Claras",

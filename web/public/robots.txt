@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # El sitio es público y de interés ciudadano: se permite la indexación.
-Sitemap: https://blackstardigitalstudio.github.io/cuentas-claras/sitemap.xml
+Sitemap: https://cuentas-claras-3cg.pages.dev/sitemap.xml

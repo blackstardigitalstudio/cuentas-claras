@@ -98,6 +98,54 @@ export default function Home() {
       {/* Noticias */}
       <News />
 
+      {/* Metodología y fuentes (confianza + SEO) */}
+      <section className="mt-16 glass p-6 md:p-7">
+        <h2 className="text-xl md:text-2xl font-semibold">
+          {locale === "it" ? "Sui dati: fonti, verità e aggiornamenti" : "Sobre los datos: fuentes, veracidad y actualizaciones"}
+        </h2>
+        {locale === "it" ? (
+          <div className="text-sm text-muted mt-3 space-y-3 max-w-3xl">
+            <p>
+              <strong className="text-fg">Cuentas Claras</strong> mostra entrate e spese reali dei comuni di{" "}
+              <strong className="text-fg">Spagna</strong> e <strong className="text-fg">Italia</strong> con dati ufficiali, in
+              linguaggio chiaro. Copre tutte le 50 province spagnole e città italiane come Milano e Bologna, con il dettaglio
+              della spesa pubblica per capitolo e per area/missione.
+            </p>
+            <p>
+              <strong className="text-fg">Fonti ufficiali:</strong> Ministero delle Finanze spagnolo (via Gobierto/INE), portali
+              open data dei comuni (Barcellona, València, Vitoria, Comune di Milano, Comune di Bologna) e bilanci ufficiali. Ogni
+              città indica la fonte e l'anno.
+            </p>
+            <p>
+              <strong className="text-fg">Veri e verificati:</strong> per ogni città controlliamo la quadratura (entrate ≈ uscite)
+              e non pubblichiamo mai cifre non verificabili. <strong className="text-fg">Sempre aggiornati:</strong> il sito si
+              rigenera automaticamente ogni settimana con gli ultimi dati pubblicati. Non è "tempo reale" (i bilanci escono per
+              periodi), ma è sempre l'ultima pubblicazione ufficiale.
+            </p>
+          </div>
+        ) : (
+          <div className="text-sm text-muted mt-3 space-y-3 max-w-3xl">
+            <p>
+              <strong className="text-fg">Cuentas Claras</strong> muestra los ingresos y gastos reales de los ayuntamientos de{" "}
+              <strong className="text-fg">España</strong> e <strong className="text-fg">Italia</strong> con datos oficiales, en
+              lenguaje claro. Cubre las 50 provincias españolas y ciudades italianas como Milán y Bolonia, con el desglose del
+              gasto público por capítulo y por área/misión.
+            </p>
+            <p>
+              <strong className="text-fg">Fuentes oficiales:</strong> Ministerio de Hacienda (vía Gobierto/INE), portales de datos
+              abiertos de los ayuntamientos (Barcelona, València, Vitoria-Gasteiz, Comune di Milano, Comune di Bologna) y
+              presupuestos oficiales. Cada ciudad indica su fuente y año.
+            </p>
+            <p>
+              <strong className="text-fg">Veraces y verificados:</strong> en cada ciudad comprobamos el cuadre (ingresos ≈ gastos)
+              y nunca publicamos cifras no verificables. <strong className="text-fg">Siempre actualizados:</strong> el sitio se
+              regenera automáticamente cada semana con los últimos datos publicados. No es "tiempo real" (los presupuestos se
+              publican por periodos), pero siempre es la última publicación oficial.
+            </p>
+          </div>
+        )}
+      </section>
+
       {/* Directorio de ciudades (enlaces internos para SEO + navegación) */}
       <section className="mt-16">
         <h2 className="text-xl md:text-2xl font-semibold">{locale === "it" ? "Tutte le città" : "Todas las ciudades"}</h2>

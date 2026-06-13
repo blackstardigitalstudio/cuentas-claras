@@ -9,7 +9,9 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: "0 5 * * 1" # cada lunes: reconstruye con los datos más recientes
+    # Las noticias se sirven EN VIVO desde la función edge /api/news; este cron
+    # solo refresca el respaldo estático (SEO / primer pintado) cada 3 horas.
+    - cron: "0 */3 * * *"
 
 permissions:
   contents: read

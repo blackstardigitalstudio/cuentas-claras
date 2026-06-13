@@ -40,7 +40,7 @@ export type Messages = {
     howSpent: string;
   };
   footer: { data: string; tagline: string; disclaimer: string };
-  news: { title: string; subtitle: string; readMore: string };
+  news: { title: string; subtitle: string; readMore: string; cityCta: string; liveOn: string };
   nav: { map: string; news: string; scoop: string };
   scoop: {
     eyebrow: string;
@@ -125,6 +125,8 @@ const es: Messages = {
     title: "El dinero público en las noticias",
     subtitle: "Titulares recientes de medios sobre presupuestos y gasto público. Cada noticia enlaza al medio original.",
     readMore: "Leer en la fuente",
+    cityCta: "ver su gasto",
+    liveOn: "En vivo",
   },
   nav: { map: "Mapa", news: "Noticias", scoop: "Escándalos" },
   scoop: {
@@ -212,6 +214,8 @@ const it: Messages = {
     title: "Il denaro pubblico nelle notizie",
     subtitle: "Titoli recenti dai media su bilanci e spesa pubblica. Ogni notizia rimanda alla testata originale.",
     readMore: "Leggi sulla fonte",
+    cityCta: "vedi la sua spesa",
+    liveOn: "In diretta",
   },
   nav: { map: "Mappa", news: "Notizie", scoop: "Scandali" },
   scoop: {

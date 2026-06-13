@@ -12,9 +12,14 @@ name: Build & Deploy (Cloudflare Pages)
 #   CLOUDFLARE_ACCOUNT_ID  (ID de cuenta de Cloudflare)
 
 on:
-  # Manual por ahora: actívalo cuando hayas añadido los secrets de Cloudflare.
-  # Cuando esté listo, puedes volver a añadir push/schedule.
   workflow_dispatch:
+  # Refresco frecuente de NOTICIAS en el sitio Cloudflare en vivo. Las fuentes de
+  # prensa (Google News) sí responden a los runners de GitHub (a diferencia del
+  # edge de Cloudflare), así que aquí es donde tiene sentido refrescar a menudo.
+  # Requiere los 2 secrets de Cloudflare (ver arriba). Si no están, este workflow
+  # falla solo en el paso de deploy y no afecta al sitio.
+  schedule:
+    - cron: "0 * * * *" # cada hora
 
 jobs:
   deploy:
@@ -33,10 +38,11 @@ jobs:
 
       - run: npm ci
 
-      # Refresca los datos reales (descarga CSV de los portales open data).
-      # Si una fuente falla, no abortamos: se reutiliza el JSON ya commiteado.
-      - name: Actualizar datos (ETL)
-        run: npm run etl || echo "ETL falló; se usa el dataset existente."
+      # Refresco horario: solo NOTICIAS (rápido y sin martillear los portales de
+      # presupuestos, que cambian poco). El ETL completo de datos corre en el cron
+      # de pages.yml y en ejecuciones manuales.
+      - name: Actualizar noticias (ETL)
+        run: npm run etl:news || echo "ETL noticias falló; se usa el dataset existente."
 
       - name: Build (export estático)
         run: npm run build

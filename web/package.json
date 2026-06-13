@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "etl": "node ../data/etl-all.mjs",
+    "etl:news": "node ../data/etl-news.mjs",
     "serve": "npx --yes serve out",
     "lint": "eslint"
   },

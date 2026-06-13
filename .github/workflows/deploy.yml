@@ -13,13 +13,10 @@ name: Build & Deploy (Cloudflare Pages)
 
 on:
   workflow_dispatch:
-  # === REFRESCO AUTOMÁTICO CADA 2 HORAS (actívalo en 1 paso) ===
-  # Para que el sitio Cloudflare en vivo refresque las noticias cada 2 horas,
-  # primero añade los 2 secrets del repo (Settings → Secrets and variables →
-  # Actions):  CLOUDFLARE_API_TOKEN  y  CLOUDFLARE_ACCOUNT_ID
-  # y luego DESCOMENTA las 2 líneas siguientes (quita el "# " del principio):
-  # schedule:
-  #   - cron: "0 */2 * * *" # cada 2 horas
+  # Refresco automático de NOTICIAS en el sitio Cloudflare en vivo, cada 2 horas.
+  # (Secrets CLOUDFLARE_API_TOKEN y CLOUDFLARE_ACCOUNT_ID ya configurados.)
+  schedule:
+    - cron: "0 */2 * * *" # cada 2 horas
 
 jobs:
   deploy:

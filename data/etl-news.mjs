@@ -27,6 +27,25 @@ const FEEDS = {
   },
 };
 
+// "Rincón scoop": titulares duros sobre corrupción, fraude y mala gestión del
+// dinero público. Son TITULARES DE MEDIOS (cada uno enlaza a su fuente); el sitio
+// no acusa a nadie y respeta la presunción de inocencia (aviso en la página).
+const SCOOP_FEEDS = {
+  es: {
+    q: 'corrupción ayuntamiento OR "malversación de caudales públicos" OR "fraude fondos públicos" OR "alcalde detenido" OR "dinero público" juzgado',
+    hl: "es",
+    gl: "ES",
+    ceid: "ES:es",
+  },
+  it: {
+    q: 'corruzione comune OR "peculato fondi pubblici" OR "scandalo appalti" OR "arresto sindaco" OR "danno erariale" Corte dei Conti',
+    hl: "it",
+    gl: "IT",
+    ceid: "IT:it",
+  },
+};
+const MAX_SCOOP = 12;
+
 function decodeEntities(s) {
   return s
     .replace(/&amp;/g, "&")
@@ -44,7 +63,7 @@ function tag(block, name) {
   return m ? decodeEntities(m[1].replace(/<!\[CDATA\[|\]\]>/g, "")) : "";
 }
 
-async function fetchFeed(loc, cfg) {
+async function fetchFeed(loc, cfg, max = MAX_PER_COUNTRY) {
   const url =
     "https://news.google.com/rss/search?q=" +
     encodeURIComponent(cfg.q) +
@@ -65,7 +84,7 @@ async function fetchFeed(loc, cfg) {
     if (source && title.endsWith(" - " + source)) title = title.slice(0, -(source.length + 3)).trim();
     const date = pub ? new Date(pub).toISOString() : null;
     out.push({ title, source, url: link, date });
-    if (out.length >= MAX_PER_COUNTRY) break;
+    if (out.length >= max) break;
   }
   if (!out.length) throw new Error(`News ${loc}: 0 titulares válidos`);
   return out;
@@ -77,6 +96,15 @@ async function main() {
     news[loc] = await fetchFeed(loc, cfg);
     console.log(`Noticias ${loc}: ${news[loc].length} titulares`);
     news[loc].slice(0, 2).forEach((n) => console.log("   -", n.title.slice(0, 70), "·", n.source));
+  }
+  // Rincón scoop (corrupción / fraude). No es crítico: si falla, se conserva el resto.
+  for (const [loc, cfg] of Object.entries(SCOOP_FEEDS)) {
+    try {
+      news[`${loc}_scoop`] = await fetchFeed(loc, cfg, MAX_SCOOP);
+      console.log(`Scoop ${loc}: ${news[`${loc}_scoop`].length} titulares`);
+    } catch (e) {
+      console.log(`Scoop ${loc}: falló (${e.message})`);
+    }
   }
   const outDir = join(__dirname, "..", "web", "src", "data");
   mkdirSync(outDir, { recursive: true });

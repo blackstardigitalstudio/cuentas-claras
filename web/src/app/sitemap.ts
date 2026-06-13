@@ -8,6 +8,7 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://cuentas-claras-3cg.pag
 export default function sitemap(): MetadataRoute.Sitemap {
   const urls: MetadataRoute.Sitemap = [
     { url: `${SITE}/`, changeFrequency: "weekly", priority: 1 },
+    { url: `${SITE}/escandalos`, changeFrequency: "daily", priority: 0.8 },
   ];
   const seen = new Set<string>();
   for (const p of ["es", "it"] as CountryCode[]) {

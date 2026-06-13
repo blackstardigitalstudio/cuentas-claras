@@ -19,7 +19,7 @@ export default function News() {
   });
 
   return (
-    <section className="mt-16">
+    <section id="noticias" className="mt-16 scroll-mt-20">
       <h2 className="text-xl md:text-2xl font-semibold">{m.news.title}</h2>
       <p className="text-sm text-muted mt-1 mb-5 max-w-2xl">{m.news.subtitle}</p>
 

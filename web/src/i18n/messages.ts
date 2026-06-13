@@ -41,6 +41,16 @@ export type Messages = {
   };
   footer: { data: string; tagline: string; disclaimer: string };
   news: { title: string; subtitle: string; readMore: string };
+  nav: { map: string; news: string; scoop: string };
+  scoop: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    badge: string;
+    seeAll: string;
+    empty: string;
+    disclaimer: string;
+  };
 };
 
 const es: Messages = {
@@ -116,6 +126,18 @@ const es: Messages = {
     subtitle: "Titulares recientes de medios sobre presupuestos y gasto público. Cada noticia enlaza al medio original.",
     readMore: "Leer en la fuente",
   },
+  nav: { map: "Mapa", news: "Noticias", scoop: "Escándalos" },
+  scoop: {
+    eyebrow: "El lado duro del dinero público",
+    title: "Escándalos del dinero público",
+    subtitle:
+      "Corrupción, fraude y mala gestión de fondos públicos en España e Italia, según los medios. Casos recientes, cada uno enlazado a su fuente.",
+    badge: "Caso",
+    seeAll: "Ver todos los escándalos",
+    empty: "No hay titulares ahora mismo. Vuelve pronto.",
+    disclaimer:
+      "Importante: estos son titulares publicados por medios de comunicación, recopilados de forma automática y enlazados a su fuente original. Cuentas Claras no acusa a ninguna persona ni entidad y respeta plenamente la presunción de inocencia: mientras no exista sentencia firme, toda persona es inocente. Verifica siempre la información en la fuente.",
+  },
 };
 
 const it: Messages = {
@@ -190,6 +212,18 @@ const it: Messages = {
     title: "Il denaro pubblico nelle notizie",
     subtitle: "Titoli recenti dai media su bilanci e spesa pubblica. Ogni notizia rimanda alla testata originale.",
     readMore: "Leggi sulla fonte",
+  },
+  nav: { map: "Mappa", news: "Notizie", scoop: "Scandali" },
+  scoop: {
+    eyebrow: "Il lato duro del denaro pubblico",
+    title: "Scandali del denaro pubblico",
+    subtitle:
+      "Corruzione, frode e cattiva gestione dei fondi pubblici in Spagna e Italia, secondo i media. Casi recenti, ciascuno collegato alla sua fonte.",
+    badge: "Caso",
+    seeAll: "Vedi tutti gli scandali",
+    empty: "Nessun titolo al momento. Torna presto.",
+    disclaimer:
+      "Importante: questi sono titoli pubblicati dai media, raccolti automaticamente e collegati alla fonte originale. Cuentas Claras non accusa nessuna persona o ente e rispetta pienamente la presunzione di innocenza: fino a sentenza definitiva, ogni persona è innocente. Verifica sempre l'informazione alla fonte.",
   },
 };
 

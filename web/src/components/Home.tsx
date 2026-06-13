@@ -3,8 +3,9 @@
 import Link from "next/link";
 import Explorer from "@/components/Explorer";
 import News from "@/components/News";
+import Scoop from "@/components/Scoop";
+import SiteNav from "@/components/SiteNav";
 import { CountUp, Reveal } from "@/components/Motion";
-import LangSwitch from "@/components/LangSwitch";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { DATA_SOURCE_URL, COUNTRIES, type CountryCode } from "@/lib/data";
 
@@ -40,14 +41,10 @@ export default function Home() {
   const { locale, m } = useLocale();
   return (
     <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 pb-24">
-      {/* Barra superior: marca + idioma */}
-      <div className="flex items-center justify-between pt-4">
-        <span className="neon-text font-semibold tracking-tight">Cuentas Claras</span>
-        <LangSwitch />
-      </div>
+      <SiteNav />
 
       {/* Aviso de integridad de datos */}
-      <div className="mt-3 flex justify-center">
+      <div className="mt-5 flex justify-center">
         <div className="text-center text-[12px] text-muted bg-[rgba(120,160,255,0.06)] border border-[var(--panel-border)] rounded-full px-4 py-1.5 inline-flex items-center gap-2">
           <span className="text-green">● {m.banner.real}</span>
           <span className="opacity-50">·</span>
@@ -135,6 +132,9 @@ export default function Home() {
           </Reveal>
         ))}
       </section>
+
+      {/* Rincón scoop: escándalos (adelanto + enlace a la página dedicada) */}
+      <Scoop />
 
       {/* Noticias */}
       <News />

@@ -13,13 +13,13 @@ name: Build & Deploy (Cloudflare Pages)
 
 on:
   workflow_dispatch:
-  # Refresco frecuente de NOTICIAS en el sitio Cloudflare en vivo. Las fuentes de
-  # prensa (Google News) sí responden a los runners de GitHub (a diferencia del
-  # edge de Cloudflare), así que aquí es donde tiene sentido refrescar a menudo.
-  # Requiere los 2 secrets de Cloudflare (ver arriba). Si no están, este workflow
-  # falla solo en el paso de deploy y no afecta al sitio.
-  schedule:
-    - cron: "0 * * * *" # cada hora
+  # === REFRESCO HORARIO AUTOMÁTICO (actívalo en 1 paso) ===
+  # Para que el sitio Cloudflare en vivo refresque las noticias cada hora, añade
+  # los 2 secrets del repo (Settings → Secrets and variables → Actions):
+  #   CLOUDFLARE_API_TOKEN   y   CLOUDFLARE_ACCOUNT_ID
+  # y luego DESCOMENTA estas 2 líneas:
+  # schedule:
+  #   - cron: "0 * * * *" # cada hora
 
 jobs:
   deploy:

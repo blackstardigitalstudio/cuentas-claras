@@ -6,9 +6,35 @@ import News from "@/components/News";
 import { CountUp, Reveal } from "@/components/Motion";
 import LangSwitch from "@/components/LangSwitch";
 import { useLocale } from "@/i18n/LocaleProvider";
-import { REGIONS, TOTALS, DATA_SOURCE_URL, COUNTRIES, type CountryCode } from "@/lib/data";
+import { DATA_SOURCE_URL, COUNTRIES, type CountryCode } from "@/lib/data";
 
-const bcn = REGIONS["Barcelona"];
+// Cifra de impacto, real: gasto público total que el sitio tiene desglosado
+// (suma de las ciudades con datos reales de España e Italia).
+const realGastos = (["es", "it"] as CountryCode[]).reduce(
+  (sum, p) => sum + COUNTRIES[p].realNames.reduce((s, n) => s + (COUNTRIES[p].regions[n]?.gastos || 0), 0),
+  0
+);
+const realCities = COUNTRIES.es.realNames.length + COUNTRIES.it.realNames.length;
+const mappedProvinces = COUNTRIES.es.list.length + COUNTRIES.it.list.length;
+
+// Iconos en línea (estilo Lucide, sin emoji) para la franja de impacto.
+const IconCity = (p: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" {...p}>
+    <line x1="3" x2="21" y1="22" y2="22" /><line x1="6" x2="6" y1="18" y2="11" /><line x1="10" x2="10" y1="18" y2="11" />
+    <line x1="14" x2="14" y1="18" y2="11" /><line x1="18" x2="18" y1="18" y2="11" /><polygon points="12 2 20 7 4 7" />
+  </svg>
+);
+const IconLayers = (p: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" {...p}>
+    <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
+    <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" /><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
+  </svg>
+);
+const IconRefresh = (p: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" {...p}>
+    <path d="M3 12a9 9 0 0 1 15-6.7L21 8" /><path d="M21 3v5h-5" /><path d="M21 12a9 9 0 0 1-15 6.7L3 16" /><path d="M8 16H3v5" />
+  </svg>
+);
 
 export default function Home() {
   const { locale, m } = useLocale();
@@ -57,24 +83,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tira de estadísticas */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
-        {[
-          { label: m.stats.provinces, value: TOTALS.count, kind: "int" as const },
-          { label: m.stats.income, value: bcn.ingresos, kind: "compact" as const },
-          { label: m.stats.expense, value: bcn.gastos, kind: "compact" as const },
-          { label: m.stats.realLabel, value: null as number | null, text: "Open Data" },
-        ].map((s, i) => (
-          <Reveal key={s.label} delay={i * 0.08}>
-            <div className="glass px-4 py-5 text-center">
-              <p className="tabular text-xl md:text-2xl font-semibold neon-text">
-                {s.value === null ? s.text : <CountUp value={s.value} kind={s.kind} />}
-              </p>
-              <p className="text-xs text-muted mt-1">{s.label}</p>
-            </div>
-          </Reveal>
-        ))}
-      </section>
+      {/* Franja de impacto: una cifra grande y real (gasto público desglosado) */}
+      <Reveal>
+        <section className="glass relative overflow-hidden px-5 py-8 md:px-10 md:py-10 mb-12 text-center">
+          <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[36rem] h-[36rem] max-w-full rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.12),transparent_60%)]" />
+          <p className="relative text-[11px] md:text-xs uppercase tracking-[0.25em] text-muted">{m.impact.lead}</p>
+          <p className="relative mt-2 tabular font-bold neon-text leading-none text-5xl sm:text-6xl md:text-7xl">
+            <CountUp value={realGastos} kind="compact" />
+          </p>
+          <p className="relative mt-2 text-sm md:text-base text-muted">{m.impact.analyzed}</p>
+
+          <div className="relative mt-8 grid grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto">
+            {[
+              { Icon: IconCity, value: <CountUp value={realCities} kind="int" />, label: m.impact.cities },
+              { Icon: IconLayers, value: "5", label: m.impact.levels },
+              { Icon: IconRefresh, value: <CountUp value={mappedProvinces} kind="int" />, label: m.impact.provinces },
+            ].map((s, i) => (
+              <div key={i} className="rounded-2xl border border-[var(--panel-border)] bg-[rgba(120,160,255,0.04)] px-2 py-4 flex flex-col items-center gap-1.5">
+                <s.Icon className="w-5 h-5 text-cyan/90" aria-hidden="true" />
+                <span className="tabular text-2xl md:text-3xl font-semibold text-fg leading-none">{s.value}</span>
+                <span className="text-[11px] md:text-xs text-muted leading-tight">{s.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="relative mt-6 inline-flex items-center gap-2 text-[11px] text-green">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-green opacity-60 motion-safe:animate-ping" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green" />
+            </span>
+            {m.impact.weekly}
+          </p>
+        </section>
+      </Reveal>
 
       {/* Explorador */}
       <Explorer />
@@ -176,14 +217,18 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="mt-16 pt-8 border-t border-[var(--panel-border)] text-sm text-muted flex flex-col md:flex-row items-center justify-between gap-3">
-        <p>
-          <span className="neon-text font-semibold">Cuentas Claras</span> · {m.footer.data}{" "}
-          <a href={DATA_SOURCE_URL} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">
-            Ministerio de Hacienda
-          </a>
-        </p>
-        <p>{m.footer.tagline} · Made in Italy 🇮🇹</p>
+      <footer className="mt-16 pt-8 border-t border-[var(--panel-border)] text-sm text-muted">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3">
+          <p>
+            <span className="neon-text font-semibold">Cuentas Claras</span> · {m.footer.data}{" "}
+            <a href={DATA_SOURCE_URL} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">
+              Ministerio de Hacienda
+            </a>
+          </p>
+          <p>{m.footer.tagline} · Made in Italy 🇮🇹</p>
+        </div>
+        {/* Disclaimer legal (texto pequeño) */}
+        <p className="mt-6 text-[11px] leading-relaxed text-muted/70 max-w-4xl">{m.footer.disclaimer}</p>
       </footer>
     </main>
   );

@@ -71,7 +71,7 @@ export default function RegionPanel({ region }: { region: RegionData }) {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
-      className="glass p-6 md:p-7"
+      className="glass p-5 sm:p-6 md:p-7 min-w-0"
     >
       <div className="flex items-start justify-between gap-4">
         <div>

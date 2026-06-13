@@ -27,9 +27,9 @@ export default function Explorer() {
   };
 
   return (
-    <div id="explorar" className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start">
+    <div id="explorar" className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start min-w-0">
       {/* Mapa + controles */}
-      <div className="glass p-5 md:p-6">
+      <div className="glass p-4 sm:p-5 md:p-6 min-w-0 overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
           {/* Selector de país */}
           <div className="inline-flex rounded-full border border-[var(--panel-border)] overflow-hidden text-sm">
@@ -72,7 +72,7 @@ export default function Explorer() {
           <p className="text-xs uppercase tracking-widest text-green mb-2">
             ● {m.explorer.withReal} <span className="text-muted">({C.realNames.length})</span>
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex gap-2 flex-nowrap overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible scroll-chips">
             {[...C.realNames]
               .sort((a, b) => C.regions[b].gastos - C.regions[a].gastos)
               .slice(0, 10)
@@ -80,7 +80,7 @@ export default function Explorer() {
               <button
                 key={name}
                 onClick={() => setSelected(name)}
-                className={`text-xs px-3 py-1.5 rounded-full border transition ${
+                className={`shrink-0 whitespace-nowrap text-xs px-3 py-2 rounded-full border transition ${
                   selected === name
                     ? "border-green text-fg bg-[rgba(52,211,153,0.14)]"
                     : "border-[rgba(52,211,153,0.4)] text-green hover:bg-[rgba(52,211,153,0.08)]"
@@ -95,12 +95,12 @@ export default function Explorer() {
         {/* Ranking rápido */}
         <div className="mt-4">
           <p className="text-xs uppercase tracking-widest text-muted mb-2">{m.explorer.topSpending}</p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex gap-2 flex-nowrap overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible scroll-chips">
             {C.list.slice(0, 6).map((r) => (
               <button
                 key={r.slug}
                 onClick={() => setSelected(r.name)}
-                className={`text-xs px-3 py-1.5 rounded-full border transition ${
+                className={`shrink-0 whitespace-nowrap text-xs px-3 py-2 rounded-full border transition ${
                   region === r
                     ? "border-cyan text-fg bg-[rgba(34,211,238,0.12)]"
                     : "border-[var(--panel-border)] text-muted hover:text-fg"

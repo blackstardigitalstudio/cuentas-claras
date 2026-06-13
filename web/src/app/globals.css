@@ -168,6 +168,20 @@ select {
   animation: bubbleFloat 4.5s ease-in-out infinite;
 }
 
+/* Fila de chips deslizable en móvil: barra de scroll fina y discreta. */
+.scroll-chips {
+  scrollbar-width: thin;
+  scrollbar-color: var(--panel-border) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-chips::-webkit-scrollbar {
+  height: 4px;
+}
+.scroll-chips::-webkit-scrollbar-thumb {
+  background: var(--panel-border);
+  border-radius: 9999px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .aurora { animation: none; }
   .title-glow::after { animation: none; }

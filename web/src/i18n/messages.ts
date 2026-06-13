@@ -20,6 +20,7 @@ export type Messages = {
     cta2: string;
   };
   stats: { provinces: string; income: string; expense: string; realLabel: string };
+  impact: { lead: string; analyzed: string; cities: string; provinces: string; levels: string; weekly: string };
   how: { t1: string; d1: string; t2: string; d2: string; t3: string; d3: string };
   explorer: { mapTitle: string; province: string; withReal: string; topSpending: string; spain: string; italy: string };
   panel: {
@@ -38,7 +39,7 @@ export type Messages = {
     whereGoesHint: string;
     howSpent: string;
   };
-  footer: { data: string; tagline: string };
+  footer: { data: string; tagline: string; disclaimer: string };
   news: { title: string; subtitle: string; readMore: string };
 };
 
@@ -49,12 +50,12 @@ const es: Messages = {
     sample: "otras provincias: cifras de ejemplo",
   },
   hero: {
-    eyebrow: "Transparencia · Datos públicos · España",
+    eyebrow: "Transparencia · Datos públicos · España e Italia",
     titleA: "¿A dónde va ",
     highlight: "el dinero público",
     titleB: "?",
     subtitle:
-      "Explora de forma clara los ingresos y gastos de los ayuntamientos españoles. Mapa interactivo por provincia y categoría, con datos oficiales.",
+      "Los ingresos y gastos reales de los ayuntamientos de España e Italia, en lenguaje claro. Mapa interactivo y desglose detallado del gasto, con datos oficiales.",
     cta1: "Explorar el mapa",
     cta2: "Fuente oficial",
   },
@@ -63,6 +64,14 @@ const es: Messages = {
     income: "Barcelona · ingresos 2024",
     expense: "Barcelona · gastos 2024",
     realLabel: "Datos reales",
+  },
+  impact: {
+    lead: "Hemos puesto bajo la lupa",
+    analyzed: "de gasto público real",
+    cities: "ciudades con datos reales",
+    provinces: "provincias mapeadas",
+    levels: "niveles de desglose",
+    weekly: "actualización semanal",
   },
   how: {
     t1: "Datos oficiales",
@@ -99,6 +108,8 @@ const es: Messages = {
   footer: {
     data: "Datos:",
     tagline: "Hecho con datos públicos, para la ciudadanía",
+    disclaimer:
+      "Aviso legal: Cuentas Claras reúne y simplifica datos presupuestarios públicos con fines informativos. A pesar de nuestro empeño en la exactitud, la información puede contener errores, omisiones o desfases respecto a la fuente, y no constituye información oficial ni asesoramiento de ningún tipo. Verifica siempre los datos en la fuente oficial antes de tomar decisiones. No asumimos ninguna responsabilidad por el uso que se haga de esta información.",
   },
   news: {
     title: "El dinero público en las noticias",
@@ -114,12 +125,12 @@ const it: Messages = {
     sample: "altre province: dati di esempio",
   },
   hero: {
-    eyebrow: "Trasparenza · Dati pubblici · Spagna",
+    eyebrow: "Trasparenza · Dati pubblici · Spagna e Italia",
     titleA: "Dove va ",
     highlight: "il denaro pubblico",
     titleB: "?",
     subtitle:
-      "Esplora in modo chiaro le entrate e le spese dei comuni spagnoli. Mappa interattiva per provincia e categoria, con dati ufficiali.",
+      "Le entrate e le spese reali dei comuni di Spagna e Italia, in linguaggio chiaro. Mappa interattiva e dettaglio approfondito della spesa, con dati ufficiali.",
     cta1: "Esplora la mappa",
     cta2: "Fonte ufficiale",
   },
@@ -128,6 +139,14 @@ const it: Messages = {
     income: "Barcellona · entrate 2024",
     expense: "Barcellona · spese 2024",
     realLabel: "Dati reali",
+  },
+  impact: {
+    lead: "Abbiamo messo sotto la lente",
+    analyzed: "di spesa pubblica reale",
+    cities: "città con dati reali",
+    provinces: "province mappate",
+    levels: "livelli di dettaglio",
+    weekly: "aggiornamento settimanale",
   },
   how: {
     t1: "Dati ufficiali",
@@ -164,6 +183,8 @@ const it: Messages = {
   footer: {
     data: "Dati:",
     tagline: "Fatto con dati pubblici, per i cittadini",
+    disclaimer:
+      "Avviso legale: Cuentas Claras raccoglie e semplifica dati di bilancio pubblici a scopo informativo. Nonostante l'impegno per l'accuratezza, le informazioni possono contenere errori, omissioni o disallineamenti rispetto alla fonte, e non costituiscono informazione ufficiale né consulenza di alcun tipo. Verifica sempre i dati alla fonte ufficiale prima di prendere decisioni. Non ci assumiamo alcuna responsabilità per l'uso che viene fatto di queste informazioni.",
   },
   news: {
     title: "Il denaro pubblico nelle notizie",

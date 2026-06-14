@@ -3,7 +3,7 @@ import { COUNTRIES, type CountryCode } from "@/lib/data";
 
 export const dynamic = "force-static";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://cuentas-claras-3cg.pages.dev";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const urls: MetadataRoute.Sitemap = [

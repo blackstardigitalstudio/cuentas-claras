@@ -12,16 +12,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://cuentas-claras-3cg.pages.dev";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
+  alternates: { canonical: "/" },
   title: {
-    default: "Cuentas Claras — ¿A dónde va el dinero público en España?",
+    default: "Cuentas Claras — ¿A dónde va el dinero público en España e Italia?",
     template: "%s · Cuentas Claras",
   },
   description:
-    "Visualización clara e interactiva de los ingresos y gastos de los ayuntamientos españoles, con datos oficiales del Ministerio de Hacienda. Explora el mapa de España por provincia y categoría.",
+    "Visualización clara e interactiva de los ingresos y gastos reales de los ayuntamientos de España e Italia, con datos oficiales y desglose detallado del gasto. Mapa interactivo por provincia y categoría.",
   keywords: [
     "presupuesto municipal",
     "gasto público España",
@@ -29,11 +30,16 @@ export const metadata: Metadata = {
     "datos abiertos",
     "ingresos ayuntamientos",
     "a dónde va mi dinero",
+    "bilancio comunale",
+    "spesa pubblica Italia",
+    "dove vanno i soldi pubblici",
   ],
   openGraph: {
     title: "Cuentas Claras — ¿A dónde va el dinero público?",
     description:
-      "Mapa interactivo de los presupuestos públicos de España. Ingresos y gastos por provincia y categoría, con datos oficiales.",
+      "Mapa interactivo de los presupuestos públicos de España e Italia. Ingresos y gastos por provincia y categoría, con datos oficiales.",
+    url: SITE,
+    siteName: "Cuentas Claras",
     locale: "es_ES",
     type: "website",
   },

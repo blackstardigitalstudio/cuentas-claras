@@ -2,7 +2,7 @@
 // de que las páginas existen/cambiaron → indexación más rápida.
 // Lee el sitemap del sitio en vivo y envía todas las URLs.
 
-const SITE = process.env.SITE_URL || "https://cuentas-claras-3cg.pages.dev";
+const SITE = process.env.SITE_URL || "https://www.cuentas-clara.com";
 const KEY = "7f3c1e9a2b4d6f8091a2b3c4d5e6f7a8";
 
 async function main() {

@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const urls: MetadataRoute.Sitemap = [
     { url: `${SITE}/`, lastModified, changeFrequency: "daily", priority: 1 },
+    { url: `${SITE}/italia/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/ranking/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/escandalos/`, lastModified, changeFrequency: "hourly", priority: 0.8 },
   ];

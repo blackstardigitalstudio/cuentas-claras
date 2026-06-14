@@ -238,7 +238,13 @@ export default function Home() {
           {(["es", "it"] as CountryCode[]).map((p) => (
             <div key={p}>
               <h3 className="text-xs uppercase tracking-widest text-cyan/80 mb-2">
-                {p === "es" ? "🇪🇸 España" : "🇮🇹 Italia"}
+                {p === "es" ? (
+                  "🇪🇸 España"
+                ) : (
+                  <Link href="/italia" className="hover:text-fg transition">
+                    🇮🇹 Italia →
+                  </Link>
+                )}
               </h3>
               <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-sm">
                 {Object.values(COUNTRIES[p].regions)

@@ -125,6 +125,88 @@ Civio, Newtral, Datadista; en Italia Il Sole 24 Ore (Info Data), Ondata, OpenPol
 
 ---
 
+## 6-bis. Emails LISTOS PARA ENVIAR (personalizados por medio)
+
+> Solo cambia la firma `— [tu nombre]`. Envíalos de uno en uno (no en CC masivo).
+> Adjunta o enlaza una captura del mapa o del ranking.
+
+**→ Civio (es) · transparencia@civio.es**
+**Asunto:** Herramienta abierta del gasto municipal (ES+IT) — por si os sirve para Civio
+> Hola, equipo de Civio:
+> Soy admirador de vuestro trabajo en transparencia. He construido **Cuentas Claras**
+> (https://www.cuentas-clara.com), una web gratuita y abierta que convierte los
+> presupuestos municipales oficiales en un mapa interactivo, con desglose del gasto
+> hasta 5 niveles (área→política→programa→subprograma en Barcelona) y un ranking
+> entre las 50 provincias: https://www.cuentas-clara.com/ranking/
+> Los datos salen de fuentes oficiales (Hacienda vía Gobierto, portales open data) y
+> verifico que ingresos ≈ gastos. Por si os sirve para enlazar o para una pieza.
+> Encantado de explicar la metodología. — [tu nombre]
+
+**→ eldiario.org / Datadista (es) · seccion de datos**
+**Asunto:** Mapa interactivo del gasto público municipal — datos oficiales, abierto
+> Hola [nombre]:
+> He publicado **Cuentas Claras** (https://www.cuentas-clara.com): los presupuestos
+> de los ayuntamientos en un mapa, con buscador por ciudad y desglose claro del gasto.
+> Incluye un ranking de qué ciudades gastan más y una sección de actualidad sobre
+> corrupción/fondos públicos enlazada a cada ciudad. Gratis, sin registro, ES/IT.
+> Por si os resulta útil para vuestras piezas de datos o lo queréis enlazar; puedo
+> preparar datos a medida de cualquier provincia. Gracias. — [tu nombre]
+
+**→ El Confidencial (Data) (es)**
+**Asunto:** Visualización abierta de presupuestos municipales (drill-down 5 niveles)
+> Hola [nombre]:
+> Os comparto por si os interesa: **Cuentas Claras** (https://www.cuentas-clara.com),
+> un mapa interactivo de ingresos y gastos municipales con desglose hasta 5 niveles y
+> ranking entre ciudades, con datos oficiales verificados. Útil como fuente o enlace
+> para reportajes de gasto público. Feliz de detallar el pipeline de datos. — [tu nombre]
+
+**→ Il Sole 24 Ore — Info Data (it)**
+**Oggetto:** Mappa aperta della spesa pubblica dei comuni (Italia e Spagna)
+> Buongiorno,
+> ho realizzato **Cuentas Claras** (https://www.cuentas-clara.com/italia/), uno
+> strumento gratuito e aperto che trasforma i bilanci comunali ufficiali in una mappa
+> interattiva, con dettaglio della spesa per missione e una classifica tra le città.
+> Per l'Italia ci sono Milano e Bologna (con dati ufficiali verificati), in crescita.
+> Se può esservi utile per i vostri pezzi di data journalism o da linkare, sono a
+> disposizione per spiegare la metodologia. Grazie. — [tuo nome]
+
+**→ Ondata / OpenPolis (it) · community open data**
+**Oggetto:** Strumento civico open sulla spesa pubblica comunale — collaborazione?
+> Ciao,
+> seguo il vostro lavoro sull'open data. Ho costruito **Cuentas Claras**
+> (https://www.cuentas-clara.com), che rende leggibili i bilanci comunali (entrate,
+> spese, dettaglio per missione) su mappa, con classifica e sezione "scandali" del
+> denaro pubblico. Mi piacerebbe segnalarlo alla community / capire se ha senso una
+> collaborazione sui dati italiani. Grazie mille. — [tuo nome]
+
+---
+
+## 7-bis. DÓNDE PUBLICAR — enlaces directos, por prioridad
+
+> Calidad > cantidad. **Evita las listas de "300+ directorios"**: son spam y Google
+> los penaliza. Estos son de alta autoridad y/o pertinentes (civic/open data).
+
+**Alta prioridad (autoridad + audiencia):**
+1. Hacker News — Show HN: https://news.ycombinator.com/submit
+2. Product Hunt: https://www.producthunt.com/posts/new (backlink DR~95)
+3. Reddit: https://reddit.com/r/spain · /r/es · /r/italy · /r/dataisbeautiful (lee las reglas)
+4. BetaList: https://betalist.com/submit
+5. AlternativeTo: https://alternativeto.net/manage/lists/ (añadir software)
+6. Indie Hackers: https://www.indiehackers.com/ · Peerlist: https://peerlist.io/ · DevHunt: https://devhunt.org/
+
+**Civic / open data (backlinks de calidad y público afín):**
+7. datos.gob.es — aplicaciones: https://datos.gob.es/es/aplicaciones (enviar la app)
+8. Civio: https://civio.es/contacto/ · Open Knowledge ES
+9. Spaghetti Open Data (IT): https://www.spaghettiopendata.org/ · onData: https://www.ondata.it/
+10. Awesome lists (GitHub, abre un PR): `awesome-opendata`, `awesome-civic-tech`, `awesome-italia-opendata`
+
+**Buscadores (lo primero):**
+11. Google Search Console → enviar `sitemap.xml` · Bing Webmaster Tools (IndexNow ya activo)
+
+**Agregadores ES/IT:** Menéame https://www.meneame.net/submit · (IT) comunità di settore.
+
+---
+
 ## 7. Directorios y comunidades (enlaces + descubrimiento)
 
 **Open data / cívico (backlinks de calidad):**

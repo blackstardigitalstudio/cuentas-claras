@@ -187,6 +187,45 @@ export default function Home() {
         )}
       </section>
 
+      {/* FAQ (preguntas que la gente busca) + datos estructurados FAQPage */}
+      {(() => {
+        const faqs =
+          locale === "it"
+            ? [
+                { q: "Dove vanno i soldi pubblici del mio comune?", a: "Ogni comune incassa (imposte, tasse, trasferimenti) e spende in aree come servizi di base, sociale, istruzione o amministrazione. Su Cuentas Claras cerchi la tua città sulla mappa e vedi il dettaglio completo, fino al singolo programma." },
+                { q: "Da dove arrivano i dati e sono affidabili?", a: "Da fonti ufficiali: Ministero delle Finanze spagnolo (via Gobierto/INE) e portali open data comunali. Verifichiamo che entrate e spese quadrino e non inventiamo mai cifre." },
+                { q: "Ogni quanto si aggiornano?", a: "I bilanci escono per periodi; il sito si rigenera automaticamente e le notizie si aggiornano ogni poche ore." },
+                { q: "È gratis?", a: "Sì, totalmente gratis e senza registrazione." },
+                { q: "Quali città posso consultare?", a: "Le 50 province spagnole e città italiane come Milano e Bologna, e continuiamo ad aggiungerne." },
+              ]
+            : [
+                { q: "¿A dónde va el dinero público de mi ciudad?", a: "Cada ayuntamiento recauda (impuestos, tasas, transferencias) y gasta en áreas como servicios básicos, social, educación o administración. En Cuentas Claras buscas tu ciudad en el mapa y ves el desglose completo, hasta el detalle por programa." },
+                { q: "¿De dónde salen los datos y son fiables?", a: "De fuentes oficiales: Ministerio de Hacienda (vía Gobierto/INE) y portales de datos abiertos municipales. Verificamos que ingresos y gastos cuadren y nunca inventamos cifras." },
+                { q: "¿Cada cuánto se actualizan?", a: "Los presupuestos se publican por periodos; el sitio se regenera automáticamente y las noticias se refrescan cada pocas horas." },
+                { q: "¿Es gratis?", a: "Sí, totalmente gratis y sin registro." },
+                { q: "¿Qué ciudades puedo consultar?", a: "Las 50 provincias españolas y ciudades italianas como Milán y Bolonia, y seguimos añadiendo." },
+              ];
+        const faqLd = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+        };
+        return (
+          <section className="mt-16">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+            <h2 className="text-xl md:text-2xl font-semibold">{locale === "it" ? "Domande frequenti" : "Preguntas frecuentes"}</h2>
+            <div className="mt-5 space-y-2.5 max-w-3xl">
+              {faqs.map((f, i) => (
+                <details key={i} className="glass p-4" {...(i === 0 ? { open: true } : {})}>
+                  <summary className="font-medium cursor-pointer marker:text-cyan">{f.q}</summary>
+                  <p className="text-sm text-muted mt-2">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
+
       {/* Directorio de ciudades (enlaces internos para SEO + navegación) */}
       <section className="mt-16">
         <h2 className="text-xl md:text-2xl font-semibold">{locale === "it" ? "Tutte le città" : "Todas las ciudades"}</h2>

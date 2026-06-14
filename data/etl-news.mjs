@@ -27,24 +27,34 @@ const FEEDS = {
   },
 };
 
-// "Rincón scoop": titulares duros sobre corrupción, fraude y mala gestión del
-// dinero público. Son TITULARES DE MEDIOS (cada uno enlaza a su fuente); el sitio
-// no acusa a nadie y respeta la presunción de inocencia (aviso en la página).
-const SCOOP_FEEDS = {
-  es: {
-    q: 'corrupción ayuntamiento OR "malversación de caudales públicos" OR "fraude fondos públicos" OR "alcalde detenido" OR "dinero público" juzgado',
-    hl: "es",
-    gl: "ES",
-    ceid: "ES:es",
+// "Rincón scoop": titulares duros sobre el dinero público, por FILONES temáticos.
+// Son TITULARES DE MEDIOS (cada uno enlaza a su fuente); el sitio no acusa a nadie
+// y respeta la presunción de inocencia (aviso en la página).
+const LOC = {
+  es: { hl: "es", gl: "ES", ceid: "ES:es" },
+  it: { hl: "it", gl: "IT", ceid: "IT:it" },
+};
+// Clave de tema → consulta por idioma. El tema "scoop" (corrupción) conserva la
+// clave `<loc>_scoop` por retro-compatibilidad (es el que usa la portada).
+const SCOOP_THEMES = {
+  scoop: {
+    es: 'corrupción ayuntamiento OR "malversación de caudales públicos" OR "fraude fondos públicos" OR "alcalde detenido"',
+    it: 'corruzione comune OR "peculato fondi pubblici" OR "scandalo appalti" OR "arresto sindaco"',
   },
-  it: {
-    q: 'corruzione comune OR "peculato fondi pubblici" OR "scandalo appalti" OR "arresto sindaco" OR "danno erariale" Corte dei Conti',
-    hl: "it",
-    gl: "IT",
-    ceid: "IT:it",
+  funds: {
+    es: '"fondos europeos" irregularidades OR "fondos Next Generation" OR subvenciones fraude OR adjudicación contrato irregular',
+    it: '"fondi PNRR" irregolarità OR "fondi europei" frode OR appalti pubblici indagine OR subappalti irregolari',
+  },
+  verdicts: {
+    es: '"Tribunal de Cuentas" OR condenado corrupción OR "pena de prisión" malversación OR detenido cargo público',
+    it: '"Corte dei Conti" condanna OR condannato corruzione OR arrestato sindaco OR "danno erariale" sentenza',
+  },
+  waste: {
+    es: 'despilfarro OR sobrecoste obra pública OR "contrato a dedo" OR gasto polémico ayuntamiento',
+    it: "sprechi soldi pubblici OR sprechi comune OR sovrapprezzo appalto OR spreco fondi pubblici",
   },
 };
-const MAX_SCOOP = 12;
+const MAX_SCOOP = 10;
 
 function decodeEntities(s) {
   return s
@@ -97,13 +107,15 @@ async function main() {
     console.log(`Noticias ${loc}: ${news[loc].length} titulares`);
     news[loc].slice(0, 2).forEach((n) => console.log("   -", n.title.slice(0, 70), "·", n.source));
   }
-  // Rincón scoop (corrupción / fraude). No es crítico: si falla, se conserva el resto.
-  for (const [loc, cfg] of Object.entries(SCOOP_FEEDS)) {
-    try {
-      news[`${loc}_scoop`] = await fetchFeed(loc, cfg, MAX_SCOOP);
-      console.log(`Scoop ${loc}: ${news[`${loc}_scoop`].length} titulares`);
-    } catch (e) {
-      console.log(`Scoop ${loc}: falló (${e.message})`);
+  // Rincón scoop por filones temáticos. No es crítico: si un feed falla, se omite.
+  for (const [theme, q] of Object.entries(SCOOP_THEMES)) {
+    for (const loc of ["es", "it"]) {
+      try {
+        news[`${loc}_${theme}`] = await fetchFeed(loc, { q: q[loc], ...LOC[loc] }, MAX_SCOOP);
+        console.log(`Scoop ${loc}/${theme}: ${news[`${loc}_${theme}`].length} titulares`);
+      } catch (e) {
+        console.log(`Scoop ${loc}/${theme}: falló (${e.message})`);
+      }
     }
   }
   const outDir = join(__dirname, "..", "web", "src", "data");

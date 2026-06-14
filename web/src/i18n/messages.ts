@@ -50,7 +50,7 @@ export type Messages = {
     seeAll: string;
     empty: string;
     disclaimer: string;
-    themes: { scoop: string; funds: string; verdicts: string; waste: string };
+    themes: { scoop: string; funds: string; verdicts: string; waste: string; nepotism: string; sanctions: string };
   };
 };
 
@@ -145,6 +145,8 @@ const es: Messages = {
       funds: "Fondos públicos y europeos",
       verdicts: "Sentencias y condenas",
       waste: "Despilfarro y sobrecostes",
+      nepotism: "Enchufismo y nepotismo",
+      sanctions: "Multas e inhabilitaciones",
     },
   },
 };
@@ -240,6 +242,8 @@ const it: Messages = {
       funds: "Fondi pubblici ed europei",
       verdicts: "Sentenze e condanne",
       waste: "Sprechi e sovrapprezzi",
+      nepotism: "Parentopoli e clientelismo",
+      sanctions: "Sanzioni e interdizioni",
     },
   },
 };

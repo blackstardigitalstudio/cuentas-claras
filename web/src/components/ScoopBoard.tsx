@@ -24,6 +24,8 @@ export default function ScoopBoard() {
       <ScoopSection theme="funds" />
       <ScoopSection theme="verdicts" />
       <ScoopSection theme="waste" />
+      <ScoopSection theme="nepotism" />
+      <ScoopSection theme="sanctions" />
 
       <p className="mt-12 text-[11px] leading-relaxed text-muted/70 max-w-4xl border-t border-[var(--panel-border)] pt-5">
         {m.scoop.disclaimer}

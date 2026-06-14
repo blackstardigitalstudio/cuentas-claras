@@ -6,7 +6,11 @@ import { useLiveNews } from "@/lib/useLiveNews";
 
 // Un filón temático del rincón scoop (corrupción, fondos, sentencias, despilfarro).
 // Lee data[`<locale>_<theme>`]. Si hay menos de 2 titulares, no se muestra.
-export default function ScoopSection({ theme }: { theme: "scoop" | "funds" | "verdicts" | "waste" }) {
+export default function ScoopSection({
+  theme,
+}: {
+  theme: "scoop" | "funds" | "verdicts" | "waste" | "nepotism" | "sanctions";
+}) {
   const { locale, m } = useLocale();
   const { data } = useLiveNews();
   const items = data[`${locale}_${theme}`] || data[`es_${theme}`] || [];

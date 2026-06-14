@@ -53,6 +53,14 @@ const SCOOP_THEMES = {
     es: 'despilfarro OR sobrecoste obra pública OR "contrato a dedo" OR gasto polémico ayuntamiento',
     it: "sprechi soldi pubblici OR sprechi comune OR sovrapprezzo appalto OR spreco fondi pubblici",
   },
+  nepotism: {
+    es: 'enchufismo ayuntamiento OR nepotismo cargo público OR "contratación a dedo" OR enchufe administración',
+    it: "parentopoli OR assunzioni clientelari OR concorso pubblico truccato OR nepotismo pubblica amministrazione",
+  },
+  sanctions: {
+    es: 'inhabilitación cargo público OR "Tribunal de Cuentas" multa OR sanción alcalde OR reintegro fondos públicos',
+    it: 'interdizione pubblici uffici OR "Corte dei Conti" sanzione OR sindaco multato OR risarcimento danno erariale',
+  },
 };
 const MAX_SCOOP = 10;
 

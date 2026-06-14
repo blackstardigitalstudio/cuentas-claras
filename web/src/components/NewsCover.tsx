@@ -1,57 +1,17 @@
-// Copertina vettoriale generata per ogni notizia: gradiente + icona a tema + glow.
-// Deterministica dal titolo (stesso titolo → stessa copertina). Tutto inline:
-// nessuna richiesta esterna, nessun problema di CSP o copyright, e l'aspect-ratio
-// 16:9 fisso (viewBox) evita qualunque layout shift.
+// Copertina editoriale generata per ogni notizia: fondo a strati (gradiente +
+// aloni luminosi + griglia + vignetta) e un grande simbolo a tema con bagliore.
+// Deterministica dal titolo. Tutto inline e vettoriale: nessuna richiesta esterna,
+// nessun problema di CSP o copyright, aspect-ratio 16:9 fisso (zero layout shift).
 
-const PALETTE: Record<string, string> = {
-  cyan: "#22d3ee",
-  violet: "#818cf8",
-  magenta: "#f472b6",
-  green: "#34d399",
-  amber: "#fbbf24",
-};
-const THEMES: [string, string][] = [
-  [PALETTE.cyan, PALETTE.violet],
-  [PALETTE.violet, PALETTE.magenta],
-  [PALETTE.green, PALETTE.cyan],
-  [PALETTE.amber, PALETTE.magenta],
-];
+type Topic = "justice" | "funds" | "city" | "money" | "data";
 
-// Icone in stile Lucide (stroke), nessuna emoji.
-const ICONS: Record<string, React.ReactNode> = {
-  court: (
-    <>
-      <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
-      <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
-      <path d="M7 21h10" />
-      <path d="M12 3v18" />
-      <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
-    </>
-  ),
-  city: (
-    <>
-      <line x1="3" x2="21" y1="22" y2="22" />
-      <line x1="6" x2="6" y1="18" y2="11" />
-      <line x1="10" x2="10" y1="18" y2="11" />
-      <line x1="14" x2="14" y1="18" y2="11" />
-      <line x1="18" x2="18" y1="18" y2="11" />
-      <polygon points="12 2 20 7 4 7" />
-    </>
-  ),
-  money: (
-    <>
-      <path d="M4 10h12" />
-      <path d="M4 14h9" />
-      <path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2" />
-    </>
-  ),
-  data: (
-    <>
-      <line x1="12" x2="12" y1="20" y2="10" />
-      <line x1="18" x2="18" y1="20" y2="4" />
-      <line x1="6" x2="6" y1="20" y2="16" />
-    </>
-  ),
+// Palette coerente per tema (colore principale + secondario).
+const PALETTE: Record<Topic, [string, string]> = {
+  justice: ["#ff5b6e", "#f472b6"],
+  funds: ["#818cf8", "#22d3ee"],
+  city: ["#22d3ee", "#818cf8"],
+  money: ["#34d399", "#22d3ee"],
+  data: ["#38bdf8", "#c084fc"],
 };
 
 function hashStr(s: string): number {
@@ -60,41 +20,125 @@ function hashStr(s: string): number {
   return h;
 }
 
-function topicOf(title: string): keyof typeof ICONS {
+function topicOf(title: string): Topic {
   const t = title.toLowerCase();
-  if (/corte dei conti|tribunal|fiscal|auditor|indagin|inchiest|condann|fraud|corru|sentenz|procur/.test(t)) return "court";
-  if (/comune|ayuntamiento|municipi|alcalde|sindac|giunta|consigli|concejal|diputaci/.test(t)) return "city";
-  if (/bilancio|presupuesto|gasto|spesa|spese|mill[oó]n|milion|fond[oi]|deuda|debit|tass|impost|ingres|entrate|investiment|inversi/.test(t)) return "money";
+  if (/corte dei conti|tribunal|sentenz|condann|corruz|corrup|pecul|malversa|fraud|frode|arrest|detenid|indagin|inchiest|reato|tangent|cohecho|interdiz|inhabilita|sanci[oó]n|sanzion|delitt/.test(t))
+    return "justice";
+  if (/fond[oi]|fondos|pnrr|europe|\bue\b|subvenc|sovvenz|appalt|adjudicaci|contrat|\bgara\b|next generation/.test(t)) return "funds";
+  if (/comune|ayuntamiento|municip|sindac|alcalde|giunta|consigl|concejal|diputaci|provincia/.test(t)) return "city";
+  if (/spesa|spese|gasto|bilancio|presupuesto|mili[oó]n|milion|debit|deuda|tass|impost|entrate|ingres|despilfarro|sprec|sobrecoste|tributi/.test(t))
+    return "money";
   return "data";
+}
+
+// Simboli grandi e pieni (path), centrati in una cella 0..100, da scalare.
+function Motif({ topic, c1, gradId }: { topic: Topic; c1: string; gradId: string }) {
+  const common = { fill: `url(#${gradId})`, stroke: c1, strokeWidth: 1.4, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
+  switch (topic) {
+    case "justice":
+      return (
+        <g {...common}>
+          <rect x="48.5" y="20" width="3" height="62" rx="1.5" />
+          <circle cx="50" cy="17" r="4" />
+          <path d="M50 24 L18 33 M50 24 L82 33" stroke={c1} strokeWidth="2.4" fill="none" />
+          <path d="M18 33 L8 56 a14 9 0 0 0 20 0 Z" />
+          <path d="M82 33 L72 56 a14 9 0 0 0 20 0 Z" />
+          <rect x="34" y="82" width="32" height="5" rx="2.5" />
+        </g>
+      );
+    case "money":
+      return (
+        <g {...common}>
+          <path d="M64 28 a26 26 0 1 0 0 44 a22 22 0 1 1 0 -44 Z" />
+          <rect x="22" y="42" width="40" height="6" rx="3" />
+          <rect x="22" y="54" width="34" height="6" rx="3" />
+          <circle cx="78" cy="78" r="9" fill="none" stroke={c1} strokeWidth="2.2" />
+          <circle cx="22" cy="80" r="7" fill="none" stroke={c1} strokeWidth="2" />
+        </g>
+      );
+    case "funds":
+      return (
+        <g {...common}>
+          {Array.from({ length: 12 }).map((_, i) => {
+            const a = (i / 12) * Math.PI * 2 - Math.PI / 2;
+            const x = 50 + Math.cos(a) * 38;
+            const y = 50 + Math.sin(a) * 38;
+            return <circle key={i} cx={x} cy={y} r="3.2" />;
+          })}
+          <path d="M62 34 a18 18 0 1 0 0 32 a15 15 0 1 1 0 -32 Z" />
+          <rect x="33" y="44" width="26" height="4.5" rx="2.25" />
+          <rect x="33" y="53" width="22" height="4.5" rx="2.25" />
+        </g>
+      );
+    case "city":
+      return (
+        <g {...common}>
+          <rect x="14" y="50" width="20" height="36" rx="2" />
+          <rect x="40" y="32" width="22" height="54" rx="2" />
+          <rect x="68" y="44" width="20" height="42" rx="2" />
+          <g fill="#05070f" stroke="none" opacity="0.55">
+            {[18, 24, 30].map((x) => [56, 64, 72].map((y) => <rect key={`${x}-${y}`} x={x} y={y} width="3" height="4" />))}
+            {[45, 51, 57].map((x) => [40, 48, 56, 64, 72].map((y) => <rect key={`b${x}-${y}`} x={x} y={y} width="3" height="4" />))}
+          </g>
+          <path d="M51 22 L51 32" stroke={c1} strokeWidth="2.4" />
+        </g>
+      );
+    default:
+      return (
+        <g {...common}>
+          <rect x="20" y="58" width="13" height="26" rx="2" />
+          <rect x="40" y="40" width="13" height="44" rx="2" />
+          <rect x="60" y="26" width="13" height="58" rx="2" />
+          <path d="M20 52 L46 36 L66 44 L86 18" fill="none" stroke={c1} strokeWidth="2.6" />
+          <circle cx="86" cy="18" r="3.4" />
+        </g>
+      );
+  }
 }
 
 export default function NewsCover({ title }: { title: string }) {
   const h = hashStr(title);
-  const [c1, c2] = THEMES[h % THEMES.length];
   const topic = topicOf(title);
-  const gid = `nc${h % 100000}`;
+  const [c1, c2] = PALETTE[topic];
+  const id = `cc${h % 100000}`;
+  // Variación de posición de los halos según el hash (para que no sean idénticos).
+  const ox = 60 + (h % 40);
+  const oy = 20 + ((h >> 3) % 30);
+
   return (
-    <svg
-      viewBox="0 0 320 180"
-      className="w-full h-auto block"
-      role="img"
-      aria-hidden="true"
-      preserveAspectRatio="xMidYMid slice"
-    >
+    <svg viewBox="0 0 320 180" className="w-full h-auto block" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
       <defs>
-        <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor={c1} stopOpacity="0.32" />
-          <stop offset="1" stopColor={c2} stopOpacity="0.16" />
+        <linearGradient id={`${id}bg`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#0b1020" />
+          <stop offset="1" stopColor="#05070f" />
         </linearGradient>
-        <radialGradient id={`${gid}r`} cx="0.78" cy="0.18" r="0.85">
-          <stop offset="0" stopColor={c1} stopOpacity="0.5" />
+        <radialGradient id={`${id}o1`} cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stopColor={c1} stopOpacity="0.55" />
           <stop offset="1" stopColor={c1} stopOpacity="0" />
         </radialGradient>
+        <radialGradient id={`${id}o2`} cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stopColor={c2} stopOpacity="0.45" />
+          <stop offset="1" stopColor={c2} stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id={`${id}vig`} cx="0.5" cy="0.45" r="0.75">
+          <stop offset="0.55" stopColor="#05070f" stopOpacity="0" />
+          <stop offset="1" stopColor="#05070f" stopOpacity="0.7" />
+        </radialGradient>
+        <linearGradient id={`${id}motif`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor={c1} stopOpacity="0.95" />
+          <stop offset="1" stopColor={c2} stopOpacity="0.85" />
+        </linearGradient>
+        <filter id={`${id}glow`} x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="4.5" />
+        </filter>
       </defs>
-      <rect width="320" height="180" fill="#0a0e1c" />
-      <rect width="320" height="180" fill={`url(#${gid})`} />
-      <rect width="320" height="180" fill={`url(#${gid}r)`} />
-      <g stroke={c2} strokeOpacity="0.1" strokeWidth="1">
+
+      <rect width="320" height="180" fill={`url(#${id}bg)`} />
+      <circle cx={ox * 3.2} cy={oy * 1.8} r="150" fill={`url(#${id}o1)`} />
+      <circle cx={320 - ox * 2.2} cy={170} r="130" fill={`url(#${id}o2)`} />
+
+      {/* griglia tenue */}
+      <g stroke={c2} strokeOpacity="0.08" strokeWidth="1">
         {[40, 80, 120, 160, 200, 240, 280].map((x) => (
           <line key={x} x1={x} y1="0" x2={x} y2="180" />
         ))}
@@ -102,17 +146,16 @@ export default function NewsCover({ title }: { title: string }) {
           <line key={y} x1="0" y1={y} x2="320" y2={y} />
         ))}
       </g>
-      <g
-        transform="translate(160 90) scale(3.4) translate(-12 -12)"
-        fill="none"
-        stroke={c1}
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        style={{ filter: `drop-shadow(0 0 5px ${c1})` }}
-      >
-        {ICONS[topic]}
+
+      {/* simbolo: alone sfocato + versione nitida sopra */}
+      <g transform="translate(160 90) scale(1.55) translate(-50 -50)">
+        <g filter={`url(#${id}glow)`} opacity="0.85">
+          <Motif topic={topic} c1={c1} gradId={`${id}motif`} />
+        </g>
+        <Motif topic={topic} c1={c1} gradId={`${id}motif`} />
       </g>
+
+      <rect width="320" height="180" fill={`url(#${id}vig)`} />
     </svg>
   );
 }

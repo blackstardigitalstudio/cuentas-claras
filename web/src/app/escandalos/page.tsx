@@ -9,7 +9,7 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com"
 export const metadata: Metadata = {
   title: "Escándalos del dinero público · corrupción, fraude y despilfarro (España e Italia)",
   description:
-    "Corrupción, fraude, malversación, fondos europeos, sentencias y despilfarro del dinero público en España e Italia. Titulares recientes de medios, con enlace a la fuente. Scandali, corruzione e sprechi del denaro pubblico.",
+    "Corrupción, fraude, fondos europeos, sentencias y despilfarro del dinero público en España e Italia. Titulares de medios, con enlace a la fuente.",
   keywords: [
     "corrupción dinero público",
     "malversación fondos públicos",

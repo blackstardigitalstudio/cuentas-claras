@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s · Cuentas Claras",
   },
   description:
-    "Visualización clara e interactiva de los ingresos y gastos reales de los ayuntamientos de España e Italia, con datos oficiales y desglose detallado del gasto. Mapa interactivo por provincia y categoría.",
+    "Ingresos y gastos reales de los ayuntamientos de España e Italia, con datos oficiales y desglose detallado. Mapa interactivo por provincia y categoría.",
   keywords: [
     "presupuesto municipal",
     "gasto público España",

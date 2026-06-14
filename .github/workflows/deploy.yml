@@ -51,3 +51,8 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: web
           command: pages deploy out --project-name=cuentas-claras --branch=main
+
+      # Avisa a los buscadores (IndexNow: Bing/Yandex, cada vez más Google) del
+      # contenido fresco en cada refresco de 2 h → indexación más rápida.
+      - name: Avisar a buscadores (IndexNow)
+        run: sleep 15 && node ../data/ping-indexnow.mjs || echo "IndexNow ping falló (no crítico)."

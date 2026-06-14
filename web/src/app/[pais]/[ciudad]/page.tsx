@@ -152,7 +152,7 @@ export default async function CityPage({ params }: Props) {
   };
 
   return (
-    <main className="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 py-8">
+    <main lang={pais} className="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />

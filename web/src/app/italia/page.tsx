@@ -57,7 +57,7 @@ export default function ItaliaPage() {
   };
 
   return (
-    <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 pb-24">
+    <main lang="it" className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 pb-24">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageLd) }} />
       <LocaleProvider>

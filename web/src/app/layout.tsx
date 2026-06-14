@@ -42,6 +42,13 @@ export const metadata: Metadata = {
     siteName: "Cuentas Claras",
     locale: "es_ES",
     type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Cuentas Claras — ¿A dónde va el dinero público? España e Italia" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cuentas Claras — ¿A dónde va el dinero público?",
+    description: "Presupuestos públicos de España e Italia en un mapa claro. Datos oficiales, ranking y escándalos del dinero público.",
+    images: ["/og.png"],
   },
   verification: {
     google: "-85GSAaHegAcbda2Gmr-MzlgOHtpeP5JlQfLxoHnTrw",

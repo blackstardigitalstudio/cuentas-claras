@@ -31,6 +31,7 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/postcss": "^4",
     "@types/d3": "^7.4.3",
     "@types/d3-hierarchy": "^3.1.7",
@@ -40,6 +41,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "satori": "^0.26.0",
+    "satori-html": "^0.3.2",
     "tailwindcss": "^4",
     "typescript": "^5",
     "wrangler": "^4.100.0"

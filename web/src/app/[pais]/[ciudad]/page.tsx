@@ -5,6 +5,7 @@ import { COUNTRIES, type CountryCode, type RegionData } from "@/lib/data";
 import { formatCompact, formatEuro, formatPct } from "@/lib/format";
 
 const PAISES: CountryCode[] = ["es", "it"];
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export function generateStaticParams() {
   const seen = new Set<string>();
@@ -140,10 +141,21 @@ export default async function CityPage({ params }: Props) {
     ],
   };
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` },
+      { "@type": "ListItem", position: 2, name: es ? "España" : "Italia", item: `${SITE}/ranking/` },
+      { "@type": "ListItem", position: 3, name: r.name, item: `${SITE}/${pais}/${r.slug}/` },
+    ],
+  };
+
   return (
     <main className="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       <nav className="text-sm text-muted mb-6">
         <Link href="/" className="hover:text-fg neon-text font-semibold">

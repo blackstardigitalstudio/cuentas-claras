@@ -17,6 +17,9 @@ export default function SiteNav() {
           <a href="/#explorar" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
             {m.nav.map}
           </a>
+          <Link href="/ranking" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
+            Ranking
+          </Link>
           <a href="/#noticias" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
             {m.nav.news}
           </a>

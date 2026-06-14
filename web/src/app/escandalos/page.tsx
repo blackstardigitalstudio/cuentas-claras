@@ -3,7 +3,7 @@ import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
 import Scoop from "@/components/Scoop";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://cuentas-claras-3cg.pages.dev";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
   title: "Escándalos del dinero público · España e Italia",

@@ -44,7 +44,7 @@
     "satori": "^0.26.0",
     "satori-html": "^0.3.2",
     "tailwindcss": "^4",
-    "typescript": "^5",
+    "typescript": "^6",
     "wrangler": "^4.100.0"
   }
 }

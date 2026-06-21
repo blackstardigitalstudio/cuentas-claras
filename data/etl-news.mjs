@@ -61,6 +61,10 @@ const SCOOP_THEMES = {
     es: 'inhabilitación cargo público OR "Tribunal de Cuentas" multa OR sanción alcalde OR reintegro fondos públicos',
     it: 'interdizione pubblici uffici OR "Corte dei Conti" sanzione OR sindaco multato OR risarcimento danno erariale',
   },
+  investigations: {
+    es: '(site:civio.es OR site:datadista.com OR site:infolibre.es) ("contratos públicos" OR "dinero público" OR subvenciones OR adjudicaciones OR ayuntamiento)',
+    it: '(site:irpimedia.irpi.eu OR site:lavialibera.it) (appalti OR "soldi pubblici" OR "fondi pubblici" OR "denaro pubblico" OR corruzione OR comune)',
+  },
 };
 const MAX_SCOOP = 10;
 

@@ -9,7 +9,7 @@ import { useLiveNews } from "@/lib/useLiveNews";
 export default function ScoopSection({
   theme,
 }: {
-  theme: "scoop" | "funds" | "verdicts" | "waste" | "nepotism" | "sanctions";
+  theme: "scoop" | "funds" | "verdicts" | "waste" | "nepotism" | "sanctions" | "investigations";
 }) {
   const { locale, m } = useLocale();
   const { data } = useLiveNews();

@@ -14,6 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/`, lastModified, changeFrequency: "daily", priority: 1 },
     { url: `${SITE}/italia/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/ranking/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/sueldos-alcaldes/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/deuda-municipios/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/escandalos/`, lastModified, changeFrequency: "hourly", priority: 0.8 },
   ];
   const seen = new Set<string>();

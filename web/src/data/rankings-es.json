@@ -1,0 +1,352 @@
+{
+ "year": 2024,
+ "salarySource": {
+  "name": "MTDFP · ISPA (retribuciones de alcaldes, ejercicio 2024)",
+  "url": "https://digital.gob.es/content/dam/portal-mtdfp/funcion-publica/dgfp/ispa/ispa2025/retrib_2024/retribuciones_alcaldes.xlsx"
+ },
+ "debtSource": {
+  "name": "Ministerio de Hacienda · Deuda viva de las EELL (31/12/2024)",
+  "url": "https://www.hacienda.gob.es/CDI/Sist%20Financiacion%20y%20Deuda/InformacionEELLs/2024/Deuda-viva-ayuntamientos-202412.xlsx"
+ },
+ "salaryReporting": 6934,
+ "salaryAvg": 23850,
+ "salaryZero": 2291,
+ "salarySinDedic": 3630,
+ "topSalaries": [
+  {
+   "name": "Madrid",
+   "prov": "Madrid",
+   "ccaa": "Madrid, Comunidad de",
+   "dedic": "Exclusiva",
+   "amount": 110688
+  },
+  {
+   "name": "Bilbao",
+   "prov": "Bizkaia",
+   "ccaa": "País Vasco",
+   "dedic": "Exclusiva",
+   "amount": 105557
+  },
+  {
+   "name": "Barcelona",
+   "prov": "Barcelona",
+   "ccaa": "Cataluña",
+   "dedic": "Exclusiva",
+   "amount": 104000
+  },
+  {
+   "name": "Donostia/San Sebastián",
+   "prov": "Gipuzkoa",
+   "ccaa": "País Vasco",
+   "dedic": "Exclusiva",
+   "amount": 96966
+  },
+  {
+   "name": "Vitoria-Gasteiz",
+   "prov": "Araba/Alava",
+   "ccaa": "País Vasco",
+   "dedic": "Exclusiva",
+   "amount": 96016
+  },
+  {
+   "name": "Sevilla",
+   "prov": "Sevilla",
+   "ccaa": "Andalucía",
+   "dedic": "Exclusiva",
+   "amount": 95685
+  },
+  {
+   "name": "Málaga",
+   "prov": "Málaga",
+   "ccaa": "Andalucía",
+   "dedic": "Exclusiva",
+   "amount": 95501
+  },
+  {
+   "name": "Marbella",
+   "prov": "Málaga",
+   "ccaa": "Andalucía",
+   "dedic": "Exclusiva",
+   "amount": 95465
+  },
+  {
+   "name": "Burgos",
+   "prov": "Burgos",
+   "ccaa": "Castilla y León",
+   "dedic": "Exclusiva",
+   "amount": 94555
+  },
+  {
+   "name": "Valencia",
+   "prov": "València/Valencia",
+   "ccaa": "Comunitat Valenciana",
+   "dedic": "Exclusiva",
+   "amount": 94291
+  },
+  {
+   "name": "Getxo",
+   "prov": "Bizkaia",
+   "ccaa": "País Vasco",
+   "dedic": "Exclusiva",
+   "amount": 92201
+  },
+  {
+   "name": "San Cristóbal de La Laguna",
+   "prov": "Santa Cruz de Tenerife",
+   "ccaa": "Canarias",
+   "dedic": "Exclusiva",
+   "amount": 91172
+  },
+  {
+   "name": "Almería",
+   "prov": "Almería",
+   "ccaa": "Andalucía",
+   "dedic": "Exclusiva",
+   "amount": 91102
+  },
+  {
+   "name": "Zaragoza",
+   "prov": "Zaragoza",
+   "ccaa": "Aragón",
+   "dedic": "Exclusiva",
+   "amount": 88929
+  },
+  {
+   "name": "Roquetas de Mar",
+   "prov": "Almería",
+   "ccaa": "Andalucía",
+   "dedic": "Exclusiva",
+   "amount": 88534
+  },
+  {
+   "name": "Portugalete",
+   "prov": "Bizkaia",
+   "ccaa": "País Vasco",
+   "dedic": "Exclusiva",
+   "amount": 88403
+  },
+  {
+   "name": "Torrejón de Ardoz",
+   "prov": "Madrid",
+   "ccaa": "Madrid, Comunidad de",
+   "dedic": "Exclusiva",
+   "amount": 87783
+  },
+  {
+   "name": "Amorebieta-Etxano",
+   "prov": "Bizkaia",
+   "ccaa": "País Vasco",
+   "dedic": "Exclusiva",
+   "amount": 87298
+  },
+  {
+   "name": "Alcalá de Henares",
+   "prov": "Madrid",
+   "ccaa": "Madrid, Comunidad de",
+   "dedic": "Exclusiva",
+   "amount": 87244
+  },
+  {
+   "name": "Rozas de Madrid, Las",
+   "prov": "Madrid",
+   "ccaa": "Madrid, Comunidad de",
+   "dedic": "Exclusiva",
+   "amount": 87121
+  },
+  {
+   "name": "Pozuelo de Alarcón",
+   "prov": "Madrid",
+   "ccaa": "Madrid, Comunidad de",
+   "dedic": "Exclusiva",
+   "amount": 86950
+  },
+  {
+   "name": "Fuengirola",
+   "prov": "Málaga",
+   "ccaa": "Andalucía",
+   "dedic": "Exclusiva",
+   "amount": 84244
+  },
+  {
+   "name": "Alicante/Alacant",
+   "prov": "Alacant/Alicante",
+   "ccaa": "Comunitat Valenciana",
+   "dedic": "Exclusiva",
+   "amount": 84170
+  },
+  {
+   "name": "Móstoles",
+   "prov": "Madrid",
+   "ccaa": "Madrid, Comunidad de",
+   "dedic": "Exclusiva",
+   "amount": 83804
+  },
+  {
+   "name": "Cuenca",
+   "prov": "Cuenca",
+   "ccaa": "Castilla-La Mancha",
+   "dedic": "Exclusiva",
+   "amount": 83530
+  },
+  {
+   "name": "Ermua",
+   "prov": "Bizkaia",
+   "ccaa": "País Vasco",
+   "dedic": "Exclusiva",
+   "amount": 82603
+  },
+  {
+   "name": "Murcia",
+   "prov": "Murcia",
+   "ccaa": "Murcia, Región de",
+   "dedic": "Exclusiva",
+   "amount": 81971
+  },
+  {
+   "name": "Hospitalet de Llobregat, L'",
+   "prov": "Barcelona",
+   "ccaa": "Cataluña",
+   "dedic": "Exclusiva",
+   "amount": 81902
+  },
+  {
+   "name": "Sant Cugat del Vallès",
+   "prov": "Barcelona",
+   "ccaa": "Cataluña",
+   "dedic": "Exclusiva",
+   "amount": 81484
+  },
+  {
+   "name": "Leioa",
+   "prov": "Bizkaia",
+   "ccaa": "País Vasco",
+   "dedic": "Exclusiva",
+   "amount": 80643
+  }
+ ],
+ "debtCount": 8131,
+ "debtFree": 5163,
+ "debtTotal": 17827519626,
+ "topDebt": [
+  {
+   "name": "Madrid",
+   "amount": 1943172266
+  },
+  {
+   "name": "Barcelona",
+   "amount": 1389567987
+  },
+  {
+   "name": "Jerez de la Frontera",
+   "amount": 966839807
+  },
+  {
+   "name": "Jaén",
+   "amount": 570705764
+  },
+  {
+   "name": "Zaragoza",
+   "amount": 567995652
+  },
+  {
+   "name": "Parla",
+   "amount": 515805920
+  },
+  {
+   "name": "Sevilla",
+   "amount": 266326775
+  },
+  {
+   "name": "Murcia",
+   "amount": 259023589
+  },
+  {
+   "name": "Gandia",
+   "amount": 257842527
+  },
+  {
+   "name": "Málaga",
+   "amount": 256348792
+  },
+  {
+   "name": "Algeciras",
+   "amount": 256253391
+  },
+  {
+   "name": "Barrios (Los)",
+   "amount": 194947065
+  },
+  {
+   "name": "Córdoba",
+   "amount": 172549414
+  },
+  {
+   "name": "Palma",
+   "amount": 157843931
+  },
+  {
+   "name": "Ceuta",
+   "amount": 152046343
+  },
+  {
+   "name": "Valladolid",
+   "amount": 149756508
+  },
+  {
+   "name": "València",
+   "amount": 141607727
+  },
+  {
+   "name": "Burgos",
+   "amount": 139837527
+  },
+  {
+   "name": "Granada",
+   "amount": 130093446
+  },
+  {
+   "name": "Huelva",
+   "amount": 127518421
+  },
+  {
+   "name": "Navalcarnero",
+   "amount": 126263256
+  },
+  {
+   "name": "Alcorcón",
+   "amount": 123967706
+  },
+  {
+   "name": "Línea de la Concepción (La)",
+   "amount": 122103576
+  },
+  {
+   "name": "Ejido (El)",
+   "amount": 116787254
+  },
+  {
+   "name": "Totana",
+   "amount": 112402509
+  },
+  {
+   "name": "Aranjuez",
+   "amount": 110282814
+  },
+  {
+   "name": "Vitoria-Gasteiz",
+   "amount": 110183001
+  },
+  {
+   "name": "Terrassa",
+   "amount": 105298929
+  },
+  {
+   "name": "Arganda del Rey",
+   "amount": 103591465
+  },
+  {
+   "name": "Tarragona",
+   "amount": 101616888
+  }
+ ]
+}

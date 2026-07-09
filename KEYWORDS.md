@@ -49,9 +49,10 @@
 - [x] Sorgente dati "sueldo alcalde/stipendio sindaco" verificata → 52 città (50 ES ISPA + Milano/Bologna IT per legge)
 - [x] Sorgente dati "deuda" ES (Hacienda) → 50 città + card debito nel pannello e nelle schede città
 - [x] FAQ città potenziata: "¿Cuánto cobra el alcalde de X?" / "¿Cuánta deuda tiene X?" / "Quanto guadagna il sindaco di X?" (con FAQPage schema)
+- [x] Pagine-classifica nazionali (head-term): `/sueldos-alcaldes` (chi guadagna di più) e `/deuda-municipios` (più indebitati; 63% senza debito) — usano TUTTO il dataset ufficiale
 - [ ] Debito comuni IT (ETL BDAP) → schede città italiane
 - [ ] Estendere ISPA a TUTTE le città ES che aggiungiamo (il file copre 6.900 comuni)
-- [ ] Sezione fact-check / smonta-bufale soldi pubblici (approvata: taglio "realtà contro le bufale")
+- [ ] Sezione fact-check / smonta-bufale soldi pubblici (approvata: taglio "realtà contro le bufale") ← in ricerca
 - [ ] Espansione mappa mondiale (paese per paese)
 
 _Made in Italy_ 🇮🇹

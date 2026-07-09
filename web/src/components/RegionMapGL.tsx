@@ -5,7 +5,7 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { scaleLinear } from "d3-scale";
 import { interpolateHcl } from "d3-interpolate";
-import type { Country } from "@/lib/data";
+import { COUNTRIES, type Country } from "@/lib/data";
 import worldGeo from "@/data/world.geo.json";
 
 type Feat = { type: "Feature"; properties: { name: string }; geometry: GeoJSON.Geometry };
@@ -99,6 +99,12 @@ function bounds(country: Country): [[number, number], [number, number]] {
   return [[minX, minY], [maxX, maxY]];
 }
 
+// L'altro paese attivo (per ora ES↔IT): si mostra colorato ma attenuato, così
+// sulla mappa-mondo si vedono SEMPRE entrambe le zone attive.
+function otherOf(country: Country): Country {
+  return COUNTRIES[country.code === "es" ? "it" : "es"];
+}
+
 export default function RegionMapGL({
   country,
   selected,
@@ -140,11 +146,23 @@ export default function RegionMapGL({
       map.addLayer({ id: "world-fill", type: "fill", source: "world", paint: { "fill-color": "#0c1730", "fill-opacity": 0.9 } });
       map.addLayer({ id: "world-line", type: "line", source: "world", paint: { "line-color": "#1c2c50", "line-width": 0.5 } });
 
+      // L'altra zona attiva (colorata ma attenuata, non interattiva): si vede
+      // sempre insieme a quella attiva → "tutto il mondo, per ora due zone".
+      try {
+        map.addSource("regions-other", { type: "geojson", data: coloredFC(otherOf(country)) });
+        map.addLayer({ id: "fill-other", type: "fill", source: "regions-other", paint: { "fill-color": ["get", "__color"], "fill-opacity": 0.32 } });
+        map.addLayer({ id: "line-other", type: "line", source: "regions-other", paint: { "line-color": "#05070f", "line-width": 0.4 } });
+      } catch {
+        /* la seconda zona è decorativa: un errore non deve rompere la mappa */
+      }
+
       map.addSource("regions", { type: "geojson", data: coloredFC(country) });
       map.addLayer({ id: "fill", type: "fill", source: "regions", paint: { "fill-color": ["get", "__color"], "fill-opacity": 0.85 } });
       map.addLayer({ id: "fill-hover", type: "fill", source: "regions", paint: { "fill-color": "#ffffff", "fill-opacity": 0.12 }, filter: ["==", "__name", ""] });
       map.addLayer({ id: "line", type: "line", source: "regions", paint: { "line-color": "#05070f", "line-width": 0.5 } });
       map.addLayer({ id: "sel", type: "line", source: "regions", paint: { "line-color": "#ffffff", "line-width": 2, "line-blur": 0.4 }, filter: ["==", "__name", selected ?? ""] });
+      // Inquadratura stretta sul paese attivo (bella piena); l'altra zona resta
+      // attenuata e si vede facendo zoom-out (mappa-mondo).
       map.fitBounds(bounds(country), { padding: 24, duration: 0 });
 
       map.on("click", "fill", (e) => {
@@ -174,6 +192,8 @@ export default function RegionMapGL({
       const src = map.getSource("regions") as maplibregl.GeoJSONSource | undefined;
       if (!src) return;
       src.setData(coloredFC(country));
+      const other = map.getSource("regions-other") as maplibregl.GeoJSONSource | undefined;
+      if (other) other.setData(coloredFC(otherOf(country)));
       map.fitBounds(bounds(country), { padding: 24, duration: 800 });
       placeMarkers(map, country, markersRef.current, (n) => onSelectRef.current(n));
     };

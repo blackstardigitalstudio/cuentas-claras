@@ -122,6 +122,41 @@ export default function Home() {
       {/* Explorador */}
       <Explorer />
 
+      {/* Filones ad alta domanda: accessi diretti a sueldos / deuda / bulos */}
+      <section className="mt-16 grid sm:grid-cols-3 gap-4">
+        {[
+          {
+            href: "/sueldos-alcaldes",
+            accent: "#a5b4fc",
+            t: locale === "it" ? "Quanto guadagna il sindaco?" : "¿Cuánto cobra el alcalde?",
+            d: locale === "it" ? "Classifica degli stipendi, dati ufficiali ISPA." : "Ranking de sueldos, con datos oficiales del ISPA.",
+          },
+          {
+            href: "/deuda-municipios",
+            accent: "#fdba74",
+            t: locale === "it" ? "Quanta deuda ha la città?" : "¿Cuánta deuda tiene tu ciudad?",
+            d: locale === "it" ? "I comuni più indebitati (e il 63% senza debito)." : "Los municipios más endeudados (y el 63% sin deuda).",
+          },
+          {
+            href: "/bulos",
+            accent: "#22d3ee",
+            t: locale === "it" ? "Smonta-bufale" : "Bulos, desmontados",
+            d: locale === "it" ? "Bufale sui soldi pubblici, verificate con i dati." : "Bulos sobre el dinero público, verificados con datos.",
+          },
+        ].map((c, i) => (
+          <Reveal key={c.href} delay={i * 0.08}>
+            <Link href={c.href} className="glass p-5 h-full flex flex-col group relative overflow-hidden" style={{ borderColor: `${c.accent}33` }}>
+              <span className="absolute inset-x-0 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${c.accent}, transparent)` }} />
+              <h3 className="font-semibold group-hover:text-fg transition" style={{ color: c.accent }}>{c.t}</h3>
+              <p className="text-sm text-muted mt-1.5 flex-1">{c.d}</p>
+              <span className="mt-3 text-sm font-medium inline-flex items-center gap-1" style={{ color: c.accent }}>
+                {locale === "it" ? "Scopri" : "Ver"} <span className="transition-transform group-hover:translate-x-0.5">→</span>
+              </span>
+            </Link>
+          </Reveal>
+        ))}
+      </section>
+
       {/* Cómo funciona */}
       <section className="mt-16 grid md:grid-cols-3 gap-4">
         {[

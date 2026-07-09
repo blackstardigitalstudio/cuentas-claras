@@ -20,9 +20,18 @@ export default function SiteNav() {
           <Link href="/ranking" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
             Ranking
           </Link>
+          <Link href="/sueldos-alcaldes" className="hidden md:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
+            Sueldos
+          </Link>
+          <Link href="/deuda-municipios" className="hidden md:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
+            Deuda
+          </Link>
           <a href="/#noticias" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
             {m.nav.news}
           </a>
+          <Link href="/bulos" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
+            Bulos
+          </Link>
           <Link
             href="/escandalos"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-medium whitespace-nowrap text-[#ff7a7a] border border-[rgba(255,107,107,0.45)] bg-[rgba(255,107,107,0.1)] hover:bg-[rgba(255,107,107,0.18)] transition"

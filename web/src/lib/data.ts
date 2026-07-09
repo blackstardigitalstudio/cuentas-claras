@@ -18,6 +18,7 @@ import malagaReal from "@/data/real/malaga.json";
 import gobiertoCities from "@/data/real/gobierto-cities.json";
 import milanoReal from "@/data/real/milano.json";
 import bolognaReal from "@/data/real/bologna.json";
+import { CITY_EXTRAS } from "@/data/real/city-extras";
 
 export const DATA_YEAR = 2024;
 export const DATA_IS_SAMPLE = true;
@@ -30,6 +31,21 @@ export type CategoryDatum = {
   color: string;
   amount: number; // en euros
   children?: CategoryDatum[]; // nivel de detalle (subcategorías)
+};
+
+// Retribución del alcalde / indennità del sindaco (dato oficial y verificable).
+export type MayorSalary = {
+  amount: number; // € brutos al año
+  dedicacion?: string; // ES: Exclusiva / Parcial / Sin dedicación
+  basis: string; // cómo se obtiene (ley/portal) — integridad
+  source: { name: string; url: string };
+};
+
+// Deuda viva del municipio (dato oficial).
+export type Debt = {
+  amount: number; // € (deuda viva)
+  year: number;
+  source: { name: string; url: string };
 };
 
 export type RegionData = {
@@ -45,6 +61,8 @@ export type RegionData = {
   source?: { name: string; url: string };
   basis?: string;
   isCity?: boolean;
+  mayorSalary?: MayorSalary;
+  debt?: Debt;
 };
 
 // Categorías de GASTO — clasificación por programas (lenguaje ciudadano)
@@ -213,6 +231,14 @@ function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[]) {
       basis: c.basis,
       isCity: true,
     };
+  }
+  // Adjunta datos oficiales extra (deuda viva, retribución del alcalde) por slug del nombre.
+  for (const r of Object.values(regions)) {
+    const ex = CITY_EXTRAS[slugify(r.name)];
+    if (ex) {
+      if (ex.debt) r.debt = ex.debt;
+      if (ex.mayorSalary) r.mayorSalary = ex.mayorSalary;
+    }
   }
   return {
     regions,

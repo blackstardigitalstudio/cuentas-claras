@@ -38,9 +38,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = es
     ? `Presupuesto de ${r.name} ${r.year}: ingresos y gastos`
     : `Bilancio di ${r.name} ${r.year}: entrate e spese`;
-  const description = es
+  const extra = es
+    ? `${r.mayorSalary ? ` Sueldo del alcalde: ${formatCompact(r.mayorSalary.amount)}/año.` : ""}${r.debt ? ` Deuda viva: ${r.debt.amount > 0 ? formatCompact(r.debt.amount) : "sin deuda"}.` : ""}`
+    : `${r.mayorSalary ? ` Stipendio del sindaco: ${formatCompact(r.mayorSalary.amount)}/anno.` : ""}${r.debt ? ` Debito: ${r.debt.amount > 0 ? formatCompact(r.debt.amount) : "nessuno"}.` : ""}`;
+  const description = (es
     ? `Ingresos ${formatCompact(r.ingresos)} y gastos ${formatCompact(r.gastos)} de ${r.name} en ${r.year}. Desglose detallado por capítulo y por área del gasto público. Datos ${r.isSample ? "de ejemplo" : "oficiales"}.`
-    : `Entrate ${formatCompact(r.ingresos)} e spese ${formatCompact(r.gastos)} di ${r.name} nel ${r.year}. Dettaglio per capitolo e per missione della spesa pubblica. Dati ${r.isSample ? "di esempio" : "ufficiali"}.`;
+    : `Entrate ${formatCompact(r.ingresos)} e spese ${formatCompact(r.gastos)} di ${r.name} nel ${r.year}. Dettaglio per capitolo e per missione della spesa pubblica. Dati ${r.isSample ? "di esempio" : "ufficiali"}.`) + extra;
   return {
     title,
     description,
@@ -89,6 +92,16 @@ export default async function CityPage({ params }: Props) {
           a: `En ${r.year}, ${r.name} tiene unos ingresos de ${formatEuro(r.ingresos)} y unos gastos de ${formatEuro(r.gastos)}, ${bal === 0 ? "con un presupuesto equilibrado (ingresos = gastos)" : `con un ${bal > 0 ? "superávit" : "déficit"} de ${formatCompact(Math.abs(bal))}`}.`,
         },
         { q: `¿En qué se gasta el dinero público en ${r.name}?`, a: `Las principales áreas de gasto son: ${gList}.` },
+        r.mayorSalary && {
+          q: `¿Cuánto cobra el alcalde de ${r.name}?`,
+          a: `El alcalde de ${r.name} percibe ${formatEuro(r.mayorSalary.amount)} brutos al año${r.mayorSalary.dedicacion ? ` (${r.mayorSalary.dedicacion})` : ""}. Fuente: ${r.mayorSalary.source.name}.`,
+        },
+        r.debt && {
+          q: `¿Cuánta deuda tiene ${r.name}?`,
+          a: r.debt.amount > 0
+            ? `La deuda viva del Ayuntamiento de ${r.name} asciende a ${formatEuro(r.debt.amount)} a 31/12/${r.debt.year}. Fuente: Ministerio de Hacienda (deuda viva de las entidades locales).`
+            : `El Ayuntamiento de ${r.name} no registra deuda viva a 31/12/${r.debt.year}. Fuente: Ministerio de Hacienda (deuda viva de las entidades locales).`,
+        },
         topI && {
           q: `¿De dónde vienen los ingresos de ${r.name}?`,
           a: `La mayor fuente de ingresos es ${topI.label}, que supone ${formatPct(topI.amount / r.ingresos)} del total.`,
@@ -106,6 +119,16 @@ export default async function CityPage({ params }: Props) {
           a: `Nel ${r.year}, ${r.name} ha entrate per ${formatEuro(r.ingresos)} e spese per ${formatEuro(r.gastos)}, ${bal === 0 ? "con un bilancio in pareggio (entrate = spese)" : `con un ${bal > 0 ? "avanzo" : "disavanzo"} di ${formatCompact(Math.abs(bal))}`}.`,
         },
         { q: `Dove vanno i soldi pubblici a ${r.name}?`, a: `Le principali aree di spesa sono: ${gList}.` },
+        r.mayorSalary && {
+          q: `Quanto guadagna il sindaco di ${r.name}?`,
+          a: `Il sindaco di ${r.name} percepisce un'indennità di funzione di ${formatEuro(r.mayorSalary.amount)} lordi all'anno, come stabilito dalla legge (L. 234/2021 e DM Interno 30/05/2022). L'importo è ridotto del 50% se il sindaco è un lavoratore dipendente non in aspettativa.`,
+        },
+        r.debt && {
+          q: `Quanto debito ha il Comune di ${r.name}?`,
+          a: r.debt.amount > 0
+            ? `Il debito residuo del Comune di ${r.name} è di ${formatEuro(r.debt.amount)} al 31/12/${r.debt.year}.`
+            : `Il Comune di ${r.name} non registra debito residuo al 31/12/${r.debt.year}.`,
+        },
         topI && {
           q: `Da dove arrivano le entrate di ${r.name}?`,
           a: `La principale fonte di entrate è ${topI.label}, pari al ${formatPct(topI.amount / r.ingresos)} del totale.`,
@@ -200,6 +223,36 @@ export default async function CityPage({ params }: Props) {
           <p className="tabular text-2xl font-semibold text-magenta mt-1">{formatEuro(r.gastos)}</p>
         </div>
       </section>
+
+      {(r.debt || r.mayorSalary) && (
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+          {r.debt && (
+            <div className="glass p-4 border border-[rgba(251,146,60,0.28)]">
+              <p className="text-xs text-muted">{es ? "Deuda viva" : "Debito residuo"} · 31/12/{r.debt.year}</p>
+              <p className="tabular text-2xl font-semibold text-[#fdba74] mt-1">
+                {r.debt.amount > 0 ? formatEuro(r.debt.amount) : es ? "Sin deuda" : "Nessun debito"}
+              </p>
+              <a href={r.debt.source.url} target="_blank" rel="noopener noreferrer" className="text-[11px] text-muted underline hover:text-fg">
+                {r.debt.source.name}
+              </a>
+            </div>
+          )}
+          {r.mayorSalary && (
+            <div className="glass p-4 border border-[rgba(129,140,248,0.28)]">
+              <p className="text-xs text-muted">{es ? "Sueldo del alcalde" : "Stipendio del sindaco"} · {r.year}</p>
+              <p className="tabular text-2xl font-semibold text-[#a5b4fc] mt-1">
+                {formatEuro(r.mayorSalary.amount)}<span className="text-sm text-muted font-normal">{es ? "/año" : "/anno"}</span>
+              </p>
+              <p className="text-[11px] text-muted">
+                {r.mayorSalary.dedicacion || (es ? "Indemnización de función (por ley)" : "Indennità di funzione (di legge)")} ·{" "}
+                <a href={r.mayorSalary.source.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">
+                  {r.mayorSalary.source.name}
+                </a>
+              </p>
+            </div>
+          )}
+        </section>
+      )}
 
       <section className="mt-8 grid md:grid-cols-2 gap-8">
         <div>

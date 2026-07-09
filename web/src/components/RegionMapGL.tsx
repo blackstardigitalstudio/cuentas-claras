@@ -57,27 +57,34 @@ function placeMarkers(
   store: maplibregl.Marker[],
   onSelect: (name: string) => void
 ) {
-  store.forEach((m) => m.remove());
-  store.length = 0;
-  const feats = country.geo.features as Feat[];
-  const color = colorScaleFor(country);
-  // Usa direttamente le feature geo (nome sempre coerente con le regioni) e tieni
-  // solo quelle con dati reali; poi i 10 comuni con più spesa → nodi pulsanti.
-  const top = feats
-    .map((f) => ({ f, r: country.regions[f.properties.name] }))
-    .filter((x) => x.r && !x.r.isSample && x.r.gastos > 0)
-    .sort((a, b) => b.r.gastos - a.r.gastos)
-    .slice(0, 10);
-  for (const { f, r } of top) {
-    const c = centroid(f.geometry);
-    if (!c) continue;
-    const el = document.createElement("div");
-    el.className = "cc-pulse";
-    el.style.setProperty("--cc", color(r.gastos));
-    el.title = `${r.name} · ${Math.round(r.gastos / 1e6)} M€`;
-    el.innerHTML = '<span class="cc-pulse-ring"></span><span class="cc-pulse-ring r2"></span><span class="cc-pulse-dot"></span>';
-    el.addEventListener("click", (ev) => { ev.stopPropagation(); onSelect(f.properties.name); });
-    store.push(new maplibregl.Marker({ element: el }).setLngLat(c).addTo(map));
+  try {
+    store.forEach((m) => m.remove());
+    store.length = 0;
+    const feats = country.geo.features as Feat[];
+    const color = colorScaleFor(country);
+    // Usa direttamente le feature geo (nome sempre coerente con le regioni) e tieni
+    // solo quelle con dati reali; poi i 10 comuni con più spesa → nodi pulsanti.
+    const top = feats
+      .map((f) => ({ f, r: country.regions[f.properties.name] }))
+      .filter((x) => x.r && !x.r.isSample && x.r.gastos > 0)
+      .sort((a, b) => b.r.gastos - a.r.gastos)
+      .slice(0, 10);
+    for (const { f, r } of top) {
+      const c = centroid(f.geometry);
+      if (!c) continue;
+      const el = document.createElement("div");
+      el.className = "cc-pulse";
+      el.style.setProperty("--cc", color(r.gastos));
+      el.title = `${r.name} · ${Math.round(r.gastos / 1e6)} M€`;
+      el.innerHTML = '<span class="cc-pulse-ring"></span><span class="cc-pulse-ring r2"></span><span class="cc-pulse-dot"></span>';
+      el.addEventListener("click", (ev) => { ev.stopPropagation(); onSelect(f.properties.name); });
+      store.push(new maplibregl.Marker({ element: el }).setLngLat(c).addTo(map));
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).__ccmark = { feats: feats.length, topLen: top.length, placed: store.length };
+  } catch (e) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).__ccmark = { error: String(e) };
   }
 }
 
@@ -132,7 +139,6 @@ export default function RegionMapGL({
       map.addLayer({ id: "line", type: "line", source: "regions", paint: { "line-color": "#05070f", "line-width": 0.5 } });
       map.addLayer({ id: "sel", type: "line", source: "regions", paint: { "line-color": "#ffffff", "line-width": 2, "line-blur": 0.4 }, filter: ["==", "__name", selected ?? ""] });
       map.fitBounds(bounds(country), { padding: 24, duration: 0 });
-      placeMarkers(map, country, markersRef.current, (n) => onSelectRef.current(n));
 
       map.on("click", "fill", (e) => {
         const n = e.features?.[0]?.properties?.__name;
@@ -145,6 +151,8 @@ export default function RegionMapGL({
         map.getCanvas().style.cursor = "pointer";
       });
       map.on("mouseleave", "fill", () => { hovered = ""; map.setFilter("fill-hover", ["==", "__name", ""]); map.getCanvas().style.cursor = ""; });
+
+      placeMarkers(map, country, markersRef.current, (n) => onSelectRef.current(n));
     });
 
     return () => map.remove();

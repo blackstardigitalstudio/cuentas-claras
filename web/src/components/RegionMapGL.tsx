@@ -80,11 +80,8 @@ function placeMarkers(
       el.addEventListener("click", (ev) => { ev.stopPropagation(); onSelect(f.properties.name); });
       store.push(new maplibregl.Marker({ element: el }).setLngLat(c).addTo(map));
     }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).__ccmark = { feats: feats.length, topLen: top.length, placed: store.length };
-  } catch (e) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).__ccmark = { error: String(e) };
+  } catch {
+    /* i nodi sono decorativi: un errore non deve rompere la mappa */
   }
 }
 

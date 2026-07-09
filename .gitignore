@@ -23,3 +23,4 @@ Thumbs.db
 
 # Impostazioni locali personali di Claude Code
 .claude/settings.local.json
+graphify-out/

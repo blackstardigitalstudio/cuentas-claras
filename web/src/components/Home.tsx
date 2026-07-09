@@ -92,12 +92,17 @@ export default function Home() {
 
           <div className="relative mt-8 grid grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto">
             {[
-              { Icon: IconCity, value: <CountUp value={realCities} kind="int" />, label: m.impact.cities },
-              { Icon: IconLayers, value: "5", label: m.impact.levels },
-              { Icon: IconRefresh, value: <CountUp value={mappedProvinces} kind="int" />, label: m.impact.provinces },
+              { Icon: IconCity, value: <CountUp value={realCities} kind="int" />, label: m.impact.cities, accent: "#22d3ee" },
+              { Icon: IconLayers, value: "5", label: m.impact.levels, accent: "#818cf8" },
+              { Icon: IconRefresh, value: <CountUp value={mappedProvinces} kind="int" />, label: m.impact.provinces, accent: "#f472b6" },
             ].map((s, i) => (
-              <div key={i} className="rounded-2xl border border-[var(--panel-border)] bg-[rgba(120,160,255,0.04)] px-2 py-4 flex flex-col items-center gap-1.5">
-                <s.Icon className="w-5 h-5 text-cyan/90" aria-hidden="true" />
+              <div
+                key={i}
+                className="relative overflow-hidden rounded-2xl border bg-[rgba(120,160,255,0.04)] px-2 py-4 flex flex-col items-center gap-1.5"
+                style={{ borderColor: `${s.accent}40` }}
+              >
+                <span className="absolute inset-x-0 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${s.accent}, transparent)` }} />
+                <s.Icon className="w-5 h-5" style={{ color: s.accent, filter: `drop-shadow(0 0 6px ${s.accent}99)` }} aria-hidden="true" />
                 <span className="tabular text-2xl md:text-3xl font-semibold text-fg leading-none">{s.value}</span>
                 <span className="text-[11px] md:text-xs text-muted leading-tight">{s.label}</span>
               </div>

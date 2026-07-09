@@ -1,3 +1,5 @@
+"use client";
+
 // Copertina della notizia: immagine AI ad alto impatto (generata con Pollinations,
 // self-hosted in /public/covers → servita da 'self', nessun problema di CSP né
 // dipendenza a runtime). Tema scelto dalle parole chiave del titolo; 3 varianti
@@ -29,13 +31,16 @@ export default function NewsCover({ title }: { title: string }) {
   const topic = topicOf(title);
   const variant = (hashStr(title) % VARIANTS) + 1;
   return (
-    <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#0a0e1c]">
+    <div className="relative w-full aspect-[16/9] overflow-hidden bg-gradient-to-br from-[#0a1024] via-[#0b1430] to-[#1a0e2a]">
       <img
         src={`/covers/${topic}-${variant}.jpg`}
         alt=""
         aria-hidden="true"
         loading="lazy"
         decoding="async"
+        onError={(e) => {
+          (e.currentTarget as HTMLImageElement).style.display = "none";
+        }}
         className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
       />
       {/* velo scuro in basso per la leggibilità di badge/fonte sovrapposti */}

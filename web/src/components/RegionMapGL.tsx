@@ -6,6 +6,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { scaleLinear } from "d3-scale";
 import { interpolateHcl } from "d3-interpolate";
 import type { Country } from "@/lib/data";
+import worldGeo from "@/data/world.geo.json";
 
 type Feat = { type: "Feature"; properties: { name: string }; geometry: GeoJSON.Geometry };
 
@@ -119,17 +120,28 @@ export default function RegionMapGL({
     const map = new maplibregl.Map({
       container: ref.current,
       style: { version: 8, sources: {}, layers: [{ id: "bg", type: "background", paint: { "background-color": "#05070f" } }] },
-      center: [-3.5, 40],
+      center: [-3.5, 42],
       zoom: 4.2,
+      minZoom: 1.4, // no si puede alejar hasta perder el mapa
+      maxZoom: 8,
+      maxBounds: [[-180, -60], [180, 82]], // no se puede salir del mundo hacia el vacío
+      renderWorldCopies: false,
       attributionControl: false,
-      dragRotate: true,
-      pitchWithRotate: true,
-      maxPitch: 70,
+      dragRotate: false, // sin rotación: nunca "giras y no ves nada"
+      pitchWithRotate: false,
+      maxPitch: 0,
     });
+    map.touchZoomRotate.disableRotation();
+    map.dragRotate.disable();
     mapRef.current = map;
-    map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false, visualizePitch: false }), "top-right");
 
     map.on("load", () => {
+      // Backdrop del mondo: tutti i paesi in scuro (per ora solo ES/IT sono attive).
+      map.addSource("world", { type: "geojson", data: worldGeo as unknown as GeoJSON.FeatureCollection });
+      map.addLayer({ id: "world-fill", type: "fill", source: "world", paint: { "fill-color": "#0c1730", "fill-opacity": 0.9 } });
+      map.addLayer({ id: "world-line", type: "line", source: "world", paint: { "line-color": "#1c2c50", "line-width": 0.5 } });
+
       map.addSource("regions", { type: "geojson", data: coloredFC(country) });
       map.addLayer({ id: "fill", type: "fill", source: "regions", paint: { "fill-color": ["get", "__color"], "fill-opacity": 0.85 } });
       map.addLayer({ id: "fill-hover", type: "fill", source: "regions", paint: { "fill-color": "#ffffff", "fill-opacity": 0.12 }, filter: ["==", "__name", ""] });

@@ -122,10 +122,8 @@ export default function RegionMapGL({
       style: { version: 8, sources: {}, layers: [{ id: "bg", type: "background", paint: { "background-color": "#05070f" } }] },
       center: [-3.5, 42],
       zoom: 4.2,
-      minZoom: 1.4, // no si puede alejar hasta perder el mapa
+      minZoom: 1.6, // no se puede alejar hasta perder el mapa (el mundo llena la vista)
       maxZoom: 8,
-      maxBounds: [[-180, -60], [180, 82]], // no se puede salir del mundo hacia el vacío
-      renderWorldCopies: false,
       attributionControl: false,
       dragRotate: false, // sin rotación: nunca "giras y no ves nada"
       pitchWithRotate: false,

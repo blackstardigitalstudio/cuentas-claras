@@ -22,6 +22,8 @@ function downloadCSV(region: RegionData) {
     }
   };
   walk(region.gastosByCat as Cat[], "");
+  if (region.debt) rows.push(["Dato oficial", esc(`Deuda viva 31/12/${region.debt.year} · ${region.debt.source.name}`), region.debt.amount].join(","));
+  if (region.mayorSalary) rows.push(["Dato oficial", esc(`Retribucion alcalde/sindaco (anual) · ${region.mayorSalary.source.name}`), region.mayorSalary.amount].join(","));
   const head = `# ${region.name} ${region.year} — ${region.source?.name || "Cuentas Claras"}\n# Ingresos: ${region.ingresos} EUR | Gastos: ${region.gastos} EUR | Fuente: ${region.source?.url || "www.cuentas-clara.com"}\n`;
   const blob = new Blob(["﻿" + head + rows.join("\n")], { type: "text/csv;charset=utf-8" });
   const a = document.createElement("a");
@@ -157,6 +159,58 @@ export default function RegionPanel({ region }: { region: RegionData }) {
           {formatCompact(balance)} {positivo ? m.panel.surplus : m.panel.deficit}
         </span>
       </p>
+
+      {/* Datos oficiales: deuda viva + retribución del alcalde (filones de búsqueda) */}
+      {(region.debt || region.mayorSalary) && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+          {region.debt && (
+            <div
+              className="rounded-2xl p-4 border border-[rgba(251,146,60,0.28)] bg-[rgba(251,146,60,0.06)] relative overflow-hidden"
+              style={{ boxShadow: "inset 0 1px 0 rgba(251,146,60,0.12)" }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg,transparent,#fb923c,transparent)" }} />
+              <p className="text-xs text-muted flex items-center gap-1.5">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#fb923c]" style={{ boxShadow: "0 0 6px #fb923c" }} />
+                {locale === "it" ? "Debito (mutui in essere)" : "Deuda viva"}
+              </p>
+              <p className="tabular text-xl md:text-2xl font-semibold text-[#fdba74] mt-1">
+                {region.debt.amount > 0 ? formatCompact(region.debt.amount) : (locale === "it" ? "Zero" : "Cero")}
+              </p>
+              <p className="text-[10px] text-muted mt-0.5 tabular">
+                {region.debt.amount > 0 ? formatEuro(region.debt.amount) + " · " : ""}
+                {locale === "it" ? "al 31/12/" : "a 31/12/"}{region.debt.year}
+              </p>
+              <a href={region.debt.source.url} target="_blank" rel="noopener noreferrer" className="block text-[10px] text-muted/80 mt-1 underline hover:text-fg truncate">
+                {region.debt.source.name}
+              </a>
+            </div>
+          )}
+          {region.mayorSalary && (
+            <div
+              className="rounded-2xl p-4 border border-[rgba(129,140,248,0.28)] bg-[rgba(129,140,248,0.06)] relative overflow-hidden"
+              title={region.mayorSalary.basis}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg,transparent,#818cf8,transparent)" }} />
+              <p className="text-xs text-muted flex items-center gap-1.5">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#818cf8]" style={{ boxShadow: "0 0 6px #818cf8" }} />
+                {locale === "it" ? "Stipendio del sindaco" : "Sueldo del alcalde"}
+              </p>
+              <p className="tabular text-xl md:text-2xl font-semibold text-[#a5b4fc] mt-1">
+                {formatEuro(region.mayorSalary.amount)}
+                <span className="text-xs text-muted font-normal">{locale === "it" ? "/anno" : "/año"}</span>
+              </p>
+              <p className="text-[10px] text-muted mt-0.5">
+                {region.mayorSalary.dedicacion
+                  ? region.mayorSalary.dedicacion
+                  : (locale === "it" ? "Indennità di funzione (di legge)" : "Indemnización de función (por ley)")}
+              </p>
+              <a href={region.mayorSalary.source.url} target="_blank" rel="noopener noreferrer" className="block text-[10px] text-muted/80 mt-1 underline hover:text-fg truncate">
+                {region.mayorSalary.source.name}
+              </a>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Entradas y salidas: composición clara en dos barras */}
       <div className="mt-6">

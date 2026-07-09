@@ -37,12 +37,21 @@
 - **Espansione mappa a tutto il mondo**: base già pronta (backdrop mondo); si aggiungono
   paesi con dati verificati, uno alla volta.
 
+## Fonti dati verificate (integrate)
+- **Deuda viva ES** — Ministerio de Hacienda, "Deuda viva de las EELL" (XLSX, 8.135 comuni, 31/12/2024). Miles de €.
+- **Sueldo alcaldes ES** — MTDFP · ISPA (retribuciones alcaldes, ejercicio 2024, XLSX ~6.900 comuni). €/año, con régimen de dedicación.
+- **Indennità sindaco IT** — calcolata per legge (L. 234/2021 + DM Interno 30/05/2022): % del parametro €13.800/mese per fascia di popolazione. Metropolitano=100%, capoluogo regione=80%, ecc.
+- **Debito IT per comune** — BDAP/OpenBDAP (RGS-MEF): da fare via ETL (nessun file bulk pulito).
+- Verifica incrociata 7/7 valori chiave CONFERMATA (Jaén 4ª più indebitata; Vigo/Cáceres deuda≈0; Madrid €110.688; Barcelona €104.000; Valladolid €14.076 "sin dedicación"; Las Palmas −91%).
+
 ## Avanzamento (un pezzo alla volta)
 - [x] Ricerca keyword iniziale (autocomplete ES/IT)
-- [ ] Sorgente dati "stipendio sindaco/sueldo alcalde" (verificata) → schede città
-- [ ] Sorgente dati "debito/deuda" → schede città
-- [ ] FAQ città potenziata con le domande a coda lunga
-- [ ] Sezione fact-check / smonta-bufale soldi pubblici
+- [x] Sorgente dati "sueldo alcalde/stipendio sindaco" verificata → 52 città (50 ES ISPA + Milano/Bologna IT per legge)
+- [x] Sorgente dati "deuda" ES (Hacienda) → 50 città + card debito nel pannello e nelle schede città
+- [x] FAQ città potenziata: "¿Cuánto cobra el alcalde de X?" / "¿Cuánta deuda tiene X?" / "Quanto guadagna il sindaco di X?" (con FAQPage schema)
+- [ ] Debito comuni IT (ETL BDAP) → schede città italiane
+- [ ] Estendere ISPA a TUTTE le città ES che aggiungiamo (il file copre 6.900 comuni)
+- [ ] Sezione fact-check / smonta-bufale soldi pubblici (approvata: taglio "realtà contro le bufale")
 - [ ] Espansione mappa mondiale (paese per paese)
 
 _Made in Italy_ 🇮🇹

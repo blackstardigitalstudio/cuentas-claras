@@ -182,9 +182,40 @@ select {
   border-radius: 9999px;
 }
 
+/* Nodi luminosi pulsanti sulla mappa (stile "global dashboard"): un punto
+   sempre visibile con bagliore + anelli che pulsano verso l'esterno. */
+.cc-pulse {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.cc-pulse-dot {
+  position: absolute;
+  inset: 4px;
+  border-radius: 9999px;
+  background: var(--cc);
+  box-shadow: 0 0 6px var(--cc), 0 0 14px var(--cc), 0 0 24px var(--cc);
+}
+.cc-pulse-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid var(--cc);
+  opacity: 0;
+  transform-origin: center;
+  animation: ccpulse 2.6s cubic-bezier(0.2, 0.7, 0.3, 1) infinite;
+}
+.cc-pulse-ring.r2 { animation-delay: 1.3s; }
+@keyframes ccpulse {
+  0% { transform: scale(0.5); opacity: 0.75; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .aurora { animation: none; }
   .title-glow::after { animation: none; }
   .bubble-pop { animation: none; }
+  .cc-pulse-ring { animation: none; }
   * { scroll-behavior: auto; }
 }

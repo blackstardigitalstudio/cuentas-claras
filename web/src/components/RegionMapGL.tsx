@@ -27,6 +27,60 @@ function coloredFC(country: Country) {
   } as GeoJSON.FeatureCollection;
 }
 
+function colorScaleFor(country: Country) {
+  const feats = country.geo.features as Feat[];
+  const vals = feats.map((f) => country.regions[f.properties.name]?.gastos ?? 0);
+  const min = Math.min(...vals);
+  const max = Math.max(...vals);
+  return scaleLinear<string>()
+    .domain([min, min + (max - min) * 0.45, min + (max - min) * 0.78, max])
+    .range(["#15304a", "#22d3ee", "#818cf8", "#f472b6"])
+    .interpolate(interpolateHcl);
+}
+
+// Centroide approssimato (media dei vertici) — sufficiente per posizionare un nodo.
+function centroid(geom: GeoJSON.Geometry): [number, number] | null {
+  let sx = 0, sy = 0, n = 0;
+  const walk = (c: unknown): void => {
+    if (Array.isArray(c) && typeof c[0] === "number") {
+      sx += c[0] as number; sy += c[1] as number; n++;
+    } else if (Array.isArray(c)) c.forEach(walk);
+  };
+  walk((geom as { coordinates: unknown }).coordinates);
+  return n ? [sx / n, sy / n] : null;
+}
+
+// Nodi luminosi pulsanti sulle città con più spesa (stile dashboard globale).
+function placeMarkers(
+  map: maplibregl.Map,
+  country: Country,
+  store: maplibregl.Marker[],
+  onSelect: (name: string) => void
+) {
+  store.forEach((m) => m.remove());
+  store.length = 0;
+  const feats = country.geo.features as Feat[];
+  const color = colorScaleFor(country);
+  // Usa direttamente le feature geo (nome sempre coerente con le regioni) e tieni
+  // solo quelle con dati reali; poi i 10 comuni con più spesa → nodi pulsanti.
+  const top = feats
+    .map((f) => ({ f, r: country.regions[f.properties.name] }))
+    .filter((x) => x.r && !x.r.isSample && x.r.gastos > 0)
+    .sort((a, b) => b.r.gastos - a.r.gastos)
+    .slice(0, 10);
+  for (const { f, r } of top) {
+    const c = centroid(f.geometry);
+    if (!c) continue;
+    const el = document.createElement("div");
+    el.className = "cc-pulse";
+    el.style.setProperty("--cc", color(r.gastos));
+    el.title = `${r.name} · ${Math.round(r.gastos / 1e6)} M€`;
+    el.innerHTML = '<span class="cc-pulse-ring"></span><span class="cc-pulse-ring r2"></span><span class="cc-pulse-dot"></span>';
+    el.addEventListener("click", (ev) => { ev.stopPropagation(); onSelect(f.properties.name); });
+    store.push(new maplibregl.Marker({ element: el }).setLngLat(c).addTo(map));
+  }
+}
+
 function bounds(country: Country): [[number, number], [number, number]] {
   let minX = 180, minY = 90, maxX = -180, maxY = -90;
   const walk = (c: unknown): void => {
@@ -51,6 +105,7 @@ export default function RegionMapGL({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
+  const markersRef = useRef<maplibregl.Marker[]>([]);
   const onSelectRef = useRef(onSelect);
   onSelectRef.current = onSelect;
 
@@ -77,6 +132,7 @@ export default function RegionMapGL({
       map.addLayer({ id: "line", type: "line", source: "regions", paint: { "line-color": "#05070f", "line-width": 0.5 } });
       map.addLayer({ id: "sel", type: "line", source: "regions", paint: { "line-color": "#ffffff", "line-width": 2, "line-blur": 0.4 }, filter: ["==", "__name", selected ?? ""] });
       map.fitBounds(bounds(country), { padding: 24, duration: 0 });
+      placeMarkers(map, country, markersRef.current, (n) => onSelectRef.current(n));
 
       map.on("click", "fill", (e) => {
         const n = e.features?.[0]?.properties?.__name;
@@ -104,6 +160,7 @@ export default function RegionMapGL({
       if (!src) return;
       src.setData(coloredFC(country));
       map.fitBounds(bounds(country), { padding: 24, duration: 800 });
+      placeMarkers(map, country, markersRef.current, (n) => onSelectRef.current(n));
     };
     if (map.isStyleLoaded() && map.getSource("regions")) apply();
     else map.once("idle", apply);

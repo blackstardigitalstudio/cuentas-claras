@@ -52,7 +52,7 @@
 - [x] Pagine-classifica nazionali (head-term): `/sueldos-alcaldes` (chi guadagna di più) e `/deuda-municipios` (più indebitati; 63% senza debito) — usano TUTTO il dataset ufficiale
 - [ ] Debito comuni IT (ETL BDAP) → schede città italiane
 - [ ] Estendere ISPA a TUTTE le città ES che aggiungiamo (il file copre 6.900 comuni)
-- [ ] Sezione fact-check / smonta-bufale soldi pubblici (approvata: taglio "realtà contro le bufale") ← in ricerca
+- [x] Sezione fact-check / smonta-bufale `/bulos`: 11 bufale reali (ES+IT) già verificate da fact-checker seri (Maldita, Newtral, Pagella Politica, AGI), con dato reale + link alla verifica originale + FAQPage schema. Taglio neutro, non partisan.
 - [ ] Espansione mappa mondiale (paese per paese)
 
 _Made in Italy_ 🇮🇹

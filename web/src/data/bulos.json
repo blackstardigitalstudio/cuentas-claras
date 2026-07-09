@@ -1,0 +1,101 @@
+[
+  {
+    "lang": "es",
+    "claim": "Los diputados españoles cobran 30.000 € al mes y un sueldo vitalicio de por vida.",
+    "verdict": "Falso",
+    "reality": "Todos los diputados parten de una asignación constitucional de 2.981,86 € brutos al mes; incluso sumando todos los complementos por cargo el máximo ronda los 14.600 €, lejos de los 30.000 €. No existe ninguna indemnización vitalicia: solo hay pagos de transición temporales tras el cese.",
+    "topic": "sueldos",
+    "source": { "name": "Maldita.es", "url": "https://maldita.es/malditobulo/20190709/no-los-diputados-ni-cobran-30-000-euros-al-mes-ni-tienen-sueldos-para-toda-la-vida/" },
+    "date": "2019-07"
+  },
+  {
+    "lang": "es",
+    "claim": "Un trabajador de clase media en España paga más del 50 % de su salario en impuestos.",
+    "verdict": "Engañoso",
+    "reality": "El cálculo suma tributos distintos (IRPF, cotizaciones, IVA, IBI) e imputa al trabajador las cotizaciones que paga la empresa, inflando la cifra. Según la OCDE (2022), un trabajador soltero soportó en torno al 21,4 % entre IRPF y cotizaciones; la presión fiscal oficial (recaudación/PIB) fue del 38,3 %.",
+    "topic": "impuestos",
+    "source": { "name": "Maldita.es", "url": "https://maldita.es/malditateexplica/20240410/pago-mas-mitad-impuestos-espanoles-salarios/" },
+    "date": "2024-04"
+  },
+  {
+    "lang": "es",
+    "claim": "El 97 % de los perceptores del Ingreso Mínimo Vital son inmigrantes.",
+    "verdict": "Falso",
+    "reality": "Según el Ministerio de Inclusión, Seguridad Social y Migraciones, en diciembre de 2023 la población extranjera suponía en torno al 16 % de los beneficiarios del IMV: la mayoría son de nacionalidad española. Además, las cifras del bulo ni siquiera cuadran entre sí.",
+    "topic": "prestaciones",
+    "source": { "name": "Maldita.es", "url": "https://maldita.es/malditobulo/20240131/bulo-ingreso-minimo-vital-inmigrantes/" },
+    "date": "2024-01"
+  },
+  {
+    "lang": "es",
+    "claim": "Los menores extranjeros no acompañados (MENA) reciben una 'paguita' de 664 € al mes.",
+    "verdict": "Falso",
+    "reality": "Los MENA no reciben una asignación en dinero de 664 €. Como mucho pueden disponer de una pequeña cantidad para gastos personales, del orden de 10 € semanales según la comunidad autónoma, hasta un máximo aproximado de 40 € al mes.",
+    "topic": "prestaciones",
+    "source": { "name": "Maldita.es", "url": "https://maldita.es/malditobulo/20191108/bulos-que-ha-usado-vox-para-hablar-de-inmigracion-manadas-ayudas-al-alquiler-menores-extranjeros-no-acompanados-y-paguitas-de-664-euros/" },
+    "date": "2019-11"
+  },
+  {
+    "lang": "es",
+    "claim": "La UE reparte los fondos contra la violencia de género según el número de denuncias de cada país.",
+    "verdict": "Falso",
+    "reality": "La Comisión Europea confirma que la financiación está abierta en igualdad de condiciones a todos los Estados miembros, con independencia del número de denuncias. La asignación depende de la calidad e impacto de los proyectos, no del volumen de denuncias, y existen controles de auditoría.",
+    "topic": "fondos-ue",
+    "source": { "name": "Maldita.es", "url": "https://maldita.es/malditobulo/20240913/fondos-europeos-reparten-denuncias-violencia-genero-pais-ue/" },
+    "date": "2024-09"
+  },
+  {
+    "lang": "es",
+    "claim": "El Tribunal de Cuentas dijo que 'no es posible' investigar a dónde han ido los fondos europeos.",
+    "verdict": "Falso",
+    "reality": "El propio Tribunal de Cuentas confirmó que no existe ningún documento donde afirme que sea imposible investigar el destino de los fondos. De hecho ha publicado 13 informes de fiscalización sobre estos fondos desde 2023, con recomendaciones de transparencia.",
+    "topic": "fondos-ue",
+    "source": { "name": "Maldita.es", "url": "https://maldita.es/malditobulo/20260227/tribunal-cuentas-anuncio-no-es-posible-investigar-fondos-recuperacion-europeos/" },
+    "date": "2026-02"
+  },
+  {
+    "lang": "it",
+    "claim": "Chi accoglie i migranti 'incassa' 35 euro al giorno per ogni immigrato.",
+    "verdict": "Fuori contesto",
+    "reality": "I 35 euro erano la stima del costo medio giornaliero a carico dello Stato per l'accoglienza, non un guadagno: coprivano stipendi del personale, servizi e gestione dei centri. Al singolo richiedente asilo arrivavano solo circa 2,50 euro al giorno come 'pocket money'.",
+    "topic": "gasto",
+    "source": { "name": "Pagella Politica", "url": "https://pagellapolitica.it/fact-checking/salvini-sbaglia-i-numeri-sullaccoglienza-dei-migranti" },
+    "date": "2019-08"
+  },
+  {
+    "lang": "it",
+    "claim": "Un immigrato con sette mogli percepisce otto redditi di cittadinanza.",
+    "verdict": "Senza prove",
+    "reality": "La storia non ha mai trovato alcuna conferma documentale. È inoltre implausibile: la poligamia è vietata dal codice penale italiano e il ricongiungimento è consentito con una sola moglie, mentre per il reddito di cittadinanza serviva la residenza in Italia da almeno 10 anni.",
+    "topic": "prestaciones",
+    "source": { "name": "Pagella Politica", "url": "https://pagellapolitica.it/articoli/salvini-immigrato-otto-redditi-cittadinanza" },
+    "date": "2022-10"
+  },
+  {
+    "lang": "it",
+    "claim": "Lo Stato paga circa 1 miliardo di euro di pensioni sociali a immigrati che non hanno mai versato contributi.",
+    "verdict": "Ingannevole",
+    "reality": "La cifra è irrealistica: presupporrebbe che l'intera popolazione straniera over 66 sia poverissima, non abbia mai versato contributi e sia in Italia da oltre 10 anni. Con circa 155.000 residenti stranieri over 66, il costo massimo teorico sarebbe intorno ai 910 milioni, ma i beneficiari reali sono molti meno per i requisiti richiesti.",
+    "topic": "prestaciones",
+    "source": { "name": "AGI Verify · Pagella Politica", "url": "https://www.agi.it/fact-checking/news/2018-07-25/immigrati_pensioni_sociali_contributi_salvini-4196463/" },
+    "date": "2018-07"
+  },
+  {
+    "lang": "it",
+    "claim": "I parlamentari italiani sono i più pagati d'Europa.",
+    "verdict": "Ingannevole",
+    "reality": "L'indennità lorda italiana (circa 10.435 € al mese) è simile a quella tedesca (circa 10.591 €) e superiore a Francia o Spagna, ma il confronto netto è inaffidabile perché tassazione, previdenza e rimborsi variano molto tra Paesi. Non esiste un semplice 'primato' come circola online.",
+    "topic": "sueldos",
+    "source": { "name": "Pagella Politica", "url": "https://pagellapolitica.it/articoli/stipendi-parlamentari-italia-europa" },
+    "date": "2023-08"
+  },
+  {
+    "lang": "it",
+    "claim": "L'Italia è la prima nazione europea per attuazione del PNRR.",
+    "verdict": "Ingannevole",
+    "reality": "A giugno 2024 l'Italia aveva raggiunto circa il 29 % di obiettivi e traguardi concordati con l'UE, sesta tra gli Stati membri. Il piano italiano è il più grande in valore assoluto (194,4 miliardi), ma questo non equivale a essere primi nell'attuazione.",
+    "topic": "fondos-ue",
+    "source": { "name": "Pagella Politica", "url": "https://pagellapolitica.it/fact-checking/classifica-attuazione-pnrr-paesi-europei" },
+    "date": "2024-06"
+  }
+]

@@ -50,8 +50,9 @@
 - [x] Sorgente dati "deuda" ES (Hacienda) → 50 città + card debito nel pannello e nelle schede città
 - [x] FAQ città potenziata: "¿Cuánto cobra el alcalde de X?" / "¿Cuánta deuda tiene X?" / "Quanto guadagna il sindaco di X?" (con FAQPage schema)
 - [x] Pagine-classifica nazionali (head-term): `/sueldos-alcaldes` (chi guadagna di più) e `/deuda-municipios` (più indebitati; 63% senza debito) — usano TUTTO il dataset ufficiale
+- [x] Più città ES (2º livello): 15 grandi comuni NON capoluogo (Móstoles, L'Hospitalet, Jerez, Marbella, Cartagena, Terrassa, Sabadell, Badalona, Elche…) con bilancio Gobierto + debito/stipendio ufficiali. INE preso dal file Hacienda (esatto), validazione entrate≈uscite. Agganciate per slug (schede + ranking + sitemap), non sulla mappa-province.
 - [ ] Debito comuni IT (ETL BDAP) → schede città italiane
-- [ ] Estendere ISPA a TUTTE le città ES che aggiungiamo (il file copre 6.900 comuni)
+- [ ] Altre città ES (3º lotto) — il file ISPA/Hacienda copre 6.900+ comuni
 - [x] Sezione fact-check / smonta-bufale `/bulos`: 11 bufale reali (ES+IT) già verificate da fact-checker seri (Maldita, Newtral, Pagella Politica, AGI), con dato reale + link alla verifica originale + FAQPage schema. Taglio neutro, non partisan.
 - [ ] Espansione mappa mondiale (paese per paese)
 

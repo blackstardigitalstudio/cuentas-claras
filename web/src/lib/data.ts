@@ -18,6 +18,7 @@ import malagaReal from "@/data/real/malaga.json";
 import gobiertoCities from "@/data/real/gobierto-cities.json";
 import milanoReal from "@/data/real/milano.json";
 import bolognaReal from "@/data/real/bologna.json";
+import extraCitiesEs from "@/data/real/extra-cities.json";
 import { CITY_EXTRAS } from "@/data/real/city-extras";
 
 export const DATA_YEAR = 2024;
@@ -213,11 +214,30 @@ type RealCity = {
 
 type GeoFC = { features: { properties: { name: string } }[] };
 
-function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[]) {
+function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[], extras: RealCity[] = []) {
   const names = geo.features.map((f) => f.properties.name).sort((a, b) => a.localeCompare(b, "es"));
   const regions: Record<string, RegionData> = Object.fromEntries(names.map((n) => [n, buildRegion(n, cats)]));
   for (const c of reals) {
     regions[c.provincia] = {
+      name: c.name,
+      slug: c.slug,
+      ingresos: c.ingresos,
+      gastos: c.gastos,
+      ingresosByCat: c.ingresosByCat,
+      gastosByCat: c.gastosByCat,
+      gastosByEconomic: c.gastosByEconomic,
+      year: c.year,
+      isSample: false,
+      source: c.source,
+      basis: c.basis,
+      isCity: true,
+    };
+  }
+  // Ciudades grandes NO capital: se enganchan por SLUG (no por provincia), así
+  // NO chocan con la capital en el mapa (que sigue siendo provincial) pero SÍ
+  // tienen su ficha /es/{slug}, entran en el ranking y en el sitemap.
+  for (const c of extras) {
+    regions[c.slug] = {
       name: c.name,
       slug: c.slug,
       ingresos: c.ingresos,
@@ -265,7 +285,7 @@ const ES = buildCountry(provincesGeo as GeoFC, CATS_ES, [
   sevillaReal as RealCity,
   malagaReal as RealCity,
   ...(gobiertoCities as RealCity[]),
-]);
+], extraCitiesEs as RealCity[]);
 const IT = buildCountry(italyGeo as GeoFC, CATS_IT, [milanoReal as RealCity, bolognaReal as RealCity]);
 
 export const COUNTRIES: Record<CountryCode, Country> = {

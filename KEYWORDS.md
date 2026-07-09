@@ -51,9 +51,10 @@
 - [x] FAQ città potenziata: "¿Cuánto cobra el alcalde de X?" / "¿Cuánta deuda tiene X?" / "Quanto guadagna il sindaco di X?" (con FAQPage schema)
 - [x] Pagine-classifica nazionali (head-term): `/sueldos-alcaldes` (chi guadagna di più) e `/deuda-municipios` (più indebitati; 63% senza debito) — usano TUTTO il dataset ufficiale
 - [x] Più città ES (2º livello): 15 grandi comuni NON capoluogo (Móstoles, L'Hospitalet, Jerez, Marbella, Cartagena, Terrassa, Sabadell, Badalona, Elche…) con bilancio Gobierto + debito/stipendio ufficiali. INE preso dal file Hacienda (esatto), validazione entrate≈uscite. Agganciate per slug (schede + ranking + sitemap), non sulla mappa-province.
-- [ ] Debito comuni IT (ETL BDAP) → schede città italiane
-- [ ] Altre città ES (3º lotto) — il file ISPA/Hacienda copre 6.900+ comuni
+- [x] Debito comuni IT: Milano (€3,36 mld) + Bologna (€79,1 mln) da Rendiconto 2024 ufficiale → card complete
 - [x] Sezione fact-check / smonta-bufale `/bulos`: 11 bufale reali (ES+IT) già verificate da fact-checker seri (Maldita, Newtral, Pagella Politica, AGI), con dato reale + link alla verifica originale + FAQPage schema. Taglio neutro, non partisan.
-- [ ] Espansione mappa mondiale (paese per paese)
+- [x] Mappa "mondo": backdrop mondo + seconda zona (l'altro paese) colorata attenuata → si vedono entrambe le zone attive; inquadratura stretta sul paese attivo.
+- [ ] Altre città ES (3º lotto) — il file ISPA/Hacienda copre 6.900+ comuni (espandibile a piacere, stesso schema)
+- [ ] Debito comuni IT oltre Milano/Bologna (ETL BDAP quando si aggiungono altre città IT)
 
 _Made in Italy_ 🇮🇹

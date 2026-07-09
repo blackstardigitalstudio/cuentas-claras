@@ -67,49 +67,44 @@ export default function Explorer() {
 
         <RegionMapGL country={C} selected={selected} onSelect={setSelected} />
 
-        {/* Ciudades con datos reales */}
+        {/* Top spesa — barre orizzontali stile dashboard ("consumption by region") */}
         <div className="mt-4">
-          <p className="text-xs uppercase tracking-widest text-green mb-2">
-            ● {m.explorer.withReal} <span className="text-muted">({C.realNames.length})</span>
-          </p>
-          <div className="flex gap-2 flex-nowrap overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible scroll-chips">
-            {[...C.realNames]
-              .sort((a, b) => C.regions[b].gastos - C.regions[a].gastos)
-              .slice(0, 10)
-              .map((name) => (
-              <button
-                key={name}
-                onClick={() => setSelected(name)}
-                className={`shrink-0 whitespace-nowrap text-xs px-3 py-2 rounded-full border transition ${
-                  selected === name
-                    ? "border-green text-fg bg-[rgba(52,211,153,0.14)]"
-                    : "border-[rgba(52,211,153,0.4)] text-green hover:bg-[rgba(52,211,153,0.08)]"
-                }`}
-              >
-                {C.regions[name].name} · <span className="tabular">{formatCompact(C.regions[name].gastos)}</span>
-              </button>
-            ))}
+          <div className="flex items-center justify-between mb-2.5">
+            <p className="text-xs uppercase tracking-widest text-green">
+              ● {m.explorer.withReal} <span className="text-muted">({C.realNames.length})</span>
+            </p>
+            <p className="text-[11px] uppercase tracking-widest text-muted">{m.explorer.topSpending}</p>
           </div>
-        </div>
-
-        {/* Ranking rápido */}
-        <div className="mt-4">
-          <p className="text-xs uppercase tracking-widest text-muted mb-2">{m.explorer.topSpending}</p>
-          <div className="flex gap-2 flex-nowrap overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible scroll-chips">
-            {C.list.slice(0, 6).map((r) => (
-              <button
-                key={r.slug}
-                onClick={() => setSelected(r.name)}
-                className={`shrink-0 whitespace-nowrap text-xs px-3 py-2 rounded-full border transition ${
-                  region === r
-                    ? "border-cyan text-fg bg-[rgba(34,211,238,0.12)]"
-                    : "border-[var(--panel-border)] text-muted hover:text-fg"
-                }`}
-              >
-                {r.name} · <span className="tabular">{formatCompact(r.gastos)}</span>
-              </button>
-            ))}
-          </div>
+          <ul className="space-y-1">
+            {(() => {
+              const rows = [...C.realNames]
+                .map((key) => ({ key, r: C.regions[key] }))
+                .filter((x) => x.r && x.r.gastos > 0)
+                .sort((a, b) => b.r.gastos - a.r.gastos)
+                .slice(0, 8);
+              const max = rows[0]?.r.gastos || 1;
+              return rows.map(({ key, r }, i) => (
+                <li key={key}>
+                  <button
+                    onClick={() => setSelected(key)}
+                    className={`w-full text-left flex items-center gap-2.5 rounded-lg px-2 py-1.5 transition ${
+                      selected === key ? "bg-[rgba(34,211,238,0.1)]" : "hover:bg-white/5"
+                    }`}
+                  >
+                    <span className="tabular text-[11px] text-muted w-4 shrink-0 text-right">{i + 1}</span>
+                    <span className="text-xs text-fg/85 w-20 sm:w-28 shrink-0 truncate">{r.name}</span>
+                    <span className="flex-1 h-2 rounded-full bg-white/5 overflow-hidden">
+                      <span
+                        className="block h-full rounded-full bg-gradient-to-r from-cyan to-magenta"
+                        style={{ width: `${Math.max(6, (r.gastos / max) * 100)}%`, boxShadow: "0 0 8px rgba(34,211,238,0.45)" }}
+                      />
+                    </span>
+                    <span className="tabular text-[11px] text-fg/90 w-14 shrink-0 text-right">{formatCompact(r.gastos)}</span>
+                  </button>
+                </li>
+              ));
+            })()}
+          </ul>
         </div>
       </div>
 

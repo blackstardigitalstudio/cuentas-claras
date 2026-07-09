@@ -6,7 +6,30 @@ import type { RegionData } from "@/lib/data";
 import { formatCompact, formatEuro, formatPct } from "@/lib/format";
 import { CountUp } from "./Motion";
 import BubbleFlow from "./BubbleFlow";
-import { useMessages } from "@/i18n/LocaleProvider";
+import { useLocale } from "@/i18n/LocaleProvider";
+
+// Genera y descarga un CSV con el desglose (ingresos + gastos, con subniveles)
+// de la ciudad → "dato específico para analizar, descargar y profundizar".
+function downloadCSV(region: RegionData) {
+  const esc = (s: string) => `"${String(s).replace(/"/g, '""')}"`;
+  const rows: string[] = ["Tipo,Categoria,Importe_EUR"];
+  for (const c of region.ingresosByCat) rows.push(["Ingreso", esc(c.label), c.amount].join(","));
+  type Cat = { label: string; amount: number; children?: Cat[] };
+  const walk = (list: Cat[], prefix: string) => {
+    for (const c of list) {
+      rows.push(["Gasto", esc(prefix + c.label), c.amount].join(","));
+      if (c.children) walk(c.children, prefix + c.label + " > ");
+    }
+  };
+  walk(region.gastosByCat as Cat[], "");
+  const head = `# ${region.name} ${region.year} — ${region.source?.name || "Cuentas Claras"}\n# Ingresos: ${region.ingresos} EUR | Gastos: ${region.gastos} EUR | Fuente: ${region.source?.url || "www.cuentas-clara.com"}\n`;
+  const blob = new Blob(["﻿" + head + rows.join("\n")], { type: "text/csv;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `cuentas-claras-${region.slug}-${region.year}.csv`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
 
 type Cat = { key: string; label: string; color: string; amount: number; children?: Cat[] };
 
@@ -60,7 +83,7 @@ function GastoBranch({ node, parent, total, siblingMax, depth }: { node: Cat; pa
 }
 
 export default function RegionPanel({ region }: { region: RegionData }) {
-  const m = useMessages();
+  const { locale, m } = useLocale();
   const balance = region.ingresos - region.gastos;
   const positivo = balance >= 0;
   const maxCat = Math.max(...region.gastosByCat.map((c) => c.amount));
@@ -98,6 +121,18 @@ export default function RegionPanel({ region }: { region: RegionData }) {
           </a>
           {region.basis ? ` · ${region.basis}` : ""}
         </p>
+      )}
+      {!region.isSample && (
+        <button
+          type="button"
+          onClick={() => downloadCSV(region)}
+          className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-medium text-cyan border border-[rgba(34,211,238,0.4)] bg-[rgba(34,211,238,0.08)] rounded-full px-3 py-1.5 hover:bg-[rgba(34,211,238,0.16)] transition"
+        >
+          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" />
+          </svg>
+          {locale === "it" ? "Scarica i dati (CSV)" : "Descargar datos (CSV)"}
+        </button>
       )}
 
       {/* Ingresos / Gastos */}

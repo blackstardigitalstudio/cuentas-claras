@@ -128,6 +128,11 @@ export default function NewsCover({ title }: { title: string }) {
           <stop offset="0" stopColor={c1} stopOpacity="0.95" />
           <stop offset="1" stopColor={c2} stopOpacity="0.85" />
         </linearGradient>
+        <radialGradient id={`${id}core`} cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stopColor={c1} stopOpacity="0.55" />
+          <stop offset="0.5" stopColor={c1} stopOpacity="0.14" />
+          <stop offset="1" stopColor={c1} stopOpacity="0" />
+        </radialGradient>
         <filter id={`${id}glow`} x="-40%" y="-40%" width="180%" height="180%">
           <feGaussianBlur stdDeviation="4.5" />
         </filter>
@@ -145,6 +150,14 @@ export default function NewsCover({ title }: { title: string }) {
         {[45, 90, 135].map((y) => (
           <line key={y} x1="0" y1={y} x2="320" y2={y} />
         ))}
+      </g>
+
+      {/* core radiale + anelli concentrici (estetica "energy node") */}
+      <circle cx="160" cy="90" r="78" fill={`url(#${id}core)`} />
+      <g fill="none" stroke={c1}>
+        <circle cx="160" cy="90" r="30" strokeOpacity="0.4" strokeWidth="1.5" />
+        <circle cx="160" cy="90" r="46" strokeOpacity="0.24" strokeWidth="1.5" />
+        <circle cx="160" cy="90" r="64" strokeOpacity="0.12" strokeWidth="1.5" />
       </g>
 
       {/* simbolo: alone sfocato + versione nitida sopra */}

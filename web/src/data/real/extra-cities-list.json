@@ -1,0 +1,527 @@
+[
+ {
+  "name": "Móstoles",
+  "ine": "28092",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Alcalá de Henares",
+  "ine": "28005",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Fuenlabrada",
+  "ine": "28058",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Leganés",
+  "ine": "28074",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Getafe",
+  "ine": "28065",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Alcorcón",
+  "ine": "28007",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "L'Hospitalet de Llobregat",
+  "ine": "08101",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Badalona",
+  "ine": "08015",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Terrassa",
+  "ine": "08279",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Sabadell",
+  "ine": "08187",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Jerez de la Frontera",
+  "ine": "11020",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "Cartagena",
+  "ine": "30016",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Lorca",
+  "ine": "30024",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Marbella",
+  "ine": "29069",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Dos Hermanas",
+  "ine": "41038",
+  "provincia": "Sevilla"
+ },
+ {
+  "name": "Elche/Elx",
+  "ine": "03065",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "Torrejón de Ardoz",
+  "ine": "28148",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Alcobendas",
+  "ine": "28006",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Las Rozas de Madrid",
+  "ine": "28127",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Pozuelo de Alarcón",
+  "ine": "28115",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Rivas-Vaciamadrid",
+  "ine": "28123",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Parla",
+  "ine": "28106",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Mataró",
+  "ine": "08121",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Santa Coloma de Gramenet",
+  "ine": "08245",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Cornellà de Llobregat",
+  "ine": "08073",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Sant Cugat del Vallès",
+  "ine": "08205",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "El Prat de Llobregat",
+  "ine": "08169",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Rubí",
+  "ine": "08184",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Manresa",
+  "ine": "08113",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Torrent",
+  "ine": "46244",
+  "provincia": "València/Valencia"
+ },
+ {
+  "name": "Gandia",
+  "ine": "46131",
+  "provincia": "València/Valencia"
+ },
+ {
+  "name": "Paterna",
+  "ine": "46190",
+  "provincia": "València/Valencia"
+ },
+ {
+  "name": "Sagunto",
+  "ine": "46220",
+  "provincia": "València/Valencia"
+ },
+ {
+  "name": "Torrevieja",
+  "ine": "03133",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "Orihuela",
+  "ine": "03099",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "Benidorm",
+  "ine": "03031",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "Algeciras",
+  "ine": "11004",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "San Fernando",
+  "ine": "11031",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "El Puerto de Santa María",
+  "ine": "11027",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "Chiclana de la Frontera",
+  "ine": "11015",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "Vélez-Málaga",
+  "ine": "29094",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Mijas",
+  "ine": "29070",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Fuengirola",
+  "ine": "29054",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Torremolinos",
+  "ine": "29901",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Estepona",
+  "ine": "29051",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Molina de Segura",
+  "ine": "30027",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Barakaldo",
+  "ine": "48013",
+  "provincia": "Bizkaia/Vizcaya"
+ },
+ {
+  "name": "Getxo",
+  "ine": "48044",
+  "provincia": "Bizkaia/Vizcaya"
+ },
+ {
+  "name": "Santiago de Compostela",
+  "ine": "15078",
+  "provincia": "A Coruña"
+ },
+ {
+  "name": "Ferrol",
+  "ine": "15036",
+  "provincia": "A Coruña"
+ },
+ {
+  "name": "Reus",
+  "ine": "43123",
+  "provincia": "Tarragona"
+ },
+ {
+  "name": "Roquetas de Mar",
+  "ine": "04079",
+  "provincia": "Almería"
+ },
+ {
+  "name": "El Ejido",
+  "ine": "04902",
+  "provincia": "Almería"
+ },
+ {
+  "name": "San Cristóbal de La Laguna",
+  "ine": "38023",
+  "provincia": "Santa Cruz De Tenerife"
+ },
+ {
+  "name": "Telde",
+  "ine": "35026",
+  "provincia": "Las Palmas"
+ },
+ {
+  "name": "Mérida",
+  "ine": "06083",
+  "provincia": "Badajoz"
+ },
+ {
+  "name": "Talavera de la Reina",
+  "ine": "45165",
+  "provincia": "Toledo"
+ },
+ {
+  "name": "Ponferrada",
+  "ine": "24115",
+  "provincia": "León"
+ },
+ {
+  "name": "Alcalá de Guadaíra",
+  "ine": "41004",
+  "provincia": "Sevilla"
+ },
+ {
+  "name": "Utrera",
+  "ine": "41095",
+  "provincia": "Sevilla"
+ },
+ {
+  "name": "Alcoy/Alcoi",
+  "ine": "03009",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "Elda",
+  "ine": "03066",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "San Vicente del Raspeig",
+  "ine": "03122",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "Dénia",
+  "ine": "03063",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "Motril",
+  "ine": "18140",
+  "provincia": "Granada"
+ },
+ {
+  "name": "Linares",
+  "ine": "23055",
+  "provincia": "Jaén"
+ },
+ {
+  "name": "Sanlúcar de Barrameda",
+  "ine": "11032",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "La Línea de la Concepción",
+  "ine": "11022",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "Puerto Real",
+  "ine": "11028",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "Avilés",
+  "ine": "33004",
+  "provincia": "Asturias"
+ },
+ {
+  "name": "Siero",
+  "ine": "33066",
+  "provincia": "Asturias"
+ },
+ {
+  "name": "Torrelavega",
+  "ine": "39087",
+  "provincia": "Cantabria"
+ },
+ {
+  "name": "Irún",
+  "ine": "20045",
+  "provincia": "Gipuzkoa/Guipúzcoa"
+ },
+ {
+  "name": "Errenteria",
+  "ine": "20067",
+  "provincia": "Gipuzkoa/Guipúzcoa"
+ },
+ {
+  "name": "Portugalete",
+  "ine": "48078",
+  "provincia": "Bizkaia/Vizcaya"
+ },
+ {
+  "name": "Santurtzi",
+  "ine": "48082",
+  "provincia": "Bizkaia/Vizcaya"
+ },
+ {
+  "name": "Basauri",
+  "ine": "48015",
+  "provincia": "Bizkaia/Vizcaya"
+ },
+ {
+  "name": "Vila-real",
+  "ine": "12135",
+  "provincia": "Castelló/Castellón"
+ },
+ {
+  "name": "Sant Boi de Llobregat",
+  "ine": "08200",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Vilanova i la Geltrú",
+  "ine": "08307",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Viladecans",
+  "ine": "08301",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Castelldefels",
+  "ine": "08056",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Granollers",
+  "ine": "08096",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Cerdanyola del Vallès",
+  "ine": "08266",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Mollet del Vallès",
+  "ine": "08124",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Vic",
+  "ine": "08298",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Tortosa",
+  "ine": "43155",
+  "provincia": "Tarragona"
+ },
+ {
+  "name": "Cambrils",
+  "ine": "43038",
+  "provincia": "Tarragona"
+ },
+ {
+  "name": "Salou",
+  "ine": "43905",
+  "provincia": "Tarragona"
+ },
+ {
+  "name": "Figueres",
+  "ine": "17066",
+  "provincia": "Girona"
+ },
+ {
+  "name": "Blanes",
+  "ine": "17023",
+  "provincia": "Girona"
+ },
+ {
+  "name": "Alzira",
+  "ine": "46017",
+  "provincia": "València/Valencia"
+ },
+ {
+  "name": "Mislata",
+  "ine": "46169",
+  "provincia": "València/Valencia"
+ },
+ {
+  "name": "Xàtiva",
+  "ine": "46145",
+  "provincia": "València/Valencia"
+ },
+ {
+  "name": "Coslada",
+  "ine": "28049",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "San Sebastián de los Reyes",
+  "ine": "28134",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Majadahonda",
+  "ine": "28080",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Aranjuez",
+  "ine": "28013",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Arganda del Rey",
+  "ine": "28014",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Calvià",
+  "ine": "07011",
+  "provincia": "Illes Balears"
+ },
+ {
+  "name": "Manacor",
+  "ine": "07033",
+  "provincia": "Illes Balears"
+ },
+ {
+  "name": "Arona",
+  "ine": "38006",
+  "provincia": "Santa Cruz De Tenerife"
+ },
+ {
+  "name": "Puertollano",
+  "ine": "13071",
+  "provincia": "Ciudad Real"
+ },
+ {
+  "name": "Tomelloso",
+  "ine": "13082",
+  "provincia": "Ciudad Real"
+ },
+ {
+  "name": "Antequera",
+  "ine": "29015",
+  "provincia": "Málaga"
+ }
+]

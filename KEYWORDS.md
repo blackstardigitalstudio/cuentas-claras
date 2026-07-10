@@ -54,7 +54,8 @@
 - [x] Debito comuni IT: Milano (€3,36 mld) + Bologna (€79,1 mln) da Rendiconto 2024 ufficiale → card complete
 - [x] Sezione fact-check / smonta-bufale `/bulos`: 11 bufale reali (ES+IT) già verificate da fact-checker seri (Maldita, Newtral, Pagella Politica, AGI), con dato reale + link alla verifica originale + FAQPage schema. Taglio neutro, non partisan.
 - [x] Mappa "mondo": backdrop mondo + seconda zona (l'altro paese) colorata attenuata → si vedono entrambe le zone attive; inquadratura stretta sul paese attivo.
-- [x] Altre città ES (3º lotto): +39 grandi città (Santiago de Compostela, Algeciras, Torrevieja, Mataró, Reus, Mérida, Benidorm, Fuengirola, Sant Cugat, Torrent, Gandia…) → **106 città reali** totali. Build reso stabile con `workerThreads:false` (evita crash worker Windows con 227 pagine).
+- [x] Altre città ES (3º lotto): +39 grandi città (Santiago de Compostela, Algeciras, Torrevieja, Mataró, Reus, Mérida, Benidorm, Fuengirola, Sant Cugat, Torrent, Gandia…) → 106 città reali. Build stabile con `workerThreads:false`.
+- [x] Altre città ES (4º lotto): +47 città (Talavera, Ponferrada, Avilés, Irún, Alcoy, Elda, Linares, Motril, Vic, Tortosa, Alzira, Aranjuez, Calvià, Arona, Antequera…) → **153 città reali** totali. ETL ora legge la lista da `extra-cities-list.json` (espansione = aggiungere righe).
 - [ ] Debito comuni IT oltre Milano/Bologna (ETL BDAP quando si aggiungono altre città IT)
 
 _Made in Italy_ 🇮🇹

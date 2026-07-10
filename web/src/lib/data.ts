@@ -65,6 +65,7 @@ export type RegionData = {
   isCity?: boolean;
   mayorSalary?: MayorSalary;
   debt?: Debt;
+  poblacion?: number; // popolazione (per calcolare valori "per abitante", quando disponibile)
 };
 
 // Categorías de GASTO — clasificación por programas (lenguaje ciudadano)
@@ -211,6 +212,7 @@ type RealCity = {
   year: number;
   basis?: string;
   source?: { name: string; url: string };
+  poblacion?: number;
 };
 
 type GeoFC = { features: { properties: { name: string } }[] };
@@ -251,6 +253,7 @@ function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[], extras: RealC
       source: c.source,
       basis: c.basis,
       isCity: true,
+      poblacion: c.poblacion,
     };
   }
   // Adjunta datos oficiales extra (deuda viva, retribución del alcalde) por slug del nombre.

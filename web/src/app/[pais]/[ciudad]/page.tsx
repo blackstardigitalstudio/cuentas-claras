@@ -216,14 +216,26 @@ export default async function CityPage({ params }: Props) {
         </p>
       </header>
 
-      <section className="grid grid-cols-2 gap-3 mt-6">
+      <p className="text-sm text-muted mt-5">
+        {es
+          ? `En cristiano: en ${r.year}, ${r.isCity ? "el ayuntamiento de " : ""}${r.name} recibió ${formatCompact(r.ingresos)} (el dinero que entra) y gastó ${formatCompact(r.gastos)}`
+          : `In parole semplici: nel ${r.year}, ${r.isCity ? "il Comune di " : ""}${r.name} ha incassato ${formatCompact(r.ingresos)} (i soldi che entrano) e ne ha spesi ${formatCompact(r.gastos)}`}
+        {r.poblacion && r.poblacion > 0 ? (
+          <span className="text-fg/80">
+            {es ? ` — unos ${formatEuro(Math.round(r.gastos / r.poblacion))} por habitante.` : ` — circa ${formatEuro(Math.round(r.gastos / r.poblacion))} per abitante.`}
+          </span>
+        ) : "."}
+      </p>
+      <section className="grid grid-cols-2 gap-3 mt-3">
         <div className="glass p-4">
           <p className="text-xs text-muted">{es ? "Ingresos" : "Entrate"} {r.year}</p>
           <p className="tabular text-2xl font-semibold text-green mt-1">{formatEuro(r.ingresos)}</p>
+          <p className="text-[11px] text-muted/70 mt-0.5">{es ? "el dinero que entra (impuestos, tasas, ayudas)" : "i soldi che entrano (tasse, tariffe, aiuti)"}</p>
         </div>
         <div className="glass p-4">
           <p className="text-xs text-muted">{es ? "Gastos" : "Spese"} {r.year}</p>
           <p className="tabular text-2xl font-semibold text-magenta mt-1">{formatEuro(r.gastos)}</p>
+          <p className="text-[11px] text-muted/70 mt-0.5">{es ? "el dinero que gasta en servicios" : "i soldi che spende in servizi"}</p>
         </div>
       </section>
 
@@ -234,6 +246,10 @@ export default async function CityPage({ params }: Props) {
               <p className="text-xs text-muted">{es ? "Deuda viva" : "Debito residuo"} · 31/12/{r.debt.year}</p>
               <p className="tabular text-2xl font-semibold text-[#fdba74] mt-1">
                 {r.debt.amount > 0 ? formatEuro(r.debt.amount) : es ? "Sin deuda" : "Nessun debito"}
+              </p>
+              <p className="text-[11px] text-muted/70">
+                {es ? "lo que aún debe devolver (préstamos)" : "quello che deve ancora restituire (mutui)"}
+                {r.poblacion && r.debt.amount > 0 ? <span className="text-[#fdba74]"> · ≈ {formatEuro(Math.round(r.debt.amount / r.poblacion))} {es ? "por habitante" : "per abitante"}</span> : null}
               </p>
               <a href={r.debt.source.url} target="_blank" rel="noopener noreferrer" className="text-[11px] text-muted underline hover:text-fg">
                 {r.debt.source.name}

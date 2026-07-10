@@ -133,7 +133,8 @@ export default function FutbolPage() {
         {/* Deuda */}
         <section className="mt-12">
           <h2 className="text-lg md:text-xl font-semibold">🧾 Deuda de los clubes · 2024/25</h2>
-          <p className="text-[11px] text-cyan/70 mb-4">Deuda financiera de las cuentas anuales / bilanci (neta salvo indicación).</p>
+          <p className="text-[11px] text-cyan/70 mb-1">Lo que deben los clubes, según sus cuentas anuales / bilanci.</p>
+          <p className="text-[11px] text-muted mb-4">En cristiano: <span className="text-fg/80">deuda neta</span> = lo que deben menos el dinero que tienen guardado · <span className="text-fg/80">bruta</span> = todo lo que deben · <span className="text-green">caja positiva</span> = tienen más dinero que deudas.</p>
           <ol className="space-y-1.5">
             {debts.map((d) => (
               <li key={d.club} className="glass flex items-center gap-3 px-3 py-2.5">

@@ -15,6 +15,9 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   basePath: basePath || undefined,
   trailingSlash: true,
+  // Generazione statica in-process (niente worker-thread): evita un crash nativo
+  // dei worker su Windows con molte pagine. Più lenta ma stabile ovunque.
+  experimental: { workerThreads: false, cpus: 1 },
 };
 
 export default nextConfig;

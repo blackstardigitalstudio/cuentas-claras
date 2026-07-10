@@ -1,79 +1,24 @@
 // ---------------------------------------------------------------------------
 // ETL Gobierto — CIUDADES GRANDES NO CAPITALES (2º nivel de cobertura).
 // Mismo origen y lógica que etl-gobierto.mjs, pero para municipios que NO son
-// capital de provincia (Móstoles, L'Hospitalet, Jerez…). Se guardan aparte y
-// se enganchan al modelo por SLUG (no por provincia), para no chocar con la
-// capital que ya ocupa esa provincia en el mapa.
-//   INE tomado del fichero oficial de Hacienda (provincia+municipio) → exacto.
-// Escribe: web/src/data/real/extra-cities.json
+// capital de provincia. Se guardan aparte y se enganchan al modelo por SLUG
+// (no por provincia), para no chocar con la capital en el mapa.
+//   La LISTA de ciudades (nombre · INE · provincia) vive en:
+//     web/src/data/real/extra-cities-list.json
+//   El INE se toma del fichero oficial de Hacienda (provincia+municipio) → exacto.
+//   Para ampliar cobertura: añade filas a esa lista y vuelve a ejecutar este ETL.
+// Escribe: web/src/data/real/extra-cities.json (solo las que validan).
 // ---------------------------------------------------------------------------
 
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
-import { writeFileSync, mkdirSync } from "fs";
+import { writeFileSync, mkdirSync, readFileSync } from "fs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const REAL_DIR = join(__dirname, "..", "web", "src", "data", "real");
 const S3 = (ine) => `https://gobierto-populate-production.s3.eu-west-1.amazonaws.com/gobierto_budgets/${parseInt(ine, 10)}/data/bubbles.json`;
 
-// Nombre · INE (de Hacienda) · provincia. Solo grandes municipios no capital.
-const CITIES = [
-  { name: "Móstoles", ine: "28092", provincia: "Madrid" },
-  { name: "Alcalá de Henares", ine: "28005", provincia: "Madrid" },
-  { name: "Fuenlabrada", ine: "28058", provincia: "Madrid" },
-  { name: "Leganés", ine: "28074", provincia: "Madrid" },
-  { name: "Getafe", ine: "28065", provincia: "Madrid" },
-  { name: "Alcorcón", ine: "28007", provincia: "Madrid" },
-  { name: "L'Hospitalet de Llobregat", ine: "08101", provincia: "Barcelona" },
-  { name: "Badalona", ine: "08015", provincia: "Barcelona" },
-  { name: "Terrassa", ine: "08279", provincia: "Barcelona" },
-  { name: "Sabadell", ine: "08187", provincia: "Barcelona" },
-  { name: "Jerez de la Frontera", ine: "11020", provincia: "Cádiz" },
-  { name: "Cartagena", ine: "30016", provincia: "Murcia" },
-  { name: "Lorca", ine: "30024", provincia: "Murcia" },
-  { name: "Marbella", ine: "29069", provincia: "Málaga" },
-  { name: "Dos Hermanas", ine: "41038", provincia: "Sevilla" },
-  { name: "Elche/Elx", ine: "03065", provincia: "Alacant/Alicante" },
-  { name: "Torrejón de Ardoz", ine: "28148", provincia: "Madrid" },
-  { name: "Alcobendas", ine: "28006", provincia: "Madrid" },
-  { name: "Las Rozas de Madrid", ine: "28127", provincia: "Madrid" },
-  { name: "Pozuelo de Alarcón", ine: "28115", provincia: "Madrid" },
-  { name: "Rivas-Vaciamadrid", ine: "28123", provincia: "Madrid" },
-  { name: "Parla", ine: "28106", provincia: "Madrid" },
-  { name: "Mataró", ine: "08121", provincia: "Barcelona" },
-  { name: "Santa Coloma de Gramenet", ine: "08245", provincia: "Barcelona" },
-  { name: "Cornellà de Llobregat", ine: "08073", provincia: "Barcelona" },
-  { name: "Sant Cugat del Vallès", ine: "08205", provincia: "Barcelona" },
-  { name: "El Prat de Llobregat", ine: "08169", provincia: "Barcelona" },
-  { name: "Rubí", ine: "08184", provincia: "Barcelona" },
-  { name: "Manresa", ine: "08113", provincia: "Barcelona" },
-  { name: "Torrent", ine: "46244", provincia: "València/Valencia" },
-  { name: "Gandia", ine: "46131", provincia: "València/Valencia" },
-  { name: "Paterna", ine: "46190", provincia: "València/Valencia" },
-  { name: "Sagunto", ine: "46220", provincia: "València/Valencia" },
-  { name: "Torrevieja", ine: "03133", provincia: "Alacant/Alicante" },
-  { name: "Orihuela", ine: "03099", provincia: "Alacant/Alicante" },
-  { name: "Benidorm", ine: "03031", provincia: "Alacant/Alicante" },
-  { name: "Algeciras", ine: "11004", provincia: "Cádiz" },
-  { name: "San Fernando", ine: "11031", provincia: "Cádiz" },
-  { name: "El Puerto de Santa María", ine: "11027", provincia: "Cádiz" },
-  { name: "Chiclana de la Frontera", ine: "11015", provincia: "Cádiz" },
-  { name: "Vélez-Málaga", ine: "29094", provincia: "Málaga" },
-  { name: "Mijas", ine: "29070", provincia: "Málaga" },
-  { name: "Fuengirola", ine: "29054", provincia: "Málaga" },
-  { name: "Torremolinos", ine: "29901", provincia: "Málaga" },
-  { name: "Estepona", ine: "29051", provincia: "Málaga" },
-  { name: "Molina de Segura", ine: "30027", provincia: "Murcia" },
-  { name: "Barakaldo", ine: "48013", provincia: "Bizkaia/Vizcaya" },
-  { name: "Getxo", ine: "48044", provincia: "Bizkaia/Vizcaya" },
-  { name: "Santiago de Compostela", ine: "15078", provincia: "A Coruña" },
-  { name: "Ferrol", ine: "15036", provincia: "A Coruña" },
-  { name: "Reus", ine: "43123", provincia: "Tarragona" },
-  { name: "Roquetas de Mar", ine: "04079", provincia: "Almería" },
-  { name: "El Ejido", ine: "04902", provincia: "Almería" },
-  { name: "San Cristóbal de La Laguna", ine: "38023", provincia: "Santa Cruz De Tenerife" },
-  { name: "Telde", ine: "35026", provincia: "Las Palmas" },
-  { name: "Mérida", ine: "06083", provincia: "Badajoz" },
-];
+const CITIES = JSON.parse(readFileSync(join(REAL_DIR, "extra-cities-list.json"), "utf8"));
 
 const ING_CAP = {
   "1": ["Impuestos directos (IBI, plusvalía…)", "#34d399"], "2": ["Impuestos indirectos (ICIO…)", "#2dd4bf"],
@@ -124,7 +69,6 @@ async function build(city) {
   const gastos = gastosByCat.reduce((s, c) => s + c.amount, 0);
   if (!Number.isFinite(ingresos) || !Number.isFinite(gastos)) throw new Error("valores no finitos");
   if (ingresos < 20_000_000 || gastos < 20_000_000) throw new Error(`totales bajos (${ingresos}/${gastos})`);
-  // Integridad: ingresos y gastos deben cuadrar razonablemente (presupuesto equilibrado).
   const ratio = ingresos / gastos;
   if (ratio < 0.6 || ratio > 1.6) throw new Error(`ingresos/gastos descuadran (${ratio.toFixed(2)})`);
 
@@ -143,14 +87,15 @@ async function main() {
     try {
       const data = await build(c);
       out.push(data);
-      console.log(`✓ ${c.name.padEnd(26)} ${(data.gastos / 1e6 | 0)}M€  (${data.year})  in/out=${(data.ingresos / data.gastos).toFixed(2)}`);
+      console.log(`✓ ${c.name.padEnd(28)} ${(data.gastos / 1e6 | 0)}M€  (${data.year})`);
     } catch (e) {
-      console.log(`· ${c.name.padEnd(26)} — ${e.message}`);
+      console.log(`· ${c.name.padEnd(28)} — ${e.message}`);
     }
   }
   if (out.length < 3) throw new Error(`Muy pocas ciudades (${out.length}); no se sobrescribe.`);
-  mkdirSync(join(__dirname, "..", "web", "src", "data", "real"), { recursive: true });
-  writeFileSync(join(__dirname, "..", "web", "src", "data", "real", "extra-cities.json"), JSON.stringify(out, null, 1));
-  console.log(`\nGobierto extra: ${out.length} ciudades no capital añadidas.`);
+  out.sort((a, b) => b.gastos - a.gastos);
+  mkdirSync(REAL_DIR, { recursive: true });
+  writeFileSync(join(REAL_DIR, "extra-cities.json"), JSON.stringify(out, null, 1));
+  console.log(`\nGobierto extra: ${out.length}/${CITIES.length} ciudades no capital añadidas.`);
 }
 main().catch((e) => { console.error("ETL Gobierto extra ERROR:", e.message); process.exit(1); });

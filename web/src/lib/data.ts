@@ -19,6 +19,7 @@ import gobiertoCities from "@/data/real/gobierto-cities.json";
 import milanoReal from "@/data/real/milano.json";
 import bolognaReal from "@/data/real/bologna.json";
 import extraCitiesEs from "@/data/real/extra-cities.json";
+import itExtraCities from "@/data/real/it-extra-cities.json";
 import { CITY_EXTRAS } from "@/data/real/city-extras";
 
 export const DATA_YEAR = 2024;
@@ -286,7 +287,15 @@ const ES = buildCountry(provincesGeo as GeoFC, CATS_ES, [
   malagaReal as RealCity,
   ...(gobiertoCities as RealCity[]),
 ], extraCitiesEs as RealCity[]);
-const IT = buildCountry(italyGeo as GeoFC, CATS_IT, [milanoReal as RealCity, bolognaReal as RealCity]);
+// Comuni italiani (oltre Milano/Bologna) dai dati di cassa SIOPE 2025 (RGS-MEF).
+const IT_SIOPE_SRC = { name: "SIOPE · Ragioneria Generale dello Stato (MEF)", url: "https://bdap-opendata.rgs.mef.gov.it" };
+const itExtras = (itExtraCities as unknown as RealCity[]).map((c) => ({
+  ...c,
+  provincia: c.name,
+  source: IT_SIOPE_SRC,
+  basis: "Dati di cassa SIOPE 2025 (pagamenti e incassi), Ragioneria Generale dello Stato",
+})) as RealCity[];
+const IT = buildCountry(italyGeo as GeoFC, CATS_IT, [milanoReal as RealCity, bolognaReal as RealCity], itExtras);
 
 export const COUNTRIES: Record<CountryCode, Country> = {
   es: { code: "es", mapKind: "spain", defaultRegion: "Barcelona", geo: provincesGeo as GeoFC, ...ES },

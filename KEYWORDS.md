@@ -58,6 +58,8 @@
 - [x] Altre città ES (4º lotto): +47 città (Talavera, Ponferrada, Avilés, Irún, Alcoy, Elda, Linares, Motril, Vic, Tortosa, Alzira, Aranjuez, Calvià, Arona, Antequera…) → 153 città reali. ETL legge la lista da `extra-cities-list.json`.
 - [x] Altre città ES (5º lotto): +75 città → 228 città reali. (Chi non dichiara stipendio all'ISPA mostra solo il debito — integrità.)
 - [x] Altre città ES (6º lotto): +89 città medie (Pinto, Valdemoro, Manises, Cullera, Igualada, Sitges, Martorell, Candelaria, Lalín, Ribeira, Onda, Roses, Balaguer, Carmona…) → **317 città reali** totali. Soglia bilancio ≥20M filtra da sé i comuni troppo piccoli. Matcher esteso agli articoli galiziani (A/O).
-- [ ] Debito comuni IT oltre Milano/Bologna (ETL BDAP quando si aggiungono altre città IT)
+- [x] Comuni IT (bilanci): +28 città dai dati di cassa **SIOPE 2025** (RGS-MEF) → Roma (€6,6 mld), Genova, Venezia, Palermo, Catania, Bari, Verona, Padova, Messina, Modena, Parma… → **30 città IT** (con Milano/Bologna). Stipendio sindaco calcolato per legge (RSO); omesso per statuto speciale. Fix integrità: la città reale vince sul campione provinciale con lo stesso slug.
+- [ ] Completare i comuni IT mancanti (Torino, Napoli, Firenze, Milano-area…): saltati per instabilità endpoint SIOPE su quelle regioni; da ri-scaricare quando il server è stabile.
+- [ ] Debito comuni IT oltre Milano/Bologna (SIOPE non ha il debito; serve BDAP)
 
 _Made in Italy_ 🇮🇹

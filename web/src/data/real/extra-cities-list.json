@@ -523,5 +523,400 @@
   "name": "Antequera",
   "ine": "29015",
   "provincia": "Málaga"
+ },
+ {
+  "name": "Alhaurín de la Torre",
+  "ine": "29007",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Nerja",
+  "ine": "29075",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Rincón de la Victoria",
+  "ine": "29082",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Ronda",
+  "ine": "29084",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "La Vila Joiosa",
+  "ine": "03139",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "Crevillent",
+  "ine": "03059",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "Villena",
+  "ine": "03140",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "Petrer",
+  "ine": "03104",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "Santa Pola",
+  "ine": "03121",
+  "provincia": "Alacant/Alicante"
+ },
+ {
+  "name": "Mairena del Aljarafe",
+  "ine": "41059",
+  "provincia": "Sevilla"
+ },
+ {
+  "name": "Écija",
+  "ine": "41039",
+  "provincia": "Sevilla"
+ },
+ {
+  "name": "La Rinconada",
+  "ine": "41081",
+  "provincia": "Sevilla"
+ },
+ {
+  "name": "Morón de la Frontera",
+  "ine": "41065",
+  "provincia": "Sevilla"
+ },
+ {
+  "name": "San Roque",
+  "ine": "11033",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "Rota",
+  "ine": "11030",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "Arcos de la Frontera",
+  "ine": "11006",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "Águilas",
+  "ine": "30003",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Yecla",
+  "ine": "30043",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Jumilla",
+  "ine": "30022",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Cieza",
+  "ine": "30019",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Mazarrón",
+  "ine": "30026",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Alcantarilla",
+  "ine": "30005",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Totana",
+  "ine": "30039",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Almuñécar",
+  "ine": "18017",
+  "provincia": "Granada"
+ },
+ {
+  "name": "Baza",
+  "ine": "18023",
+  "provincia": "Granada"
+ },
+ {
+  "name": "Loja",
+  "ine": "18122",
+  "provincia": "Granada"
+ },
+ {
+  "name": "Andújar",
+  "ine": "23005",
+  "provincia": "Jaén"
+ },
+ {
+  "name": "Úbeda",
+  "ine": "23092",
+  "provincia": "Jaén"
+ },
+ {
+  "name": "Martos",
+  "ine": "23060",
+  "provincia": "Jaén"
+ },
+ {
+  "name": "Montilla",
+  "ine": "14042",
+  "provincia": "Córdoba"
+ },
+ {
+  "name": "Priego de Córdoba",
+  "ine": "14055",
+  "provincia": "Córdoba"
+ },
+ {
+  "name": "Lepe",
+  "ine": "21044",
+  "provincia": "Huelva"
+ },
+ {
+  "name": "Isla Cristina",
+  "ine": "21042",
+  "provincia": "Huelva"
+ },
+ {
+  "name": "Ayamonte",
+  "ine": "21010",
+  "provincia": "Huelva"
+ },
+ {
+  "name": "Illescas",
+  "ine": "45081",
+  "provincia": "Toledo"
+ },
+ {
+  "name": "Valdepeñas",
+  "ine": "13087",
+  "provincia": "Ciudad Real"
+ },
+ {
+  "name": "Alcázar de San Juan",
+  "ine": "13005",
+  "provincia": "Ciudad Real"
+ },
+ {
+  "name": "Hellín",
+  "ine": "02037",
+  "provincia": "Albacete"
+ },
+ {
+  "name": "Villarrobledo",
+  "ine": "02081",
+  "provincia": "Albacete"
+ },
+ {
+  "name": "Almansa",
+  "ine": "02009",
+  "provincia": "Albacete"
+ },
+ {
+  "name": "Arrecife",
+  "ine": "35004",
+  "provincia": "Las Palmas"
+ },
+ {
+  "name": "Arucas",
+  "ine": "35006",
+  "provincia": "Las Palmas"
+ },
+ {
+  "name": "Gáldar",
+  "ine": "35009",
+  "provincia": "Las Palmas"
+ },
+ {
+  "name": "Adeje",
+  "ine": "38001",
+  "provincia": "Santa Cruz De Tenerife"
+ },
+ {
+  "name": "Granadilla de Abona",
+  "ine": "38017",
+  "provincia": "Santa Cruz De Tenerife"
+ },
+ {
+  "name": "La Orotava",
+  "ine": "38026",
+  "provincia": "Santa Cruz De Tenerife"
+ },
+ {
+  "name": "Los Realejos",
+  "ine": "38031",
+  "provincia": "Santa Cruz De Tenerife"
+ },
+ {
+  "name": "Llucmajor",
+  "ine": "07031",
+  "provincia": "Illes Balears"
+ },
+ {
+  "name": "Inca",
+  "ine": "07027",
+  "provincia": "Illes Balears"
+ },
+ {
+  "name": "Miranda de Ebro",
+  "ine": "09219",
+  "provincia": "Burgos"
+ },
+ {
+  "name": "Aranda de Duero",
+  "ine": "09018",
+  "provincia": "Burgos"
+ },
+ {
+  "name": "Don Benito",
+  "ine": "06044",
+  "provincia": "Badajoz"
+ },
+ {
+  "name": "Almendralejo",
+  "ine": "06011",
+  "provincia": "Badajoz"
+ },
+ {
+  "name": "Plasencia",
+  "ine": "10148",
+  "provincia": "Cáceres"
+ },
+ {
+  "name": "Vilagarcía de Arousa",
+  "ine": "36060",
+  "provincia": "Pontevedra"
+ },
+ {
+  "name": "Marín",
+  "ine": "36026",
+  "provincia": "Pontevedra"
+ },
+ {
+  "name": "Cangas",
+  "ine": "36008",
+  "provincia": "Pontevedra"
+ },
+ {
+  "name": "Redondela",
+  "ine": "36045",
+  "provincia": "Pontevedra"
+ },
+ {
+  "name": "Narón",
+  "ine": "15054",
+  "provincia": "A Coruña"
+ },
+ {
+  "name": "Oleiros",
+  "ine": "15058",
+  "provincia": "A Coruña"
+ },
+ {
+  "name": "Carballo",
+  "ine": "15019",
+  "provincia": "A Coruña"
+ },
+ {
+  "name": "Arteixo",
+  "ine": "15005",
+  "provincia": "A Coruña"
+ },
+ {
+  "name": "Culleredo",
+  "ine": "15031",
+  "provincia": "A Coruña"
+ },
+ {
+  "name": "Langreo",
+  "ine": "33031",
+  "provincia": "Asturias"
+ },
+ {
+  "name": "Mieres",
+  "ine": "33037",
+  "provincia": "Asturias"
+ },
+ {
+  "name": "Castro-Urdiales",
+  "ine": "39020",
+  "provincia": "Cantabria"
+ },
+ {
+  "name": "Burriana",
+  "ine": "12032",
+  "provincia": "Castelló/Castellón"
+ },
+ {
+  "name": "Vinaròs",
+  "ine": "12138",
+  "provincia": "Castelló/Castellón"
+ },
+ {
+  "name": "Olot",
+  "ine": "17114",
+  "provincia": "Girona"
+ },
+ {
+  "name": "Salt",
+  "ine": "17155",
+  "provincia": "Girona"
+ },
+ {
+  "name": "Lloret de Mar",
+  "ine": "17095",
+  "provincia": "Girona"
+ },
+ {
+  "name": "El Vendrell",
+  "ine": "43163",
+  "provincia": "Tarragona"
+ },
+ {
+  "name": "Amposta",
+  "ine": "43014",
+  "provincia": "Tarragona"
+ },
+ {
+  "name": "Calafell",
+  "ine": "43037",
+  "provincia": "Tarragona"
+ },
+ {
+  "name": "Azuqueca de Henares",
+  "ine": "19046",
+  "provincia": "Guadalajara"
+ },
+ {
+  "name": "Medina del Campo",
+  "ine": "47085",
+  "provincia": "Valladolid"
+ },
+ {
+  "name": "Laguna de Duero",
+  "ine": "47076",
+  "provincia": "Valladolid"
+ },
+ {
+  "name": "Calatayud",
+  "ine": "50067",
+  "provincia": "Zaragoza"
+ },
+ {
+  "name": "Utebo",
+  "ine": "50272",
+  "provincia": "Zaragoza"
  }
 ]

@@ -1,0 +1,1610 @@
+[
+ {
+  "name": "Roma",
+  "slug": "roma",
+  "poblacion": 2747290,
+  "year": 2025,
+  "ingresos": 6698678223,
+  "gastos": 6621545232,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 3068165728
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 1441992643
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 1124137490
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 600855119
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 463527243
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 5506612276
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 980961408
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 133971548
+   }
+  ]
+ },
+ {
+  "name": "Genova",
+  "slug": "genova",
+  "poblacion": 564080,
+  "year": 2025,
+  "ingresos": 1251431155,
+  "gastos": 1213315925,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 588004516
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 323308273
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 174140874
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 122309464
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 43668028
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 811291931
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 316882938
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 85141056
+   }
+  ]
+ },
+ {
+  "name": "Venezia",
+  "slug": "venezia",
+  "poblacion": 249490,
+  "year": 2025,
+  "ingresos": 1007690443,
+  "gastos": 938548797,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 462946876
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 218356930
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 189435128
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 134568454
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 2383055
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 702480408
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 226160745
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 9907644
+   }
+  ]
+ },
+ {
+  "name": "Palermo",
+  "slug": "palermo",
+  "poblacion": 628693,
+  "year": 2025,
+  "ingresos": 800971236,
+  "gastos": 781372990,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 411491395
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 240086095
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 75837237
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 70683145
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 2873364
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 642231618
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 123162960
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 15978412
+   }
+  ]
+ },
+ {
+  "name": "Catania",
+  "slug": "catania",
+  "poblacion": 298054,
+  "year": 2025,
+  "ingresos": 676436585,
+  "gastos": 567444176,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 304352542
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 207806746
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 117616774
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 46660523
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 434127840
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 114109894
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 19206442
+   }
+  ]
+ },
+ {
+  "name": "Bari",
+  "slug": "bari",
+  "poblacion": 315831,
+  "year": 2025,
+  "ingresos": 493358276,
+  "gastos": 534047422,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 254964703
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 109961632
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 78216114
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 50215827
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 390256508
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 134235103
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 9555811
+   }
+  ]
+ },
+ {
+  "name": "Padova",
+  "slug": "padova",
+  "poblacion": 207412,
+  "year": 2025,
+  "ingresos": 443052568,
+  "gastos": 439346757,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 192057924
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 112107036
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 86453835
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 52433773
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 291174510
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 144253728
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 3918519
+   }
+  ]
+ },
+ {
+  "name": "Verona",
+  "slug": "verona",
+  "poblacion": 255039,
+  "year": 2025,
+  "ingresos": 456769323,
+  "gastos": 404532171,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 234699687
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 106629423
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 63846034
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 51594179
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 325364136
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 77067426
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 2100609
+   }
+  ]
+ },
+ {
+  "name": "Messina",
+  "slug": "messina",
+  "poblacion": 217033,
+  "year": 2025,
+  "ingresos": 458269104,
+  "gastos": 391745735,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 190742658
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 106679939
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 88218105
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 46355946
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 26272456
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 272251723
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 109410834
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 10083178
+   }
+  ]
+ },
+ {
+  "name": "Cagliari",
+  "slug": "cagliari",
+  "poblacion": 0,
+  "year": 2025,
+  "ingresos": 409269692,
+  "gastos": 350476674,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 141873901
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 115398530
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 104691112
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 47306149
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 252340560
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 93066584
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 5069530
+   }
+  ]
+ },
+ {
+  "name": "Bolzano",
+  "slug": "bolzano",
+  "poblacion": 106568,
+  "year": 2025,
+  "ingresos": 474092563,
+  "gastos": 328082268,
+  "ingresosByCat": [
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 304295327
+   },
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 59569150
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 56120152
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 54107934
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 231790090
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 95358496
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 933682
+   }
+  ]
+ },
+ {
+  "name": "Taranto",
+  "slug": "taranto",
+  "poblacion": 186011,
+  "year": 2025,
+  "ingresos": 284315077,
+  "gastos": 320930257,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 159158646
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 62252554
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 32178394
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 28240568
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 2484915
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 215676373
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 103360770
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 1893114
+   }
+  ]
+ },
+ {
+  "name": "Modena",
+  "slug": "modena",
+  "poblacion": 184074,
+  "year": 2025,
+  "ingresos": 284371082,
+  "gastos": 305623076,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 121648965
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 68281241
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 56513069
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 36463195
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 1464612
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 206340634
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 98243993
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 1038449
+   }
+  ]
+ },
+ {
+  "name": "Parma",
+  "slug": "parma",
+  "poblacion": 198693,
+  "year": 2025,
+  "ingresos": 286887959,
+  "gastos": 295985011,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 128887437
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 53956519
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 53747448
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 37535468
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 12761087
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 223260124
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 62134792
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 10590095
+   }
+  ]
+ },
+ {
+  "name": "Rimini",
+  "slug": "rimini",
+  "poblacion": 150333,
+  "year": 2025,
+  "ingresos": 270975270,
+  "gastos": 278754613,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 150019765
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 52677590
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 40244121
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 23973118
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 4060676
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 204318052
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 69366081
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 5070480
+   }
+  ]
+ },
+ {
+  "name": "Ravenna",
+  "slug": "ravenna",
+  "poblacion": 156340,
+  "year": 2025,
+  "ingresos": 252994132,
+  "gastos": 232620607,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 122076932
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 50882796
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 38458952
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 35905452
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 5670000
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 171249540
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 58576029
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 2795038
+   }
+  ]
+ },
+ {
+  "name": "Reggio nell'Emilia",
+  "slug": "reggio-nell-emilia",
+  "poblacion": 172284,
+  "year": 2025,
+  "ingresos": 213082419,
+  "gastos": 211025822,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 100065742
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 40921193
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 34843803
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 23471681
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 13780000
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 152912438
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 51405097
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 6708287
+   }
+  ]
+ },
+ {
+  "name": "Sassari",
+  "slug": "sassari",
+  "poblacion": 0,
+  "year": 2025,
+  "ingresos": 208590238,
+  "gastos": 199540235,
+  "ingresosByCat": [
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 84762007
+   },
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 81392580
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 21330988
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 21104663
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 165523475
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 31117141
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 2899619
+   }
+  ]
+ },
+ {
+  "name": "Ferrara",
+  "slug": "ferrara",
+  "poblacion": 129081,
+  "year": 2025,
+  "ingresos": 188627713,
+  "gastos": 195710734,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 86806883
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 34954272
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 33368782
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 26318232
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 7179544
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 137644224
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 47742421
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 10324089
+   }
+  ]
+ },
+ {
+  "name": "Foggia",
+  "slug": "foggia",
+  "poblacion": 145198,
+  "year": 2025,
+  "ingresos": 196442732,
+  "gastos": 184753669,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 120846723
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 44501781
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 15709178
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 15385050
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 146152767
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 30960193
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 7640709
+   }
+  ]
+ },
+ {
+  "name": "Vicenza",
+  "slug": "vicenza",
+  "poblacion": 110468,
+  "year": 2025,
+  "ingresos": 174323634,
+  "gastos": 170988865,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 83137203
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 47714260
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 24958094
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 12445897
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 6068180
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 138807753
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 27687400
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 4493712
+   }
+  ]
+ },
+ {
+  "name": "Forli'",
+  "slug": "forli",
+  "poblacion": 117535,
+  "year": 2025,
+  "ingresos": 140030910,
+  "gastos": 164863163,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 61791498
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 30891982
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 26538392
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 19212038
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 1597000
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 108982370
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 46677671
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 9203122
+   }
+  ]
+ },
+ {
+  "name": "Piacenza",
+  "slug": "piacenza",
+  "poblacion": 103406,
+  "year": 2025,
+  "ingresos": 157354900,
+  "gastos": 161911013,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 81025599
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 33901832
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 27161039
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 15266430
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 124840020
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 35573819
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 1497174
+   }
+  ]
+ },
+ {
+  "name": "Lecce",
+  "slug": "lecce",
+  "poblacion": 94187,
+  "year": 2025,
+  "ingresos": 166603574,
+  "gastos": 159119782,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 92755092
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 26232363
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 25389465
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 22226654
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 121512294
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 32535217
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 5072271
+   }
+  ]
+ },
+ {
+  "name": "Siracusa",
+  "slug": "siracusa",
+  "poblacion": 115776,
+  "year": 2025,
+  "ingresos": 158048205,
+  "gastos": 144144586,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 82472663
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 26383695
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 24947313
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 20919243
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 3325291
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 114714236
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 26421048
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 3009302
+   }
+  ]
+ },
+ {
+  "name": "Latina",
+  "slug": "latina",
+  "poblacion": 127796,
+  "year": 2025,
+  "ingresos": 164511931,
+  "gastos": 131574291,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 96978136
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 37091627
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 18083954
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 12358214
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 109152162
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 18785261
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 3636868
+   }
+  ]
+ },
+ {
+  "name": "La Spezia",
+  "slug": "la-spezia",
+  "poblacion": 92706,
+  "year": 2025,
+  "ingresos": 129437953,
+  "gastos": 125447519,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 57505650
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 32990061
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 19572028
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 11925065
+   },
+   {
+    "key": "i5",
+    "label": "Prestiti/anticipazioni",
+    "color": "#f87171",
+    "amount": 7445149
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 85424415
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 32596241
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 7426863
+   }
+  ]
+ },
+ {
+  "name": "Brindisi",
+  "slug": "brindisi",
+  "poblacion": 81723,
+  "year": 2025,
+  "ingresos": 116219052,
+  "gastos": 122964445,
+  "ingresosByCat": [
+   {
+    "key": "i1",
+    "label": "Imposte e tasse",
+    "color": "#34d399",
+    "amount": 69782015
+   },
+   {
+    "key": "i4",
+    "label": "Entrate in conto capitale",
+    "color": "#c084fc",
+    "amount": 20445191
+   },
+   {
+    "key": "i2",
+    "label": "Trasferimenti correnti",
+    "color": "#a78bfa",
+    "amount": 17073474
+   },
+   {
+    "key": "i3",
+    "label": "Entrate extratributarie",
+    "color": "#38bdf8",
+    "amount": 8918372
+   }
+  ],
+  "gastosByCat": [
+   {
+    "key": "g1",
+    "label": "Spese correnti",
+    "color": "#22d3ee",
+    "amount": 84701332
+   },
+   {
+    "key": "g2",
+    "label": "Investimenti",
+    "color": "#fbbf24",
+    "amount": 35045838
+   },
+   {
+    "key": "g4",
+    "label": "Rimborso prestiti",
+    "color": "#818cf8",
+    "amount": 3217275
+   }
+  ]
+ }
+]

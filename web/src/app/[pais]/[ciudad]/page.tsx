@@ -23,7 +23,10 @@ export function generateStaticParams() {
 
 function find(pais: string, ciudad: string): { country: CountryCode; r: RegionData } | null {
   if (pais !== "es" && pais !== "it") return null;
-  const r = Object.values(COUNTRIES[pais].regions).find((x) => x.slug === ciudad);
+  // Puede haber dos regiones con el mismo slug (p.ej. provincia "Roma" de muestra
+  // y la ciudad real "roma" con datos oficiales): gana SIEMPRE el dato real.
+  const matches = Object.values(COUNTRIES[pais].regions).filter((x) => x.slug === ciudad);
+  const r = matches.find((x) => !x.isSample) || matches[0];
   return r ? { country: pais, r } : null;
 }
 

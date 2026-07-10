@@ -122,8 +122,8 @@ export default function Home() {
       {/* Explorador */}
       <Explorer />
 
-      {/* Filones ad alta domanda: accessi diretti a sueldos / deuda / bulos */}
-      <section className="mt-16 grid sm:grid-cols-3 gap-4">
+      {/* Filones ad alta domanda: accessi diretti a sueldos / deuda / bulos / fútbol */}
+      <section className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           {
             href: "/sueldos-alcaldes",
@@ -142,6 +142,12 @@ export default function Home() {
             accent: "#22d3ee",
             t: locale === "it" ? "Smonta-bufale" : "Bulos, desmontados",
             d: locale === "it" ? "Bufale sui soldi pubblici, verificate con i dati." : "Bulos sobre el dinero público, verificados con datos.",
+          },
+          {
+            href: "/futbol",
+            accent: "#34d399",
+            t: locale === "it" ? "⚽ I soldi del calcio" : "⚽ El dinero del fútbol",
+            d: locale === "it" ? "Límite salarial, ricavi e debiti dei club (dati ufficiali)." : "Límite salarial, ingresos y deuda de los clubes (datos oficiales).",
           },
         ].map((c, i) => (
           <Reveal key={c.href} delay={i * 0.08}>

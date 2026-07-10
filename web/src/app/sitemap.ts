@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/sueldos-alcaldes/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/deuda-municipios/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/bulos/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/futbol/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/escandalos/`, lastModified, changeFrequency: "hourly", priority: 0.8 },
   ];
   const seen = new Set<string>();

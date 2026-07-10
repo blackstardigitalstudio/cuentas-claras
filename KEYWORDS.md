@@ -56,7 +56,8 @@
 - [x] Mappa "mondo": backdrop mondo + seconda zona (l'altro paese) colorata attenuata → si vedono entrambe le zone attive; inquadratura stretta sul paese attivo.
 - [x] Altre città ES (3º lotto): +39 grandi città (Santiago de Compostela, Algeciras, Torrevieja, Mataró, Reus, Mérida, Benidorm, Fuengirola, Sant Cugat, Torrent, Gandia…) → 106 città reali. Build stabile con `workerThreads:false`.
 - [x] Altre città ES (4º lotto): +47 città (Talavera, Ponferrada, Avilés, Irún, Alcoy, Elda, Linares, Motril, Vic, Tortosa, Alzira, Aranjuez, Calvià, Arona, Antequera…) → 153 città reali. ETL legge la lista da `extra-cities-list.json`.
-- [x] Altre città ES (5º lotto): +75 città (Ronda, Nerja, Úbeda, Andújar, Arrecife, Adeje, La Orotava, Miranda de Ebro, Aranda de Duero, Don Benito, Plasencia, Castro-Urdiales, Olot, Amposta, Águilas, Yecla…) → **228 città reali** totali. Copertura ~completa dei comuni ES cercati. (Chi non dichiara stipendio all'ISPA mostra solo il debito — integrità.)
+- [x] Altre città ES (5º lotto): +75 città → 228 città reali. (Chi non dichiara stipendio all'ISPA mostra solo il debito — integrità.)
+- [x] Altre città ES (6º lotto): +89 città medie (Pinto, Valdemoro, Manises, Cullera, Igualada, Sitges, Martorell, Candelaria, Lalín, Ribeira, Onda, Roses, Balaguer, Carmona…) → **317 città reali** totali. Soglia bilancio ≥20M filtra da sé i comuni troppo piccoli. Matcher esteso agli articoli galiziani (A/O).
 - [ ] Debito comuni IT oltre Milano/Bologna (ETL BDAP quando si aggiungono altre città IT)
 
 _Made in Italy_ 🇮🇹

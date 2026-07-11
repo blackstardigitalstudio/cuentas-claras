@@ -213,13 +213,17 @@ export default async function CityPage({ params }: Props) {
     ],
   };
 
+  // Breadcrumb coherente: el nivel intermedio apunta a la landing del país
+  // (Italia tiene /italia; España usa la portada). Nombre y URL cuadran.
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` },
-      { "@type": "ListItem", position: 2, name: es ? "España" : "Italia", item: `${SITE}/ranking/` },
-      { "@type": "ListItem", position: 3, name: r.name, item: `${SITE}/${pais}/${r.slug}/` },
+      ...(es
+        ? []
+        : [{ "@type": "ListItem", position: 2, name: "Italia", item: `${SITE}/italia/` }]),
+      { "@type": "ListItem", position: es ? 2 : 3, name: r.name, item: `${SITE}/${pais}/${r.slug}/` },
     ],
   };
 

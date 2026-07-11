@@ -20,6 +20,9 @@ export default function SiteNav() {
           <Link href="/ranking" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
             Ranking
           </Link>
+          <Link href="/records" className="hidden lg:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
+            🏆 Récords
+          </Link>
           <Link href="/sueldos-alcaldes" className="hidden md:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
             Sueldos
           </Link>

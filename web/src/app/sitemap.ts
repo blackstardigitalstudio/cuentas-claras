@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/dove-vanno-i-soldi-pubblici/`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE}/cuanto-cobra-un-concejal/`, lastModified, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE}/quanto-guadagna-un-consigliere-comunale/`, lastModified, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE}/records/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/comparar/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/confronta/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/bulos/`, lastModified, changeFrequency: "weekly", priority: 0.8 },

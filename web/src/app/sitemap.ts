@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { COUNTRIES, type CountryCode } from "@/lib/data";
+import { CLUBS, CLUB_COMPARE_SLUGS } from "@/data/futbol";
 
 export const dynamic = "force-static";
 
@@ -36,6 +37,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   };
   addPairs(CMP_ES, "comparar");
   addPairs(CMP_IT, "confronta");
+
+  // Comparaciones de clubes de fútbol (X vs Y).
+  const clubs = CLUB_COMPARE_SLUGS.filter((s) => CLUBS[s]);
+  for (let i = 0; i < clubs.length; i++) for (let j = i + 1; j < clubs.length; j++) {
+    urls.push({ url: `${SITE}/futbol/${clubs[i]}-vs-${clubs[j]}/`, lastModified, changeFrequency: "monthly", priority: 0.5 });
+  }
 
   const seen = new Set<string>();
   for (const p of ["es", "it"] as CountryCode[]) {

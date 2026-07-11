@@ -115,3 +115,25 @@ export const LEAGUES: { league: string; revenue: number; wageToRevenue: number; 
 export function futbolSlug(club: string): string {
   return club.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
+
+// --- Dataset unificato dei club (per i confronti "X vs Y") ---
+export type ClubMetrics = { name: string; slug: string; league: "laliga" | "seriea"; limite?: number; revenue?: number; wageBill?: number; net?: number; debt?: { amount: number; kind: string } };
+
+export const CLUBS: Record<string, ClubMetrics> = (() => {
+  const m: Record<string, ClubMetrics> = {};
+  const get = (name: string, league: "laliga" | "seriea") => {
+    const s = futbolSlug(name);
+    return (m[s] = m[s] || { name, slug: s, league });
+  };
+  for (const c of LALIGA_LCPD) get(c.club, "laliga").limite = c.amount;
+  for (const c of CLUB_REVENUE) get(c.club, c.country === "es" ? "laliga" : "seriea").revenue = c.amount;
+  for (const c of SERIE_A) { const x = get(c.club, "seriea"); x.revenue = c.revenue; x.wageBill = c.wageBill; x.net = c.net; }
+  for (const c of CLUB_DEBT) { const x = get(c.club, c.country === "es" ? "laliga" : "seriea"); x.debt = { amount: c.amount, kind: c.kind }; }
+  return m;
+})();
+
+// Club destacados para las páginas de comparación (mezcla de LaLiga + Serie A).
+export const CLUB_COMPARE_SLUGS = [
+  "real-madrid", "fc-barcelona", "atletico-de-madrid", "sevilla-fc", "villarreal-cf", "real-betis", "athletic-club", "real-sociedad", "valencia-cf",
+  "inter", "juventus", "ac-milan", "as-roma", "ssc-napoli", "atalanta", "lazio", "fiorentina",
+];

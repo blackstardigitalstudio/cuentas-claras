@@ -3,15 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { COUNTRIES, type RegionData } from "@/lib/data";
 import { formatEuro, formatCompact } from "@/lib/format";
+import { CMP_ES as TOP } from "@/data/compare-lists";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
-
-// Ciudades más buscadas de España para páginas de comparación "X vs Y".
-const TOP = [
-  "madrid", "barcelona", "valencia", "sevilla", "zaragoza", "malaga", "murcia", "palma",
-  "las-palmas-de-gran-canaria", "bilbao", "alicante", "cordoba", "valladolid", "vigo",
-  "gijon", "vitoria-gasteiz", "a-coruna", "granada", "elche-elx", "oviedo",
-];
 
 function findBySlug(slug: string): RegionData | null {
   const matches = Object.values(COUNTRIES.es.regions).filter((r) => r.slug === slug);

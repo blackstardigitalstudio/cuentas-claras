@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { COUNTRIES, type CountryCode } from "@/lib/data";
 import { CLUBS, CLUB_COMPARE_SLUGS } from "@/data/futbol";
+import { CMP_ES, CMP_IT } from "@/data/compare-lists";
 
 export const dynamic = "force-static";
 
@@ -28,8 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/escandalos/`, lastModified, changeFrequency: "hourly", priority: 0.8 },
   ];
   // Páginas de comparación "X vs Y" (mismas listas que las rutas /comparar y /confronta).
-  const CMP_ES = ["madrid","barcelona","valencia","sevilla","zaragoza","malaga","murcia","palma","las-palmas-de-gran-canaria","bilbao","alicante","cordoba","valladolid","vigo","gijon","vitoria-gasteiz","a-coruna","granada","elche-elx","oviedo"];
-  const CMP_IT = ["roma","milano","napoli","torino","palermo","genova","bologna","firenze","bari","catania","venezia","verona","messina","padova","trieste","brescia","prato","taranto","modena","parma"];
   const addPairs = (list: string[], base: string) => {
     for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) {
       urls.push({ url: `${SITE}/${base}/${list[i]}-vs-${list[j]}/`, lastModified, changeFrequency: "monthly", priority: 0.5 });
@@ -50,11 +49,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const key = `${p}/${r.slug}`;
       if (seen.has(key)) continue;
       seen.add(key);
+      // Las fichas de ejemplo van con noindex → no las incluimos en el sitemap.
+      if (r.isSample) continue;
       urls.push({
         url: `${SITE}/${p}/${r.slug}/`,
         lastModified,
         changeFrequency: "monthly",
-        priority: r.isSample ? 0.4 : 0.7,
+        priority: 0.7,
       });
     }
   }

@@ -7,6 +7,7 @@ import {
   LALIGA_LCPD, LALIGA_LCPD_SEASON, LALIGA_LCPD_SOURCE,
   CLUB_REVENUE, REVENUE_SEASON, REVENUE_SOURCE, CLUB_DEBT,
   SERIE_A, SERIE_A_SEASON, SERIE_A_SOURCE, LEAGUES, LEAGUE_SOURCE,
+  CLUBS, CLUB_COMPARE_SLUGS,
 } from "@/data/futbol";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -224,6 +225,25 @@ export default function FutbolPage() {
               </Link>
             ))}
           </div>
+
+          {/* Directorio completo: todas las comparaciones (enlaces internos → nada huérfano) */}
+          <details className="glass p-4 mt-4">
+            <summary className="font-medium cursor-pointer marker:text-cyan text-sm">Todas las comparaciones (club vs club)</summary>
+            <div className="flex flex-wrap gap-1.5 mt-3">
+              {(() => {
+                const list = CLUB_COMPARE_SLUGS.filter((s) => CLUBS[s]);
+                const out: { pair: string; label: string }[] = [];
+                for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) {
+                  out.push({ pair: `${list[i]}-vs-${list[j]}`, label: `${CLUBS[list[i]].name} vs ${CLUBS[list[j]].name}` });
+                }
+                return out.map((c) => (
+                  <Link key={c.pair} href={`/futbol/${c.pair}/`} className="text-[12px] px-2 py-1 rounded-md border border-[var(--panel-border)] text-cyan/75 hover:text-fg hover:border-cyan transition">
+                    {c.label}
+                  </Link>
+                ));
+              })()}
+            </div>
+          </details>
         </section>
 
         <section className="mt-12">

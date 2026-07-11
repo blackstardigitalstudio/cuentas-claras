@@ -189,6 +189,39 @@ export default function Home() {
         ))}
       </section>
 
+      {/* Más temas buscados: enlaces a guías y páginas pilar (evita huérfanas + SEO) */}
+      <section className="mt-8">
+        <p className="text-xs uppercase tracking-widest text-cyan/70 mb-3">
+          {locale === "it" ? "Altri temi cercati" : "Más temas buscados"}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {(locale === "it"
+            ? [
+                { href: "/spesa-comuni/", t: "La spesa dei comuni" },
+                { href: "/ranking/", t: "Classifica di spesa" },
+                { href: "/dove-vanno-i-soldi-pubblici/", t: "Dove vanno i soldi pubblici" },
+                { href: "/quanto-guadagna-un-consigliere-comunale/", t: "Quanto guadagna un consigliere" },
+                { href: "/confronta/roma-vs-milano/", t: "Roma vs Milano" },
+                { href: "/confronta/milano-vs-napoli/", t: "Milano vs Napoli" },
+                { href: "/futbol/inter-vs-juventus/", t: "Inter vs Juventus" },
+              ]
+            : [
+                { href: "/gasto-por-habitante/", t: "Gasto por habitante" },
+                { href: "/ranking/", t: "Ranking de gasto" },
+                { href: "/en-que-se-gasta-el-dinero-publico/", t: "¿En qué se gasta el dinero público?" },
+                { href: "/cuanto-cobra-un-concejal/", t: "¿Cuánto cobra un concejal?" },
+                { href: "/comparar/madrid-vs-barcelona/", t: "Madrid vs Barcelona" },
+                { href: "/comparar/valencia-vs-sevilla/", t: "Valencia vs Sevilla" },
+                { href: "/futbol/real-madrid-vs-fc-barcelona/", t: "Real Madrid vs Barça" },
+              ]
+          ).map((c) => (
+            <Link key={c.href} href={c.href} className="px-3.5 py-1.5 rounded-full text-sm border border-[var(--panel-border)] text-muted hover:text-fg hover:border-cyan transition">
+              {c.t}
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* Cómo funciona */}
       <section className="mt-16 grid md:grid-cols-3 gap-4">
         {[

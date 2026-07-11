@@ -5,6 +5,8 @@ import Explorer from "@/components/Explorer";
 import News from "@/components/News";
 import Scoop from "@/components/Scoop";
 import SiteNav from "@/components/SiteNav";
+import SiteSearch from "@/components/SiteSearch";
+import { CLUBS, CLUB_PAGE_SLUGS } from "@/data/futbol";
 import { CountUp, Reveal } from "@/components/Motion";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { DATA_SOURCE_URL, COUNTRIES, type CountryCode } from "@/lib/data";
@@ -62,7 +64,11 @@ export default function Home() {
         </h1>
         <p className="mt-5 text-base md:text-lg text-muted max-w-2xl mx-auto">{m.hero.subtitle}</p>
 
-        <div className="mt-7 flex items-center justify-center gap-3">
+        <div className="mt-7">
+          <SiteSearch />
+        </div>
+
+        <div className="mt-6 flex items-center justify-center gap-3">
           <a
             href="#explorar"
             className="px-6 py-3 rounded-full font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition shadow-[0_0_30px_-6px_var(--cyan)]"
@@ -224,6 +230,37 @@ export default function Home() {
             </Link>
           ))}
         </div>
+      </section>
+
+      {/* Sección equipos / squadre: las cuentas de cada club */}
+      <section className="mt-16">
+        <div className="flex items-end justify-between gap-3 mb-4">
+          <div>
+            <h2 className="text-xl md:text-2xl font-semibold">{locale === "it" ? "⚽ Le squadre" : "⚽ Los equipos"}</h2>
+            <p className="text-sm text-muted mt-1">
+              {locale === "it" ? "I conti di ogni club: ricavi, ingaggi, debito — dati ufficiali." : "Las cuentas de cada club: ingresos, salarios, deuda — datos oficiales."}
+            </p>
+          </div>
+          <Link href="/futbol/" className="shrink-0 text-sm font-medium text-cyan hover:text-fg transition whitespace-nowrap">
+            {locale === "it" ? "Tutto il calcio →" : "Todo el fútbol →"}
+          </Link>
+        </div>
+        {(["laliga", "seriea"] as const).map((lg) => {
+          const clubs = CLUB_PAGE_SLUGS.filter((s) => CLUBS[s].league === lg);
+          if (!clubs.length) return null;
+          return (
+            <div key={lg} className="mb-4">
+              <h3 className="text-xs uppercase tracking-widest text-cyan/70 mb-2">{lg === "laliga" ? "🇪🇸 LaLiga" : "🇮🇹 Serie A"}</h3>
+              <div className="flex flex-wrap gap-2">
+                {clubs.map((s) => (
+                  <Link key={s} href={`/futbol/${s}/`} className="px-3 py-1.5 rounded-full text-sm border border-[var(--panel-border)] text-muted hover:text-fg hover:border-cyan transition">
+                    {CLUBS[s].name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </section>
 
       {/* Cómo funciona */}

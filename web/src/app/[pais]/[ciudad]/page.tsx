@@ -104,6 +104,7 @@ export default async function CityPage({ params }: Props) {
   // Pilares temáticos (accesos a las páginas de mayor búsqueda), por país.
   const pillars = es
     ? [
+        { href: "/records/", t: "🏆 Récords del dinero público" },
         { href: "/sueldos-alcaldes/", t: "Sueldos de alcaldes" },
         { href: "/deuda-municipios/", t: "Deuda municipal" },
         { href: "/ranking/", t: "Ranking de gasto" },
@@ -115,6 +116,7 @@ export default async function CityPage({ params }: Props) {
         { href: "/futbol/", t: "El dinero del fútbol" },
       ]
     : [
+        { href: "/records/", t: "🏆 Record dei soldi pubblici" },
         { href: "/spesa-comuni/", t: "La spesa dei comuni" },
         { href: "/ranking/", t: "Classifica di spesa" },
         { href: "/confronta/", t: "Confronta comuni" },

@@ -197,6 +197,7 @@ export default function Home() {
         <div className="flex flex-wrap gap-2">
           {(locale === "it"
             ? [
+                { href: "/records/", t: "🏆 I record dei soldi pubblici" },
                 { href: "/spesa-comuni/", t: "La spesa dei comuni" },
                 { href: "/ranking/", t: "Classifica di spesa" },
                 { href: "/dove-vanno-i-soldi-pubblici/", t: "Dove vanno i soldi pubblici" },
@@ -207,6 +208,7 @@ export default function Home() {
                 { href: "/futbol/inter-vs-juventus/", t: "Inter vs Juventus" },
               ]
             : [
+                { href: "/records/", t: "🏆 Los récords del dinero público" },
                 { href: "/gasto-por-habitante/", t: "Gasto por habitante" },
                 { href: "/ranking/", t: "Ranking de gasto" },
                 { href: "/en-que-se-gasta-el-dinero-publico/", t: "¿En qué se gasta el dinero público?" },

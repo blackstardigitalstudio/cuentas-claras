@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
+import HeroBanner from "@/components/HeroBanner";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -37,8 +38,7 @@ export default function ConsigliereePage() {
       <LocaleProvider>
         <SiteNav />
         <article className="pt-8">
-          <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-cyan/80">🇮🇹 Spiegato facile</p>
-          <h1 className="text-2xl md:text-4xl font-bold mt-2">Quanto guadagna un <span className="neon-text">consigliere comunale</span>?</h1>
+          <HeroBanner priority as="h1" src="/photos/money.jpg" alt="Monete da euro" kicker="🇮🇹 Spiegato facile" title="QUANTO GUADAGNA UN" highlight="CONSIGLIERE COMUNALE?" accent="#a5b4fc" accent2="#22d3ee" />
           <p className="text-sm md:text-base text-muted mt-3">
             Sorpresa: il consigliere comunale <span className="text-fg/90">non ha uno stipendio</span>. Prende un
             «gettone di presenza» per ogni seduta a cui partecipa. In parole semplici, ecco come funziona:

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
+import HeroBanner from "@/components/HeroBanner";
 import { COUNTRIES } from "@/lib/data";
 import { formatCompact } from "@/lib/format";
 
@@ -50,10 +51,7 @@ export default function GuidaSpesaPage() {
       <LocaleProvider>
         <SiteNav />
         <article className="pt-8">
-          <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-cyan/80">🇮🇹 Guida · spiegato facile</p>
-          <h1 className="text-2xl md:text-4xl font-bold mt-2">
-            Dove vanno i <span className="neon-text">soldi pubblici</span>?
-          </h1>
+          <HeroBanner priority as="h1" src="/photos/money.jpg" alt="Monete da euro" kicker="🇮🇹 Guida · spiegato facile" title="DOVE VANNO I" highlight="SOLDI PUBBLICI?" accent="#22d3ee" accent2="#a78bfa" />
           <p className="text-sm md:text-base text-muted mt-3">
             Il tuo Comune riceve dei soldi (dalle tue tasse e dallo Stato) e li spende in servizi per la città. Qui ti
             spieghiamo, in parole semplici, <span className="text-fg/90">dove vanno questi soldi</span> — e poi puoi

@@ -12,6 +12,7 @@ export default function ScoopBoard() {
     <>
       <div className="pt-6">
         <HeroBanner
+          priority
           as="h1"
           src="/photos/justice.jpg"
           alt={it ? "Palazzo di giustizia" : "Palacio de justicia"}

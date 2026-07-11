@@ -61,6 +61,7 @@ function Inner() {
       <SiteNav />
       <div className="mt-6">
         <HeroBanner
+          priority
           as="h1"
           src="/photos/money.jpg"
           alt={it ? "Euro · soldi pubblici" : "Euro · dinero público"}

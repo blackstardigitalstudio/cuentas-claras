@@ -80,6 +80,32 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ¿Qué es esto? — explicación SÚPER BÁSICA + 3 pasos */}
+      <Reveal>
+        <section className="glass p-5 md:p-6 mb-12">
+          <p className="text-center text-base md:text-lg text-fg/90 max-w-2xl mx-auto">
+            {locale === "it"
+              ? "Qui vedi, in modo facile e con dati ufficiali, quanto incassa, spende e deve ogni città di Spagna e Italia — e quanto guadagna il sindaco."
+              : "Aquí ves, fácil y con datos oficiales, cuánto ingresa, gasta y debe cada ciudad de España e Italia — y cuánto cobra su alcalde."}
+          </p>
+          <div className="mt-5 grid sm:grid-cols-3 gap-3">
+            {[
+              { n: "1", t: locale === "it" ? "Scegli la tua città" : "Elige tu ciudad", d: locale === "it" ? "sulla mappa o dalla lista" : "en el mapa o en la lista" },
+              { n: "2", t: locale === "it" ? "Guarda i suoi conti" : "Mira sus cuentas", d: locale === "it" ? "entrate, spese, debito, stipendio del sindaco" : "ingresos, gastos, deuda, sueldo del alcalde" },
+              { n: "3", t: locale === "it" ? "Tutto spiegato facile" : "Todo explicado fácil", d: locale === "it" ? "in parole semplici, con la fonte ufficiale" : "en palabras sencillas, con la fuente oficial" },
+            ].map((s) => (
+              <div key={s.n} className="flex items-start gap-3">
+                <span className="shrink-0 w-7 h-7 rounded-full bg-gradient-to-br from-cyan to-violet text-[#05070f] font-bold text-sm flex items-center justify-center">{s.n}</span>
+                <span>
+                  <span className="block font-medium text-sm">{s.t}</span>
+                  <span className="block text-xs text-muted">{s.d}</span>
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+      </Reveal>
+
       {/* Franja de impacto: una cifra grande y real (gasto público desglosado) */}
       <Reveal>
         <section className="glass relative overflow-hidden px-5 py-8 md:px-10 md:py-10 mb-12 text-center">

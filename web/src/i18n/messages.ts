@@ -50,7 +50,7 @@ export type Messages = {
     seeAll: string;
     empty: string;
     disclaimer: string;
-    themes: { scoop: string; funds: string; verdicts: string; waste: string; nepotism: string; sanctions: string; investigations: string; salaries: string; works: string; subsidies: string };
+    themes: { scoop: string; funds: string; verdicts: string; waste: string; nepotism: string; sanctions: string; investigations: string; salaries: string; works: string; subsidies: string; taxes: string; transparency: string };
   };
 };
 
@@ -151,6 +151,8 @@ const es: Messages = {
       salaries: "Sueldos y sobresueldos",
       works: "Obra pública y sobrecostes",
       subsidies: "Subvenciones y ayudas",
+      taxes: "Subidas de impuestos y tasas",
+      transparency: "Opacidad y datos ocultos",
     },
   },
 };
@@ -252,6 +254,8 @@ const it: Messages = {
       salaries: "Stipendi e indennità",
       works: "Grandi opere e incompiute",
       subsidies: "Sovvenzioni e contributi",
+      taxes: "Aumenti di tasse e tributi",
+      transparency: "Opacità e dati nascosti",
     },
   },
 };

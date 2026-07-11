@@ -18,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/deuda-municipios/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/spesa-comuni/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/gasto-por-habitante/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/en-que-se-gasta-el-dinero-publico/`, lastModified, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE}/dove-vanno-i-soldi-pubblici/`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE}/bulos/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/futbol/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/escandalos/`, lastModified, changeFrequency: "hourly", priority: 0.8 },

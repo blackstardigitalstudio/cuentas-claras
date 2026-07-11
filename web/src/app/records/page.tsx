@@ -10,7 +10,14 @@ export const metadata: Metadata = {
     "Los récords del dinero público en España e Italia con datos oficiales: el alcalde que más cobra, la ciudad más endeudada, la que más gasta y el mayor gasto por habitante.",
   keywords: ["alcalde mejor pagado", "ciudad más endeudada", "quién gasta más dinero público", "récords gasto municipal", "sindaco più pagato", "città più indebitata"],
   alternates: { canonical: `${SITE}/records/` },
-  openGraph: { title: "Récords del dinero público (España e Italia)", description: "El alcalde mejor pagado, la ciudad más endeudada y más, con datos oficiales.", url: `${SITE}/records/`, type: "article" },
+  openGraph: {
+    title: "Récords del dinero público (España e Italia)",
+    description: "El alcalde mejor pagado, la ciudad más endeudada y más, con datos oficiales.",
+    url: `${SITE}/records/`,
+    type: "article",
+    images: [{ url: "/og-records.png", width: 1200, height: 630, alt: "Los récords del dinero público — España e Italia" }],
+  },
+  twitter: { card: "summary_large_image", title: "Récords del dinero público", description: "El alcalde mejor pagado, la ciudad más endeudada y más.", images: ["/og-records.png"] },
 };
 
 // --- Cálculo de récords a partir de los datos REALES (nada inventado) ---

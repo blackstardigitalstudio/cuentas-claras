@@ -6,6 +6,7 @@ import { formatEuro, formatCompact } from "@/lib/format";
 import {
   LALIGA_LCPD, LALIGA_LCPD_SEASON, LALIGA_LCPD_SOURCE,
   CLUB_REVENUE, REVENUE_SEASON, REVENUE_SOURCE, CLUB_DEBT,
+  SERIE_A, SERIE_A_SEASON, SERIE_A_SOURCE, LEAGUES, LEAGUE_SOURCE,
 } from "@/data/futbol";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -155,6 +156,53 @@ export default function FutbolPage() {
               </li>
             ))}
           </ol>
+        </section>
+
+        {/* Serie A: ricavi + monte ingaggi (tutte le 20 squadre) */}
+        <section className="mt-12">
+          <h2 className="text-lg md:text-xl font-semibold">🇮🇹 Serie A · ricavi e stipendi · {SERIE_A_SEASON}</h2>
+          <p className="text-[11px] text-cyan/70 mb-4">Quanto incassa ogni club (ricavi da bilancio) e quanto paga di stipendi ai giocatori. Tutte le 20 squadre.</p>
+          <ol className="space-y-1.5">
+            {SERIE_A.map((c, i) => {
+              const pct = Math.round((c.wageBill / c.revenue) * 100);
+              return (
+                <li key={c.club} className="glass flex items-center gap-3 px-3 py-2.5">
+                  <span className="tabular text-sm text-muted w-7 shrink-0 text-right">{i + 1}</span>
+                  <span className="flex-1 min-w-0">
+                    <span className="block truncate font-medium">{c.club}</span>
+                    <span className="mt-1 block h-1.5 rounded-full bg-white/5 overflow-hidden">
+                      <span className="block h-full rounded-full bg-gradient-to-r from-green to-cyan" style={{ width: `${Math.max(4, (c.revenue / SERIE_A[0].revenue) * 100)}%` }} />
+                    </span>
+                    <span className="text-[10px] text-muted">stipendi giocatori {formatCompact(c.wageBill)} · {pct}% dei ricavi</span>
+                  </span>
+                  <span className="tabular text-sm font-semibold text-green shrink-0">{formatCompact(c.revenue)}</span>
+                </li>
+              );
+            })}
+          </ol>
+          <p className="text-[11px] text-muted mt-3">Fonte: <a href={SERIE_A_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{SERIE_A_SOURCE.name}</a></p>
+        </section>
+
+        {/* Confronto tra campionati */}
+        <section className="mt-12">
+          <h2 className="text-lg md:text-xl font-semibold">💰 Quanto incassano i campionati · {SERIE_A_SEASON}</h2>
+          <p className="text-[11px] text-cyan/70 mb-4">Ricavi totali di ogni grande campionato. In parole semplici: quanti soldi girano in tutto il torneo.</p>
+          <ol className="space-y-1.5">
+            {LEAGUES.map((l, i) => (
+              <li key={l.league} className="glass flex items-center gap-3 px-3 py-2.5">
+                <span className="tabular text-sm text-muted w-7 shrink-0 text-right">{i + 1}</span>
+                <span className="flex-1 min-w-0">
+                  <span className="block truncate font-medium">{l.league}</span>
+                  <span className="mt-1 block h-1.5 rounded-full bg-white/5 overflow-hidden">
+                    <span className="block h-full rounded-full bg-gradient-to-r from-cyan to-violet" style={{ width: `${Math.max(4, (l.revenue / LEAGUES[0].revenue) * 100)}%` }} />
+                  </span>
+                  <span className="text-[10px] text-muted">{l.wageToRevenue}% dei ricavi va in stipendi · {l.net >= 0 ? "utile" : "perdita"} {formatCompact(Math.abs(l.net))}</span>
+                </span>
+                <span className="tabular text-sm font-semibold text-[#a5b4fc] shrink-0">{formatCompact(l.revenue)}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="text-[11px] text-muted mt-2">La LaLiga (€4,8 mld) incassa più della Serie A (€4,0 mld) ed è quasi in pareggio; la Serie A perde di più. Fonte: <a href={LEAGUE_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{LEAGUE_SOURCE.name}</a></p>
         </section>
 
         <section className="mt-12">

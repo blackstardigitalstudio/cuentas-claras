@@ -108,6 +108,7 @@ export default async function CityPage({ params }: Props) {
         { href: "/deuda-municipios/", t: "Deuda municipal" },
         { href: "/ranking/", t: "Ranking de gasto" },
         { href: "/gasto-por-habitante/", t: "Gasto por habitante" },
+        { href: "/comparar/", t: "Comparar ciudades" },
         { href: "/en-que-se-gasta-el-dinero-publico/", t: "¿En qué se gasta?" },
         { href: "/cuanto-cobra-un-concejal/", t: "¿Cuánto cobra un concejal?" },
         { href: "/bulos/", t: "Bulos, desmontados" },
@@ -116,6 +117,7 @@ export default async function CityPage({ params }: Props) {
     : [
         { href: "/spesa-comuni/", t: "La spesa dei comuni" },
         { href: "/ranking/", t: "Classifica di spesa" },
+        { href: "/confronta/", t: "Confronta comuni" },
         { href: "/sueldos-alcaldes/", t: "Stipendi dei sindaci" },
         { href: "/dove-vanno-i-soldi-pubblici/", t: "Dove vanno i soldi" },
         { href: "/quanto-guadagna-un-consigliere-comunale/", t: "Stipendio del consigliere" },

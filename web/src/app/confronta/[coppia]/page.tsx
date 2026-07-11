@@ -102,7 +102,7 @@ export default async function ConfrontaPage({ params }: Props) {
       <div className="mt-6 flex flex-wrap gap-3">
         <Link href={`/it/${a.slug}/`} className="px-4 py-2 rounded-full text-sm font-medium border border-[var(--panel-border)] hover:border-cyan transition">Scheda di {a.name}</Link>
         <Link href={`/it/${b.slug}/`} className="px-4 py-2 rounded-full text-sm font-medium border border-[var(--panel-border)] hover:border-cyan transition">Scheda di {b.name}</Link>
-        <Link href="/" className="px-4 py-2 rounded-full text-sm font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition">Confronta un'altra città →</Link>
+        <Link href="/confronta/" className="px-4 py-2 rounded-full text-sm font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition">Confronta un'altra città →</Link>
       </div>
 
       <p className="text-[11px] text-muted mt-8">Dati ufficiali (SIOPE · Ragioneria dello Stato; stipendio sindaco per legge; popolazione ISTAT). Ogni cifra rimanda alla fonte nella scheda della città.</p>

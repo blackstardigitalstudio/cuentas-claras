@@ -110,7 +110,7 @@ export default async function CompararPage({ params }: Props) {
       <div className="mt-6 flex flex-wrap gap-3">
         <Link href={`/es/${a.slug}/`} className="px-4 py-2 rounded-full text-sm font-medium border border-[var(--panel-border)] hover:border-cyan transition">Ficha de {a.name}</Link>
         <Link href={`/es/${b.slug}/`} className="px-4 py-2 rounded-full text-sm font-medium border border-[var(--panel-border)] hover:border-cyan transition">Ficha de {b.name}</Link>
-        <Link href="/" className="px-4 py-2 rounded-full text-sm font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition">Comparar otra ciudad →</Link>
+        <Link href="/comparar/" className="px-4 py-2 rounded-full text-sm font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition">Comparar otra ciudad →</Link>
       </div>
 
       <p className="text-[11px] text-muted mt-8">Datos oficiales (Ministerio de Hacienda, ISPA, presupuestos municipales; población INE 2025). Cada cifra enlaza a su fuente en la ficha de la ciudad.</p>

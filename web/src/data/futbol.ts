@@ -70,6 +70,48 @@ export const CLUB_DEBT: {
     source: { name: "SSC Napoli · Bilancio 2024/25 (posizione finanziaria netta positiva)", url: "https://sscnapoli.it/" } },
 ];
 
+// --- Serie A: ricavi e monte ingaggi (bilanci 2024/25) ---
+// revenue = ricavi da bilancio depositato; wageBill = monte ingaggi lordo giocatori (stima C&F).
+export const SERIE_A_SOURCE: Src = {
+  name: "Bilanci Serie A 2024/25 · Calcio&Finanza (Football Affairs)",
+  url: "https://www.calcioefinanza.it/2026/02/07/analisi-bilanci-serie-a-2024-2025-fatturato-debiti-costi-football-affairs/",
+};
+export const SERIE_A_SEASON = "2024/25";
+export const SERIE_A: { club: string; revenue: number; wageBill: number; net: number }[] = [
+  { club: "Inter", revenue: 552600000, wageBill: 141700000, net: 35400000 },
+  { club: "Juventus", revenue: 439800000, wageBill: 108400000, net: -58100000 },
+  { club: "AC Milan", revenue: 438600000, wageBill: 104300000, net: 3000000 },
+  { club: "AS Roma", revenue: 240400000, wageBill: 89700000, net: -53900000 },
+  { club: "Atalanta", revenue: 220000000, wageBill: 59200000, net: 37900000 },
+  { club: "SSC Napoli", revenue: 188300000, wageBill: 82900000, net: -21400000 },
+  { club: "Bologna", revenue: 146700000, wageBill: 36100000, net: 14000000 },
+  { club: "Lazio", revenue: 146000000, wageBill: 68200000, net: -17200000 },
+  { club: "Fiorentina", revenue: 142400000, wageBill: 61600000, net: -23200000 },
+  { club: "Genoa", revenue: 99700000, wageBill: 31300000, net: -33300000 },
+  { club: "Torino", revenue: 76100000, wageBill: 46100000, net: 10400000 },
+  { club: "Hellas Verona", revenue: 70000000, wageBill: 18000000, net: -4700000 },
+  { club: "Udinese", revenue: 69400000, wageBill: 28200000, net: 2900000 },
+  { club: "Cagliari", revenue: 63800000, wageBill: 24100000, net: -7700000 },
+  { club: "Monza", revenue: 63100000, wageBill: 35000000, net: -48000000 },
+  { club: "Lecce", revenue: 55500000, wageBill: 21500000, net: 20200000 },
+  { club: "Empoli", revenue: 49900000, wageBill: 20400000, net: -300000 },
+  { club: "Como", revenue: 48500000, wageBill: 38100000, net: -105100000 },
+  { club: "Venezia", revenue: 43200000, wageBill: 19400000, net: -36500000 },
+  { club: "Parma", revenue: 40000000, wageBill: 25200000, net: -63300000 },
+];
+
+// --- Confronto tra campionati (2024/25) ---
+export const LEAGUE_SOURCE: Src = {
+  name: "Bilanci campionati 2024/25 · Calcio&Finanza",
+  url: "https://www.calcioefinanza.it/2026/04/19/bilanci-calcio-serie-a-premier-league-bundesliga-liga/",
+};
+export const LEAGUES: { league: string; revenue: number; wageToRevenue: number; net: number }[] = [
+  { league: "Premier League", revenue: 9550000000, wageToRevenue: 54, net: -890000000 },
+  { league: "Bundesliga", revenue: 5120000000, wageToRevenue: 41, net: 242000000 },
+  { league: "LaLiga", revenue: 4790000000, wageToRevenue: 52, net: -3000000 },
+  { league: "Serie A", revenue: 4040000000, wageToRevenue: 49, net: -349000000 },
+];
+
 export function futbolSlug(club: string): string {
   return club.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }

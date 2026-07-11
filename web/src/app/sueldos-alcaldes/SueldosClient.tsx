@@ -4,6 +4,7 @@ import Link from "next/link";
 import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
+import SimpleExplainer from "@/components/SimpleExplainer";
 import { COUNTRIES, slugify } from "@/lib/data";
 import { formatEuro } from "@/lib/format";
 import ranks from "@/data/rankings-es.json";
@@ -64,6 +65,24 @@ function Inner() {
           )}
         </p>
       </header>
+
+      <div className="mt-5">
+        <SimpleExplainer
+          title={it ? "In parole semplici" : "En cristiano"}
+          moreLabel={it ? "Spiegamelo un po' meglio" : "Explícamelo un poco mejor"}
+          more={
+            it ? (
+              <p>Nei paesi piccoli molti sindaci prendono poco o nulla (lavorano senza incarico esclusivo). Nelle grandi città lo stipendio è più alto. È un dato ufficiale, comunicato all'ISPA del Ministero delle Finanze spagnolo.</p>
+            ) : (
+              <p>En los pueblos pequeños muchos alcaldes cobran poco o nada (ejercen sin dedicación exclusiva). En las grandes ciudades el sueldo es más alto. Es un dato oficial, declarado al ISPA del Ministerio de Hacienda.</p>
+            )
+          }
+        >
+          <p>{it
+            ? "Lo stipendio del sindaco è come lo stipendio di chi dirige l'«azienda comune»: lo fissa il consiglio comunale, con dei tetti di legge in base alla dimensione della città. Non tutti guadagnano uguale — e non tutti prendono uno stipendio."
+            : "El sueldo del alcalde es como el sueldo de quien dirige la «empresa ayuntamiento»: lo fija el pleno, con topes legales según el tamaño de la ciudad. No todos cobran igual — ni siquiera todos cobran."}</p>
+        </SimpleExplainer>
+      </div>
 
       <div className="grid grid-cols-3 gap-3 mt-6">
         {[

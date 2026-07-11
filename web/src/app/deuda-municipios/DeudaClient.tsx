@@ -4,6 +4,7 @@ import Link from "next/link";
 import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
+import SimpleExplainer from "@/components/SimpleExplainer";
 import { COUNTRIES, slugify } from "@/lib/data";
 import { formatEuro, formatCompact } from "@/lib/format";
 import ranks from "@/data/rankings-es.json";
@@ -65,6 +66,24 @@ function Inner() {
           )}
         </p>
       </header>
+
+      <div className="mt-5">
+        <SimpleExplainer
+          title={it ? "In parole semplici" : "En cristiano"}
+          moreLabel={it ? "Spiegamelo un po' meglio" : "Explícamelo un poco mejor"}
+          more={
+            it ? (
+              <p>«Debito residuo» è il termine ufficiale: quanto un comune deve ancora restituire in un dato momento. Per confrontare città grandi e piccole si guarda il <span className="text-fg/80">debito per abitante</span> (il debito diviso tra i cittadini). Fonte: Ministero delle Finanze.</p>
+            ) : (
+              <p>«Deuda viva» es el término oficial: cuánto debe devolver aún un ayuntamiento en un momento dado. Para comparar ciudades grandes y pequeñas se mira la <span className="text-fg/80">deuda por habitante</span> (la deuda repartida entre los vecinos). Fuente: Ministerio de Hacienda.</p>
+            )
+          }
+        >
+          <p>{it
+            ? "Il debito di un comune è come il mutuo di una famiglia: soldi presi in prestito che deve ancora restituire. Un po' di debito è normale; il problema è quando è troppo rispetto a quello che incassa."
+            : "La deuda de un ayuntamiento es como la hipoteca de una familia: dinero que pidió prestado y que aún debe devolver. Tener algo de deuda es normal; el problema es cuando es demasiada para lo que ingresa."}</p>
+        </SimpleExplainer>
+      </div>
 
       <div className="grid grid-cols-3 gap-3 mt-6">
         {[

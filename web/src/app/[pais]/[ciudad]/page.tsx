@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { COUNTRIES, type CountryCode, type RegionData } from "@/lib/data";
 import { formatCompact, formatEuro, formatPct } from "@/lib/format";
+import { CMP_ES, CMP_IT, comparePairsFor } from "@/data/compare-lists";
 
 const PAISES: CountryCode[] = ["es", "it"];
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -52,6 +53,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     alternates: { canonical: `/${pais}/${ciudad}` },
     openGraph: { title, description, type: "article", locale: es ? "es_ES" : "it_IT" },
+    // Las fichas con cifras de ejemplo no se indexan (evita contenido "thin"/placeholder
+    // en Google), pero sí se siguen sus enlaces salientes.
+    ...(r.isSample ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
@@ -81,6 +85,44 @@ export default async function CityPage({ params }: Props) {
     .filter((x) => x.slug !== r.slug && !x.isSample)
     .sort((a, b) => b.gastos - a.gastos)
     .slice(0, 24);
+
+  // Enlaces a las páginas de comparación "X vs Y" en las que participa esta ciudad
+  // (solo si está en la lista de comparaciones). Fija los enlaces internos hacia
+  // esas páginas, que si no quedarían huérfanas.
+  const cmpList = es ? CMP_ES : CMP_IT;
+  const cmpBase = es ? "comparar" : "confronta";
+  const nameBySlug = new Map<string, string>();
+  for (const x of Object.values(COUNTRIES[pais as CountryCode].regions)) {
+    if (!x.isSample && !nameBySlug.has(x.slug)) nameBySlug.set(x.slug, x.name);
+  }
+  const comparePairs = comparePairsFor(cmpList, r.slug).map((pair) => {
+    const [x, y] = pair.split("-vs-");
+    const other = x === r.slug ? y : x;
+    return { pair, name: nameBySlug.get(other) || other };
+  });
+
+  // Pilares temáticos (accesos a las páginas de mayor búsqueda), por país.
+  const pillars = es
+    ? [
+        { href: "/sueldos-alcaldes/", t: "Sueldos de alcaldes" },
+        { href: "/deuda-municipios/", t: "Deuda municipal" },
+        { href: "/ranking/", t: "Ranking de gasto" },
+        { href: "/gasto-por-habitante/", t: "Gasto por habitante" },
+        { href: "/en-que-se-gasta-el-dinero-publico/", t: "¿En qué se gasta?" },
+        { href: "/cuanto-cobra-un-concejal/", t: "¿Cuánto cobra un concejal?" },
+        { href: "/bulos/", t: "Bulos, desmontados" },
+        { href: "/futbol/", t: "El dinero del fútbol" },
+      ]
+    : [
+        { href: "/spesa-comuni/", t: "La spesa dei comuni" },
+        { href: "/ranking/", t: "Classifica di spesa" },
+        { href: "/sueldos-alcaldes/", t: "Stipendi dei sindaci" },
+        { href: "/dove-vanno-i-soldi-pubblici/", t: "Dove vanno i soldi" },
+        { href: "/quanto-guadagna-un-consigliere-comunale/", t: "Stipendio del consigliere" },
+        { href: "/deuda-municipios/", t: "Debito dei comuni" },
+        { href: "/bulos/", t: "Bufale, smontate" },
+        { href: "/futbol/", t: "I soldi del calcio" },
+      ];
 
   // FAQ con le domande che la gente cerca davvero, costruite dai dati reali della città.
   const topG = [...r.gastosByCat].sort((a, b) => b.amount - a.amount).slice(0, 3);
@@ -322,8 +364,33 @@ export default async function CityPage({ params }: Props) {
         </div>
       </section>
 
-      {others.length > 0 && (
+      {comparePairs.length > 0 && (
         <nav className="mt-12 pt-6 border-t border-[var(--panel-border)]">
+          <h2 className="text-sm font-medium text-muted mb-1">{es ? `Compara ${r.name} con otra ciudad` : `Confronta ${r.name} con un'altra città`}</h2>
+          <p className="text-xs text-muted/70 mb-3">{es ? "Ingresos, gastos, deuda y sueldo del alcalde, uno al lado del otro." : "Entrate, spese, debito e stipendio del sindaco, fianco a fianco."}</p>
+          <div className="flex flex-wrap gap-2">
+            {comparePairs.map(({ pair, name }) => (
+              <Link key={pair} href={`/${cmpBase}/${pair}/`} className="px-3 py-1.5 rounded-full text-sm border border-[var(--panel-border)] hover:border-cyan hover:text-fg transition">
+                {es ? "vs " : "vs "}{name}
+              </Link>
+            ))}
+          </div>
+        </nav>
+      )}
+
+      <nav className="mt-12 pt-6 border-t border-[var(--panel-border)]">
+        <h2 className="text-sm font-medium text-muted mb-3">{es ? "Temas más buscados" : "Temi più cercati"}</h2>
+        <div className="flex flex-wrap gap-2">
+          {pillars.map((p) => (
+            <Link key={p.href} href={p.href} className="px-3 py-1.5 rounded-full text-sm border border-[var(--panel-border)] hover:border-cyan hover:text-fg transition">
+              {p.t}
+            </Link>
+          ))}
+        </div>
+      </nav>
+
+      {others.length > 0 && (
+        <nav className="mt-10 pt-6 border-t border-[var(--panel-border)]">
           <h2 className="text-sm font-medium text-muted mb-3">{es ? "Otras ciudades con datos reales" : "Altre città con dati reali"}</h2>
           <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm">
             {others.map((o) => (

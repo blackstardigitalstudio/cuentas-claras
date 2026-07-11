@@ -1643,5 +1643,415 @@
   "name": "La Oliva",
   "ine": "35014",
   "provincia": "Palmas, Las"
+ },
+ {
+  "name": "Puente Genil",
+  "ine": "14056",
+  "provincia": "Córdoba"
+ },
+ {
+  "name": "San Andrés del Rabanedo",
+  "ine": "24142",
+  "provincia": "León"
+ },
+ {
+  "name": "Sant Josep de sa Talaia",
+  "ine": "07048",
+  "provincia": "Balears, Illes"
+ },
+ {
+  "name": "Cártama",
+  "ine": "29038",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Sant Antoni de Portmany",
+  "ine": "07046",
+  "provincia": "Balears, Illes"
+ },
+ {
+  "name": "Sant Vicenç dels Horts",
+  "ine": "08263",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Bétera",
+  "ine": "46070",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Sestao",
+  "ine": "48084",
+  "provincia": "Bizkaia"
+ },
+ {
+  "name": "Algemesí",
+  "ine": "46029",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Paracuellos de Jarama",
+  "ine": "28104",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Alhaurín el Grande",
+  "ine": "29008",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Eibar",
+  "ine": "20030",
+  "provincia": "Gipuzkoa"
+ },
+ {
+  "name": "La Pobla de Vallbona",
+  "ine": "46202",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Molins de Rei",
+  "ine": "08123",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Sant Andreu de la Barca",
+  "ine": "08196",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Sant Joan d'Alacant",
+  "ine": "03119",
+  "provincia": "Alicante/Alacant"
+ },
+ {
+  "name": "Coín",
+  "ine": "29042",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Ciempozuelos",
+  "ine": "28040",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Alboraia/Alboraya",
+  "ine": "46013",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Santa Perpètua de Mogoda",
+  "ine": "08260",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Villanueva de la Serena",
+  "ine": "06153",
+  "provincia": "Badajoz"
+ },
+ {
+  "name": "Adra",
+  "ine": "04003",
+  "provincia": "Almería"
+ },
+ {
+  "name": "Torrelodones",
+  "ine": "28152",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Castellar del Vallès",
+  "ine": "08051",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Calahorra",
+  "ine": "26036",
+  "provincia": "Rioja, La"
+ },
+ {
+  "name": "Armilla",
+  "ine": "18021",
+  "provincia": "Granada"
+ },
+ {
+  "name": "Mejorada del Campo",
+  "ine": "28084",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Olesa de Montserrat",
+  "ine": "08147",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Almonte",
+  "ine": "21005",
+  "provincia": "Huelva"
+ },
+ {
+  "name": "Galdakao",
+  "ine": "48036",
+  "provincia": "Bizkaia"
+ },
+ {
+  "name": "El Masnou",
+  "ine": "08118",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Erandio",
+  "ine": "48902",
+  "provincia": "Bizkaia"
+ },
+ {
+  "name": "Riba-roja de Túria",
+  "ine": "46214",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Mairena del Alcor",
+  "ine": "41058",
+  "provincia": "Sevilla"
+ },
+ {
+  "name": "Pilar de la Horadada",
+  "ine": "03902",
+  "provincia": "Alicante/Alacant"
+ },
+ {
+  "name": "Alhama de Murcia",
+  "ine": "30008",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Moguer",
+  "ine": "21050",
+  "provincia": "Huelva"
+ },
+ {
+  "name": "Villanueva de la Cañada",
+  "ine": "28176",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Teguise",
+  "ine": "35024",
+  "provincia": "Palmas, Las"
+ },
+ {
+  "name": "San Miguel de Abona",
+  "ine": "38035",
+  "provincia": "Santa Cruz de Tenerife"
+ },
+ {
+  "name": "Las Gabias",
+  "ine": "18905",
+  "provincia": "Granada"
+ },
+ {
+  "name": "Zarautz",
+  "ine": "20079",
+  "provincia": "Gipuzkoa"
+ },
+ {
+  "name": "San Juan de Aznalfarache",
+  "ine": "41086",
+  "provincia": "Sevilla"
+ },
+ {
+  "name": "Picassent",
+  "ine": "46194",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Sant Feliu de Guíxols",
+  "ine": "17160",
+  "provincia": "Girona"
+ },
+ {
+  "name": "Bormujos",
+  "ine": "41017",
+  "provincia": "Sevilla"
+ },
+ {
+  "name": "Valle de Egüés/Eguesibar",
+  "ine": "31086",
+  "provincia": "Navarra"
+ },
+ {
+  "name": "Arroyo de la Encomienda",
+  "ine": "47010",
+  "provincia": "Valladolid"
+ },
+ {
+  "name": "Aljaraque",
+  "ine": "21002",
+  "provincia": "Huelva"
+ },
+ {
+  "name": "Las Torres de Cotillas",
+  "ine": "30038",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Esparreguera",
+  "ine": "08076",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Barbate",
+  "ine": "11007",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "Arrasate/Mondragón",
+  "ine": "20055",
+  "provincia": "Gipuzkoa"
+ },
+ {
+  "name": "Alfafar",
+  "ine": "46022",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Montcada/Moncada",
+  "ine": "46171",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Torrox",
+  "ine": "29091",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Güímar",
+  "ine": "38020",
+  "provincia": "Santa Cruz de Tenerife"
+ },
+ {
+  "name": "Carcaixent",
+  "ine": "46083",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Puçol",
+  "ine": "46205",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Tías",
+  "ine": "35028",
+  "provincia": "Palmas, Las"
+ },
+ {
+  "name": "Pájara",
+  "ine": "35015",
+  "provincia": "Palmas, Las"
+ },
+ {
+  "name": "Manlleu",
+  "ine": "08112",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "La Unión",
+  "ine": "30041",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Vilassar de Mar",
+  "ine": "08219",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Algete",
+  "ine": "28009",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "L' Alfàs del Pi",
+  "ine": "03011",
+  "provincia": "Alicante/Alacant"
+ },
+ {
+  "name": "Sant Just Desvern",
+  "ine": "08221",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "San Martín de la Vega",
+  "ine": "28132",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Requena",
+  "ine": "46213",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Archena",
+  "ine": "30009",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Les Franqueses del Vallès",
+  "ine": "08086",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Calella",
+  "ine": "08035",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Los Llanos de Aridane",
+  "ine": "38024",
+  "provincia": "Santa Cruz de Tenerife"
+ },
+ {
+  "name": "Humanes de Madrid",
+  "ine": "28073",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Silla",
+  "ine": "46230",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Los Alcázares",
+  "ine": "30902",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "La Zubia",
+  "ine": "18193",
+  "provincia": "Granada"
+ },
+ {
+  "name": "Hernani",
+  "ine": "20040",
+  "provincia": "Gipuzkoa"
+ },
+ {
+  "name": "Vera",
+  "ine": "04100",
+  "provincia": "Almería"
+ },
+ {
+  "name": "Sant Quirze del Vallès",
+  "ine": "08238",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Chipiona",
+  "ine": "11016",
+  "provincia": "Cádiz"
+ },
+ {
+  "name": "Tolosa",
+  "ine": "20071",
+  "provincia": "Gipuzkoa"
  }
 ]

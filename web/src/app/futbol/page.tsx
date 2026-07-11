@@ -206,6 +206,27 @@ export default function FutbolPage() {
         </section>
 
         <section className="mt-12">
+          <h2 className="text-lg font-semibold mb-3">Comparativas: club vs club</h2>
+          <p className="text-sm text-muted mb-4">Dos clubes, uno al lado del otro (ingresos, salarios, límite salarial y deuda) — solo con cifras oficiales.</p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              ["real-madrid-vs-fc-barcelona", "Real Madrid vs Barcelona"],
+              ["fc-barcelona-vs-atletico-de-madrid", "Barcelona vs Atlético"],
+              ["inter-vs-juventus", "Inter vs Juventus"],
+              ["inter-vs-ac-milan", "Inter vs Milan"],
+              ["juventus-vs-as-roma", "Juventus vs Roma"],
+              ["real-madrid-vs-inter", "Real Madrid vs Inter"],
+              ["fc-barcelona-vs-juventus", "Barcelona vs Juventus"],
+              ["ssc-napoli-vs-atalanta", "Napoli vs Atalanta"],
+            ].map(([slug, label]) => (
+              <Link key={slug} href={`/futbol/${slug}/`} className="px-3 py-1.5 rounded-full text-sm border border-[var(--panel-border)] hover:border-cyan hover:text-fg transition">
+                {label}
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-12">
           <h2 className="text-lg font-semibold mb-3">Preguntas frecuentes</h2>
           <div className="space-y-2.5">
             {faqs.map((f, i) => (

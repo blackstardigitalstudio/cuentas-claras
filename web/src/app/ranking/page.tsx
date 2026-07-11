@@ -25,7 +25,9 @@ export const metadata: Metadata = {
     description: "¿Qué ciudad gasta más? Ranking de ayuntamientos por gasto e ingresos, con datos oficiales.",
     url: `${SITE}/ranking/`,
     type: "website",
+    images: [{ url: "/og-ranking.png", width: 1200, height: 630, alt: "El ranking del dinero público — España e Italia" }],
   },
+  twitter: { card: "summary_large_image", title: "El ranking del dinero público", description: "¿Qué ciudad gasta más? Con datos oficiales.", images: ["/og-ranking.png"] },
 };
 
 function ranked(p: CountryCode) {

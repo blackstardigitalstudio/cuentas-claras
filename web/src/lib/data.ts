@@ -20,7 +20,10 @@ import milanoReal from "@/data/real/milano.json";
 import bolognaReal from "@/data/real/bologna.json";
 import extraCitiesEs from "@/data/real/extra-cities.json";
 import itExtraCities from "@/data/real/it-extra-cities.json";
+import esPopulation from "@/data/real/es-population.json";
 import { CITY_EXTRAS } from "@/data/real/city-extras";
+
+const ES_POP = esPopulation as Record<string, number>;
 
 export const DATA_YEAR = 2024;
 export const DATA_IS_SAMPLE = true;
@@ -263,6 +266,9 @@ function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[], extras: RealC
       if (ex.debt) r.debt = ex.debt;
       if (ex.mayorSalary) r.mayorSalary = ex.mayorSalary;
     }
+    // Población oficial (INE, padrón 2025) para valores "por habitante" en España.
+    // No pisa la de Italia (SIOPE), que ya viene puesta en los extras.
+    if (!r.poblacion && ES_POP[r.slug]) r.poblacion = ES_POP[r.slug];
   }
   return {
     regions,

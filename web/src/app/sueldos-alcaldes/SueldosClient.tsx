@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
+import PhotoBanner from "@/components/PhotoBanner";
 import { COUNTRIES, slugify } from "@/lib/data";
 import { formatEuro } from "@/lib/format";
 import ranks from "@/data/rankings-es.json";
@@ -39,7 +40,8 @@ function Inner() {
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
       <SiteNav />
-      <header className="pt-8">
+      <PhotoBanner src="/photos/money.jpg" alt={it ? "Moneta da 2 euro" : "Moneda de 2 euros"} className="mt-6" />
+      <header className="pt-6">
         <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-cyan/80">🇪🇸 {it ? "Spagna" : "España"} · {ranks.year}</p>
         <h1 className="text-2xl md:text-4xl font-bold mt-2">
           {it ? <>Quanto guadagna un <span className="neon-text">sindaco</span> in Spagna?</> : <>¿Cuánto cobra un <span className="neon-text">alcalde</span> en España?</>}

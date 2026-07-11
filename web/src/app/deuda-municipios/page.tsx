@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
+import PhotoBanner from "@/components/PhotoBanner";
 import { COUNTRIES, slugify } from "@/lib/data";
 import { formatEuro, formatCompact } from "@/lib/format";
 import ranks from "@/data/rankings-es.json";
@@ -63,7 +64,8 @@ export default function DeudaPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <LocaleProvider>
         <SiteNav />
-        <header className="pt-8">
+        <PhotoBanner src="/photos/money.jpg" alt="Moneda de 2 euros · euro" className="mt-6" />
+        <header className="pt-6">
           <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-cyan/80">🇪🇸 España · {ranks.year}</p>
           <h1 className="text-2xl md:text-4xl font-bold mt-2">
             ¿Qué municipios tienen más <span className="neon-text">deuda</span>?

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
+import PhotoBanner from "@/components/PhotoBanner";
 import { formatEuro, formatCompact } from "@/lib/format";
 import {
   LALIGA_LCPD, LALIGA_LCPD_SEASON, LALIGA_LCPD_SOURCE,
@@ -37,14 +38,16 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: "El dinero del fútbol", description: "Ingresos, salarios, límite salarial y deuda de los clubes. Datos oficiales.", images: ["/og-futbol.png"] },
 };
 
-const flag = (c: "es" | "it") => (c === "es" ? "🇪🇸" : "🇮🇹");
 
 export default function FutbolPage() {
   const maxL = LALIGA_LCPD[0].amount;
   const revenues = [...CLUB_REVENUE].sort((a, b) => b.amount - a.amount);
   const maxR = revenues[0].amount;
+  const revenuesEs = revenues.filter((c) => c.country === "es");
   const debts = [...CLUB_DEBT].sort((a, b) => (a.kind === "caja" ? -1 : b.amount - a.amount));
   const maxD = Math.max(...CLUB_DEBT.filter((d) => d.kind !== "caja").map((d) => d.amount));
+  const debtsEs = debts.filter((d) => d.country === "es");
+  const debtsIt = debts.filter((d) => d.country === "it");
 
   const faqs = [
     { q: "¿Cuál es el club de LaLiga que más puede gastar en su plantilla?", a: `El Real Madrid, con un límite de coste de plantilla de ${formatEuro(LALIGA_LCPD[0].amount)} en ${LALIGA_LCPD_SEASON}, seguido del FC Barcelona (${formatEuro(LALIGA_LCPD[1].amount)}) y el Atlético de Madrid (${formatEuro(LALIGA_LCPD[2].amount)}). Es el tope que fija LaLiga, no lo que efectivamente gastan.` },
@@ -91,9 +94,16 @@ export default function FutbolPage() {
           ))}
         </div>
 
+        {/* ===================== ESPAÑA · LaLiga ===================== */}
+        <section className="mt-12">
+          <PhotoBanner src="/photos/spain-stadium.jpg" alt="Estadio de LaLiga (España)" />
+          <h2 className="text-2xl md:text-3xl font-bold mt-5 flex items-center gap-2">🇪🇸 <span className="neon-text">España</span> · LaLiga</h2>
+          <p className="text-sm text-muted mt-1">Límite salarial, ingresos y deuda de los clubes españoles.</p>
+        </section>
+
         {/* LaLiga LCPD */}
-        <section className="mt-10">
-          <h2 className="text-lg md:text-xl font-semibold">🇪🇸 Límite de coste de plantilla · LaLiga {LALIGA_LCPD_SEASON}</h2>
+        <section className="mt-8">
+          <h2 className="text-lg md:text-xl font-semibold">Límite de coste de plantilla · LaLiga {LALIGA_LCPD_SEASON}</h2>
           <p className="text-[11px] text-cyan/70 mb-4">Cuánto puede gastar cada club en su plantilla (tope oficial de LaLiga).</p>
           <ol className="space-y-1.5">
             {LALIGA_LCPD.map((c, i) => (
@@ -112,15 +122,14 @@ export default function FutbolPage() {
           <p className="text-[11px] text-muted mt-3">Fuente: <a href={LALIGA_LCPD_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{LALIGA_LCPD_SOURCE.name}</a></p>
         </section>
 
-        {/* Ingresos */}
+        {/* Ingresos ES */}
         <section className="mt-12">
-          <h2 className="text-lg md:text-xl font-semibold">💶 Ingresos de los clubes · {REVENUE_SEASON}</h2>
-          <p className="text-[11px] text-cyan/70 mb-4">Ricavi dei club (España e Italia), Deloitte Football Money League.</p>
+          <h2 className="text-lg md:text-xl font-semibold">💶 Ingresos de los clubes españoles · {REVENUE_SEASON}</h2>
+          <p className="text-[11px] text-cyan/70 mb-4">Ingresos (Deloitte Football Money League). El Real Madrid es el único club del mundo por encima de 1.000 M€.</p>
           <ol className="space-y-1.5">
-            {revenues.map((c, i) => (
+            {revenuesEs.map((c, i) => (
               <li key={c.club} className="glass flex items-center gap-3 px-3 py-2.5">
                 <span className="tabular text-sm text-muted w-7 shrink-0 text-right">{i + 1}</span>
-                <span className="text-base shrink-0">{flag(c.country)}</span>
                 <span className="flex-1 min-w-0">
                   <span className="block truncate font-medium">{c.club}</span>
                   <span className="mt-1 block h-1.5 rounded-full bg-white/5 overflow-hidden">
@@ -134,15 +143,14 @@ export default function FutbolPage() {
           <p className="text-[11px] text-muted mt-3">Fuente: <a href={REVENUE_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{REVENUE_SOURCE.name}</a></p>
         </section>
 
-        {/* Deuda */}
+        {/* Deuda ES */}
         <section className="mt-12">
-          <h2 className="text-lg md:text-xl font-semibold">🧾 Deuda de los clubes · 2024/25</h2>
-          <p className="text-[11px] text-cyan/70 mb-1">Lo que deben los clubes, según sus cuentas anuales / bilanci.</p>
-          <p className="text-[11px] text-muted mb-4">En cristiano: <span className="text-fg/80">deuda neta</span> = lo que deben menos el dinero que tienen guardado · <span className="text-fg/80">bruta</span> = todo lo que deben · <span className="text-green">caja positiva</span> = tienen más dinero que deudas.</p>
+          <h2 className="text-lg md:text-xl font-semibold">🧾 Deuda de los clubes españoles · 2024/25</h2>
+          <p className="text-[11px] text-cyan/70 mb-1">Lo que deben los clubes, según sus cuentas anuales.</p>
+          <p className="text-[11px] text-muted mb-4">En cristiano: <span className="text-fg/80">deuda neta</span> = lo que deben menos el dinero que tienen guardado · <span className="text-fg/80">bruta</span> = todo lo que deben.</p>
           <ol className="space-y-1.5">
-            {debts.map((d) => (
+            {debtsEs.map((d) => (
               <li key={d.club} className="glass flex items-center gap-3 px-3 py-2.5">
-                <span className="text-base shrink-0">{flag(d.country)}</span>
                 <span className="flex-1 min-w-0">
                   <span className="block truncate font-medium">{d.club}</span>
                   {d.kind !== "caja" && (
@@ -161,9 +169,16 @@ export default function FutbolPage() {
           </ol>
         </section>
 
+        {/* ===================== ITALIA · Serie A ===================== */}
+        <section className="mt-16">
+          <PhotoBanner src="/photos/italy-stadium.jpg" alt="Stadio di Serie A (Italia)" />
+          <h2 className="text-2xl md:text-3xl font-bold mt-5 flex items-center gap-2">🇮🇹 <span className="neon-text">Italia</span> · Serie A</h2>
+          <p className="text-sm text-muted mt-1">Ricavi, monte ingaggi e debito dei club italiani.</p>
+        </section>
+
         {/* Serie A: ricavi + monte ingaggi (tutte le 20 squadre) */}
-        <section className="mt-12">
-          <h2 className="text-lg md:text-xl font-semibold">🇮🇹 Serie A · ricavi e stipendi · {SERIE_A_SEASON}</h2>
+        <section className="mt-8">
+          <h2 className="text-lg md:text-xl font-semibold">Serie A · ricavi e stipendi · {SERIE_A_SEASON}</h2>
           <p className="text-[11px] text-cyan/70 mb-4">Quanto incassa ogni club (ricavi da bilancio) e quanto paga di stipendi ai giocatori. Tutte le 20 squadre.</p>
           <ol className="space-y-1.5">
             {SERIE_A.map((c, i) => {
@@ -186,7 +201,37 @@ export default function FutbolPage() {
           <p className="text-[11px] text-muted mt-3">Fonte: <a href={SERIE_A_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{SERIE_A_SOURCE.name}</a></p>
         </section>
 
+        {/* Debito club italiani */}
+        <section className="mt-12">
+          <h2 className="text-lg md:text-xl font-semibold">🧾 Debito dei club italiani · 2024/25</h2>
+          <p className="text-[11px] text-muted mb-4">In parole semplici: <span className="text-fg/80">debito netto</span> = quello che devono meno la cassa · <span className="text-green">cassa positiva</span> = hanno più soldi che debiti.</p>
+          <ol className="space-y-1.5">
+            {debtsIt.map((d) => (
+              <li key={d.club} className="glass flex items-center gap-3 px-3 py-2.5">
+                <span className="flex-1 min-w-0">
+                  <span className="block truncate font-medium">{d.club}</span>
+                  {d.kind !== "caja" && (
+                    <span className="mt-1 block h-1.5 rounded-full bg-white/5 overflow-hidden">
+                      <span className="block h-full rounded-full bg-gradient-to-r from-amber to-magenta" style={{ width: `${Math.max(3, (d.amount / maxD) * 100)}%` }} />
+                    </span>
+                  )}
+                  <a href={d.source.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-muted/80 underline hover:text-fg">{d.source.name}</a>
+                </span>
+                <span className={`tabular text-sm font-semibold shrink-0 ${d.kind === "caja" ? "text-green" : "text-[#fdba74]"}`}>
+                  {d.kind === "caja" ? "Cassa positiva" : formatCompact(d.amount)}
+                  <span className="block text-[10px] text-muted font-normal text-right">{d.kind === "bruta" ? "lorda" : d.kind === "neta" ? "netta" : `+${formatCompact(d.amount)}`}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
+
         {/* Confronto tra campionati */}
+        <section className="mt-16">
+          <h2 className="text-xl md:text-2xl font-bold flex items-center gap-2">🌍 <span className="neon-text">España vs Italia</span></h2>
+          <p className="text-sm text-muted mt-1 mb-4">Los dos campeonatos, comparados.</p>
+        </section>
+        {/* Confronto tra campionati (dettaglio) */}
         <section className="mt-12">
           <h2 className="text-lg md:text-xl font-semibold">💰 Quanto incassano i campionati · {SERIE_A_SEASON}</h2>
           <p className="text-[11px] text-cyan/70 mb-4">Ricavi totali di ogni grande campionato. In parole semplici: quanti soldi girano in tutto il torneo.</p>

@@ -1,0 +1,465 @@
+{
+ "year": 2025,
+ "count": 198,
+ "spendingSource": {
+  "name": "SIOPE · Ragioneria Generale dello Stato (MEF)",
+  "url": "https://bdap-opendata.rgs.mef.gov.it"
+ },
+ "topSpending": [
+  {
+   "name": "Roma",
+   "slug": "roma",
+   "gastos": 6621545232,
+   "pop": 2747290
+  },
+  {
+   "name": "Milano",
+   "slug": "milano",
+   "gastos": 4401642341,
+   "pop": 1371498
+  },
+  {
+   "name": "Torino",
+   "slug": "torino",
+   "gastos": 1698067332,
+   "pop": 851199
+  },
+  {
+   "name": "Napoli",
+   "slug": "napoli",
+   "gastos": 1684493007,
+   "pop": 913704
+  },
+  {
+   "name": "Bologna",
+   "slug": "bologna",
+   "gastos": 1487999998,
+   "pop": 391686
+  },
+  {
+   "name": "Genova",
+   "slug": "genova",
+   "gastos": 1213315925,
+   "pop": 564080
+  },
+  {
+   "name": "Venezia",
+   "slug": "venezia",
+   "gastos": 938548797,
+   "pop": 249490
+  },
+  {
+   "name": "Firenze",
+   "slug": "firenze",
+   "gastos": 882691043,
+   "pop": 362613
+  },
+  {
+   "name": "Palermo",
+   "slug": "palermo",
+   "gastos": 781372990,
+   "pop": 628693
+  },
+  {
+   "name": "Catania",
+   "slug": "catania",
+   "gastos": 567444176,
+   "pop": 298054
+  },
+  {
+   "name": "Bari",
+   "slug": "bari",
+   "gastos": 534047422,
+   "pop": 315831
+  },
+  {
+   "name": "Trieste",
+   "slug": "trieste",
+   "gastos": 439825427,
+   "pop": 198843
+  },
+  {
+   "name": "Padova",
+   "slug": "padova",
+   "gastos": 439346757,
+   "pop": 207412
+  },
+  {
+   "name": "Verona",
+   "slug": "verona",
+   "gastos": 404532171,
+   "pop": 255039
+  },
+  {
+   "name": "Messina",
+   "slug": "messina",
+   "gastos": 391745735,
+   "pop": 217033
+  },
+  {
+   "name": "Brescia",
+   "slug": "brescia",
+   "gastos": 383248967,
+   "pop": 198259
+  },
+  {
+   "name": "L Aquila",
+   "slug": "l-aquila",
+   "gastos": 351928912,
+   "pop": 69717
+  },
+  {
+   "name": "Cagliari",
+   "slug": "cagliari",
+   "gastos": 350476674,
+   "pop": 0
+  },
+  {
+   "name": "Bolzano",
+   "slug": "bolzano",
+   "gastos": 328082268,
+   "pop": 106568
+  },
+  {
+   "name": "Taranto",
+   "slug": "taranto",
+   "gastos": 320930257,
+   "pop": 186011
+  },
+  {
+   "name": "Modena",
+   "slug": "modena",
+   "gastos": 305623076,
+   "pop": 184074
+  },
+  {
+   "name": "Parma",
+   "slug": "parma",
+   "gastos": 295985011,
+   "pop": 198693
+  },
+  {
+   "name": "Rimini",
+   "slug": "rimini",
+   "gastos": 278754613,
+   "pop": 150333
+  },
+  {
+   "name": "Bergamo",
+   "slug": "bergamo",
+   "gastos": 249783059,
+   "pop": 120157
+  },
+  {
+   "name": "Salerno",
+   "slug": "salerno",
+   "gastos": 243766049,
+   "pop": 126715
+  },
+  {
+   "name": "Livorno",
+   "slug": "livorno",
+   "gastos": 242617756,
+   "pop": 153418
+  },
+  {
+   "name": "Perugia",
+   "slug": "perugia",
+   "gastos": 236452620,
+   "pop": 162099
+  },
+  {
+   "name": "Prato",
+   "slug": "prato",
+   "gastos": 234485739,
+   "pop": 197088
+  },
+  {
+   "name": "Ravenna",
+   "slug": "ravenna",
+   "gastos": 232620607,
+   "pop": 156340
+  },
+  {
+   "name": "Reggio di Calabria",
+   "slug": "reggio-di-calabria",
+   "gastos": 227795770,
+   "pop": 169679
+  }
+ ],
+ "topPerCapita": [
+  {
+   "name": "L Aquila",
+   "slug": "l-aquila",
+   "perCapita": 5048,
+   "gastos": 351928912,
+   "pop": 69717
+  },
+  {
+   "name": "Bologna",
+   "slug": "bologna",
+   "perCapita": 3799,
+   "gastos": 1487999998,
+   "pop": 391686
+  },
+  {
+   "name": "Venezia",
+   "slug": "venezia",
+   "perCapita": 3762,
+   "gastos": 938548797,
+   "pop": 249490
+  },
+  {
+   "name": "Milano",
+   "slug": "milano",
+   "perCapita": 3209,
+   "gastos": 4401642341,
+   "pop": 1371498
+  },
+  {
+   "name": "Bolzano",
+   "slug": "bolzano",
+   "perCapita": 3079,
+   "gastos": 328082268,
+   "pop": 106568
+  },
+  {
+   "name": "Merano",
+   "slug": "merano",
+   "perCapita": 2474,
+   "gastos": 102673085,
+   "pop": 41498
+  },
+  {
+   "name": "Ascoli Piceno",
+   "slug": "ascoli-piceno",
+   "perCapita": 2456,
+   "gastos": 111599547,
+   "pop": 45448
+  },
+  {
+   "name": "Firenze",
+   "slug": "firenze",
+   "perCapita": 2434,
+   "gastos": 882691043,
+   "pop": 362613
+  },
+  {
+   "name": "Roma",
+   "slug": "roma",
+   "perCapita": 2410,
+   "gastos": 6621545232,
+   "pop": 2747290
+  },
+  {
+   "name": "Pordenone",
+   "slug": "pordenone",
+   "perCapita": 2322,
+   "gastos": 121089319,
+   "pop": 52147
+  },
+  {
+   "name": "Macerata",
+   "slug": "macerata",
+   "perCapita": 2263,
+   "gastos": 91756700,
+   "pop": 40538
+  },
+  {
+   "name": "Sanremo",
+   "slug": "sanremo",
+   "perCapita": 2255,
+   "gastos": 119646529,
+   "pop": 53059
+  },
+  {
+   "name": "Trieste",
+   "slug": "trieste",
+   "perCapita": 2212,
+   "gastos": 439825427,
+   "pop": 198843
+  },
+  {
+   "name": "Mantova",
+   "slug": "mantova",
+   "perCapita": 2188,
+   "gastos": 107307821,
+   "pop": 49044
+  },
+  {
+   "name": "Genova",
+   "slug": "genova",
+   "perCapita": 2151,
+   "gastos": 1213315925,
+   "pop": 564080
+  },
+  {
+   "name": "Siena",
+   "slug": "siena",
+   "perCapita": 2121,
+   "gastos": 112067718,
+   "pop": 52833
+  },
+  {
+   "name": "Padova",
+   "slug": "padova",
+   "perCapita": 2118,
+   "gastos": 439346757,
+   "pop": 207412
+  },
+  {
+   "name": "Bergamo",
+   "slug": "bergamo",
+   "perCapita": 2079,
+   "gastos": 249783059,
+   "pop": 120157
+  },
+  {
+   "name": "Torino",
+   "slug": "torino",
+   "perCapita": 1995,
+   "gastos": 1698067332,
+   "pop": 851199
+  },
+  {
+   "name": "Viareggio",
+   "slug": "viareggio",
+   "perCapita": 1942,
+   "gastos": 118000707,
+   "pop": 60755
+  },
+  {
+   "name": "Brescia",
+   "slug": "brescia",
+   "perCapita": 1933,
+   "gastos": 383248967,
+   "pop": 198259
+  },
+  {
+   "name": "Salerno",
+   "slug": "salerno",
+   "perCapita": 1924,
+   "gastos": 243766049,
+   "pop": 126715
+  },
+  {
+   "name": "Pisa",
+   "slug": "pisa",
+   "perCapita": 1912,
+   "gastos": 170400897,
+   "pop": 89117
+  },
+  {
+   "name": "Catania",
+   "slug": "catania",
+   "perCapita": 1904,
+   "gastos": 567444176,
+   "pop": 298054
+  },
+  {
+   "name": "Udine",
+   "slug": "udine",
+   "perCapita": 1903,
+   "gastos": 187076544,
+   "pop": 98304
+  },
+  {
+   "name": "Rimini",
+   "slug": "rimini",
+   "perCapita": 1854,
+   "gastos": 278754613,
+   "pop": 150333
+  },
+  {
+   "name": "Napoli",
+   "slug": "napoli",
+   "perCapita": 1844,
+   "gastos": 1684493007,
+   "pop": 913704
+  },
+  {
+   "name": "Imperia",
+   "slug": "imperia",
+   "perCapita": 1824,
+   "gastos": 77678150,
+   "pop": 42580
+  },
+  {
+   "name": "Messina",
+   "slug": "messina",
+   "perCapita": 1805,
+   "gastos": 391745735,
+   "pop": 217033
+  },
+  {
+   "name": "Lecco",
+   "slug": "lecco",
+   "perCapita": 1760,
+   "gastos": 82949311,
+   "pop": 47125
+  }
+ ],
+ "lowPerCapita": [
+  {
+   "name": "Marano di Napoli",
+   "slug": "marano-di-napoli",
+   "perCapita": 636,
+   "pop": 57740
+  },
+  {
+   "name": "Ardea",
+   "slug": "ardea",
+   "perCapita": 677,
+   "pop": 50908
+  },
+  {
+   "name": "Quarto",
+   "slug": "quarto",
+   "perCapita": 728,
+   "pop": 41330
+  },
+  {
+   "name": "Scafati",
+   "slug": "scafati",
+   "perCapita": 738,
+   "pop": 47887
+  },
+  {
+   "name": "Casalnuovo di Napoli",
+   "slug": "casalnuovo-di-napoli",
+   "perCapita": 770,
+   "pop": 46876
+  },
+  {
+   "name": "Giugliano in Campania",
+   "slug": "giugliano-in-campania",
+   "perCapita": 772,
+   "pop": 124209
+  },
+  {
+   "name": "Torre del Greco",
+   "slug": "torre-del-greco",
+   "perCapita": 795,
+   "pop": 80069
+  },
+  {
+   "name": "Casoria",
+   "slug": "casoria",
+   "perCapita": 843,
+   "pop": 73814
+  },
+  {
+   "name": "Lamezia Terme",
+   "slug": "lamezia-terme",
+   "perCapita": 844,
+   "pop": 67246
+  },
+  {
+   "name": "Guidonia Montecelio",
+   "slug": "guidonia-montecelio",
+   "perCapita": 846,
+   "pop": 89011
+  }
+ ],
+ "salaryTop": 165600
+}

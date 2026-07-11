@@ -26,6 +26,9 @@ export default function SiteNav() {
           <Link href="/deuda-municipios" className="hidden md:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
             Deuda
           </Link>
+          <Link href="/spesa-comuni" className="hidden md:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
+            Spesa IT
+          </Link>
           <a href="/#noticias" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
             {m.nav.news}
           </a>

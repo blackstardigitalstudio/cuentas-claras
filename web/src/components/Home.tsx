@@ -381,7 +381,7 @@ export default function Home() {
             : "Abre la página de cada ciudad para el detalle de ingresos y gastos."}
         </p>
         <div className="space-y-4">
-          {(["es", "it"] as CountryCode[]).map((p) => (
+          {((locale === "it" ? ["it", "es"] : ["es", "it"]) as CountryCode[]).map((p) => (
             <div key={p}>
               <h3 className="text-xs uppercase tracking-widest text-cyan/80 mb-2">
                 {p === "es" ? (

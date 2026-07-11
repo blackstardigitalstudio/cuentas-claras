@@ -94,6 +94,9 @@ export default function FutbolPage() {
           ))}
         </div>
 
+        {/* Bloques por país; con idioma italiano, Italia se muestra primero (CSS .country-flip). */}
+        <div className="country-flip">
+        <div className="country-es">
         {/* ===================== ESPAÑA · LaLiga ===================== */}
         <section className="mt-12">
           <PhotoBanner src="/photos/spain-stadium.jpg" alt="Estadio de LaLiga (España)" />
@@ -169,6 +172,8 @@ export default function FutbolPage() {
           </ol>
         </section>
 
+        </div>{/* /country-es */}
+        <div className="country-it">
         {/* ===================== ITALIA · Serie A ===================== */}
         <section className="mt-16">
           <PhotoBanner src="/photos/italy-stadium.jpg" alt="Stadio di Serie A (Italia)" />
@@ -225,6 +230,9 @@ export default function FutbolPage() {
             ))}
           </ol>
         </section>
+
+        </div>{/* /country-it */}
+        </div>{/* /country-flip */}
 
         {/* Confronto tra campionati */}
         <section className="mt-16">

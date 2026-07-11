@@ -7,7 +7,7 @@ import {
   LALIGA_LCPD, LALIGA_LCPD_SEASON, LALIGA_LCPD_SOURCE,
   CLUB_REVENUE, REVENUE_SEASON, REVENUE_SOURCE, CLUB_DEBT,
   SERIE_A, SERIE_A_SEASON, SERIE_A_SOURCE, LEAGUES, LEAGUE_SOURCE,
-  CLUBS, CLUB_COMPARE_SLUGS,
+  CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS,
 } from "@/data/futbol";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -204,6 +204,18 @@ export default function FutbolPage() {
             ))}
           </ol>
           <p className="text-[11px] text-muted mt-2">La LaLiga (€4,8 mld) incassa più della Serie A (€4,0 mld) ed è quasi in pareggio; la Serie A perde di più. Fonte: <a href={LEAGUE_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{LEAGUE_SOURCE.name}</a></p>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-lg font-semibold mb-3">Las cuentas de cada club</h2>
+          <p className="text-sm text-muted mb-4">Ingresos, salarios, límite salarial y deuda, club por club — solo cifras oficiales.</p>
+          <div className="flex flex-wrap gap-2">
+            {CLUB_PAGE_SLUGS.map((s) => (
+              <Link key={s} href={`/futbol/${s}/`} className="px-3 py-1.5 rounded-full text-sm border border-[var(--panel-border)] hover:border-cyan hover:text-fg transition">
+                {CLUBS[s].name}
+              </Link>
+            ))}
+          </div>
         </section>
 
         <section className="mt-12">

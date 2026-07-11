@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { COUNTRIES, type CountryCode } from "@/lib/data";
-import { CLUBS, CLUB_COMPARE_SLUGS } from "@/data/futbol";
+import { CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS } from "@/data/futbol";
 import { CMP_ES, CMP_IT } from "@/data/compare-lists";
 
 export const dynamic = "force-static";
@@ -45,6 +45,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (let i = 0; i < clubs.length; i++) for (let j = i + 1; j < clubs.length; j++) {
     urls.push({ url: `${SITE}/futbol/${clubs[i]}-vs-${clubs[j]}/`, lastModified, changeFrequency: "monthly", priority: 0.5 });
   }
+  // Fichas de un solo club.
+  for (const s of CLUB_PAGE_SLUGS) urls.push({ url: `${SITE}/futbol/${s}/`, lastModified, changeFrequency: "monthly", priority: 0.6 });
 
   const seen = new Set<string>();
   for (const p of ["es", "it"] as CountryCode[]) {

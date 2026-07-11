@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { COUNTRIES, type CountryCode, type RegionData } from "@/lib/data";
 import { formatCompact, formatEuro, formatPct } from "@/lib/format";
 import { CMP_ES, CMP_IT, comparePairsFor } from "@/data/compare-lists";
+import cityOg from "@/data/city-og.json";
+
+const CITY_OG = new Set(cityOg as string[]);
 
 const PAISES: CountryCode[] = ["es", "it"];
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -52,7 +55,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: { canonical: `/${pais}/${ciudad}` },
-    openGraph: { title, description, type: "article", locale: es ? "es_ES" : "it_IT" },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      locale: es ? "es_ES" : "it_IT",
+      // Tarjeta social propia de la ciudad cuando existe (ciudades más buscadas).
+      ...(CITY_OG.has(ciudad) ? { images: [{ url: `/og/city/${ciudad}.png`, width: 1200, height: 630, alt: title }] } : {}),
+    },
+    ...(CITY_OG.has(ciudad) ? { twitter: { card: "summary_large_image" as const, images: [`/og/city/${ciudad}.png`] } } : {}),
     // Las fichas con cifras de ejemplo no se indexan (evita contenido "thin"/placeholder
     // en Google), pero sí se siguen sus enlaces salientes.
     ...(r.isSample ? { robots: { index: false, follow: true } } : {}),

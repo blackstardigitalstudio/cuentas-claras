@@ -38,11 +38,13 @@ export default function Mascot({ size = 96, wave = false, className = "" }: { si
       <path d="M28 66 q -9 -2 -12 -10" fill="none" stroke="#22d3ee" strokeWidth="5" strokeLinecap="round" />
       <path d={wave ? "M92 60 q 10 -6 9 -18" : "M92 66 q 9 -2 12 -10"} fill="none" stroke="#7c5cff" strokeWidth="5" strokeLinecap="round" />
 
-      {/* ojos */}
-      <ellipse cx="50" cy="62" rx="7.5" ry="9" fill="#06121a" />
-      <ellipse cx="70" cy="62" rx="7.5" ry="9" fill="#06121a" />
-      <circle cx="52.4" cy="59" r="2.6" fill="#eafcff" />
-      <circle cx="72.4" cy="59" r="2.6" fill="#eafcff" />
+      {/* ojos (parpadean con .mascot-eyes) */}
+      <g className="mascot-eyes">
+        <ellipse cx="50" cy="62" rx="7.5" ry="9" fill="#06121a" />
+        <ellipse cx="70" cy="62" rx="7.5" ry="9" fill="#06121a" />
+        <circle cx="52.4" cy="59" r="2.6" fill="#eafcff" />
+        <circle cx="72.4" cy="59" r="2.6" fill="#eafcff" />
+      </g>
 
       {/* mejillas */}
       <circle cx="40" cy="72" r="5" fill="rgba(255,120,180,0.45)" />

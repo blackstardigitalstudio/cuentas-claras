@@ -281,6 +281,7 @@ export default async function CityPage({ params }: Props) {
       <div className="mt-5">
         <SimpleExplainer
           title={es ? "En cristiano" : "In parole semplici"}
+          by={es ? "te lo explica Claro" : "te lo spiega Claro"}
           moreLabel={es ? "Explícamelo un poco mejor" : "Spiegamelo un po' meglio"}
           more={
             es ? (

@@ -26,7 +26,9 @@ export const metadata: Metadata = {
     description: `${ranks.topDebt[0].name} lidera con ${formatEuro(ranks.topDebt[0].amount)}. ${pct}% de los municipios no tienen deuda.`,
     url: `${SITE}/deuda-municipios/`,
     type: "website",
+    images: [{ url: "/og-deuda.png", width: 1200, height: 630, alt: "¿Cuánta deuda tiene tu ciudad? — datos oficiales" }],
   },
+  twitter: { card: "summary_large_image", title: "¿Cuánta deuda tiene tu ciudad?", description: "Los municipios más endeudados, con datos oficiales.", images: ["/og-deuda.png"] },
 };
 
 const esSlugs = new Set(Object.values(COUNTRIES.es.regions).filter((r) => !r.isSample).map((r) => r.slug));

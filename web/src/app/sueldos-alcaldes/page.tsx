@@ -25,7 +25,9 @@ export const metadata: Metadata = {
     description: `Ranking oficial de los alcaldes que más cobran. Media: ${formatEuro(ranks.salaryAvg)}/año.`,
     url: `${SITE}/sueldos-alcaldes/`,
     type: "website",
+    images: [{ url: "/og-sueldos.png", width: 1200, height: 630, alt: "¿Cuánto cobra tu alcalde? — datos oficiales" }],
   },
+  twitter: { card: "summary_large_image", title: "¿Cuánto cobra tu alcalde?", description: "Ranking oficial de los alcaldes que más cobran.", images: ["/og-sueldos.png"] },
 };
 
 const esSlugs = new Set(Object.values(COUNTRIES.es.regions).filter((r) => !r.isSample).map((r) => r.slug));

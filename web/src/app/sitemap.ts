@@ -24,6 +24,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/futbol/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/escandalos/`, lastModified, changeFrequency: "hourly", priority: 0.8 },
   ];
+  // Páginas de comparación "X vs Y" (mismas listas que las rutas /comparar y /confronta).
+  const CMP_ES = ["madrid","barcelona","valencia","sevilla","zaragoza","malaga","murcia","palma","las-palmas-de-gran-canaria","bilbao","alicante","cordoba","valladolid","vigo","gijon","vitoria-gasteiz","a-coruna","granada","elche-elx","oviedo"];
+  const CMP_IT = ["roma","milano","napoli","torino","palermo","genova","bologna","firenze","bari","catania","venezia","verona","messina","padova","trieste","brescia","prato","taranto","modena","parma"];
+  const addPairs = (list: string[], base: string) => {
+    for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) {
+      urls.push({ url: `${SITE}/${base}/${list[i]}-vs-${list[j]}/`, lastModified, changeFrequency: "monthly", priority: 0.5 });
+    }
+  };
+  addPairs(CMP_ES, "comparar");
+  addPairs(CMP_IT, "confronta");
+
   const seen = new Set<string>();
   for (const p of ["es", "it"] as CountryCode[]) {
     for (const r of Object.values(COUNTRIES[p].regions)) {

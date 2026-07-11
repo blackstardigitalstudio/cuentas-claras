@@ -11,10 +11,10 @@ const RegionMapGL = dynamic(() => import("./RegionMapGL"), {
 });
 import { COUNTRIES, type CountryCode } from "@/lib/data";
 import { formatCompact } from "@/lib/format";
-import { useMessages } from "@/i18n/LocaleProvider";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export default function Explorer() {
-  const m = useMessages();
+  const { locale, m } = useLocale();
   const [country, setCountry] = useState<CountryCode>("es");
   const C = COUNTRIES[country];
   const [selected, setSelected] = useState<string>(C.defaultRegion);
@@ -66,6 +66,22 @@ export default function Explorer() {
         </div>
 
         <RegionMapGL country={C} selected={selected} onSelect={setSelected} />
+
+        {/* Leyenda SÚPER BÁSICA del mapa: qué significan los puntos y los colores */}
+        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] text-muted">
+          <span className="inline-flex items-center gap-1.5">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-cyan opacity-70 motion-safe:animate-ping" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan" />
+            </span>
+            {locale === "it" ? "punti che brillano = città che spendono di più" : "puntos que brillan = ciudades que más gastan"}
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="inline-block h-2.5 w-14 rounded-full" style={{ background: "linear-gradient(90deg,#15304a,#22d3ee,#818cf8,#f472b6)" }} />
+            {locale === "it" ? "colore = livello di spesa" : "color = nivel de gasto"}
+          </span>
+          <span className="text-cyan/80">👆 {locale === "it" ? "tocca la tua città per vedere i conti" : "toca tu ciudad para ver sus cuentas"}</span>
+        </div>
 
         {/* Top spesa — barre orizzontali stile dashboard ("consumption by region") */}
         <div className="mt-4">

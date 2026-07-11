@@ -69,6 +69,7 @@ function Inner() {
       <div className="mt-5">
         <SimpleExplainer
           title={it ? "In parole semplici" : "En cristiano"}
+          by={it ? "te lo spiega Claro" : "te lo explica Claro"}
           moreLabel={it ? "Spiegamelo un po' meglio" : "Explícamelo un poco mejor"}
           more={
             it ? (

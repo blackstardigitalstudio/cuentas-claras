@@ -50,7 +50,7 @@ export type Messages = {
     seeAll: string;
     empty: string;
     disclaimer: string;
-    themes: { scoop: string; funds: string; verdicts: string; waste: string; nepotism: string; sanctions: string; investigations: string };
+    themes: { scoop: string; funds: string; verdicts: string; waste: string; nepotism: string; sanctions: string; investigations: string; salaries: string; works: string; subsidies: string };
   };
 };
 
@@ -148,6 +148,9 @@ const es: Messages = {
       nepotism: "Enchufismo y nepotismo",
       sanctions: "Multas e inhabilitaciones",
       investigations: "Investigaciones y exclusivas",
+      salaries: "Sueldos y sobresueldos",
+      works: "Obra pública y sobrecostes",
+      subsidies: "Subvenciones y ayudas",
     },
   },
 };
@@ -246,6 +249,9 @@ const it: Messages = {
       nepotism: "Parentopoli e clientelismo",
       sanctions: "Sanzioni e interdizioni",
       investigations: "Inchieste ed esclusive",
+      salaries: "Stipendi e indennità",
+      works: "Grandi opere e incompiute",
+      subsidies: "Sovvenzioni e contributi",
     },
   },
 };

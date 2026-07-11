@@ -531,5 +531,221 @@
    "perCapita": 917
   }
  ],
- "debtPerCapitaMinPop": 20000
+ "debtPerCapitaMinPop": 20000,
+ "gastoPerCapita": [
+  {
+   "name": "Mogán",
+   "slug": "mogan",
+   "perCapita": 2741,
+   "gastos": 58029590,
+   "pop": 21172
+  },
+  {
+   "name": "San Roque",
+   "slug": "san-roque",
+   "perCapita": 2574,
+   "gastos": 88305438,
+   "pop": 34310
+  },
+  {
+   "name": "Marbella",
+   "slug": "marbella",
+   "perCapita": 2525,
+   "gastos": 403516349,
+   "pop": 159786
+  },
+  {
+   "name": "Adeje",
+   "slug": "adeje",
+   "perCapita": 2412,
+   "gastos": 120657440,
+   "pop": 50021
+  },
+  {
+   "name": "Donostia / San Sebastián",
+   "slug": "donostia-san-sebastian",
+   "perCapita": 2398,
+   "gastos": 455302611,
+   "pop": 189866
+  },
+  {
+   "name": "Nerja",
+   "slug": "nerja",
+   "perCapita": 2287,
+   "gastos": 50615149,
+   "pop": 22132
+  },
+  {
+   "name": "Pájara",
+   "slug": "pajara",
+   "perCapita": 2273,
+   "gastos": 49027018,
+   "pop": 21570
+  },
+  {
+   "name": "Calvià",
+   "slug": "calvia",
+   "perCapita": 2269,
+   "gastos": 122078883,
+   "pop": 53793
+  },
+  {
+   "name": "Lloret de Mar",
+   "slug": "lloret-de-mar",
+   "perCapita": 2247,
+   "gastos": 96632890,
+   "pop": 43000
+  },
+  {
+   "name": "Roses",
+   "slug": "roses",
+   "perCapita": 2197,
+   "gastos": 44748000,
+   "pop": 20365
+  },
+  {
+   "name": "Arrasate/Mondragón",
+   "slug": "arrasate-mondragon",
+   "perCapita": 2150,
+   "gastos": 48275380,
+   "pop": 22450
+  },
+  {
+   "name": "Palafrugell",
+   "slug": "palafrugell",
+   "perCapita": 2122,
+   "gastos": 52090591,
+   "pop": 24543
+  },
+  {
+   "name": "El Prat de Llobregat",
+   "slug": "el-prat-de-llobregat",
+   "perCapita": 2110,
+   "gastos": 139967169,
+   "pop": 66338
+  },
+  {
+   "name": "Almonte",
+   "slug": "almonte",
+   "perCapita": 2108,
+   "gastos": 52410310,
+   "pop": 24864
+  },
+  {
+   "name": "Barcelona",
+   "slug": "barcelona",
+   "perCapita": 2106,
+   "gastos": 3646517086,
+   "pop": 1731649
+  },
+  {
+   "name": "Hernani",
+   "slug": "hernani",
+   "perCapita": 2093,
+   "gastos": 42653250,
+   "pop": 20375
+  },
+  {
+   "name": "Salou",
+   "slug": "salou",
+   "perCapita": 2074,
+   "gastos": 65304486,
+   "pop": 31491
+  },
+  {
+   "name": "Bilbao",
+   "slug": "bilbao",
+   "perCapita": 2048,
+   "gastos": 719000000,
+   "pop": 351124
+  },
+  {
+   "name": "Arteixo",
+   "slug": "arteixo",
+   "perCapita": 2038,
+   "gastos": 70124999,
+   "pop": 34403
+  },
+  {
+   "name": "Sitges",
+   "slug": "sitges",
+   "perCapita": 2031,
+   "gastos": 66230000,
+   "pop": 32609
+  },
+  {
+   "name": "Eibar",
+   "slug": "eibar",
+   "perCapita": 2030,
+   "gastos": 55798191,
+   "pop": 27484
+  },
+  {
+   "name": "Calp",
+   "slug": "calp",
+   "perCapita": 1988,
+   "gastos": 54911909,
+   "pop": 27616
+  },
+  {
+   "name": "Galdakao",
+   "slug": "galdakao",
+   "perCapita": 1983,
+   "gastos": 49122262,
+   "pop": 24776
+  },
+  {
+   "name": "Tolosa",
+   "slug": "tolosa",
+   "perCapita": 1953,
+   "gastos": 39198600,
+   "pop": 20070
+  },
+  {
+   "name": "Calafell",
+   "slug": "calafell",
+   "perCapita": 1935,
+   "gastos": 63131780,
+   "pop": 32624
+  },
+  {
+   "name": "Rota",
+   "slug": "rota",
+   "perCapita": 1899,
+   "gastos": 55629383,
+   "pop": 29289
+  },
+  {
+   "name": "San Bartolomé de Tirajana",
+   "slug": "san-bartolome-de-tirajana",
+   "perCapita": 1888,
+   "gastos": 102524999,
+   "pop": 54291
+  },
+  {
+   "name": "Madrid",
+   "slug": "madrid",
+   "perCapita": 1868,
+   "gastos": 6551092864,
+   "pop": 3506730
+  },
+  {
+   "name": "El Campello",
+   "slug": "el-campello",
+   "perCapita": 1851,
+   "gastos": 58166653,
+   "pop": 31419
+  },
+  {
+   "name": "Sant Josep de sa Talaia",
+   "slug": "sant-josep-de-sa-talaia",
+   "perCapita": 1841,
+   "gastos": 54778524,
+   "pop": 29761
+  }
+ ],
+ "gastoSource": {
+  "name": "Presupuestos municipales (Min. Hacienda / portales oficiales)",
+  "url": "https://www.hacienda.gob.es"
+ }
 }

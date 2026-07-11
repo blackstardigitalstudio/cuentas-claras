@@ -117,7 +117,7 @@ export function futbolSlug(club: string): string {
 }
 
 // --- Dataset unificato dei club (per i confronti "X vs Y") ---
-export type ClubMetrics = { name: string; slug: string; league: "laliga" | "seriea"; limite?: number; revenue?: number; wageBill?: number; net?: number; debt?: { amount: number; kind: string } };
+export type ClubMetrics = { name: string; slug: string; league: "laliga" | "seriea"; limite?: number; revenue?: number; wageBill?: number; net?: number; debt?: { amount: number; kind: string; year: string; source: Src } };
 
 export const CLUBS: Record<string, ClubMetrics> = (() => {
   const m: Record<string, ClubMetrics> = {};
@@ -128,7 +128,7 @@ export const CLUBS: Record<string, ClubMetrics> = (() => {
   for (const c of LALIGA_LCPD) get(c.club, "laliga").limite = c.amount;
   for (const c of CLUB_REVENUE) get(c.club, c.country === "es" ? "laliga" : "seriea").revenue = c.amount;
   for (const c of SERIE_A) { const x = get(c.club, "seriea"); x.revenue = c.revenue; x.wageBill = c.wageBill; x.net = c.net; }
-  for (const c of CLUB_DEBT) { const x = get(c.club, c.country === "es" ? "laliga" : "seriea"); x.debt = { amount: c.amount, kind: c.kind }; }
+  for (const c of CLUB_DEBT) { const x = get(c.club, c.country === "es" ? "laliga" : "seriea"); x.debt = { amount: c.amount, kind: c.kind, year: c.year, source: c.source }; }
   return m;
 })();
 
@@ -137,3 +137,10 @@ export const CLUB_COMPARE_SLUGS = [
   "real-madrid", "fc-barcelona", "atletico-de-madrid", "sevilla-fc", "villarreal-cf", "real-betis", "athletic-club", "real-sociedad", "valencia-cf",
   "inter", "juventus", "ac-milan", "as-roma", "ssc-napoli", "atalanta", "lazio", "fiorentina",
 ];
+
+// Club con página propia: solo los que tienen datos ricos (ingresos, salarios
+// o deuda), no solo el límite salarial → evita fichas "thin".
+export const CLUB_PAGE_SLUGS = Object.keys(CLUBS).filter((s) => {
+  const c = CLUBS[s];
+  return !!(c.revenue || c.wageBill || c.debt);
+});

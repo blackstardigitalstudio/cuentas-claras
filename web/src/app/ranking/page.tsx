@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
+import PhotoBanner from "@/components/PhotoBanner";
 import { COUNTRIES, type CountryCode } from "@/lib/data";
 import { formatCompact, formatEuro } from "@/lib/format";
 
@@ -107,7 +108,8 @@ export default function RankingPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       <LocaleProvider>
         <SiteNav />
-        <header className="pt-8">
+        <PhotoBanner src="/photos/money.jpg" alt="Euro · dinero público" className="mt-6" />
+        <header className="pt-6">
           <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-cyan/80">España · Italia</p>
           <h1 className="text-2xl md:text-4xl font-bold mt-2">
             Ranking del <span className="neon-text">gasto público</span>

@@ -1513,5 +1513,135 @@
   "name": "Mollerussa",
   "ine": "25137",
   "provincia": "Lleida"
+ },
+ {
+  "name": "Oviedo",
+  "ine": "33044",
+  "provincia": "Asturias"
+ },
+ {
+  "name": "Pontevedra",
+  "ine": "36038",
+  "provincia": "Pontevedra"
+ },
+ {
+  "name": "Santa Lucía de Tirajana",
+  "ine": "35022",
+  "provincia": "Palmas, Las"
+ },
+ {
+  "name": "Benalmádena",
+  "ine": "29025",
+  "provincia": "Málaga"
+ },
+ {
+  "name": "Eivissa",
+  "ine": "07026",
+  "provincia": "Balears, Illes"
+ },
+ {
+  "name": "San Bartolomé de Tirajana",
+  "ine": "35019",
+  "provincia": "Palmas, Las"
+ },
+ {
+  "name": "Puerto del Rosario",
+  "ine": "35017",
+  "provincia": "Palmas, Las"
+ },
+ {
+  "name": "Lucena",
+  "ine": "14038",
+  "provincia": "Córdoba"
+ },
+ {
+  "name": "Santa Eulària des Riu",
+  "ine": "07054",
+  "provincia": "Balears, Illes"
+ },
+ {
+  "name": "Torre-Pacheco",
+  "ine": "30037",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Burjassot",
+  "ine": "46078",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Marratxí",
+  "ine": "07036",
+  "provincia": "Balears, Illes"
+ },
+ {
+  "name": "Tudela",
+  "ine": "31232",
+  "provincia": "Navarra"
+ },
+ {
+  "name": "Los Palacios y Villafranca",
+  "ine": "41069",
+  "provincia": "Sevilla"
+ },
+ {
+  "name": "Ontinyent",
+  "ine": "46184",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "San Javier",
+  "ine": "30035",
+  "provincia": "Murcia"
+ },
+ {
+  "name": "Navalcarnero",
+  "ine": "28096",
+  "provincia": "Madrid"
+ },
+ {
+  "name": "Níjar",
+  "ine": "04066",
+  "provincia": "Almería"
+ },
+ {
+  "name": "Leioa",
+  "ine": "48054",
+  "provincia": "Bizkaia"
+ },
+ {
+  "name": "Sant Pere de Ribes",
+  "ine": "08231",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "Xàbia/Jávea",
+  "ine": "03082",
+  "provincia": "Alicante/Alacant"
+ },
+ {
+  "name": "Catarroja",
+  "ine": "46094",
+  "provincia": "Valencia/València"
+ },
+ {
+  "name": "Camargo",
+  "ine": "39016",
+  "provincia": "Cantabria"
+ },
+ {
+  "name": "Durango",
+  "ine": "48027",
+  "provincia": "Bizkaia"
+ },
+ {
+  "name": "Pineda de Mar",
+  "ine": "08163",
+  "provincia": "Barcelona"
+ },
+ {
+  "name": "La Oliva",
+  "ine": "35014",
+  "provincia": "Palmas, Las"
  }
 ]

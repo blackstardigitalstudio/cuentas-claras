@@ -348,5 +348,188 @@
    "name": "Tarragona",
    "amount": 101616888
   }
- ]
+ ],
+ "debtPerCapita": [
+  {
+   "name": "Barrios (Los)",
+   "pop": 24449,
+   "debt": 194947065,
+   "perCapita": 7974
+  },
+  {
+   "name": "Jaén",
+   "pop": 112235,
+   "debt": 570705764,
+   "perCapita": 5085
+  },
+  {
+   "name": "Jerez de la Frontera",
+   "pop": 213634,
+   "debt": 966839807,
+   "perCapita": 4526
+  },
+  {
+   "name": "Barbate",
+   "pop": 22635,
+   "debt": 86970286,
+   "perCapita": 3842
+  },
+  {
+   "name": "Navalcarnero",
+   "pop": 33331,
+   "debt": 126263256,
+   "perCapita": 3788
+  },
+  {
+   "name": "Parla",
+   "pop": 137471,
+   "debt": 515805920,
+   "perCapita": 3752
+  },
+  {
+   "name": "Totana",
+   "pop": 33358,
+   "debt": 112402509,
+   "perCapita": 3370
+  },
+  {
+   "name": "Chipiona",
+   "pop": 20076,
+   "debt": 67239946,
+   "perCapita": 3349
+  },
+  {
+   "name": "Gandia",
+   "pop": 83135,
+   "debt": 257842527,
+   "perCapita": 3101
+  },
+  {
+   "name": "Arcos de la Frontera",
+   "pop": 31267,
+   "debt": 71292618,
+   "perCapita": 2280
+  },
+  {
+   "name": "Algeciras",
+   "pop": 126589,
+   "debt": 256253391,
+   "perCapita": 2024
+  },
+  {
+   "name": "Línea de la Concepción (La)",
+   "pop": 64499,
+   "debt": 122103576,
+   "perCapita": 1893
+  },
+  {
+   "name": "Ceuta",
+   "pop": 83595,
+   "debt": 152046343,
+   "perCapita": 1819
+  },
+  {
+   "name": "Aranjuez",
+   "pop": 63040,
+   "debt": 110282814,
+   "perCapita": 1749
+  },
+  {
+   "name": "Ayamonte",
+   "pop": 22001,
+   "debt": 38152788,
+   "perCapita": 1734
+  },
+  {
+   "name": "Arganda del Rey",
+   "pop": 60419,
+   "debt": 103591465,
+   "perCapita": 1715
+  },
+  {
+   "name": "Palacios y Villafranca (Los)",
+   "pop": 38761,
+   "debt": 60511008,
+   "perCapita": 1561
+  },
+  {
+   "name": "Puerto Real",
+   "pop": 42527,
+   "debt": 65556551,
+   "perCapita": 1542
+  },
+  {
+   "name": "Almonte",
+   "pop": 24864,
+   "debt": 35992993,
+   "perCapita": 1448
+  },
+  {
+   "name": "Ejido (El)",
+   "pop": 91440,
+   "debt": 116787254,
+   "perCapita": 1277
+  },
+  {
+   "name": "Maracena",
+   "pop": 22294,
+   "debt": 26178632,
+   "perCapita": 1174
+  },
+  {
+   "name": "San Andrés del Rabanedo",
+   "pop": 29944,
+   "debt": 34592385,
+   "perCapita": 1155
+  },
+  {
+   "name": "Morón de la Frontera",
+   "pop": 27210,
+   "debt": 30501331,
+   "perCapita": 1121
+  },
+  {
+   "name": "Algete",
+   "pop": 21144,
+   "debt": 22504774,
+   "perCapita": 1064
+  },
+  {
+   "name": "Rota",
+   "pop": 29289,
+   "debt": 30592635,
+   "perCapita": 1045
+  },
+  {
+   "name": "Atarfe",
+   "pop": 20914,
+   "debt": 21273561,
+   "perCapita": 1017
+  },
+  {
+   "name": "Caravaca de la Cruz",
+   "pop": 26126,
+   "debt": 24950923,
+   "perCapita": 955
+  },
+  {
+   "name": "Isla Cristina",
+   "pop": 21525,
+   "debt": 20366457,
+   "perCapita": 946
+  },
+  {
+   "name": "San Fernando de Henares",
+   "pop": 39059,
+   "debt": 35915856,
+   "perCapita": 920
+  },
+  {
+   "name": "Lebrija",
+   "pop": 27788,
+   "debt": 25489173,
+   "perCapita": 917
+  }
+ ],
+ "debtPerCapitaMinPop": 20000
 }

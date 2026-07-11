@@ -107,6 +107,29 @@ export default function DeudaPage() {
           </p>
         </section>
 
+        {ranks.debtPerCapita && ranks.debtPerCapita.length > 0 && (
+          <section className="mt-12">
+            <h2 className="text-lg md:text-xl font-semibold mb-1">Los que más deben por habitante</h2>
+            <p className="text-[11px] text-cyan/70 mb-4">La deuda repartida entre los vecinos — más justo para comparar ciudades grandes y pequeñas (municipios de más de {ranks.debtPerCapitaMinPop.toLocaleString("es")} habitantes).</p>
+            <ol className="space-y-1.5">
+              {ranks.debtPerCapita.slice(0, 20).map((d, i) => (
+                <li key={d.name} className="glass flex items-center gap-3 px-3 py-2.5">
+                  <span className="tabular text-sm text-muted w-7 shrink-0 text-right">{i + 1}</span>
+                  <span className="flex-1 min-w-0">
+                    <span className="block truncate font-medium"><CityName name={d.name} /></span>
+                    <span className="text-[10px] text-muted">{formatCompact(d.debt)} · {d.pop.toLocaleString("es")} hab.</span>
+                  </span>
+                  <span className="tabular text-right shrink-0">
+                    <span className="block text-sm font-semibold text-[#fdba74]">{formatEuro(d.perCapita)}</span>
+                    <span className="block text-[10px] text-muted">por habitante</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <p className="text-[11px] text-muted mt-3">Deuda: {ranks.debtSource.name}. Población: INE, padrón a 1/1/2025.</p>
+          </section>
+        )}
+
         <section className="mt-12">
           <h2 className="text-lg font-semibold mb-3">Preguntas frecuentes</h2>
           <div className="space-y-2.5">

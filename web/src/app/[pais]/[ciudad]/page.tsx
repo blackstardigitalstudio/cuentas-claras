@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { COUNTRIES, type CountryCode, type RegionData } from "@/lib/data";
 import { formatCompact, formatEuro, formatPct } from "@/lib/format";
 import { CMP_ES, CMP_IT, comparePairsFor } from "@/data/compare-lists";
+import SimpleExplainer from "@/components/SimpleExplainer";
 import cityOg from "@/data/city-og.json";
 
 const CITY_OG = new Set(cityOg as string[]);
@@ -277,16 +278,41 @@ export default async function CityPage({ params }: Props) {
         </p>
       </header>
 
-      <p className="text-sm text-muted mt-5">
-        {es
-          ? `En cristiano: en ${r.year}, ${r.isCity ? "el ayuntamiento de " : ""}${r.name} recibió ${formatCompact(r.ingresos)} (el dinero que entra) y gastó ${formatCompact(r.gastos)}`
-          : `In parole semplici: nel ${r.year}, ${r.isCity ? "il Comune di " : ""}${r.name} ha incassato ${formatCompact(r.ingresos)} (i soldi che entrano) e ne ha spesi ${formatCompact(r.gastos)}`}
-        {r.poblacion && r.poblacion > 0 ? (
-          <span className="text-fg/80">
-            {es ? ` — unos ${formatEuro(Math.round(r.gastos / r.poblacion))} por habitante.` : ` — circa ${formatEuro(Math.round(r.gastos / r.poblacion))} per abitante.`}
-          </span>
-        ) : "."}
-      </p>
+      <div className="mt-5">
+        <SimpleExplainer
+          title={es ? "En cristiano" : "In parole semplici"}
+          moreLabel={es ? "Explícamelo un poco mejor" : "Spiegamelo un po' meglio"}
+          more={
+            es ? (
+              <>
+                <p>Un ayuntamiento no busca ganar dinero: recauda para dar servicios. Lo ideal es que lo que entra y lo que sale <span className="text-fg/80">cuadren</span> (ni gastar de más ni de menos).</p>
+                <p>La <span className="text-fg/80">deuda</span> no es mala en sí — es como una hipoteca — mientras el ayuntamiento pueda devolverla. Cada cifra de esta página viene de una fuente oficial; abre las secciones de abajo para ver el detalle.</p>
+              </>
+            ) : (
+              <>
+                <p>Un Comune non deve guadagnare: incassa per offrire servizi. L'ideale è che ciò che entra e ciò che esce siano <span className="text-fg/80">in pareggio</span> (senza spendere troppo né troppo poco).</p>
+                <p>Il <span className="text-fg/80">debito</span> non è di per sé un male — è come un mutuo — finché il Comune riesce a restituirlo. Ogni cifra di questa pagina viene da una fonte ufficiale; apri le sezioni qui sotto per il dettaglio.</p>
+              </>
+            )
+          }
+        >
+          <p>
+            {es
+              ? `Imagina ${r.isCity ? "el ayuntamiento de " : ""}${r.name} como una familia: cada año le entra dinero (de tus impuestos y del Estado) y lo gasta en cosas para el pueblo — colegios, calles, limpieza, ayudas…`
+              : `Immagina ${r.isCity ? "il Comune di " : ""}${r.name} come una famiglia: ogni anno gli entrano dei soldi (dalle tue tasse e dallo Stato) e li spende in cose per la città — scuole, strade, pulizia, aiuti…`}
+          </p>
+          <ul className="space-y-1">
+            <li>💶 <b>{es ? "Lo que entra" : "Ciò che entra"}</b>: {formatCompact(r.ingresos)} {es ? "al año" : "all'anno"}</li>
+            <li>💸 <b>{es ? "Lo que gasta" : "Ciò che spende"}</b>: {formatCompact(r.gastos)} {es ? "al año" : "all'anno"}{r.poblacion && r.poblacion > 0 ? <span className="text-muted"> — {es ? "unos" : "circa"} {formatEuro(Math.round(r.gastos / r.poblacion))} {es ? "por habitante" : "per abitante"}</span> : null}</li>
+            {r.debt ? (
+              <li>🏦 <b>{es ? "Lo que aún debe" : "Ciò che deve ancora"}</b> ({es ? "como una hipoteca" : "come un mutuo"}): {r.debt.amount > 0 ? formatCompact(r.debt.amount) : es ? "nada, sin deuda" : "niente, nessun debito"}</li>
+            ) : null}
+            {r.mayorSalary ? (
+              <li>👤 <b>{es ? "Lo que cobra quien lo dirige" : "Quanto guadagna chi lo amministra"}</b>: {formatEuro(r.mayorSalary.amount)}{es ? "/año" : "/anno"}</li>
+            ) : null}
+          </ul>
+        </SimpleExplainer>
+      </div>
       <section className="grid grid-cols-2 gap-3 mt-3">
         <div className="glass p-4">
           <p className="text-xs text-muted">{es ? "Ingresos" : "Entrate"} {r.year}</p>

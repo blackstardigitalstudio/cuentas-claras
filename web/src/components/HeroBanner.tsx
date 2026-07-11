@@ -14,6 +14,7 @@ export default function HeroBanner({
   accent = "#22d3ee",
   accent2 = "#a78bfa",
   as: Tag = "p" as ElementType,
+  priority = false,
 }: {
   src: string;
   alt?: string;
@@ -25,11 +26,12 @@ export default function HeroBanner({
   accent?: string;
   accent2?: string;
   as?: ElementType;
+  priority?: boolean;
 }) {
   return (
     <figure className="relative w-full aspect-[16/10] sm:aspect-[16/6.5] md:aspect-[24/7] overflow-hidden rounded-2xl border border-[var(--panel-border)]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={src} alt={alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async" className="absolute inset-0 w-full h-full object-cover" />
       {/* velos: oscuro a la izquierda (legibilidad) + subida desde abajo + tinte neón */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#05070f] via-[#05070f]/75 to-[#05070f]/10" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] via-[#05070f]/20 to-transparent" />

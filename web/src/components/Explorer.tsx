@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import RegionPanel from "./RegionPanel";
 
@@ -18,6 +18,13 @@ export default function Explorer() {
   const [country, setCountry] = useState<CountryCode>("es");
   const C = COUNTRIES[country];
   const [selected, setSelected] = useState<string>(C.defaultRegion);
+
+  // Para usuarios italianos, la home arranca en Italia (no en España).
+  useEffect(() => {
+    const c: CountryCode = locale === "it" ? "it" : "es";
+    setCountry(c);
+    setSelected(COUNTRIES[c].defaultRegion);
+  }, [locale]);
 
   const region = C.regions[selected] ?? C.list[0];
 

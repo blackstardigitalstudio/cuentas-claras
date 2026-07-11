@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
+import HeroBanner from "@/components/HeroBanner";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -37,8 +38,7 @@ export default function ConcejalPage() {
       <LocaleProvider>
         <SiteNav />
         <article className="pt-8">
-          <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-cyan/80">🇪🇸 Explicado fácil</p>
-          <h1 className="text-2xl md:text-4xl font-bold mt-2">¿Cuánto cobra un <span className="neon-text">concejal</span>?</h1>
+          <HeroBanner priority as="h1" src="/photos/money.jpg" alt="Monedas de euro" kicker="🇪🇸 Explicado fácil" title="¿CUÁNTO COBRA UN" highlight="CONCEJAL?" accent="#a5b4fc" accent2="#22d3ee" />
           <p className="text-sm md:text-base text-muted mt-3">
             No hay una cifra única: depende del ayuntamiento y, sobre todo, de si el concejal tiene «dedicación». Hay tres
             casos. En cristiano, así funciona:

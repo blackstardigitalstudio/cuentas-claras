@@ -100,6 +100,7 @@ export default function BulosPage() {
         <SiteNav />
         <div className="mt-6">
           <HeroBanner
+            priority
             as="h1"
             src="/photos/news.jpg"
             alt="Periódicos"

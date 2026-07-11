@@ -64,6 +64,7 @@ function Inner({ data }: Props) {
       <SiteNav />
       <div className="mt-6">
         <HeroBanner
+          priority
           as="h1"
           src="/photos/money.jpg"
           alt={it ? "Moneta da 2 euro" : "Moneda de 2 euros"}

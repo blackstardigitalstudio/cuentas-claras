@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import LangSwitch from "./LangSwitch";
-import { useMessages } from "@/i18n/LocaleProvider";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 // Barra superior fija, compartida por la portada y la página de escándalos.
 export default function SiteNav() {
-  const m = useMessages();
+  const { m, locale } = useLocale();
+  const it = locale === "it";
   return (
     <header className="sticky top-0 z-40 -mx-4 sm:-mx-6 px-4 sm:px-6 py-3 backdrop-blur-md bg-[rgba(5,7,15,0.72)] border-b border-[var(--panel-border)]">
       <div className="flex items-center justify-between gap-3">
@@ -18,28 +19,28 @@ export default function SiteNav() {
             {m.nav.map}
           </a>
           <Link href="/ranking" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            Ranking
+            {it ? "Classifica" : "Ranking"}
           </Link>
           <Link href="/records" className="hidden lg:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            🏆 Récords
+            🏆 {it ? "Record" : "Récords"}
           </Link>
           <Link href="/sueldos-alcaldes" className="hidden md:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            Sueldos
+            {it ? "Stipendi" : "Sueldos"}
           </Link>
           <Link href="/deuda-municipios" className="hidden md:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            Deuda
+            {it ? "Debito" : "Deuda"}
           </Link>
           <Link href="/spesa-comuni" className="hidden md:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            Spesa IT
+            {it ? "Spesa comuni" : "Gasto (IT)"}
           </Link>
           <a href="/#noticias" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
             {m.nav.news}
           </a>
           <Link href="/bulos" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            Bulos
+            {it ? "Bufale" : "Bulos"}
           </Link>
           <Link href="/futbol" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            ⚽ Fútbol
+            ⚽ {it ? "Calcio" : "Fútbol"}
           </Link>
           <Link
             href="/escandalos"

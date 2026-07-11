@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
+import HeroBanner from "@/components/HeroBanner";
 import { COUNTRIES } from "@/lib/data";
 import { formatCompact } from "@/lib/format";
 
@@ -50,10 +51,7 @@ export default function GuiaGastoPage() {
       <LocaleProvider>
         <SiteNav />
         <article className="pt-8">
-          <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-cyan/80">🇪🇸 Guía · explicado fácil</p>
-          <h1 className="text-2xl md:text-4xl font-bold mt-2">
-            ¿En qué se gasta el <span className="neon-text">dinero público</span>?
-          </h1>
+          <HeroBanner priority as="h1" src="/photos/money.jpg" alt="Monedas de euro" kicker="🇪🇸 Guía · explicado fácil" title="¿EN QUÉ SE GASTA EL" highlight="DINERO PÚBLICO?" accent="#22d3ee" accent2="#a78bfa" />
           <p className="text-sm md:text-base text-muted mt-3">
             Tu ayuntamiento recibe dinero (de tus impuestos y del Estado) y lo gasta en servicios para el pueblo o la
             ciudad. Aquí te contamos, en palabras sencillas, <span className="text-fg/90">a dónde va ese dinero</span> — y

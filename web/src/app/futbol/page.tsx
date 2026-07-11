@@ -32,7 +32,9 @@ export const metadata: Metadata = {
     description: `Límite salarial LaLiga ${LALIGA_LCPD_SEASON}, ingresos y deuda de los grandes clubes. Solo datos oficiales.`,
     url: `${SITE}/futbol/`,
     type: "website",
+    images: [{ url: "/og-futbol.png", width: 1200, height: 630, alt: "El dinero del fútbol — LaLiga y Serie A, datos oficiales" }],
   },
+  twitter: { card: "summary_large_image", title: "El dinero del fútbol", description: "Ingresos, salarios, límite salarial y deuda de los clubes. Datos oficiales.", images: ["/og-futbol.png"] },
 };
 
 const flag = (c: "es" | "it") => (c === "es" ? "🇪🇸" : "🇮🇹");

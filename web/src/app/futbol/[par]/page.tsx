@@ -39,7 +39,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${t} (comparativa financiera, datos oficiales)`,
       description: `Compara ${pair.a.name} y ${pair.b.name}: límite salarial, ingresos, salarios y deuda, con datos oficiales (LaLiga, Deloitte, bilanci). Solo cifras verificables.`,
       alternates: { canonical: `${SITE}/futbol/${par}/` },
-      openGraph: { title: t, description: "Comparativa financiera con datos oficiales.", type: "article" },
+      openGraph: { title: t, description: "Comparativa financiera con datos oficiales.", type: "article", images: [{ url: "/og-futbol.png", width: 1200, height: 630 }] },
+      twitter: { card: "summary_large_image", images: ["/og-futbol.png"] },
     };
   }
   const c = CLUBS[par];
@@ -48,7 +49,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${c.name}: ingresos, deuda y límite salarial (cuentas oficiales)`,
     description: `Las cuentas del ${c.name} con datos oficiales: ${c.revenue ? `ingresos de ${formatEuro(c.revenue)}, ` : ""}${c.debt ? `deuda de ${formatEuro(c.debt.amount)}, ` : ""}salarios y límite salarial. Solo cifras verificables.`,
     alternates: { canonical: `${SITE}/futbol/${par}/` },
-    openGraph: { title: `${c.name}: ingresos, deuda y límite salarial`, description: "Las cuentas del club con datos oficiales.", type: "article" },
+    openGraph: { title: `${c.name}: ingresos, deuda y límite salarial`, description: "Las cuentas del club con datos oficiales.", type: "article", images: [{ url: "/og-futbol.png", width: 1200, height: 630 }] },
+    twitter: { card: "summary_large_image", images: ["/og-futbol.png"] },
   };
 }
 

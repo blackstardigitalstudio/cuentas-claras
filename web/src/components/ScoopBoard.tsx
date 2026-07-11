@@ -28,6 +28,8 @@ export default function ScoopBoard() {
       <ScoopSection theme="salaries" />
       <ScoopSection theme="works" />
       <ScoopSection theme="subsidies" />
+      <ScoopSection theme="taxes" />
+      <ScoopSection theme="transparency" />
       <ScoopSection theme="nepotism" />
       <ScoopSection theme="sanctions" />
 

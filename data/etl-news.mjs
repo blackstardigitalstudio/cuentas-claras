@@ -65,6 +65,14 @@ const SCOOP_THEMES = {
     es: "subvenciones fraude OR ayudas públicas irregularidades OR subvención polémica",
     it: "contributi pubblici truffa OR sussidi irregolarità OR fondi regionali indagine",
   },
+  taxes: {
+    es: "subida del IBI OR aumento tasas municipales OR nuevo impuesto ayuntamiento",
+    it: "aumento IMU OR aumento TARI OR addizionale IRPEF comune",
+  },
+  transparency: {
+    es: "falta de transparencia ayuntamiento OR portal de transparencia incumplimiento OR cuentas ayuntamiento sin publicar",
+    it: "mancanza trasparenza comune OR accesso agli atti negato OR bilancio comune non pubblicato",
+  },
   nepotism: {
     es: 'enchufismo ayuntamiento OR nepotismo cargo público OR "contratación a dedo" OR enchufe administración',
     it: "parentopoli OR assunzioni clientelari OR concorso pubblico truccato OR nepotismo pubblica amministrazione",

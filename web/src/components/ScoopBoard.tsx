@@ -25,6 +25,9 @@ export default function ScoopBoard() {
       <ScoopSection theme="verdicts" />
       <ScoopSection theme="waste" />
       <ScoopSection theme="investigations" />
+      <ScoopSection theme="salaries" />
+      <ScoopSection theme="works" />
+      <ScoopSection theme="subsidies" />
       <ScoopSection theme="nepotism" />
       <ScoopSection theme="sanctions" />
 

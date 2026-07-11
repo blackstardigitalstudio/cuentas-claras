@@ -53,6 +53,18 @@ const SCOOP_THEMES = {
     es: 'despilfarro OR sobrecoste obra pública OR "contrato a dedo" OR gasto polémico ayuntamiento',
     it: "sprechi soldi pubblici OR sprechi comune OR sovrapprezzo appalto OR spreco fondi pubblici",
   },
+  salaries: {
+    es: "sueldos políticos OR sobresueldos OR dietas concejales",
+    it: "stipendi politici OR indennità sindaco OR vitalizi",
+  },
+  works: {
+    es: '"obra pública" sobrecoste OR "obra parada" OR obra faraónica',
+    it: '"grandi opere" sovrapprezzo OR "opera incompiuta" OR cantiere fermo',
+  },
+  subsidies: {
+    es: "subvenciones fraude OR ayudas públicas irregularidades OR subvención polémica",
+    it: "contributi pubblici truffa OR sussidi irregolarità OR fondi regionali indagine",
+  },
   nepotism: {
     es: 'enchufismo ayuntamiento OR nepotismo cargo público OR "contratación a dedo" OR enchufe administración',
     it: "parentopoli OR assunzioni clientelari OR concorso pubblico truccato OR nepotismo pubblica amministrazione",

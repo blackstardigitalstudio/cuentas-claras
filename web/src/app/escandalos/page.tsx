@@ -37,9 +37,9 @@ type NewsItem = { title: string; source: string; url: string; date: string | nul
 const NEWS = newsData as Record<string, NewsItem[]>;
 
 // ItemList con los titulares (idioma por defecto ES) para datos estructurados.
-const top = ["es_scoop", "es_funds", "es_verdicts", "es_waste", "es_nepotism", "es_sanctions", "es_investigations"]
+const top = ["es_scoop", "es_funds", "es_verdicts", "es_waste", "es_salaries", "es_works", "es_subsidies", "es_nepotism", "es_sanctions", "es_investigations"]
   .flatMap((k) => NEWS[k] || [])
-  .slice(0, 25);
+  .slice(0, 30);
 
 export default function EscandalosPage() {
   const itemListLd = {

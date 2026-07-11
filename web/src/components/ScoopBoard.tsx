@@ -2,23 +2,27 @@
 
 import { useLocale } from "@/i18n/LocaleProvider";
 import ScoopSection from "./ScoopSection";
+import HeroBanner from "./HeroBanner";
 
 // Cuerpo de la página /escandalos: cabecera + los 4 filones temáticos + aviso legal.
 export default function ScoopBoard() {
-  const { m } = useLocale();
+  const { m, locale } = useLocale();
+  const it = locale === "it";
   return (
     <>
-      <header className="pt-8">
-        <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-[#ff7a7a]">{m.scoop.eyebrow}</p>
-        <h1 className="text-2xl md:text-4xl font-bold mt-2 flex items-center gap-3">
-          <span className="relative flex h-3 w-3">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-[#ff5252] opacity-60 motion-safe:animate-ping" />
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#ff5252]" />
-          </span>
-          {m.scoop.title}
-        </h1>
-        <p className="text-sm md:text-base text-muted mt-3 max-w-2xl">{m.scoop.subtitle}</p>
-      </header>
+      <div className="pt-6">
+        <HeroBanner
+          as="h1"
+          src="/photos/justice.jpg"
+          alt={it ? "Palazzo di giustizia" : "Palacio de justicia"}
+          kicker={m.scoop.eyebrow}
+          title={it ? "SCANDALI DEI" : "ESCÁNDALOS DEL"}
+          highlight={it ? "SOLDI PUBBLICI" : "DINERO PÚBLICO"}
+          accent="#ff5252"
+          accent2="#f472b6"
+        />
+        <p className="text-sm md:text-base text-muted mt-4 max-w-2xl">{m.scoop.subtitle}</p>
+      </div>
 
       <ScoopSection theme="scoop" />
       <ScoopSection theme="funds" />

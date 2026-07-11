@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
+import HeroBanner from "@/components/HeroBanner";
 import bulos from "@/data/bulos.json";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -97,12 +98,20 @@ export default function BulosPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <LocaleProvider>
         <SiteNav />
-        <header className="pt-8">
-          <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-cyan/80">Fact-check · 🇪🇸 🇮🇹</p>
-          <h1 className="text-2xl md:text-4xl font-bold mt-2">
-            Bulos sobre el <span className="neon-text">dinero público</span>, desmontados
-          </h1>
-          <p className="text-sm md:text-base text-muted mt-3 max-w-2xl">
+        <div className="mt-6">
+          <HeroBanner
+            as="h1"
+            src="/photos/news.jpg"
+            alt="Periódicos"
+            kicker="Fact-check · 🇪🇸 🇮🇹 · datos oficiales"
+            title="BULOS DEL DINERO PÚBLICO,"
+            highlight="DESMONTADOS"
+            accent="#22d3ee"
+            accent2="#34d399"
+          />
+        </div>
+        <header className="pt-5">
+          <p className="text-sm md:text-base text-muted max-w-2xl">
             Vamos al revés del ruido: aquí no hay pánico, hay <span className="text-fg/90">datos</span>. Bulos virales
             sobre sueldos, impuestos, ayudas y fondos europeos, ya verificados por fact-checkers independientes, con la
             cifra real y el enlace a la verificación original.{" "}

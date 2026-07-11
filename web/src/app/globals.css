@@ -219,3 +219,8 @@ select {
   .cc-pulse-ring { animation: none; }
   * { scroll-behavior: auto; }
 }
+
+/* Orden por país según el idioma: para usuarios italianos, Italia va primero.
+   El bloque .country-es/.country-it son hermanos flex; con lang="it" invertimos. */
+.country-flip { display: flex; flex-direction: column; }
+html[lang="it"] .country-flip .country-it { order: -1; }

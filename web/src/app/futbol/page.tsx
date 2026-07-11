@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
-import PhotoBanner from "@/components/PhotoBanner";
+import HeroBanner from "@/components/HeroBanner";
 import { formatEuro, formatCompact } from "@/lib/format";
 import {
   LALIGA_LCPD, LALIGA_LCPD_SEASON, LALIGA_LCPD_SOURCE,
@@ -99,9 +99,18 @@ export default function FutbolPage() {
         <div className="country-es">
         {/* ===================== ESPAÑA · LaLiga ===================== */}
         <section className="mt-12">
-          <PhotoBanner src="/photos/spain-stadium.jpg" alt="Estadio de LaLiga (España)" />
-          <h2 className="text-2xl md:text-3xl font-bold mt-5 flex items-center gap-2">🇪🇸 <span className="neon-text">España</span> · LaLiga</h2>
-          <p className="text-sm text-muted mt-1">Límite salarial, ingresos y deuda de los clubes españoles.</p>
+          <HeroBanner
+            as="h2"
+            src="/photos/spain-stadium.jpg"
+            alt="Estadio de LaLiga (España)"
+            kicker="🇪🇸 España · LaLiga · datos oficiales"
+            title="EL DINERO DEL"
+            highlight="FÚTBOL ESPAÑOL"
+            stat="1.451 M€"
+            statLabel="la mayor deuda de Europa (FC Barcelona)"
+            accent="#fdba74"
+            accent2="#f472b6"
+          />
         </section>
 
         {/* LaLiga LCPD */}
@@ -176,9 +185,18 @@ export default function FutbolPage() {
         <div className="country-it">
         {/* ===================== ITALIA · Serie A ===================== */}
         <section className="mt-16">
-          <PhotoBanner src="/photos/italy-stadium.jpg" alt="Stadio di Serie A (Italia)" />
-          <h2 className="text-2xl md:text-3xl font-bold mt-5 flex items-center gap-2">🇮🇹 <span className="neon-text">Italia</span> · Serie A</h2>
-          <p className="text-sm text-muted mt-1">Ricavi, monte ingaggi e debito dei club italiani.</p>
+          <HeroBanner
+            as="h2"
+            src="/photos/italy-stadium.jpg"
+            alt="Stadio di Serie A (Italia)"
+            kicker="🇮🇹 Italia · Serie A · dati ufficiali"
+            title="I SOLDI DELLA"
+            highlight="SERIE A"
+            stat="−349 mln €"
+            statLabel="le perdite della Serie A in un anno"
+            accent="#22d3ee"
+            accent2="#a78bfa"
+          />
         </section>
 
         {/* Serie A: ricavi + monte ingaggi (tutte le 20 squadre) */}

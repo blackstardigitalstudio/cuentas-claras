@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
-import PhotoBanner from "@/components/PhotoBanner";
+import HeroBanner from "@/components/HeroBanner";
 import { COUNTRIES, slugify } from "@/lib/data";
 import { formatEuro } from "@/lib/format";
 import ranks from "@/data/rankings-es.json";
@@ -40,13 +40,22 @@ function Inner() {
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
       <SiteNav />
-      <PhotoBanner src="/photos/money.jpg" alt={it ? "Moneta da 2 euro" : "Moneda de 2 euros"} className="mt-6" />
-      <header className="pt-6">
-        <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-cyan/80">🇪🇸 {it ? "Spagna" : "España"} · {ranks.year}</p>
-        <h1 className="text-2xl md:text-4xl font-bold mt-2">
-          {it ? <>Quanto guadagna un <span className="neon-text">sindaco</span> in Spagna?</> : <>¿Cuánto cobra un <span className="neon-text">alcalde</span> en España?</>}
-        </h1>
-        <p className="text-sm md:text-base text-muted mt-3 max-w-2xl">
+      <div className="mt-6">
+        <HeroBanner
+          as="h1"
+          src="/photos/money.jpg"
+          alt={it ? "Moneta da 2 euro" : "Moneda de 2 euros"}
+          kicker={it ? `🇪🇸 Spagna · stipendi ufficiali · ${ranks.year}` : `🇪🇸 España · sueldos oficiales · ${ranks.year}`}
+          title={it ? "QUANTO GUADAGNA UN SINDACO" : "¿CUÁNTO COBRA UN ALCALDE"}
+          highlight={it ? "IN SPAGNA?" : "EN ESPAÑA?"}
+          stat={formatEuro(top[0].amount)}
+          statLabel={it ? "il sindaco più pagato (Madrid)" : "el que más cobra (Madrid)"}
+          accent="#a5b4fc"
+          accent2="#22d3ee"
+        />
+      </div>
+      <header className="pt-5">
+        <p className="text-sm md:text-base text-muted max-w-2xl">
           {it ? (
             <>Classifica dei sindaci spagnoli più pagati, con dati ufficiali dell'ISPA (Ministero delle Finanze). La media dei {nf(ranks.salaryReporting)} comuni che dichiarano è <span className="text-fg/90 font-medium">{formatEuro(ranks.salaryAvg)}/anno</span> — ma {nf(ranks.salaryZero)} sindaci prendono 0 €.</>
           ) : (

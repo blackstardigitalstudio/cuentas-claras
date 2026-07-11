@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
-import PhotoBanner from "@/components/PhotoBanner";
+import HeroBanner from "@/components/HeroBanner";
 import { formatEuro } from "@/lib/format";
 import type { Rec } from "./page";
 
@@ -62,13 +62,20 @@ function Inner({ data }: Props) {
   return (
     <main className="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 pb-24">
       <SiteNav />
-      <PhotoBanner src="/photos/money.jpg" alt={it ? "Moneta da 2 euro" : "Moneda de 2 euros"} className="mt-6" />
-      <article className="pt-6">
-        <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-cyan/80">🏆 {it ? "Record · dati ufficiali" : "Récords · datos oficiales"}</p>
-        <h1 className="text-2xl md:text-4xl font-bold mt-2">
-          {it ? "I " : "Los "}<span className="neon-text">{it ? "record" : "récords"}</span>{it ? " dei soldi pubblici" : " del dinero público"}
-        </h1>
-        <p className="text-sm md:text-base text-muted mt-3 max-w-2xl">
+      <div className="mt-6">
+        <HeroBanner
+          as="h1"
+          src="/photos/money.jpg"
+          alt={it ? "Moneta da 2 euro" : "Moneda de 2 euros"}
+          kicker={it ? "🏆 record · dati ufficiali" : "🏆 récords · datos oficiales"}
+          title={it ? "I RECORD DEI" : "LOS RÉCORDS DEL"}
+          highlight={it ? "SOLDI PUBBLICI" : "DINERO PÚBLICO"}
+          accent="#22d3ee"
+          accent2="#a78bfa"
+        />
+      </div>
+      <article className="pt-5">
+        <p className="text-sm md:text-base text-muted max-w-2xl">
           {it
             ? "Chi paga di più il sindaco, chi ha più debito, chi spende di più — i primati tra tutte le città con dati reali. Ogni record porta alla scheda della città, con la fonte ufficiale."
             : "Quién paga más a su alcalde, quién tiene más deuda, quién más gasta — los récords entre todas las ciudades con datos reales. Cada récord lleva a la ficha de la ciudad, con la fuente oficial."}

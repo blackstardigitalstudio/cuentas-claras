@@ -123,6 +123,7 @@ export default function RegionMapGL({
   // init once
   useEffect(() => {
     if (!ref.current) return;
+    const isIt = typeof document !== "undefined" && document.documentElement.lang === "it";
     const map = new maplibregl.Map({
       container: ref.current,
       style: { version: 8, sources: {}, layers: [{ id: "bg", type: "background", paint: { "background-color": "#05070f" } }] },
@@ -134,6 +135,14 @@ export default function RegionMapGL({
       dragRotate: false, // sin rotación: nunca "giras y no ves nada"
       pitchWithRotate: false,
       maxPitch: 0,
+      // El scroll de la rueda pasa a la página (no queda "atrapado" en el mapa);
+      // para hacer zoom en el mapa hay que usar Ctrl/⌘ + rueda (o dos dedos en móvil).
+      cooperativeGestures: true,
+      locale: {
+        "CooperativeGesturesHandler.WindowsHelpText": isIt ? "Usa Ctrl + rotella per ingrandire la mappa" : "Usa Ctrl + rueda para ampliar el mapa",
+        "CooperativeGesturesHandler.MacHelpText": isIt ? "Usa ⌘ + rotella per ingrandire la mappa" : "Usa ⌘ + rueda para ampliar el mapa",
+        "CooperativeGesturesHandler.MobileHelpText": isIt ? "Usa due dita per muovere la mappa" : "Usa dos dedos para mover el mapa",
+      },
     });
     map.touchZoomRotate.disableRotation();
     map.dragRotate.disable();

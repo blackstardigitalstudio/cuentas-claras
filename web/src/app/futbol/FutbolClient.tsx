@@ -53,6 +53,20 @@ function Inner() {
         <span className="text-cyan text-lg shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
       </Link>
 
+      {/* Premios de las grandes competiciones (alto interés de búsqueda) */}
+      <div className="mt-3 grid sm:grid-cols-3 gap-3">
+        {[
+          { href: "/champions-league/", emoji: "🏆", es: "Premios Champions", it: "Premi Champions", subEs: "18,62 mln € por participar", subIt: "18,62 mln € per partecipare" },
+          { href: "/eurocopa/", emoji: "🏅", es: "Premios Eurocopa", it: "Premi Europei", subEs: "España ganó 28,25 mln €", subIt: "La Spagna ha preso 28,25 mln €" },
+          { href: "/mundial-2026/", emoji: "🌐", es: "Premios Mundial 2026", it: "Premi Mondiali 2026", subEs: "50 mln $ al campeón", subIt: "50 mln $ a chi vince" },
+        ].map((c) => (
+          <Link key={c.href} href={c.href} className="glass p-3.5 group hover:border-cyan transition">
+            <span className="block text-sm font-semibold">{c.emoji} {t(c.es, c.it)}</span>
+            <span className="block text-[11px] text-muted mt-0.5">{t(c.subEs, c.subIt)}</span>
+          </Link>
+        ))}
+      </div>
+
       {/* KPIs */}
       <div className="grid grid-cols-3 gap-3 mt-6">
         {[

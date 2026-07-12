@@ -232,6 +232,8 @@ export default function Home() {
           {(locale === "it"
             ? [
                 { href: "/mundial-2026/", t: "🏆 I premi dei Mondiali 2026" },
+                { href: "/champions-league/", t: "🏆 I premi della Champions" },
+                { href: "/eurocopa/", t: "🏅 I premi degli Europei" },
                 { href: "/records/", t: "🏆 I record dei soldi pubblici" },
                 { href: "/spesa-comuni/", t: "La spesa dei comuni" },
                 { href: "/ranking/", t: "Classifica di spesa" },
@@ -244,6 +246,8 @@ export default function Home() {
               ]
             : [
                 { href: "/mundial-2026/", t: "🏆 Los premios del Mundial 2026" },
+                { href: "/champions-league/", t: "🏆 Los premios de la Champions" },
+                { href: "/eurocopa/", t: "🏅 Los premios de la Eurocopa" },
                 { href: "/records/", t: "🏆 Los récords del dinero público" },
                 { href: "/gasto-por-habitante/", t: "Gasto por habitante" },
                 { href: "/ranking/", t: "Ranking de gasto" },

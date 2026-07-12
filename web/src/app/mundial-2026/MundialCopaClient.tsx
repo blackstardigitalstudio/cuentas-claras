@@ -139,8 +139,11 @@ function Inner() {
       </section>
 
       <nav className="mt-10 flex flex-wrap gap-3">
-        <Link href="/futbol-mundial/" className="px-5 py-2.5 rounded-full font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition inline-block">
-          {t("🌍 El dinero del fútbol mundial →", "🌍 I soldi del calcio mondiale →")}
+        <Link href="/champions-league/" className="px-5 py-2.5 rounded-full font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition inline-block">
+          {t("🏆 Los premios de la Champions →", "🏆 I premi della Champions →")}
+        </Link>
+        <Link href="/eurocopa/" className="px-5 py-2.5 rounded-full font-medium border border-[var(--panel-border)] hover:border-cyan transition inline-block">
+          {t("Los premios de la Eurocopa", "I premi degli Europei")}
         </Link>
         <Link href="/futbol/" className="px-5 py-2.5 rounded-full font-medium border border-[var(--panel-border)] hover:border-cyan transition inline-block">
           {t("Los clubes (LaLiga, Serie A)", "I club (LaLiga, Serie A)")}

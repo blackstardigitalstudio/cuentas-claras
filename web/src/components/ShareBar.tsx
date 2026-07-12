@@ -16,7 +16,14 @@ export default function ShareBar({ text, url, lang: langProp, className = "" }: 
   const [copied, setCopied] = useState(false);
   const [canNative, setCanNative] = useState(true);
 
-  const shareUrl = url || (typeof window !== "undefined" ? window.location.href.split("?")[0] : "https://www.cuentas-clara.com/");
+  // URL de la página: se resuelve tras el montaje (window solo existe en cliente).
+  // Así SSR y primer render de cliente coinciden (sin hydration mismatch) y, una
+  // vez montado, el enlace apunta a la página concreta y no a la home.
+  const [shareUrl, setShareUrl] = useState(url || "https://www.cuentas-clara.com/");
+  useEffect(() => {
+    if (url) return;
+    if (typeof window !== "undefined") setShareUrl(window.location.href.split("?")[0]);
+  }, [url]);
   const enc = encodeURIComponent;
   const msg = text;
 

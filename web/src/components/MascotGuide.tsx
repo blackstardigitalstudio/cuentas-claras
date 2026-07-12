@@ -74,7 +74,12 @@ export default function MascotGuide() {
     obs.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
     const tourDone = window.localStorage.getItem("cc-mascot-tour-done") === "1";
     const onHome = window.location.pathname === "/" || window.location.pathname === "";
-    const t = setTimeout(() => { if (!tourDone && onHome) setTourStep(0); setOpen(true); }, 1600);
+    const greeted = window.sessionStorage.getItem("cc-mascot-greeted") === "1";
+    const t = setTimeout(() => {
+      if (!tourDone && onHome) { setTourStep(0); setOpen(true); }
+      else if (!greeted) { setOpen(true); try { window.sessionStorage.setItem("cc-mascot-greeted", "1"); } catch {} }
+      // si ya saludó esta sesión, Claro se queda como botón silencioso (clic para el consejo).
+    }, 1600);
     return () => { obs.disconnect(); clearTimeout(t); };
   }, []);
 

@@ -169,6 +169,10 @@ export default async function CityPage({ params }: Props) {
           a: `La mayor fuente de ingresos es ${topI.label}, que supone ${formatPct(topI.amount / r.ingresos)} del total.`,
         },
         {
+          q: `¿Qué son los presupuestos participativos y cómo encajan con el presupuesto de ${r.name}?`,
+          a: `Los presupuestos participativos son la parte del dinero municipal que los propios vecinos deciden por votación (por ejemplo, a qué obras o servicios destinar una cantidad concreta). En esta página mostramos el presupuesto completo y oficial de ${r.name} —todos los ingresos y gastos—; los presupuestos participativos, cuando existen, son solo una pequeña fracción de ese total que cada ayuntamiento decide año a año.`,
+        },
+        {
           q: `¿Los datos del presupuesto de ${r.name} son oficiales?`,
           a: r.isSample
             ? `Por ahora son cifras de ejemplo, a la espera de publicar los datos oficiales de ${r.name}.`
@@ -194,6 +198,10 @@ export default async function CityPage({ params }: Props) {
         topI && {
           q: `Da dove arrivano le entrate di ${r.name}?`,
           a: `La principale fonte di entrate è ${topI.label}, pari al ${formatPct(topI.amount / r.ingresos)} del totale.`,
+        },
+        {
+          q: `Cosa sono i bilanci partecipativi e come si legano al bilancio di ${r.name}?`,
+          a: `I bilanci partecipativi sono la parte dei soldi comunali che decidono direttamente i cittadini con un voto (per esempio, scegliere in quali opere o servizi investire una certa somma). In questa pagina mostriamo il bilancio completo e ufficiale di ${r.name} —tutte le entrate e le spese—; il bilancio partecipativo, dove esiste, è solo una piccola parte di quel totale, decisa ogni anno dal Comune.`,
         },
         {
           q: `I dati di bilancio di ${r.name} sono ufficiali?`,

@@ -231,6 +231,7 @@ export default function Home() {
         <div className="flex flex-wrap gap-2">
           {(locale === "it"
             ? [
+                { href: "/mundial-2026/", t: "🏆 I premi dei Mondiali 2026" },
                 { href: "/records/", t: "🏆 I record dei soldi pubblici" },
                 { href: "/spesa-comuni/", t: "La spesa dei comuni" },
                 { href: "/ranking/", t: "Classifica di spesa" },
@@ -242,6 +243,7 @@ export default function Home() {
                 { href: "/futbol/inter-vs-juventus/", t: "Inter vs Juventus" },
               ]
             : [
+                { href: "/mundial-2026/", t: "🏆 Los premios del Mundial 2026" },
                 { href: "/records/", t: "🏆 Los récords del dinero público" },
                 { href: "/gasto-por-habitante/", t: "Gasto por habitante" },
                 { href: "/ranking/", t: "Ranking de gasto" },

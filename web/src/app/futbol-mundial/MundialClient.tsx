@@ -45,6 +45,14 @@ function Inner() {
         </p>
       </header>
 
+      <Link href="/mundial-2026/" className="mt-4 glass p-4 flex items-center justify-between gap-3 group hover:border-cyan transition">
+        <span>
+          <span className="block font-semibold">🏆 {it ? "I premi dei Mondiali 2026" : "Los premios del Mundial 2026"}</span>
+          <span className="block text-xs text-muted">{it ? "Quanto guadagna chi vince e ogni nazionale · cifre FIFA" : "Cuánto gana el campeón y cada selección · cifras FIFA"}</span>
+        </span>
+        <span className="text-cyan text-lg shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
+      </Link>
+
       <div className="mt-5">
         <SimpleExplainer title={it ? "In parole semplici" : "En cristiano"} by={it ? "te lo spiega Claro" : "te lo explica Claro"}>
           <p>{it

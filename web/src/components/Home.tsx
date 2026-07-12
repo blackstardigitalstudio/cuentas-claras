@@ -54,19 +54,18 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Hero */}
-      <section className="text-center pt-10 md:pt-16 pb-10">
+      {/* Hero: título corto + buscador (única CTA primaria). Sin muros de texto. */}
+      <section className="text-center pt-10 md:pt-14 pb-8">
         <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-cyan/80 mb-4">{m.hero.eyebrow}</p>
         <h1 className="title-glow text-4xl md:text-6xl font-bold leading-[1.05] inline-block">
           {m.hero.titleA}
           <span className="neon-text">{m.hero.highlight}</span>
           {m.hero.titleB}
         </h1>
-        <p className="mt-5 text-base md:text-lg text-muted max-w-2xl mx-auto">{m.hero.subtitle}</p>
 
         <div className="mt-7">
           <p className="text-sm font-semibold text-fg/90 mb-2">
-            👇 {locale === "it" ? "Scrivi il nome della tua città e premi «Cerca»" : "Escribe el nombre de tu ciudad y pulsa «Buscar»"}
+            👇 {locale === "it" ? "Scrivi la tua città e premi «Cerca»" : "Escribe tu ciudad y pulsa «Buscar»"}
           </p>
           <SiteSearch />
           <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
@@ -82,23 +81,6 @@ export default function Home() {
               </Link>
             ))}
           </div>
-        </div>
-
-        <div className="mt-6 flex items-center justify-center gap-3">
-          <a
-            href="#explorar"
-            className="px-6 py-3 rounded-full font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition shadow-[0_0_30px_-6px_var(--cyan)]"
-          >
-            {m.hero.cta1}
-          </a>
-          <a
-            href={DATA_SOURCE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-full font-medium border border-[var(--panel-border)] text-muted hover:text-fg transition"
-          >
-            {m.hero.cta2}
-          </a>
         </div>
       </section>
 
@@ -130,49 +112,35 @@ export default function Home() {
         </Link>
       </Reveal>
 
-      {/* ¿Qué es esto? — explicación SÚPER BÁSICA + 3 pasos */}
-      <Reveal>
-        <section className="glass p-5 md:p-6 mb-12">
-          <p className="text-center text-base md:text-lg text-fg/90 max-w-2xl mx-auto">
-            {locale === "it"
-              ? "Qui vedi, in modo facile e con dati ufficiali, quanto incassa, spende e deve ogni città di Spagna e Italia — e quanto guadagna il sindaco."
-              : "Aquí ves, fácil y con datos oficiales, cuánto ingresa, gasta y debe cada ciudad de España e Italia — y cuánto cobra su alcalde."}
-          </p>
-          <div className="mt-5 grid sm:grid-cols-3 gap-3">
-            {[
-              { n: "1", t: locale === "it" ? "Scrivi la tua città" : "Escribe tu ciudad", d: locale === "it" ? "nella barra qui sopra (clicca qui)" : "en la barra de arriba (pulsa aquí)", focus: true },
-              { n: "2", t: locale === "it" ? "Guarda i suoi conti" : "Mira sus cuentas", d: locale === "it" ? "entrate, spese, debito, stipendio del sindaco" : "ingresos, gastos, deuda, sueldo del alcalde" },
-              { n: "3", t: locale === "it" ? "Tutto spiegato facile" : "Todo explicado fácil", d: locale === "it" ? "in parole semplici, con la fonte ufficiale" : "en palabras sencillas, con la fuente oficial" },
-            ].map((s) => {
-              const inner = (
-                <>
-                  <span className="shrink-0 w-7 h-7 rounded-full bg-gradient-to-br from-cyan to-violet text-[#05070f] font-bold text-sm flex items-center justify-center">{s.n}</span>
-                  <span>
-                    <span className="block font-medium text-sm">{s.t}</span>
-                    <span className="block text-xs text-muted">{s.d}</span>
-                  </span>
-                </>
-              );
-              return s.focus ? (
-                <button
-                  key={s.n}
-                  type="button"
-                  onClick={() => {
-                    const el = document.querySelector('[data-claro="search"]') as HTMLInputElement | null;
-                    el?.scrollIntoView({ behavior: "smooth", block: "center" });
-                    setTimeout(() => el?.focus(), 300);
-                  }}
-                  className="flex items-start gap-3 text-left rounded-xl -m-1 p-1 hover:bg-[rgba(120,160,255,0.08)] transition cursor-pointer"
-                >
-                  {inner}
-                </button>
-              ) : (
-                <div key={s.n} className="flex items-start gap-3">{inner}</div>
-              );
-            })}
-          </div>
-        </section>
-      </Reveal>
+      {/* Rejilla de accesos: tarjetas clicables, poco texto, fácil de escanear. */}
+      <section className="mt-8 mb-12">
+        <p className="text-xs uppercase tracking-widest text-cyan/70 mb-3">{locale === "it" ? "Esplora" : "Explora"}</p>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          {[
+            { href: "/sueldos-alcaldes/", emoji: "🏛️", accent: "#a5b4fc", es: "Sueldos de alcaldes", it: "Stipendi dei sindaci", subEs: "quién cobra más", subIt: "chi guadagna di più" },
+            { href: "/deuda-municipios/", emoji: "🏦", accent: "#fdba74", es: "Deuda municipal", it: "Debito dei comuni", subEs: "quién debe más", subIt: "chi deve di più" },
+            { href: "/ranking/", emoji: "📊", accent: "#22d3ee", es: "Ranking de gasto", it: "Classifica di spesa", subEs: "quién gasta más", subIt: "chi spende di più" },
+            { href: "/records/", emoji: "🏆", accent: "#34d399", es: "Récords", it: "Record", subEs: "los extremos", subIt: "gli estremi" },
+            { href: locale === "it" ? "/confronta/" : "/comparar/", emoji: "⚖️", accent: "#c084fc", es: "Comparar", it: "Confronta", subEs: "ciudad vs ciudad", subIt: "città vs città" },
+            { href: "/bulos/", emoji: "📰", accent: "#f472b6", es: "Bulos", it: "Bufale", subEs: "verificados", subIt: "smontate" },
+            { href: "/futbol/", emoji: "⚽", accent: "#4ade80", es: "Fútbol", it: "Calcio", subEs: "clubes y ligas", subIt: "club e leghe" },
+            { href: "/jugadores/", emoji: "💸", accent: "#38bdf8", es: "Jugadores", it: "Giocatori", subEs: "fichajes y sueldos", subIt: "trasferimenti" },
+          ].map((c, i) => (
+            <Reveal key={c.href} delay={(i % 4) * 0.06}>
+              <Link
+                href={c.href}
+                className="glass h-full p-4 flex flex-col gap-1 group relative overflow-hidden hover:-translate-y-0.5 transition duration-200 cursor-pointer"
+                style={{ borderColor: `${c.accent}33` }}
+              >
+                <span className="absolute inset-x-0 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${c.accent}, transparent)` }} />
+                <span className="text-2xl leading-none" aria-hidden="true">{c.emoji}</span>
+                <span className="font-semibold text-sm mt-1 group-hover:text-fg transition" style={{ color: c.accent }}>{locale === "it" ? c.it : c.es}</span>
+                <span className="text-[11px] text-muted">{locale === "it" ? c.subIt : c.subEs}</span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
       {/* Franja de impacto: una cifra grande y real (gasto público desglosado) */}
       <Reveal>
@@ -215,47 +183,6 @@ export default function Home() {
 
       {/* Explorador */}
       <Explorer />
-
-      {/* Filones ad alta domanda: accessi diretti a sueldos / deuda / bulos / fútbol */}
-      <section className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {[
-          {
-            href: "/sueldos-alcaldes",
-            accent: "#a5b4fc",
-            t: locale === "it" ? "Quanto guadagna il sindaco?" : "¿Cuánto cobra el alcalde?",
-            d: locale === "it" ? "Classifica degli stipendi, dati ufficiali ISPA." : "Ranking de sueldos, con datos oficiales del ISPA.",
-          },
-          {
-            href: "/deuda-municipios",
-            accent: "#fdba74",
-            t: locale === "it" ? "Quanta deuda ha la città?" : "¿Cuánta deuda tiene tu ciudad?",
-            d: locale === "it" ? "I comuni più indebitati (e il 63% senza debito)." : "Los municipios más endeudados (y el 63% sin deuda).",
-          },
-          {
-            href: "/bulos",
-            accent: "#22d3ee",
-            t: locale === "it" ? "Smonta-bufale" : "Bulos, desmontados",
-            d: locale === "it" ? "Bufale sui soldi pubblici, verificate con i dati." : "Bulos sobre el dinero público, verificados con datos.",
-          },
-          {
-            href: "/futbol",
-            accent: "#34d399",
-            t: locale === "it" ? "⚽ I soldi del calcio" : "⚽ El dinero del fútbol",
-            d: locale === "it" ? "Límite salarial, ricavi e debiti dei club (dati ufficiali)." : "Límite salarial, ingresos y deuda de los clubes (datos oficiales).",
-          },
-        ].map((c, i) => (
-          <Reveal key={c.href} delay={i * 0.08}>
-            <Link href={c.href} className="glass p-5 h-full flex flex-col group relative overflow-hidden" style={{ borderColor: `${c.accent}33` }}>
-              <span className="absolute inset-x-0 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${c.accent}, transparent)` }} />
-              <h3 className="font-semibold group-hover:text-fg transition" style={{ color: c.accent }}>{c.t}</h3>
-              <p className="text-sm text-muted mt-1.5 flex-1">{c.d}</p>
-              <span className="mt-3 text-sm font-medium inline-flex items-center gap-1" style={{ color: c.accent }}>
-                {locale === "it" ? "Scopri" : "Ver"} <span className="transition-transform group-hover:translate-x-0.5">→</span>
-              </span>
-            </Link>
-          </Reveal>
-        ))}
-      </section>
 
       {/* Más temas buscados: enlaces a guías y páginas pilar (evita huérfanas + SEO) */}
       <section className="mt-8">

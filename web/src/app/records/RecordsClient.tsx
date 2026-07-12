@@ -5,6 +5,7 @@ import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
 import SimpleExplainer from "@/components/SimpleExplainer";
+import ShareBar from "@/components/ShareBar";
 import { formatEuro } from "@/lib/format";
 import type { Rec } from "./page";
 
@@ -93,6 +94,8 @@ function Inner({ data }: Props) {
 
         <CountrySection code="es" cd={data.es} />
         <CountrySection code="it" cd={data.it} />
+
+        <ShareBar className="mt-6" text={it ? "🏆 I record dei soldi pubblici: il sindaco più pagato, la città più indebitata… 👀 dati ufficiali" : "🏆 Los récords del dinero público: el alcalde mejor pagado, la ciudad más endeudada… 👀 datos oficiales"} />
 
         <nav className="mt-10 pt-6 border-t border-[var(--panel-border)] flex flex-wrap gap-2">
           {[

@@ -5,6 +5,7 @@ import { COUNTRIES, type CountryCode, type RegionData } from "@/lib/data";
 import { formatCompact, formatEuro, formatPct } from "@/lib/format";
 import { CMP_ES, CMP_IT, comparePairsFor } from "@/data/compare-lists";
 import SimpleExplainer from "@/components/SimpleExplainer";
+import ShareBar from "@/components/ShareBar";
 import cityOg from "@/data/city-og.json";
 
 const CITY_OG = new Set(cityOg as string[]);
@@ -360,6 +361,12 @@ export default async function CityPage({ params }: Props) {
           )}
         </section>
       )}
+
+      <ShareBar
+        className="mt-6"
+        lang={es ? "es" : "it"}
+        text={`🏛️ ${r.name}: ${es ? "gasta" : "spende"} ${formatCompact(r.gastos)}${r.mayorSalary ? ` · ${es ? "el alcalde cobra" : "il sindaco guadagna"} ${formatEuro(r.mayorSalary.amount)}` : ""} 👀 ${es ? "datos oficiales" : "dati ufficiali"}`}
+      />
 
       <details data-claro="detail" className="mt-8 glass p-4 sm:p-5 group">
         <summary className="font-semibold cursor-pointer marker:text-cyan flex items-center gap-2 select-none">

@@ -245,6 +245,13 @@ export default function Home() {
             {locale === "it" ? "Tutto il calcio →" : "Todo el fútbol →"}
           </Link>
         </div>
+        <Link href="/futbol-mundial/" className="glass p-4 mb-4 flex items-center justify-between gap-3 group hover:border-cyan transition">
+          <span>
+            <span className="block font-semibold">🌍 {locale === "it" ? "I soldi del calcio mondiale" : "El dinero del fútbol mundial"}</span>
+            <span className="block text-xs text-muted">{locale === "it" ? "Quale lega e quale club incassano di più al mondo" : "Qué liga y qué club ingresan más del mundo"}</span>
+          </span>
+          <span className="text-cyan text-lg shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
+        </Link>
         {(["laliga", "seriea"] as const).map((lg) => {
           const clubs = CLUB_PAGE_SLUGS.filter((s) => CLUBS[s].league === lg);
           if (!clubs.length) return null;

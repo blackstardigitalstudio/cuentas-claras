@@ -80,6 +80,14 @@ export default function FutbolPage() {
           </p>
         </header>
 
+        <Link href="/futbol-mundial/" className="mt-5 glass p-4 flex items-center justify-between gap-3 group hover:border-cyan transition">
+          <span>
+            <span className="block font-semibold">🌍 El dinero del fútbol mundial</span>
+            <span className="block text-xs text-muted">Qué liga y qué club ingresan más del mundo · Premier, Bundesliga, LaLiga, Serie A</span>
+          </span>
+          <span className="text-cyan text-lg shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
+        </Link>
+
         {/* KPIs */}
         <div className="grid grid-cols-3 gap-3 mt-6">
           {[

@@ -53,9 +53,8 @@ export default function GuiaGastoPage() {
         <article className="pt-8">
           <HeroBanner priority as="h1" src="/photos/money.jpg" alt="Monedas de euro" kicker="🇪🇸 Guía · explicado fácil" title="¿EN QUÉ SE GASTA EL" highlight="DINERO PÚBLICO?" accent="#22d3ee" accent2="#a78bfa" />
           <p className="text-sm md:text-base text-muted mt-3">
-            Tu ayuntamiento recibe dinero (de tus impuestos y del Estado) y lo gasta en servicios para el pueblo o la
-            ciudad. Aquí te contamos, en palabras sencillas, <span className="text-fg/90">a dónde va ese dinero</span> — y
-            luego puedes verlo con datos reales en tu ciudad. Ya tenemos el gasto de{" "}
+            Tu ayuntamiento cobra dinero (de tus impuestos y del Estado) y lo gasta en servicios para tu ciudad. Aquí
+            ves <span className="text-fg/90">a dónde va ese dinero</span>, en fácil. Ya tenemos el gasto de{" "}
             <span className="text-fg/90">{cityCount} ciudades</span> ({formatCompact(realGastos)} en total).
           </p>
 
@@ -73,9 +72,9 @@ export default function GuiaGastoPage() {
           <div className="glass p-5 mt-8">
             <h2 className="text-base font-semibold">¿Y de dónde sale ese dinero?</h2>
             <p className="text-sm text-muted mt-2">
-              De dos sitios, sobre todo: <span className="text-green">tus impuestos y tasas</span> (IBI, basuras, IAE,
-              plusvalía…) y las <span className="text-green">transferencias del Estado</span> y la comunidad autónoma. Por
-              eso, en un ayuntamiento sano, lo que entra y lo que sale van casi parejos.
+              De dos sitios: <span className="text-green">tus impuestos y tasas</span> (IBI, basuras, IAE, plusvalía…) y
+              el <span className="text-green">dinero que le manda</span> el Estado y la comunidad. En un ayuntamiento
+              sano, lo que entra y lo que sale van casi iguales.
             </p>
           </div>
 

@@ -80,15 +80,15 @@ function Inner({ data }: Props) {
       <article className="pt-5">
         <p className="text-sm md:text-base text-muted max-w-2xl">
           {it
-            ? "Chi paga di più il sindaco, chi ha più debito, chi spende di più — i primati tra tutte le città con dati reali. Ogni record porta alla scheda della città, con la fonte ufficiale."
-            : "Quién paga más a su alcalde, quién tiene más deuda, quién más gasta — los récords entre todas las ciudades con datos reales. Cada récord lleva a la ficha de la ciudad, con la fuente oficial."}
+            ? "I primati tra tutte le città: sindaco più pagato, più debito, più spesa. Tocca un record per la scheda della città."
+            : "Los récords entre todas las ciudades: alcalde mejor pagado, más deuda, más gasto. Toca un récord para ver la ficha."}
         </p>
 
         <div className="mt-5">
           <SimpleExplainer title={it ? "In parole semplici" : "En cristiano"} by={it ? "te lo spiega Claro" : "te lo explica Claro"}>
             <p>{it
-              ? "I record sono i primati veri, presi dai dati ufficiali: chi paga di più il sindaco, chi ha più debito, chi spende di più. Sono curiosità, non una classifica di «buoni e cattivi»."
-              : "Los récords son los primeros de verdad, sacados de datos oficiales: quién paga más a su alcalde, quién debe más, quién más gasta. Son curiosidades, no una lista de «buenos y malos»."}</p>
+              ? "Sono i primati veri, presi dai dati ufficiali. Sono curiosità, non una classifica di «buoni e cattivi»."
+              : "Son los primeros de verdad, sacados de datos oficiales. Son curiosidades, no una lista de «buenos y malos»."}</p>
           </SimpleExplainer>
         </div>
 

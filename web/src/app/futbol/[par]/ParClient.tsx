@@ -101,8 +101,8 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
             </ul>
           }>
           <p>{t(
-            `Estas son las cuentas OFICIALES del ${c.name}: lo que ingresa, lo que paga en salarios y lo que debe. No publicamos el sueldo de cada jugador porque no es un dato oficial.`,
-            `Questi sono i conti UFFICIALI del ${c.name}: quanto incassa, quanto paga di stipendi e quanto deve. Non pubblichiamo lo stipendio dei singoli giocatori perché non è un dato ufficiale.`,
+            `Cuánto ingresa, cuánto paga y cuánto debe el ${c.name}. Solo datos oficiales; no el sueldo de cada jugador.`,
+            `Quanto incassa, quanto paga e quanto deve il ${c.name}. Solo dati ufficiali; non lo stipendio dei singoli.`,
           )}</p>
         </SimpleExplainer>
       </div>
@@ -173,7 +173,7 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
         <h1 className="text-2xl md:text-4xl font-bold mt-1">
           {flag(a.league)} <span className="neon-text">{a.name}</span> vs {flag(b.league)} <span className="neon-text">{b.name}</span>
         </h1>
-        <p className="text-sm text-muted mt-2">{t("Límite salarial, ingresos, salarios y deuda, uno al lado del otro. Solo datos oficiales/verificables (sin valores de mercado ni sueldos estimados).", "Tetto salariale, ricavi, stipendi e debito, uno accanto all'altro. Solo dati ufficiali/verificabili (niente valori di mercato né stipendi stimati).")}</p>
+        <p className="text-sm text-muted mt-2">{t("Los dos clubes, lado a lado: quién ingresa, paga y debe más. Solo datos oficiales.", "I due club, fianco a fianco: chi incassa, paga e deve di più. Solo dati ufficiali.")}</p>
       </header>
 
       <div className="glass mt-6 overflow-hidden">

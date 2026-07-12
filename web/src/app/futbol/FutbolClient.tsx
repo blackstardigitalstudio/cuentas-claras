@@ -4,6 +4,7 @@ import Link from "next/link";
 import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
+import SimpleExplainer from "@/components/SimpleExplainer";
 import { formatEuro, formatCompact } from "@/lib/format";
 import {
   LALIGA_LCPD, LALIGA_LCPD_SEASON, LALIGA_LCPD_SOURCE,
@@ -39,11 +40,17 @@ function Inner() {
         </h1>
         <p className="text-sm md:text-base text-muted mt-3 max-w-2xl">
           {t(
-            "Cuánto puede gastar cada club, cuánto ingresa y cuánta deuda tiene — en España e Italia, solo con datos oficiales (LaLiga, Deloitte, cuentas anuales / bilanci). Nada de valores de mercado ni sueldos estimados.",
-            "Quanto può spendere ogni club, quanto incassa e quanto debito ha — in Spagna e Italia, solo con dati ufficiali (LaLiga, Deloitte, bilanci). Niente valori di mercato né stipendi stimati.",
+            "Lo que cada club ingresa, paga y debe. En España e Italia, solo datos oficiales.",
+            "Quanto ogni club incassa, paga e deve. In Spagna e Italia, solo dati ufficiali.",
           )}
         </p>
       </header>
+
+      <div className="mt-5">
+        <SimpleExplainer title={t("En cristiano", "In parole semplici")} by={t("te lo explica Claro", "te lo spiega Claro")}>
+          <p>{t("Un club de fútbol es como una empresa: ingresa dinero (entradas, TV, patrocinios), paga sueldos y a veces tiene deudas. Aquí ves esas cuentas con datos oficiales.", "Un club di calcio è come un'azienda: incassa soldi (biglietti, TV, sponsor), paga stipendi e a volte ha debiti. Qui vedi questi conti con dati ufficiali.")}</p>
+        </SimpleExplainer>
+      </div>
 
       <Link href="/futbol-mundial/" className="mt-5 glass p-4 flex items-center justify-between gap-3 group hover:border-cyan transition">
         <span>

@@ -62,11 +62,9 @@ function Inner() {
       </div>
       <header className="pt-5">
         <p className="text-sm md:text-base text-muted max-w-2xl">
-          {it ? (
-            <>Classifica dei sindaci spagnoli più pagati, con dati ufficiali dell'ISPA (Ministero delle Finanze). La media dei {nf(ranks.salaryReporting)} comuni che dichiarano è <span className="text-fg/90 font-medium">{formatEuro(ranks.salaryAvg)}/anno</span> — ma {nf(ranks.salaryZero)} sindaci prendono 0 €.</>
-          ) : (
-            <>Ranking de los alcaldes que más cobran, con datos oficiales del ISPA (Ministerio de Hacienda). La media de los {nf(ranks.salaryReporting)} ayuntamientos que declaran es <span className="text-fg/90 font-medium">{formatEuro(ranks.salaryAvg)}/año</span> — pero {nf(ranks.salaryZero)} alcaldes cobran 0 €.</>
-          )}
+          {it
+            ? "Quanto guadagna un sindaco in Spagna? Ecco chi prende di più, con dati ufficiali."
+            : "¿Cuánto cobra un alcalde en España? Estos son los que más cobran, con datos oficiales."}
         </p>
       </header>
 
@@ -84,8 +82,8 @@ function Inner() {
           }
         >
           <p>{it
-            ? "Lo stipendio del sindaco è come lo stipendio di chi dirige l'«azienda comune»: lo fissa il consiglio comunale, con dei tetti di legge in base alla dimensione della città. Non tutti guadagnano uguale — e non tutti prendono uno stipendio."
-            : "El sueldo del alcalde es como el sueldo de quien dirige la «empresa ayuntamiento»: lo fija el pleno, con topes legales según el tamaño de la ciudad. No todos cobran igual — ni siquiera todos cobran."}</p>
+            ? "Il sindaco è pagato per gestire il comune. Alcuni prendono molto, altri poco, altri niente: dipende dalla grandezza del paese."
+            : "El alcalde cobra por llevar el ayuntamiento. Unos cobran mucho, otros poco y otros nada: depende del tamaño del pueblo."}</p>
         </SimpleExplainer>
       </div>
 

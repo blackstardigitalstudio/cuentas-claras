@@ -24,13 +24,13 @@ export default function BulosIntro() {
       <header className="pt-5">
         <p className="text-sm md:text-base text-muted max-w-2xl">
           {it
-            ? "Andiamo controcorrente: qui niente panico, ci sono i dati. Bufale virali su stipendi, tasse, aiuti e fondi europei, già verificate da fact-checker indipendenti, con la cifra vera e il link alla verifica originale."
-            : "Vamos al revés del ruido: aquí no hay pánico, hay datos. Bulos virales sobre sueldos, impuestos, ayudas y fondos europeos, ya verificados por fact-checkers independientes, con la cifra real y el enlace a la verificación original."}
+            ? "Qui niente panico: ci sono i dati. Bufale virali su stipendi, tasse, aiuti e fondi europei. Ognuna già smontata dagli esperti, con la cifra vera e il link alla verifica."
+            : "Aquí no hay pánico: hay datos. Bulos virales sobre sueldos, impuestos, ayudas y fondos europeos. Cada uno ya desmontado por expertos, con la cifra real y el enlace a la comprobación."}
         </p>
         <p className="text-[11px] text-muted mt-3">
           {it
-            ? "Cuentas Claras raccoglie e collega le verifiche di terzi (Maldita.es, Newtral, Pagella Politica, AGI…). Il merito è di ogni verificatore; tocca la fonte per leggere l'analisi completa."
-            : "Cuentas Claras recopila y enlaza verificaciones de terceros (Maldita.es, Newtral, Pagella Politica, AGI…). El crédito es de cada verificador; toca la fuente para leer el análisis completo."}
+            ? "Noi raccogliamo e colleghiamo solo verifiche di altri (Maldita.es, Newtral, Pagella Politica, AGI…). Il merito è loro: tocca la fonte per leggere tutto."
+            : "Nosotros solo reunimos y enlazamos verificaciones de otros (Maldita.es, Newtral, Pagella Politica, AGI…). El mérito es suyo: toca la fuente para leer todo."}
         </p>
       </header>
     </>

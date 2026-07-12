@@ -40,8 +40,8 @@ export default function ConsigliereePage() {
         <article className="pt-8">
           <HeroBanner priority as="h1" src="/photos/money.jpg" alt="Monete da euro" kicker="🇮🇹 Spiegato facile" title="QUANTO GUADAGNA UN" highlight="CONSIGLIERE COMUNALE?" accent="#a5b4fc" accent2="#22d3ee" />
           <p className="text-sm md:text-base text-muted mt-3">
-            Sorpresa: il consigliere comunale <span className="text-fg/90">non ha uno stipendio</span>. Prende un
-            «gettone di presenza» per ogni seduta a cui partecipa. In parole semplici, ecco come funziona:
+            Sorpresa: il consigliere comunale <span className="text-fg/90">non ha uno stipendio</span>. Prende solo un
+            «gettone» per ogni seduta a cui va. Ecco come funziona:
           </p>
 
           <div className="space-y-3 mt-6">
@@ -56,8 +56,8 @@ export default function ConsigliereePage() {
 
           <div className="glass p-5 mt-8">
             <p className="text-sm text-muted">
-              Chi ha invece un vero e proprio compenso mensile sono il <span className="text-fg/90">sindaco</span> e gli
-              <span className="text-fg/90"> assessori</span> (indennità di funzione, fissata per legge dalla popolazione).
+              Chi prende invece un compenso ogni mese sono il <span className="text-fg/90">sindaco</span> e gli
+              <span className="text-fg/90"> assessori</span> (l'indennità, fissata per legge in base agli abitanti).
             </p>
           </div>
 

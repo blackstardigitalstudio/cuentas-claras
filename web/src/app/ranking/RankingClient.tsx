@@ -78,16 +78,16 @@ function Inner() {
       <header className="pt-5">
         <p className="text-sm md:text-base text-muted max-w-2xl">
           {it
-            ? "Quale città spende più soldi pubblici? Comuni di Spagna e Italia ordinati per spesa (in magenta) ed entrate (in verde), con dati ufficiali. Tocca una città per il dettaglio completo."
-            : "¿Qué ciudad gasta más dinero público? Ayuntamientos de España e Italia ordenados por gasto (en magenta) e ingresos (en verde), con datos oficiales. Toca una ciudad para ver el desglose completo."}
+            ? "Quale città spende più soldi pubblici? Spagna e Italia a confronto. Tocca una città per i dettagli."
+            : "¿Qué ciudad gasta más dinero público? España e Italia comparadas. Toca una ciudad para ver el detalle."}
         </p>
       </header>
 
       <div className="mt-5">
         <SimpleExplainer title={it ? "In parole semplici" : "En cristiano"} by={it ? "te lo spiega Claro" : "te lo explica Claro"}>
           <p>{it
-            ? "La spesa (in magenta) è tutto ciò che un comune paga in un anno; le entrate (in verde) sono i soldi che incassa. Chi spende di più non è per forza chi «sperpera»: le città grandi spendono di più perché hanno più abitanti e più servizi."
-            : "El gasto (en magenta) es todo lo que paga un ayuntamiento en un año; los ingresos (en verde) son lo que recauda. Quien más gasta no es por fuerza quien «derrocha»: las ciudades grandes gastan más porque tienen más habitantes y servicios."}</p>
+            ? "In magenta i soldi spesi, in verde quelli incassati. Chi spende di più non «spreca»: le città grandi hanno più abitanti e più servizi."
+            : "En magenta lo que se gasta, en verde lo que se ingresa. Quien más gasta no «derrocha»: las ciudades grandes tienen más habitantes y servicios."}</p>
         </SimpleExplainer>
       </div>
 

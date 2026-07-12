@@ -63,11 +63,9 @@ function Inner() {
       </div>
       <header className="pt-5">
         <p className="text-sm md:text-base text-muted max-w-2xl">
-          {it ? (
-            <>Classifica dei comuni spagnoli più indebitati per debito residuo ufficiale (Ministero delle Finanze, al 31/12/{ranks.year}). Dato sorprendente: <span className="text-fg/90 font-medium">{nf(ranks.debtFree)} comuni su {nf(ranks.debtCount)} ({pct}%) non hanno alcun debito</span>.</>
-          ) : (
-            <>Ranking de los municipios más endeudados de España por deuda viva oficial (Ministerio de Hacienda, a 31/12/{ranks.year}). Dato sorprendente: <span className="text-fg/90 font-medium">{nf(ranks.debtFree)} de {nf(ranks.debtCount)} municipios ({pct}%) no tienen ninguna deuda</span>.</>
-          )}
+          {it
+            ? "Quali comuni spagnoli devono più soldi? Ecco chi ha più debito, con dati ufficiali."
+            : "¿Qué municipios españoles deben más dinero? Estos son los que más deben, con datos oficiales."}
         </p>
       </header>
 
@@ -85,8 +83,8 @@ function Inner() {
           }
         >
           <p>{it
-            ? "Il debito di un comune è come il mutuo di una famiglia: soldi presi in prestito che deve ancora restituire. Un po' di debito è normale; il problema è quando è troppo rispetto a quello che incassa."
-            : "La deuda de un ayuntamiento es como la hipoteca de una familia: dinero que pidió prestado y que aún debe devolver. Tener algo de deuda es normal; el problema es cuando es demasiada para lo que ingresa."}</p>
+            ? "Il debito è come il mutuo di casa: soldi presi in prestito da restituire. Un po' è normale; il problema è quando è troppo."
+            : "La deuda es como la hipoteca de casa: dinero prestado que hay que devolver. Un poco es normal; el problema es cuando es demasiada."}</p>
         </SimpleExplainer>
       </div>
 

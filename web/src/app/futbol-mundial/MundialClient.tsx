@@ -40,8 +40,8 @@ function Inner() {
       <header className="pt-5">
         <p className="text-sm md:text-base text-muted max-w-2xl">
           {it
-            ? "Quali campionati e quali club muovono più soldi al mondo? Ricavi delle grandi leghe e dei club più ricchi, solo con dati ufficiali (Deloitte, bilanci). Niente valori di mercato."
-            : "¿Qué ligas y qué clubes mueven más dinero en el mundo? Ingresos de las grandes ligas y de los clubes más ricos, solo con datos oficiales (Deloitte, cuentas). Nada de valores de mercado."}
+            ? "Quali leghe e quali club incassano di più al mondo? Solo dati ufficiali."
+            : "¿Qué ligas y qué clubes ingresan más en el mundo? Solo datos oficiales."}
         </p>
       </header>
 
@@ -56,8 +56,8 @@ function Inner() {
       <div className="mt-5">
         <SimpleExplainer title={it ? "In parole semplici" : "En cristiano"} by={it ? "te lo spiega Claro" : "te lo explica Claro"}>
           <p>{it
-            ? "«Ricavi» = i soldi che un club o un campionato incassa in un anno (biglietti, diritti TV, sponsor). Non è quanto «vale» la squadra: è quanto entra davvero in cassa."
-            : "«Ingresos» = el dinero que un club o una liga recauda en un año (entradas, TV, patrocinios). No es cuánto «vale» el equipo: es lo que entra de verdad en caja."}</p>
+            ? "«Ricavi» = i soldi che entrano in un anno (biglietti, TV, sponsor). Non è quanto «vale» la squadra."
+            : "«Ingresos» = el dinero que entra en un año (entradas, TV, patrocinios). No es cuánto «vale» el equipo."}</p>
         </SimpleExplainer>
       </div>
 

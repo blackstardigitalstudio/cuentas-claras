@@ -53,9 +53,8 @@ export default function GuidaSpesaPage() {
         <article className="pt-8">
           <HeroBanner priority as="h1" src="/photos/money.jpg" alt="Monete da euro" kicker="🇮🇹 Guida · spiegato facile" title="DOVE VANNO I" highlight="SOLDI PUBBLICI?" accent="#22d3ee" accent2="#a78bfa" />
           <p className="text-sm md:text-base text-muted mt-3">
-            Il tuo Comune riceve dei soldi (dalle tue tasse e dallo Stato) e li spende in servizi per la città. Qui ti
-            spieghiamo, in parole semplici, <span className="text-fg/90">dove vanno questi soldi</span> — e poi puoi
-            vederlo con i dati reali del tuo comune. Abbiamo già la spesa di{" "}
+            Il tuo Comune incassa dei soldi (dalle tue tasse e dallo Stato) e li spende in servizi per la città. Qui vedi
+            <span className="text-fg/90"> dove vanno questi soldi</span>, spiegato facile. Abbiamo già la spesa di{" "}
             <span className="text-fg/90">{cityCount} comuni</span> ({formatCompact(realGastos)} in totale).
           </p>
 
@@ -73,9 +72,9 @@ export default function GuidaSpesaPage() {
           <div className="glass p-5 mt-8">
             <h2 className="text-base font-semibold">E da dove arrivano questi soldi?</h2>
             <p className="text-sm text-muted mt-2">
-              Da due fonti, soprattutto: <span className="text-green">le tue tasse e tariffe</span> (IMU, TARI,
-              addizionale IRPEF…) e i <span className="text-green">trasferimenti dello Stato</span> e della Regione. Per
-              questo, in un comune in salute, quello che entra e quello che esce vanno quasi pari.
+              Da due fonti: <span className="text-green">le tue tasse e tariffe</span> (IMU, TARI, addizionale IRPEF…) e
+              i <span className="text-green">soldi che gli manda</span> lo Stato e la Regione. In un comune in salute,
+              quello che entra e quello che esce vanno quasi pari.
             </p>
           </div>
 

@@ -59,6 +59,7 @@ function Inner() {
           { href: "/champions-league/", emoji: "🏆", es: "Premios Champions", it: "Premi Champions", subEs: "18,62 mln € por participar", subIt: "18,62 mln € per partecipare" },
           { href: "/eurocopa/", emoji: "🏅", es: "Premios Eurocopa", it: "Premi Europei", subEs: "España ganó 28,25 mln €", subIt: "La Spagna ha preso 28,25 mln €" },
           { href: "/mundial-2026/", emoji: "🌐", es: "Premios Mundial 2026", it: "Premi Mondiali 2026", subEs: "50 mln $ al campeón", subIt: "50 mln $ a chi vince" },
+          { href: "/jugadores/", emoji: "⚽", es: "El dinero de los jugadores", it: "I soldi dei giocatori", subEs: "fichajes, cláusulas y sueldos", subIt: "trasferimenti, clausole e stipendi" },
         ].map((c) => (
           <Link key={c.href} href={c.href} className="glass p-3.5 group hover:border-cyan transition">
             <span className="block text-sm font-semibold">{c.emoji} {t(c.es, c.it)}</span>

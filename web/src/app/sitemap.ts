@@ -33,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/mundial-2026/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/champions-league/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/eurocopa/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/jugadores/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/escandalos/`, lastModified, changeFrequency: "hourly", priority: 0.8 },
   ];
   // Páginas de comparación "X vs Y" (mismas listas que las rutas /comparar y /confronta).

@@ -361,7 +361,12 @@ export default async function CityPage({ params }: Props) {
         </section>
       )}
 
-      <section className="mt-8 grid md:grid-cols-2 gap-8">
+      <details className="mt-8 glass p-4 sm:p-5 group">
+        <summary className="font-semibold cursor-pointer marker:text-cyan flex items-center gap-2 select-none">
+          <span className="transition-transform group-open:rotate-90 text-cyan">›</span>
+          {es ? "Ver el desglose completo (de dónde viene y a dónde va)" : "Vedi il dettaglio completo (da dove arrivano e dove vanno)"}
+        </summary>
+        <div className="mt-4 grid md:grid-cols-2 gap-8">
         <div>
           <h2 className="text-lg font-semibold mb-2">{es ? "¿De dónde viene el dinero?" : "Da dove arrivano i soldi?"}</h2>
           <ul className="text-sm">
@@ -390,7 +395,8 @@ export default async function CityPage({ params }: Props) {
             ))}
           </ul>
         </div>
-      </section>
+        </div>
+      </details>
 
       <p className="mt-8">
         <Link href="/" className="px-5 py-2.5 rounded-full font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition inline-block">

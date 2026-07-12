@@ -4,6 +4,7 @@ import Link from "next/link";
 import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
+import SimpleExplainer from "@/components/SimpleExplainer";
 import { formatEuro } from "@/lib/format";
 import type { Rec } from "./page";
 
@@ -81,6 +82,14 @@ function Inner({ data }: Props) {
             ? "Chi paga di più il sindaco, chi ha più debito, chi spende di più — i primati tra tutte le città con dati reali. Ogni record porta alla scheda della città, con la fonte ufficiale."
             : "Quién paga más a su alcalde, quién tiene más deuda, quién más gasta — los récords entre todas las ciudades con datos reales. Cada récord lleva a la ficha de la ciudad, con la fuente oficial."}
         </p>
+
+        <div className="mt-5">
+          <SimpleExplainer title={it ? "In parole semplici" : "En cristiano"} by={it ? "te lo spiega Claro" : "te lo explica Claro"}>
+            <p>{it
+              ? "I record sono i primati veri, presi dai dati ufficiali: chi paga di più il sindaco, chi ha più debito, chi spende di più. Sono curiosità, non una classifica di «buoni e cattivi»."
+              : "Los récords son los primeros de verdad, sacados de datos oficiales: quién paga más a su alcalde, quién debe más, quién más gasta. Son curiosidades, no una lista de «buenos y malos»."}</p>
+          </SimpleExplainer>
+        </div>
 
         <CountrySection code="es" cd={data.es} />
         <CountrySection code="it" cd={data.it} />

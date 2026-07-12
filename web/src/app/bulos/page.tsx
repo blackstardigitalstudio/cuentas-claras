@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
-import HeroBanner from "@/components/HeroBanner";
+import BulosIntro from "./BulosIntro";
 import bulos from "@/data/bulos.json";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -98,45 +98,26 @@ export default function BulosPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <LocaleProvider>
         <SiteNav />
-        <div className="mt-6">
-          <HeroBanner
-            priority
-            as="h1"
-            src="/photos/news.jpg"
-            alt="Periódicos"
-            kicker="Fact-check · 🇪🇸 🇮🇹 · datos oficiales"
-            title="BULOS DEL DINERO PÚBLICO,"
-            highlight="DESMONTADOS"
-            accent="#22d3ee"
-            accent2="#34d399"
-          />
+        <BulosIntro />
+
+        <div className="country-flip mt-8">
+          <div className="country-es">
+            <section>
+              <h2 className="text-lg md:text-xl font-semibold mb-4">🇪🇸 España</h2>
+              <div className="space-y-3">
+                {esItems.map((b, i) => <Card key={`es-${i}`} b={b} />)}
+              </div>
+            </section>
+          </div>
+          <div className="country-it">
+            <section className="mt-10">
+              <h2 className="text-lg md:text-xl font-semibold mb-4">🇮🇹 Italia</h2>
+              <div className="space-y-3">
+                {itItems.map((b, i) => <Card key={`it-${i}`} b={b} />)}
+              </div>
+            </section>
+          </div>
         </div>
-        <header className="pt-5">
-          <p className="text-sm md:text-base text-muted max-w-2xl">
-            Vamos al revés del ruido: aquí no hay pánico, hay <span className="text-fg/90">datos</span>. Bulos virales
-            sobre sueldos, impuestos, ayudas y fondos europeos, ya verificados por fact-checkers independientes, con la
-            cifra real y el enlace a la verificación original.{" "}
-            <span className="text-fg/70">Bufale sui soldi pubblici, smontate con i dati.</span>
-          </p>
-          <p className="text-[11px] text-muted mt-3">
-            Cuentas Claras recopila y enlaza verificaciones de terceros (Maldita.es, Newtral, Pagella Politica, AGI…). El
-            crédito es de cada verificador; toca la fuente para leer el análisis completo.
-          </p>
-        </header>
-
-        <section className="mt-8">
-          <h2 className="text-lg md:text-xl font-semibold mb-4">🇪🇸 España</h2>
-          <div className="space-y-3">
-            {esItems.map((b, i) => <Card key={`es-${i}`} b={b} />)}
-          </div>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="text-lg md:text-xl font-semibold mb-4">🇮🇹 Italia</h2>
-          <div className="space-y-3">
-            {itItems.map((b, i) => <Card key={`it-${i}`} b={b} />)}
-          </div>
-        </section>
 
         <nav className="mt-10 flex flex-wrap gap-3">
           <Link href="/" className="px-5 py-2.5 rounded-full font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition inline-block">

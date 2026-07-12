@@ -29,12 +29,16 @@ function Inner() {
         { q: "Qual è il sindaco più pagato di Spagna?", a: `Il sindaco di ${top[0].name}, con ${formatEuro(top[0].amount)} lordi all'anno (${ranks.year}), seguito da ${top[1].name} (${formatEuro(top[1].amount)}) e ${top[2].name} (${formatEuro(top[2].amount)}).` },
         { q: "Quanto guadagna in media un sindaco in Spagna?", a: `La retribuzione media dei ${nf(ranks.salaryReporting)} comuni che comunicano i dati all'ISPA è di ${formatEuro(ranks.salaryAvg)} lordi all'anno. Ma ci sono enormi differenze a seconda della dimensione del comune.` },
         { q: "Tutti i sindaci prendono uno stipendio?", a: `No. ${nf(ranks.salaryZero)} sindaci dichiarano una retribuzione di 0 € e ${nf(ranks.salarySinDedic)} operano senza incarico esclusivo (prendono solo il gettone di presenza o nulla), soprattutto nei comuni piccoli.` },
+        { q: "Da cosa dipende quanto guadagna un sindaco?", a: "Dalla dimensione del comune e dalla «dedizione»: chi si dedica solo al comune (esclusiva) prende uno stipendio fisso; chi no, prende poco o nulla. I tetti li fissa la legge in base agli abitanti." },
+        { q: "Quanto guadagna il sindaco di un piccolo paese?", a: "Spesso 0 € o pochi euro: nei comuni piccoli il sindaco di solito continua il suo lavoro normale e prende solo un rimborso per le sedute del consiglio." },
         { q: "Da dove arrivano questi dati?", a: `Dall'ISPA (Información Salarial de los Puestos de la Administración) del Ministero delle Finanze spagnolo, esercizio ${ranks.year}. È informazione ufficiale e verificabile.` },
       ]
     : [
         { q: "¿Cuál es el alcalde que más cobra de España?", a: `El alcalde de ${top[0].name}, con ${formatEuro(top[0].amount)} brutos al año (${ranks.year}), seguido de ${top[1].name} (${formatEuro(top[1].amount)}) y ${top[2].name} (${formatEuro(top[2].amount)}).` },
         { q: "¿Cuánto cobra un alcalde de media en España?", a: `La retribución media de los ${nf(ranks.salaryReporting)} ayuntamientos que declaran sus datos al ISPA es de ${formatEuro(ranks.salaryAvg)} brutos al año. Pero hay enormes diferencias según el tamaño del municipio.` },
         { q: "¿Todos los alcaldes cobran un sueldo?", a: `No. ${nf(ranks.salaryZero)} alcaldes declaran una retribución de 0 € y ${nf(ranks.salarySinDedic)} ejercen sin dedicación exclusiva (cobran solo por asistencia a plenos o nada), sobre todo en municipios pequeños.` },
+        { q: "¿De qué depende cuánto cobra un alcalde?", a: "Del tamaño del municipio y de su «dedicación»: quien se dedica solo al ayuntamiento (exclusiva) cobra un sueldo fijo; quien no, cobra poco o nada. Los topes los fija la ley según la población." },
+        { q: "¿Cuánto cobra el alcalde de un pueblo pequeño?", a: "A menudo 0 € o muy poco: en los municipios pequeños el alcalde suele seguir con su trabajo normal y solo cobra por asistir a los plenos." },
         { q: "¿De dónde salen estos datos?", a: `Del ISPA (Información Salarial de los Puestos de la Administración) del Ministerio de Hacienda y Función Pública, ejercicio ${ranks.year}. Es información oficial y verificable.` },
       ];
 

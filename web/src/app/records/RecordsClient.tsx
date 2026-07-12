@@ -88,7 +88,7 @@ function Inner({ data }: Props) {
           <SimpleExplainer title={it ? "In parole semplici" : "En cristiano"} by={it ? "te lo spiega Claro" : "te lo explica Claro"}>
             <p>{it
               ? "Sono i primati veri, presi dai dati ufficiali. Sono curiosità, non una classifica di «buoni e cattivi»."
-              : "Son los primeros de verdad, sacados de datos oficiales. Son curiosidades, no una lista de «buenos y malos»."}</p>
+              : "Son los récords de verdad, sacados de datos oficiales. Son curiosidades, no una lista de «buenos y malos»."}</p>
           </SimpleExplainer>
         </div>
 

@@ -5,6 +5,7 @@ import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
 import SimpleExplainer from "@/components/SimpleExplainer";
+import ShareBar from "@/components/ShareBar";
 
 // Cifras OFICIALES de la FIFA (World Cup 2026). En dólares, como las publica la FIFA.
 const usd = (m: number) => `${m} mln $`;
@@ -97,6 +98,8 @@ function Inner() {
           <a href="https://inside.fifa.com/organisation/fifa-council/media-releases/council-approves-record-breaking-world-cup-2026-financial-contribution" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">FIFA</a>.
         </p>
       </section>
+
+      <ShareBar className="mt-6" text={t("🏆 El campeón del Mundial 2026 gana 50 millones de $ de la FIFA (total 655 mln). 👀 Cifras oficiales", "🏆 Chi vince i Mondiali 2026 guadagna 50 milioni di $ dalla FIFA (totale 655 mln). 👀 Cifre ufficiali")} />
 
       {/* vs 2022 */}
       <section className="mt-10 glass p-5">

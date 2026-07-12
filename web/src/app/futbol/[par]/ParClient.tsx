@@ -2,11 +2,14 @@
 
 import Link from "next/link";
 import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
+import HeroBanner from "@/components/HeroBanner";
+import SimpleExplainer from "@/components/SimpleExplainer";
+import ShareBar from "@/components/ShareBar";
 import {
   CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS, type ClubMetrics,
   LALIGA_LCPD_SOURCE, LALIGA_LCPD_SEASON, REVENUE_SOURCE, REVENUE_SEASON, SERIE_A_SOURCE, SERIE_A_SEASON,
 } from "@/data/futbol";
-import { formatEuro } from "@/lib/format";
+import { formatEuro, formatCompact } from "@/lib/format";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 const flag = (l: string) => (l === "laliga" ? "🇪🇸" : "🇮🇹");
@@ -59,33 +62,64 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
     c.debt && c.debt.source,
   ].filter(Boolean) as { name: string; url: string }[];
   const uniqSources = Array.from(new Map(sources.map((s) => [s.url, s])).values());
+  const heroImg = c.league === "laliga" ? "/photos/spain-stadium.jpg" : "/photos/italy-stadium.jpg";
+  const parts = [c.revenue && `${t("ingresa", "incassa")} ${formatCompact(c.revenue)}`, c.debt && `${t("deuda", "debito")} ${formatCompact(c.debt.amount)}`].filter(Boolean);
+  const shareMsg = `⚽ ${c.name}: ${parts.join(", ")} — ${t("datos oficiales", "dati ufficiali")} 👀`;
 
   return (
-    <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 py-8">
+    <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
-      <nav className="text-sm text-muted mb-6">
+      <nav className="text-sm text-muted pt-6 mb-4">
         <Link href="/" className="hover:text-fg neon-text font-semibold">Cuentas Claras</Link>{" "}
         <Link href="/futbol/" className="opacity-70 hover:text-fg">/ {t("Fútbol", "Calcio")}</Link>{" "}
         <span className="opacity-50">/ {c.name}</span>
       </nav>
-      <header>
-        <p className="text-xs uppercase tracking-widest text-cyan/80">{flag(c.league)} {c.league === "laliga" ? "LaLiga" : "Serie A"} · {t("cuentas oficiales", "conti ufficiali")}</p>
-        <h1 className="text-2xl md:text-4xl font-bold mt-1">{t("Las cuentas de", "I conti di")} <span className="neon-text">{c.name}</span></h1>
-        <p className="text-sm text-muted mt-2">{t(`Ingresos, salarios, límite salarial y deuda del ${c.name}, en cristiano y solo con cifras oficiales (nada de valores de mercado ni sueldos estimados).`, `Ricavi, stipendi, tetto salariale e debito del ${c.name}, in parole semplici e solo con cifre ufficiali (niente valori di mercato né stipendi stimati).`)}</p>
-      </header>
 
-      <div className="glass mt-6 divide-y divide-[var(--panel-border)]">
+      <HeroBanner
+        as="h1"
+        src={heroImg}
+        alt={c.name}
+        kicker={`${flag(c.league)} ${c.league === "laliga" ? "LaLiga" : "Serie A"} · ${t("cuentas oficiales", "conti ufficiali")}`}
+        title={t("LAS CUENTAS DEL", "I CONTI DEL")}
+        highlight={c.name.toUpperCase()}
+        stat={c.revenue ? formatCompact(c.revenue) : c.debt ? formatCompact(c.debt.amount) : undefined}
+        statLabel={c.revenue ? t("de ingresos al año", "di ricavi all'anno") : c.debt ? t("de deuda", "di debito") : undefined}
+        accent="#34d399"
+        accent2="#22d3ee"
+      />
+
+      <div className="mt-5">
+        <SimpleExplainer title={t("En cristiano", "In parole semplici")} by={t("te lo explica Claro", "te lo spiega Claro")}
+          moreLabel={t("¿Qué significa cada número?", "Cosa vuol dire ogni numero?")}
+          more={
+            <ul className="space-y-1.5">
+              <li>💶 <b>{t("Ingresos", "Ricavi")}</b> — {t("lo que el club recauda en un año: TV, entradas, patrocinios, premios.", "quanto il club incassa in un anno: TV, biglietti, sponsor, premi.")}</li>
+              <li>💸 <b>{t("Salarios", "Stipendi")}</b> — {t("el coste total de la plantilla (bruto). No son sueldos de jugadores concretos.", "il costo totale della rosa (lordo). Non sono gli stipendi dei singoli giocatori.")}</li>
+              <li>📊 <b>{t("Límite salarial", "Tetto salariale")}</b> — {t("el máximo que LaLiga deja gastar en plantilla. Solo LaLiga.", "il massimo che la LaLiga permette di spendere per la rosa. Solo LaLiga.")}</li>
+              <li>🏦 <b>{t("Deuda", "Debito")}</b> — {t("lo que el club aún debe. «neta» = menos la caja; «bruta» = todo.", "quello che il club deve ancora. «netto» = meno la cassa; «lordo» = tutto.")}</li>
+            </ul>
+          }>
+          <p>{t(
+            `Estas son las cuentas OFICIALES del ${c.name}: lo que ingresa, lo que paga en salarios y lo que debe. No publicamos el sueldo de cada jugador porque no es un dato oficial.`,
+            `Questi sono i conti UFFICIALI del ${c.name}: quanto incassa, quanto paga di stipendi e quanto deve. Non pubblichiamo lo stipendio dei singoli giocatori perché non è un dato ufficiale.`,
+          )}</p>
+        </SimpleExplainer>
+      </div>
+
+      <div className="glass mt-4 divide-y divide-[var(--panel-border)]">
         {rows.map((r) => (
-          <div key={r.label} className="flex items-center justify-between gap-4 px-4 py-3">
+          <div key={r.label} className="flex items-center justify-between gap-4 px-4 py-3.5">
             <span className="text-sm text-muted">{r.label}{r.hint ? <span className="block text-[11px] text-muted/60">{r.hint}</span> : null}</span>
-            <span className="tabular text-lg font-semibold" style={r.accent ? { color: r.accent } : undefined}>{r.value}</span>
+            <span className="tabular text-xl font-semibold" style={r.accent ? { color: r.accent } : undefined}>{r.value}</span>
           </div>
         ))}
       </div>
 
+      <ShareBar className="mt-5" text={shareMsg} />
+
       {compareLinks.length > 0 && (
-        <section className="mt-8">
+        <section className="mt-6">
           <h2 className="text-sm font-medium text-muted mb-3">{t(`Compara al ${c.name} con otro club`, `Confronta il ${c.name} con un altro club`)}</h2>
           <div className="flex flex-wrap gap-2">
             {compareLinks.map((l) => (
@@ -95,7 +129,7 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
         </section>
       )}
 
-      <div className="mt-8 flex flex-wrap gap-3">
+      <div className="mt-6 flex flex-wrap gap-3">
         <Link href="/futbol/" className="px-4 py-2 rounded-full text-sm font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition">{t("Ver todo el dinero del fútbol →", "Vedi tutti i soldi del calcio →")}</Link>
       </div>
 
@@ -156,6 +190,8 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
           ))}
         </div>
       </div>
+
+      <ShareBar className="mt-5" text={`⚽ ${a.name} vs ${b.name} — ${t("¿quién ingresa y debe más?", "chi incassa e deve di più?")} 👀 ${t("datos oficiales", "dati ufficiali")}`} />
 
       <div className="mt-6 flex flex-wrap gap-3">
         <Link href={clubHref(a)} className="px-4 py-2 rounded-full text-sm font-medium border border-[var(--panel-border)] hover:border-cyan transition">{t("Cuentas de", "Conti di")} {a.name}</Link>

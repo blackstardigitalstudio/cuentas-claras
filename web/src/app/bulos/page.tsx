@@ -14,7 +14,7 @@ type Bulo = {
 const ITEMS = bulos as Bulo[];
 
 export const metadata: Metadata = {
-  title: "Bulos sobre el dinero público, desmontados con datos · Cuentas Claras",
+  title: "Bulos sobre el dinero público, desmontados con datos",
   description:
     "Antes de compartir, comprueba. Bulos virales sobre dinero público (sueldos, impuestos, ayudas, fondos europeos, deuda) verificados por fact-checkers independientes, con el dato real y el enlace a la verificación. Bufale sui soldi pubblici smontate con i dati.",
   keywords: [

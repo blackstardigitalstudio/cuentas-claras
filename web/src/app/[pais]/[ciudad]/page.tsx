@@ -72,7 +72,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function Row({ c, total }: { c: { label: string; color: string; amount: number; children?: unknown[] }; total: number }) {
+function Row({ c, total, sub }: { c: { label: string; color: string; amount: number; children?: unknown[] }; total: number; sub?: React.ReactNode }) {
   return (
     <li className="py-1.5 border-b border-[var(--panel-border)]/50">
       <div className="flex items-center justify-between gap-3">
@@ -84,6 +84,7 @@ function Row({ c, total }: { c: { label: string; color: string; amount: number; 
           {formatEuro(c.amount)} <span className="text-cyan/70">· {formatPct(c.amount / total)}</span>
         </span>
       </div>
+      {sub}
     </li>
   );
 }
@@ -394,10 +395,12 @@ export default async function CityPage({ params }: Props) {
           <h2 className="text-lg font-semibold mb-2">{es ? "¿A dónde va el gasto?" : "Dove va la spesa?"}</h2>
           <ul className="text-sm">
             {[...r.gastosByCat].sort((a, b) => b.amount - a.amount).map((c) => (
-              <li key={c.key}>
-                <Row c={c} total={r.gastos} />
-                {c.children && c.children.length > 1 && (
-                  <ul className="ml-5 mb-1">
+              <Row
+                key={c.key}
+                c={c}
+                total={r.gastos}
+                sub={c.children && c.children.length > 1 ? (
+                  <ul className="ml-5 mb-1 mt-1">
                     {[...c.children].sort((a, b) => b.amount - a.amount).slice(0, 6).map((sc) => (
                       <li key={sc.key} className="flex justify-between text-[12px] text-muted py-0.5">
                         <span>· {sc.label}</span>
@@ -405,8 +408,8 @@ export default async function CityPage({ params }: Props) {
                       </li>
                     ))}
                   </ul>
-                )}
-              </li>
+                ) : undefined}
+              />
             ))}
           </ul>
         </div>

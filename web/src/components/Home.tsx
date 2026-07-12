@@ -65,7 +65,23 @@ export default function Home() {
         <p className="mt-5 text-base md:text-lg text-muted max-w-2xl mx-auto">{m.hero.subtitle}</p>
 
         <div className="mt-7">
+          <p className="text-sm font-semibold text-fg/90 mb-2">
+            👇 {locale === "it" ? "Scrivi il nome della tua città e premi «Cerca»" : "Escribe el nombre de tu ciudad y pulsa «Buscar»"}
+          </p>
           <SiteSearch />
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+            <span className="text-xs text-muted">{locale === "it" ? "Oppure:" : "O prueba:"}</span>
+            {[
+              { href: "/es/madrid/", label: "Madrid" },
+              { href: "/es/barcelona/", label: "Barcelona" },
+              { href: "/it/roma/", label: "Roma" },
+              { href: "/it/milano/", label: "Milano" },
+            ].map((c) => (
+              <Link key={c.href} href={c.href} className="px-3 py-1 rounded-full text-xs font-medium border border-[var(--panel-border)] text-muted hover:text-fg hover:border-cyan transition">
+                {c.label}
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="mt-6 flex items-center justify-center gap-3">
@@ -124,18 +140,36 @@ export default function Home() {
           </p>
           <div className="mt-5 grid sm:grid-cols-3 gap-3">
             {[
-              { n: "1", t: locale === "it" ? "Scegli la tua città" : "Elige tu ciudad", d: locale === "it" ? "sulla mappa o dalla lista" : "en el mapa o en la lista" },
+              { n: "1", t: locale === "it" ? "Scrivi la tua città" : "Escribe tu ciudad", d: locale === "it" ? "nella barra qui sopra (clicca qui)" : "en la barra de arriba (pulsa aquí)", focus: true },
               { n: "2", t: locale === "it" ? "Guarda i suoi conti" : "Mira sus cuentas", d: locale === "it" ? "entrate, spese, debito, stipendio del sindaco" : "ingresos, gastos, deuda, sueldo del alcalde" },
               { n: "3", t: locale === "it" ? "Tutto spiegato facile" : "Todo explicado fácil", d: locale === "it" ? "in parole semplici, con la fonte ufficiale" : "en palabras sencillas, con la fuente oficial" },
-            ].map((s) => (
-              <div key={s.n} className="flex items-start gap-3">
-                <span className="shrink-0 w-7 h-7 rounded-full bg-gradient-to-br from-cyan to-violet text-[#05070f] font-bold text-sm flex items-center justify-center">{s.n}</span>
-                <span>
-                  <span className="block font-medium text-sm">{s.t}</span>
-                  <span className="block text-xs text-muted">{s.d}</span>
-                </span>
-              </div>
-            ))}
+            ].map((s) => {
+              const inner = (
+                <>
+                  <span className="shrink-0 w-7 h-7 rounded-full bg-gradient-to-br from-cyan to-violet text-[#05070f] font-bold text-sm flex items-center justify-center">{s.n}</span>
+                  <span>
+                    <span className="block font-medium text-sm">{s.t}</span>
+                    <span className="block text-xs text-muted">{s.d}</span>
+                  </span>
+                </>
+              );
+              return s.focus ? (
+                <button
+                  key={s.n}
+                  type="button"
+                  onClick={() => {
+                    const el = document.querySelector('[data-claro="search"]') as HTMLInputElement | null;
+                    el?.scrollIntoView({ behavior: "smooth", block: "center" });
+                    setTimeout(() => el?.focus(), 300);
+                  }}
+                  className="flex items-start gap-3 text-left rounded-xl -m-1 p-1 hover:bg-[rgba(120,160,255,0.08)] transition cursor-pointer"
+                >
+                  {inner}
+                </button>
+              ) : (
+                <div key={s.n} className="flex items-start gap-3">{inner}</div>
+              );
+            })}
           </div>
         </section>
       </Reveal>

@@ -49,6 +49,10 @@ function buildIndex(locale: "es" | "it"): Entry[] {
   return [...sections, ...out];
 }
 
+// Ciudades "populares" que se muestran nada más pinchar (sin escribir), para que
+// el usuario vea al instante dónde pulsar y pueda elegir de un vistazo.
+const POPULAR_SLUGS = ["madrid", "barcelona", "valencia", "sevilla", "roma", "milano", "napoli", "torino"];
+
 export default function SiteSearch() {
   const { locale } = useLocale();
   const router = useRouter();
@@ -57,6 +61,14 @@ export default function SiteSearch() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
   const boxRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Sugerencias por defecto (al pinchar sin escribir): ciudades populares + secciones clave.
+  const defaults = useMemo(() => {
+    const byHref = (suffix: string) => index.find((e) => e.href.endsWith(`/${suffix}/`) && (e.href.startsWith("/es/") || e.href.startsWith("/it/")));
+    const cities = POPULAR_SLUGS.map((s) => byHref(s)).filter(Boolean) as Entry[];
+    return cities.slice(0, 6);
+  }, [index]);
 
   const results = useMemo(() => {
     const nq = norm(q.trim());
@@ -72,6 +84,10 @@ export default function SiteSearch() {
     return scored.slice(0, 8).map((s) => s.e);
   }, [q, index]);
 
+  // Lo que se muestra en el desplegable: resultados si hay búsqueda; si no, populares.
+  const showing = results.length ? results : defaults;
+  const showingDefaults = results.length === 0;
+
   const go = (href: string) => {
     setOpen(false);
     setQ("");
@@ -79,30 +95,43 @@ export default function SiteSearch() {
   };
 
   return (
-    <div ref={boxRef} className="relative w-full max-w-xl mx-auto" onBlur={(e) => { if (!boxRef.current?.contains(e.relatedTarget as Node)) setOpen(false); }}>
-      <div className="flex items-center gap-2 glass px-4 py-3 focus-within:border-cyan transition">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" className="text-muted shrink-0" aria-hidden="true">
+    <div ref={boxRef} className="relative w-full max-w-xl mx-auto text-left" onBlur={(e) => { if (!boxRef.current?.contains(e.relatedTarget as Node)) setOpen(false); }}>
+      <div className="flex items-center gap-2 glass pl-4 pr-1.5 py-1.5 focus-within:border-cyan border-2 border-[var(--panel-border)] transition cursor-text" onClick={() => inputRef.current?.focus()}>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" className="text-cyan shrink-0" aria-hidden="true">
           <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
         </svg>
         <input
+          ref={inputRef}
           data-claro="search"
           value={q}
           onChange={(e) => { setQ(e.target.value); setOpen(true); setActive(0); }}
           onFocus={() => setOpen(true)}
           onKeyDown={(e) => {
-            if (e.key === "ArrowDown") { e.preventDefault(); setActive((a) => Math.min(a + 1, results.length - 1)); }
+            if (e.key === "ArrowDown") { e.preventDefault(); setActive((a) => Math.min(a + 1, showing.length - 1)); }
             else if (e.key === "ArrowUp") { e.preventDefault(); setActive((a) => Math.max(a - 1, 0)); }
-            else if (e.key === "Enter" && results[active]) { e.preventDefault(); go(results[active].href); }
+            else if (e.key === "Enter" && showing[active]) { e.preventDefault(); go(showing[active].href); }
             else if (e.key === "Escape") setOpen(false);
           }}
-          placeholder={locale === "it" ? "Cerca la tua città, un club, una sezione…" : "Busca tu ciudad, un club, una sección…"}
-          className="flex-1 bg-transparent outline-none text-fg placeholder:text-muted/70 text-base"
-          aria-label={locale === "it" ? "Cerca" : "Buscar"}
+          placeholder={locale === "it" ? "Scrivi qui la tua città…" : "Escribe aquí tu ciudad…"}
+          className="flex-1 bg-transparent outline-none text-fg placeholder:text-muted/70 text-base py-2"
+          aria-label={locale === "it" ? "Cerca la tua città" : "Busca tu ciudad"}
         />
+        <button
+          type="button"
+          onClick={() => { if (showing[active]) go(showing[active].href); else inputRef.current?.focus(); }}
+          className="shrink-0 h-10 px-4 rounded-full text-sm font-semibold text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition"
+        >
+          {locale === "it" ? "Cerca" : "Buscar"}
+        </button>
       </div>
-      {open && results.length > 0 && (
+      {open && showing.length > 0 && (
         <ul className="absolute z-50 mt-2 w-full glass overflow-hidden py-1 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]">
-          {results.map((r, i) => (
+          {showingDefaults && (
+            <li className="px-4 pt-1.5 pb-1 text-[11px] uppercase tracking-widest text-cyan/70 font-semibold">
+              {locale === "it" ? "Città popolari — o scrivi il nome" : "Ciudades populares — o escribe el nombre"}
+            </li>
+          )}
+          {showing.map((r, i) => (
             <li key={r.href}>
               <Link
                 href={r.href}

@@ -77,7 +77,8 @@ export default function MascotGuide() {
   const nav = (href: string) => { setOpen(false); router.push(href); };
 
   const it = lang === "it";
-  const T = (es: string, itx: string) => (it ? itx : es);
+  // Todas las llamadas están en orden (italiano, español).
+  const T = (itx: string, es: string) => (it ? itx : es);
 
   const intro = (): string => {
     if (/^\/(es|it)\/[^/]+/.test(pathname)) return T("Questa è la scheda della tua città. Posso spiegarti i numeri:", "Esta es la ficha de tu ciudad. Puedo explicarte los números:");

@@ -32,7 +32,7 @@ function buildIndex(locale: "es" | "it"): Entry[] {
         ["Debito dei comuni", "/deuda-municipios/"],
         ["Classifica di spesa", "/ranking/"],
         ["I record dei soldi pubblici", "/records/"],
-        ["Il dinero del calcio", "/futbol/"],
+        ["I soldi del calcio", "/futbol/"],
         ["Scandali e notizie", "/escandalos/"],
         ["Confronta due comuni", "/confronta/"],
       ]

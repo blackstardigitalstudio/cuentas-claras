@@ -361,7 +361,7 @@ export default async function CityPage({ params }: Props) {
         </section>
       )}
 
-      <details className="mt-8 glass p-4 sm:p-5 group">
+      <details data-claro="detail" className="mt-8 glass p-4 sm:p-5 group">
         <summary className="font-semibold cursor-pointer marker:text-cyan flex items-center gap-2 select-none">
           <span className="transition-transform group-open:rotate-90 text-cyan">›</span>
           {es ? "Ver el desglose completo (de dónde viene y a dónde va)" : "Vedi il dettaglio completo (da dove arrivano e dove vanno)"}

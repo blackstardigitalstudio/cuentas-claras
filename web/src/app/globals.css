@@ -238,3 +238,12 @@ html[lang="it"] .country-flip .country-it { order: -1; }
 @keyframes mascotHop { 0% { transform: translateY(0); } 30% { transform: translateY(-10px); } 55% { transform: translateY(0); } 70% { transform: translateY(-4px); } 100% { transform: translateY(0); } }
 .mascot-hop { animation: mascotHop 0.6s ease-out; }
 @media (prefers-reduced-motion: reduce) { .mascot-eyes { animation: none; } .mascot-hop { animation: none; } }
+
+/* Claro guía: destaca el elemento al que te lleva. */
+@keyframes ccFlash { 0%, 100% { box-shadow: 0 0 0 0 rgba(34,211,238,0); } 25%, 60% { box-shadow: 0 0 0 3px rgba(34,211,238,0.85); } }
+.cc-flash { animation: ccFlash 1.5s ease-in-out 2; border-radius: 16px; }
+@media (prefers-reduced-motion: reduce) { .cc-flash { animation: none; outline: 2px solid var(--cyan); } }
+
+/* Claro: botones del panel de ayuda. */
+.claro-item { width: 100%; text-align: left; display: flex; align-items: center; gap: 8px; padding: 9px 10px; border-radius: 12px; font-size: 14px; transition: background .15s; }
+.claro-item:hover { background: rgba(120,160,255,0.10); }

@@ -17,7 +17,7 @@ export default function SimpleExplainer({
   moreLabel?: string;
 }) {
   return (
-    <aside className="glass p-4 sm:p-5 relative overflow-hidden">
+    <aside data-claro="explainer" className="glass p-4 sm:p-5 relative overflow-hidden">
       <span className="absolute left-0 inset-y-0 w-1 bg-gradient-to-b from-cyan to-violet" aria-hidden="true" />
       <div className="flex gap-3 sm:gap-4">
         <div className="shrink-0 -mt-1 -ml-1" aria-hidden="true">

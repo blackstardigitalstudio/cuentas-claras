@@ -4,6 +4,7 @@ import Link from "next/link";
 import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
+import SimpleExplainer from "@/components/SimpleExplainer";
 import { COUNTRIES, type CountryCode } from "@/lib/data";
 import { formatCompact } from "@/lib/format";
 
@@ -81,6 +82,14 @@ function Inner() {
             : "¿Qué ciudad gasta más dinero público? Ayuntamientos de España e Italia ordenados por gasto (en magenta) e ingresos (en verde), con datos oficiales. Toca una ciudad para ver el desglose completo."}
         </p>
       </header>
+
+      <div className="mt-5">
+        <SimpleExplainer title={it ? "In parole semplici" : "En cristiano"} by={it ? "te lo spiega Claro" : "te lo explica Claro"}>
+          <p>{it
+            ? "La spesa (in magenta) è tutto ciò che un comune paga in un anno; le entrate (in verde) sono i soldi che incassa. Chi spende di più non è per forza chi «sperpera»: le città grandi spendono di più perché hanno più abitanti e più servizi."
+            : "El gasto (en magenta) es todo lo que paga un ayuntamiento en un año; los ingresos (en verde) son lo que recauda. Quien más gasta no es por fuerza quien «derrocha»: las ciudades grandes gastan más porque tienen más habitantes y servicios."}</p>
+        </SimpleExplainer>
+      </div>
 
       {it ? [italia, es] : [es, italia]}
 

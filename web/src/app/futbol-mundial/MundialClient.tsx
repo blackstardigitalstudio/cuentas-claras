@@ -4,6 +4,7 @@ import Link from "next/link";
 import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
+import SimpleExplainer from "@/components/SimpleExplainer";
 import { formatCompact } from "@/lib/format";
 import { LEAGUES, LEAGUE_SOURCE, CLUB_REVENUE, REVENUE_SOURCE, REVENUE_SEASON } from "@/data/futbol";
 
@@ -43,6 +44,14 @@ function Inner() {
             : "¿Qué ligas y qué clubes mueven más dinero en el mundo? Ingresos de las grandes ligas y de los clubes más ricos, solo con datos oficiales (Deloitte, cuentas). Nada de valores de mercado."}
         </p>
       </header>
+
+      <div className="mt-5">
+        <SimpleExplainer title={it ? "In parole semplici" : "En cristiano"} by={it ? "te lo spiega Claro" : "te lo explica Claro"}>
+          <p>{it
+            ? "«Ricavi» = i soldi che un club o un campionato incassa in un anno (biglietti, diritti TV, sponsor). Non è quanto «vale» la squadra: è quanto entra davvero in cassa."
+            : "«Ingresos» = el dinero que un club o una liga recauda en un año (entradas, TV, patrocinios). No es cuánto «vale» el equipo: es lo que entra de verdad en caja."}</p>
+        </SimpleExplainer>
+      </div>
 
       {/* KPIs */}
       <div className="grid grid-cols-3 gap-3 mt-6">

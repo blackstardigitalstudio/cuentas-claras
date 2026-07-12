@@ -121,6 +121,7 @@ export default function Home() {
             { href: "/sueldos-politicos/", emoji: "🏛️", accent: "#818cf8", es: "Sueldos de políticos", it: "Stipendi dei politici", subEs: "presidente, ministros…", subIt: "presidente, ministri…" },
             { href: "/sueldos-profesiones/", emoji: "💼", accent: "#22d3ee", es: "¿Cuánto gana un médico?", it: "Quanto guadagna un medico?", subEs: "médico, profe, policía…", subIt: "medico, prof, poliziotto…" },
             { href: "/deuda-municipios/", emoji: "🏦", accent: "#fdba74", es: "Deuda municipal", it: "Debito dei comuni", subEs: "quién debe más", subIt: "chi deve di più" },
+            { href: "/deuda-nacional/", emoji: "🏛️", accent: "#f472b6", es: "¿Cuánto debe España?", it: "Quanto deve lo Stato?", subEs: "la deuda del país", subIt: "il debito del Paese" },
             { href: "/ranking/", emoji: "📊", accent: "#22d3ee", es: "Ranking de gasto", it: "Classifica di spesa", subEs: "quién gasta más", subIt: "chi spende di più" },
             { href: "/records/", emoji: "🏆", accent: "#34d399", es: "Récords", it: "Record", subEs: "los extremos", subIt: "gli estremi" },
             { href: locale === "it" ? "/confronta/" : "/comparar/", emoji: "⚖️", accent: "#c084fc", es: "Comparar", it: "Confronta", subEs: "ciudad vs ciudad", subIt: "città vs città" },

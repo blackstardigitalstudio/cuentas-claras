@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/sueldos-politicos/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE}/sueldos-profesiones/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE}/deuda-municipios/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/deuda-nacional/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE}/spesa-comuni/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/gasto-por-habitante/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/en-que-se-gasta-el-dinero-publico/`, lastModified, changeFrequency: "monthly", priority: 0.8 },

@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const t = `${pair.a.name} vs ${pair.b.name}: presupuesto, ingresos y deuda`;
     return {
       title: `${t} (comparativa financiera, datos oficiales)`,
-      description: `Compara ${pair.a.name} y ${pair.b.name}: límite salarial, ingresos, salarios y deuda, con datos oficiales (LaLiga, Deloitte, bilanci). Solo cifras verificables.`,
+      description: `Compara ${pair.a.name} y ${pair.b.name}: límite salarial, ingresos, salarios y deuda, con datos oficiales (LaLiga, Deloitte, cuentas anuales). Solo cifras verificables.`,
       alternates: { canonical: `${SITE}/futbol/${par}/` },
       openGraph: { title: t, description: "Comparativa financiera con datos oficiales.", type: "article", images: [{ url: "/og-futbol.png", width: 1200, height: 630 }] },
       twitter: { card: "summary_large_image", images: ["/og-futbol.png"] },

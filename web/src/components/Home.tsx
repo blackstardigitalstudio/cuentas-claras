@@ -86,6 +86,34 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Fútbol — tarjeta destacada, en primer plano */}
+      <Reveal>
+        <Link href="/futbol/" className="block mt-8 group relative overflow-hidden rounded-2xl border border-[var(--panel-border)] aspect-[16/10] sm:aspect-[21/8]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/photos/spain-stadium.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05070f] via-[#05070f]/75 to-[#05070f]/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] via-transparent to-transparent" />
+          <span className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-green via-cyan to-violet" />
+          <div className="absolute inset-0 flex flex-col justify-center p-5 sm:p-8 max-w-[88%]">
+            <span className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-green mb-2">
+              ⚽ {locale === "it" ? "In primo piano" : "Destacado"}
+            </span>
+            <h2 className="font-black uppercase leading-[0.92] tracking-tight text-2xl sm:text-4xl md:text-5xl text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
+              {locale === "it" ? "I soldi del " : "El dinero del "}
+              <span style={{ background: "linear-gradient(90deg,#34d399,#22d3ee)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>{locale === "it" ? "calcio" : "fútbol"}</span>
+            </h2>
+            <p className="text-sm sm:text-base text-white/80 mt-2 max-w-lg">
+              {locale === "it"
+                ? "Ricavi, ingaggi, tetto salariale e debiti dei club — LaLiga, Serie A e il calcio mondiale. Solo dati ufficiali."
+                : "Ingresos, salarios, límite salarial y deuda de los clubes — LaLiga, Serie A y el fútbol mundial. Solo datos oficiales."}
+            </p>
+            <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-cyan">
+              {locale === "it" ? "Scopri" : "Descubrir"} <span className="transition-transform group-hover:translate-x-0.5">→</span>
+            </span>
+          </div>
+        </Link>
+      </Reveal>
+
       {/* ¿Qué es esto? — explicación SÚPER BÁSICA + 3 pasos */}
       <Reveal>
         <section className="glass p-5 md:p-6 mb-12">

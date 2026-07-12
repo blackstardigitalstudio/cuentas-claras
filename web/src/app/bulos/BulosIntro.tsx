@@ -14,11 +14,11 @@ export default function BulosIntro() {
           as="h1"
           src="/photos/news.jpg"
           alt={it ? "Giornali" : "Periódicos"}
-          kicker={it ? "Fact-check · 🇮🇹 🇪🇸 · dati ufficiali" : "Fact-check · 🇪🇸 🇮🇹 · datos oficiales"}
-          title={it ? "BUFALE SUI SOLDI PUBBLICI," : "BULOS DEL DINERO PÚBLICO,"}
-          highlight={it ? "SMONTATE" : "DESMONTADOS"}
-          accent="#22d3ee"
-          accent2="#34d399"
+          kicker={it ? "🕵️ Fact-check · 🇮🇹 🇪🇸 · dati veri" : "🕵️ Fact-check · 🇪🇸 🇮🇹 · datos reales"}
+          title={it ? "NON FARTI FREGARE:" : "QUE NO TE ENGAÑEN:"}
+          highlight={it ? "LE BUFALE SMONTATE" : "BULOS DESMONTADOS"}
+          accent="#ff6b6b"
+          accent2="#fdba74"
         />
       </div>
       <header className="pt-5">

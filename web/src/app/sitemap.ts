@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/italia/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/ranking/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/sueldos-alcaldes/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/sueldos-politicos/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE}/deuda-municipios/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/spesa-comuni/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/gasto-por-habitante/`, lastModified, changeFrequency: "weekly", priority: 0.9 },

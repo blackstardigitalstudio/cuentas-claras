@@ -8,7 +8,7 @@ import { formatCompact, formatEuro } from "@/lib/format";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "Dove vanno i soldi pubblici dei comuni italiani? · Cuentas Claras",
+  title: "Dove vanno i soldi pubblici dei comuni italiani?",
   description:
     "Entrate e spese reali dei comuni italiani (Milano, Bologna) con dati ufficiali e dettaglio della spesa pubblica per missione. Mappa interattiva, classifica e scandali del denaro pubblico.",
   keywords: [

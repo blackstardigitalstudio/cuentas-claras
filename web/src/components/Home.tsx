@@ -236,12 +236,7 @@ export default function Home() {
       {/* Sección equipos / squadre: las cuentas de cada club */}
       <section className="mt-16">
         <div className="flex items-end justify-between gap-3 mb-4">
-          <div>
-            <h2 className="text-xl md:text-2xl font-semibold">{locale === "it" ? "⚽ Le squadre" : "⚽ Los equipos"}</h2>
-            <p className="text-sm text-muted mt-1">
-              {locale === "it" ? "I conti di ogni club: ricavi, ingaggi, debito — dati ufficiali." : "Las cuentas de cada club: ingresos, salarios, deuda — datos oficiales."}
-            </p>
-          </div>
+          <h2 className="text-xl md:text-2xl font-semibold">{locale === "it" ? "⚽ Le squadre" : "⚽ Los equipos"}</h2>
           <Link href="/futbol/" className="shrink-0 text-sm font-medium text-cyan hover:text-fg transition whitespace-nowrap">
             {locale === "it" ? "Tutto il calcio →" : "Todo el fútbol →"}
           </Link>
@@ -293,11 +288,11 @@ export default function Home() {
       {/* Noticias */}
       <News />
 
-      {/* Metodología y fuentes (confianza + SEO) */}
-      <section className="mt-16 glass p-6 md:p-7">
-        <h2 className="text-xl md:text-2xl font-semibold">
+      {/* Metodología y fuentes (confianza + SEO). Plegado por defecto: menos muro de texto. */}
+      <details className="mt-16 glass p-6 md:p-7">
+        <summary className="text-xl md:text-2xl font-semibold cursor-pointer marker:text-cyan">
           {locale === "it" ? "Sui dati: fonti, verità e aggiornamenti" : "Sobre los datos: fuentes, veracidad y actualizaciones"}
-        </h2>
+        </summary>
         {locale === "it" ? (
           <div className="text-sm text-muted mt-3 space-y-3 max-w-3xl">
             <p>
@@ -339,7 +334,7 @@ export default function Home() {
             </p>
           </div>
         )}
-      </section>
+      </details>
 
       {/* FAQ (preguntas que la gente busca) + datos estructurados FAQPage */}
       {(() => {

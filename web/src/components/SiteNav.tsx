@@ -1,13 +1,31 @@
 "use client";
 
 import Link from "next/link";
+import type { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import LangSwitch from "./LangSwitch";
 import { useLocale } from "@/i18n/LocaleProvider";
 
-// Barra superior fija, compartida por la portada y la página de escándalos.
+// Barra superior fija. Resalta la página en la que estás (más fácil orientarse).
 export default function SiteNav() {
   const { m, locale } = useLocale();
   const it = locale === "it";
+  const pathname = usePathname();
+  const base = "px-2.5 py-1.5 rounded-full transition whitespace-nowrap";
+
+  const items: { href: string; label: ReactNode; show: string; anchor?: boolean }[] = [
+    { href: "/#explorar", label: m.nav.map, show: "hidden sm:inline-block", anchor: true },
+    { href: "/ranking", label: it ? "Classifica" : "Ranking", show: "hidden sm:inline-block" },
+    { href: "/records", label: <>🏆 {it ? "Record" : "Récords"}</>, show: "hidden lg:inline-block" },
+    { href: "/sueldos-alcaldes", label: it ? "Stipendi" : "Sueldos", show: "hidden md:inline-block" },
+    { href: "/deuda-municipios", label: it ? "Debito" : "Deuda", show: "hidden md:inline-block" },
+    { href: "/spesa-comuni", label: it ? "Spesa comuni" : "Gasto Italia", show: "hidden lg:inline-block" },
+    { href: "/#noticias", label: m.nav.news, show: "hidden sm:inline-block", anchor: true },
+    { href: "/bulos", label: it ? "Bufale" : "Bulos", show: "hidden sm:inline-block" },
+    { href: "/futbol", label: <>⚽ {it ? "Calcio" : "Fútbol"}</>, show: "hidden sm:inline-block" },
+  ];
+  const isActive = (href: string) => !href.startsWith("/#") && (pathname === href || pathname.startsWith(`${href}/`));
+
   return (
     <header className="sticky top-0 z-40 -mx-4 sm:-mx-6 px-4 sm:px-6 py-3 backdrop-blur-md bg-[rgba(5,7,15,0.72)] border-b border-[var(--panel-border)]">
       <div className="flex items-center justify-between gap-3">
@@ -15,35 +33,18 @@ export default function SiteNav() {
           Cuentas Claras
         </Link>
         <nav className="flex items-center gap-1 sm:gap-1.5 text-sm min-w-0">
-          <a href="/#explorar" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            {m.nav.map}
-          </a>
-          <Link href="/ranking" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            {it ? "Classifica" : "Ranking"}
-          </Link>
-          <Link href="/records" className="hidden lg:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            🏆 {it ? "Record" : "Récords"}
-          </Link>
-          <Link href="/sueldos-alcaldes" className="hidden md:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            {it ? "Stipendi" : "Sueldos"}
-          </Link>
-          <Link href="/deuda-municipios" className="hidden md:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            {it ? "Debito" : "Deuda"}
-          </Link>
-          <Link href="/spesa-comuni" className="hidden md:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            {it ? "Spesa comuni" : "Gasto (IT)"}
-          </Link>
-          <a href="/#noticias" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            {m.nav.news}
-          </a>
-          <Link href="/bulos" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            {it ? "Bufale" : "Bulos"}
-          </Link>
-          <Link href="/futbol" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full text-muted hover:text-fg transition whitespace-nowrap">
-            ⚽ {it ? "Calcio" : "Fútbol"}
-          </Link>
+          {items.map((x) => {
+            const active = isActive(x.href);
+            const cls = `${x.show} ${base} ${active ? "text-fg bg-[rgba(120,160,255,0.14)] font-medium" : "text-muted hover:text-fg"}`;
+            return x.anchor ? (
+              <a key={x.href} href={x.href} className={cls}>{x.label}</a>
+            ) : (
+              <Link key={x.href} href={x.href} className={cls} aria-current={active ? "page" : undefined}>{x.label}</Link>
+            );
+          })}
           <Link
             href="/escandalos"
+            aria-current={isActive("/escandalos") ? "page" : undefined}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-medium whitespace-nowrap text-[#ff7a7a] border border-[rgba(255,107,107,0.45)] bg-[rgba(255,107,107,0.1)] hover:bg-[rgba(255,107,107,0.18)] transition"
           >
             <span className="relative flex h-1.5 w-1.5">

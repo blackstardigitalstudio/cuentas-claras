@@ -119,6 +119,32 @@ function Inner() {
         <p className="text-[11px] text-muted mt-3">{it ? "Fonte: " : "Fuente: "}<a href={REVENUE_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{REVENUE_SOURCE.name}</a></p>
       </section>
 
+      {/* FAQ */}
+      <section className="mt-12">
+        <h2 className="text-lg font-semibold mb-3">{it ? "Domande frequenti" : "Preguntas frecuentes"}</h2>
+        <div className="space-y-2.5">
+          {(it
+            ? [
+                { q: "Qual è il campionato di calcio più ricco del mondo?", a: `La ${richestLeague.league}, con ${formatCompact(richestLeague.revenue)} di ricavi totali: è il campionato dove girano più soldi al mondo. Fonte: ${LEAGUE_SOURCE.name}.` },
+                { q: "Quale club incassa di più al mondo?", a: `Il ${clubs[0].club}, con ${formatCompact(clubs[0].amount)} di ricavi (${REVENUE_SEASON}): l'unico club al mondo sopra il miliardo di euro.` },
+                { q: "«Ricavi» è come il «valore» della squadra?", a: "No. I ricavi sono i soldi che entrano in un anno (biglietti, TV, sponsor). Il «valore» è una stima di mercato diversa, che qui non usiamo: mostriamo solo dati ufficiali di bilancio." },
+                { q: "Le leghe guadagnano o perdono?", a: `Non sempre guadagnano: molte spendono quasi tutto in stipendi. Quella che perde di più è la ${worstNet.league} (${formatCompact(Math.abs(worstNet.net))} di perdita).` },
+              ]
+            : [
+                { q: "¿Qué liga de fútbol es la más rica del mundo?", a: `La ${richestLeague.league}, con ${formatCompact(richestLeague.revenue)} de ingresos totales: es la liga donde más dinero se mueve del mundo. Fuente: ${LEAGUE_SOURCE.name}.` },
+                { q: "¿Qué club ingresa más en el mundo?", a: `El ${clubs[0].club}, con ${formatCompact(clubs[0].amount)} de ingresos (${REVENUE_SEASON}): el único club del mundo por encima de los 1.000 M€.` },
+                { q: "¿«Ingresos» es lo mismo que el «valor» del club?", a: "No. Los ingresos son el dinero que entra en un año (entradas, TV, patrocinios). El «valor» es una estimación de mercado distinta, que aquí no usamos: solo mostramos datos oficiales de las cuentas." },
+                { q: "¿Las ligas ganan o pierden dinero?", a: `No siempre ganan: muchas gastan casi todo en salarios. La que más pierde es la ${worstNet.league} (${formatCompact(Math.abs(worstNet.net))} de pérdidas).` },
+              ]
+          ).map((f, i) => (
+            <details key={i} className="glass p-4" {...(i === 0 ? { open: true } : {})}>
+              <summary className="font-medium cursor-pointer marker:text-cyan">{f.q}</summary>
+              <p className="text-sm text-muted mt-2">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <nav className="mt-10 flex flex-wrap gap-3">
         <Link href="/futbol/" className="px-5 py-2.5 rounded-full font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition inline-block">
           {it ? "🇪🇸🇮🇹 Spagna e Italia nel dettaglio →" : "🇪🇸🇮🇹 España e Italia en detalle →"}

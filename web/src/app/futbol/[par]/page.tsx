@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS, type ClubMetrics } from "@/data/futbol";
-import { formatEuro } from "@/lib/format";
+import { formatEuro, formatCompact } from "@/lib/format";
 import ParClient from "./ParClient";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -28,9 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { par } = await params;
   const pair = parsePair(par);
   if (pair) {
-    const t = `${pair.a.name} vs ${pair.b.name}: presupuesto, ingresos y deuda`;
+    const t = `${pair.a.name} vs ${pair.b.name}: quién ingresa y debe más`;
     return {
-      title: `${t} (comparativa financiera, datos oficiales)`,
+      title: t,
       description: `Compara ${pair.a.name} y ${pair.b.name}: límite salarial, ingresos, salarios y deuda, con datos oficiales (LaLiga, Deloitte, cuentas anuales). Solo cifras verificables.`,
       alternates: { canonical: `${SITE}/futbol/${par}/` },
       openGraph: { title: t, description: "Comparativa financiera con datos oficiales.", type: "article", images: [{ url: "/og-futbol.png", width: 1200, height: 630 }] },
@@ -40,7 +40,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const c = CLUBS[par];
   if (!c || !CLUB_PAGE_SLUGS.includes(par)) return {};
   return {
-    title: `${c.name}: ingresos, deuda y límite salarial (cuentas oficiales)`,
+    // El número de ingresos delante: es el dato que la gente busca y hace clicar.
+    title: c.revenue
+      ? `${c.name}: ${formatCompact(c.revenue)} de ingresos, ¿y de deuda?`
+      : `${c.name}: ingresos, deuda y límite salarial`,
     description: `Las cuentas del ${c.name} con datos oficiales: ${c.revenue ? `ingresos de ${formatEuro(c.revenue)}, ` : ""}${c.debt ? `deuda de ${formatEuro(c.debt.amount)}, ` : ""}salarios y límite salarial. Solo cifras verificables.`,
     alternates: { canonical: `${SITE}/futbol/${par}/` },
     openGraph: { title: `${c.name}: ingresos, deuda y límite salarial`, description: "Las cuentas del club con datos oficiales.", type: "article", images: [{ url: "/og-futbol.png", width: 1200, height: 630 }] },

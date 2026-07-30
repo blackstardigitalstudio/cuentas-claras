@@ -7,7 +7,7 @@ import HeroBanner from "@/components/HeroBanner";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "¿Cuánto cobra un concejal? Cómo funciona el sueldo de los concejales",
+  title: "¿Cuánto cobra un concejal? Desde 0 € a sueldo completo",
   description:
     "¿Cuánto cobra un concejal de un ayuntamiento? Te explicamos fácil los tres casos (dedicación exclusiva, parcial o solo por asistencia a plenos) y dónde ver el sueldo real del alcalde de tu ciudad.",
   keywords: ["cuánto cobra un concejal", "sueldo concejal", "retribuciones concejales", "dedicación exclusiva concejal", "dietas concejales"],

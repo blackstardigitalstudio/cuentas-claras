@@ -4,7 +4,7 @@ import PoliticosClient from "./PoliticosClient";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "¿Cuánto cobra un político? Sueldos oficiales en España e Italia",
+  title: "¿Cuánto cobra un político? 95.944 € el presidente",
   description:
     "¿Cuánto gana el presidente del Gobierno, un ministro o un diputado en España? ¿Y un parlamentario en Italia? El presidente español cobra 95.944 €/año y un parlamentario italiano 10.435 €/mes. Cifras oficiales. Quanto guadagna un politico.",
   keywords: [

@@ -44,9 +44,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!f) return {};
   const { r } = f;
   const es = pais === "es";
+  // Título con el NÚMERO delante: responde a la búsqueda y da credibilidad,
+  // pero en forma de pregunta para que el lector quiera ver el desglose (CTR).
   const title = es
-    ? `Presupuesto de ${r.name} ${r.year}: ingresos y gastos`
-    : `Bilancio di ${r.name} ${r.year}: entrate e spese`;
+    ? `Presupuesto de ${r.name} ${r.year}: ¿en qué se gastan ${formatCompact(r.gastos)}?`
+    : `Bilancio di ${r.name} ${r.year}: dove vanno ${formatCompact(r.gastos)}?`;
   const extra = es
     ? `${r.mayorSalary ? ` Sueldo del alcalde: ${formatCompact(r.mayorSalary.amount)}/año.` : ""}${r.debt ? ` Deuda viva: ${r.debt.amount > 0 ? formatCompact(r.debt.amount) : "sin deuda"}.` : ""}`
     : `${r.mayorSalary ? ` Stipendio del sindaco: ${formatCompact(r.mayorSalary.amount)}/anno.` : ""}${r.debt ? ` Debito: ${r.debt.amount > 0 ? formatCompact(r.debt.amount) : "nessuno"}.` : ""}`;

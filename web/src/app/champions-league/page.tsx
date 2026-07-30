@@ -4,7 +4,7 @@ import ChampionsClient from "./ChampionsClient";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "Premios Champions League 2025/26: cuánto gana el campeón y por partido (UEFA)",
+  title: "Premios Champions 2025/26: 18,62 M€ solo por participar",
   description:
     "¿Cuánto se gana en la Champions League 2025/26? Un club cobra 18,62 mln € solo por participar, 2,1 mln € por victoria y hasta 25 mln € por ganar la final, con un bote total de 2.467 millones. Cifras oficiales UEFA. Montepremi Champions 2025/26.",
   keywords: [

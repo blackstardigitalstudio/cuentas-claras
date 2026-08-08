@@ -5,7 +5,7 @@ import RankingClient from "./RankingClient";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "Ranking del gasto público municipal · España e Italia",
+  title: "¿Qué ciudad gasta más dinero público? El ranking",
   description:
     "¿Qué ciudad gasta más dinero público? Ranking de los ayuntamientos de España e Italia por gasto e ingresos, con datos oficiales. Classifica della spesa pubblica dei comuni di Spagna e Italia.",
   keywords: [

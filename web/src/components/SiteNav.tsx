@@ -22,7 +22,7 @@ export default function SiteNav() {
     { href: "/spesa-comuni", label: it ? "Spesa comuni" : "Gasto Italia", show: "hidden lg:inline-block" },
     { href: "/#noticias", label: m.nav.news, show: "hidden sm:inline-block", anchor: true },
     { href: "/bulos", label: it ? "Bufale" : "Bulos", show: "hidden sm:inline-block" },
-    { href: "/futbol", label: <>⚽ {it ? "Calcio" : "Fútbol"}</>, show: "hidden sm:inline-block" },
+    { href: it ? "/calcio" : "/futbol", label: <>⚽ {it ? "Calcio" : "Fútbol"}</>, show: "hidden sm:inline-block" },
   ];
   const isActive = (href: string) => !href.startsWith("/#") && (pathname === href || pathname.startsWith(`${href}/`));
 

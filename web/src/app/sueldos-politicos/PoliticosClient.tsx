@@ -176,9 +176,9 @@ function Inner() {
   );
 }
 
-export default function PoliticosClient() {
+export default function PoliticosClient({ locale }: { locale?: "es" | "it" }) {
   return (
-    <LocaleProvider>
+    <LocaleProvider force={locale}>
       <Inner />
     </LocaleProvider>
   );

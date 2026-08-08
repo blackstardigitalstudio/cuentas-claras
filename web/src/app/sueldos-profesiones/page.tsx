@@ -17,7 +17,10 @@ export const metadata: Metadata = {
     "sueldos empleados públicos",
     "sueldo funcionario",
   ],
-  alternates: { canonical: `${SITE}/sueldos-profesiones/` },
+  alternates: {
+    canonical: `${SITE}/sueldos-profesiones/`,
+    languages: { "es-ES": `${SITE}/sueldos-profesiones/`, "it-IT": `${SITE}/stipendi-professioni/` },
+  },
   openGraph: {
     title: "¿Cuánto gana un médico, un profesor o un policía?",
     description: "Sueldos típicos de las profesiones públicas en España e Italia, con fuente.",

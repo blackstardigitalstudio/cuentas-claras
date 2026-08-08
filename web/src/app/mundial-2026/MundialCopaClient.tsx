@@ -157,9 +157,9 @@ function Inner() {
   );
 }
 
-export default function MundialCopaClient() {
+export default function MundialCopaClient({ locale }: { locale?: "es" | "it" }) {
   return (
-    <LocaleProvider>
+    <LocaleProvider force={locale}>
       <Inner />
     </LocaleProvider>
   );

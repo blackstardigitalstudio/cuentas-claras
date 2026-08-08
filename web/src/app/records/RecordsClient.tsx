@@ -7,7 +7,7 @@ import HeroBanner from "@/components/HeroBanner";
 import SimpleExplainer from "@/components/SimpleExplainer";
 import ShareBar from "@/components/ShareBar";
 import { formatEuro } from "@/lib/format";
-import type { Rec } from "./page";
+import type { Rec } from "./records-data";
 
 type CountryData = { records: Rec[]; noDebt: number };
 type Props = { data: { es: CountryData; it: CountryData } };
@@ -122,9 +122,9 @@ function Inner({ data }: Props) {
   );
 }
 
-export default function RecordsClient({ data }: Props) {
+export default function RecordsClient({ data, locale }: Props & { locale?: "es" | "it" }) {
   return (
-    <LocaleProvider>
+    <LocaleProvider force={locale}>
       <Inner data={data} />
     </LocaleProvider>
   );

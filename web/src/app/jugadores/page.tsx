@@ -17,7 +17,10 @@ export const metadata: Metadata = {
     "trasferimento più caro storia",
     "salario jugadores fútbol",
   ],
-  alternates: { canonical: `${SITE}/jugadores/` },
+  alternates: {
+    canonical: `${SITE}/jugadores/`,
+    languages: { "es-ES": `${SITE}/jugadores/`, "it-IT": `${SITE}/soldi-giocatori/` },
+  },
   openGraph: {
     title: "El dinero de los jugadores: fichajes, cláusulas y sueldos",
     description: "El fichaje más caro (Neymar, 222 mln €), las cláusulas de 1.000 mln € y cuánto se estima que ganan las estrellas. Con fuentes.",

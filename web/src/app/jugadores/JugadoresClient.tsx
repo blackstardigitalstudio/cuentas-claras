@@ -180,9 +180,9 @@ function Inner() {
   );
 }
 
-export default function JugadoresClient() {
+export default function JugadoresClient({ locale }: { locale?: "es" | "it" }) {
   return (
-    <LocaleProvider>
+    <LocaleProvider force={locale}>
       <Inner />
     </LocaleProvider>
   );

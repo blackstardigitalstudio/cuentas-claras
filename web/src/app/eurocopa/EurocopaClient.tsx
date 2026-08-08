@@ -164,9 +164,9 @@ function Inner() {
   );
 }
 
-export default function EurocopaClient() {
+export default function EurocopaClient({ locale }: { locale?: "es" | "it" }) {
   return (
-    <LocaleProvider>
+    <LocaleProvider force={locale}>
       <Inner />
     </LocaleProvider>
   );

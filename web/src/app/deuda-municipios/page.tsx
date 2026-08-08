@@ -7,7 +7,7 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com"
 const pct = Math.round((ranks.debtFree / ranks.debtCount) * 100);
 
 export const metadata: Metadata = {
-  title: `¿Qué municipios tienen más deuda en España? Ranking ${ranks.year} (deuda viva oficial)`,
+  title: `¿Qué ciudad española debe más? Ranking ${ranks.year}`,
   description: `Ranking de los municipios más endeudados de España en ${ranks.year}, con la deuda viva oficial del Ministerio de Hacienda. ${ranks.topDebt[0].name} lidera con ${formatEuro(ranks.topDebt[0].amount)}. Además, ${ranks.debtFree.toLocaleString("es")} de ${ranks.debtCount.toLocaleString("es")} municipios (${pct}%) no tienen ninguna deuda.`,
   keywords: [
     "municipios más endeudados España",

@@ -17,7 +17,10 @@ export const metadata: Metadata = {
     "premi UEFA Champions League",
     "reparto UEFA Champions",
   ],
-  alternates: { canonical: `${SITE}/champions-league/` },
+  alternates: {
+    canonical: `${SITE}/champions-league/`,
+    languages: { "es-ES": `${SITE}/champions-league/`, "it-IT": `${SITE}/premi-champions-league/` },
+  },
   openGraph: {
     title: "Premios Champions League 2025/26 (UEFA)",
     description: "18,62 mln € solo por participar, 2,1 mln € por victoria, hasta 25 mln € por ganar la final. Bote total 2.467 millones. Cifras oficiales UEFA.",

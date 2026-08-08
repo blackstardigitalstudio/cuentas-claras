@@ -35,6 +35,8 @@ export default function ShareHighlight() {
 
   useEffect(() => {
     setIt(document.documentElement.lang === "it");
+    // Su touch la funzione è disattivata (vedi sotto): niente suggerimento.
+    if (window.matchMedia?.("(pointer: coarse)").matches) return;
     // Suggerimento una tantum per far scoprire la funzione (chiave del backlink).
     try {
       if (!localStorage.getItem("cc-sharehl-hint")) {
@@ -55,6 +57,12 @@ export default function ShareHighlight() {
   }, []);
 
   useEffect(() => {
+    // Su touch (telefoni e tablet) la selezione del testo apre il menu di sistema
+    // (Copia / Traduci) e il popup di Google Traduttore, che coprono questa barra.
+    // Lì la condivisione la fanno i pulsanti espliciti (ShareFact / ShareBar):
+    // qui ci limitiamo al desktop, dove non c'è conflitto.
+    if (typeof window !== "undefined" && window.matchMedia?.("(pointer: coarse)").matches) return;
+
     let tm: ReturnType<typeof setTimeout>;
     const onSelect = () => {
       clearTimeout(tm);

@@ -123,6 +123,8 @@ function Inner() {
                 { q: "Quanto guadagna un medico?", a: "In Italia un medico del SSN parte da circa 60.000 € lordi l'anno, sale a 80.000+ con l'anzianità e i primari arrivano a ~110.000 €. In Spagna la media nella sanità pubblica è circa 54.000 €. Varia molto secondo regione e anzianità." },
                 { q: "Quanto guadagna un infermiere?", a: "Intorno a 28.000-29.000 € lordi l'anno sia in Italia (CCNL Sanità, base ~25.000 € + accessori) sia in Spagna (media nel pubblico). Cresce con l'anzianità." },
                 { q: "Quanto guadagna un insegnante?", a: "In Italia circa 30.000 € lordi l'anno di ruolo (sale con l'anzianità); in Spagna 30.000-38.000 € secondo la regione, con aumenti per trienni e sexenni." },
+                { q: "Quanto guadagna un medico al mese?", a: "Un medico ospedaliero del SSN parte da circa 5.000 € lordi al mese (60.000 € l'anno) e cresce con l'anzianità. Il netto è più o meno la metà del lordo, ma dipende dalla situazione fiscale di ciascuno: non esiste una cifra unica." },
+                { q: "Qual è il tipo di medico più pagato?", a: "I primari (direttori di struttura complessa), che arrivano intorno ai 110.000 € lordi l'anno. Pesano molto anche la specializzazione, l'anzianità e le indennità per turni e reperibilità." },
                 { q: "Da dove escono questi stipendi?", a: "Dalle tue tasse: medici, prof, infermieri e poliziotti sono dipendenti pubblici. Le cifre qui sono tipiche (medie), non fisse. Fonti: INE (ES), CCNL e contratti pubblici (IT)." },
               ]
             : [

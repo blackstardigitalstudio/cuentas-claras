@@ -6,6 +6,7 @@ import { formatCompact, formatEuro, formatPct } from "@/lib/format";
 import { CMP_ES, CMP_IT, comparePairsFor } from "@/data/compare-lists";
 import SimpleExplainer from "@/components/SimpleExplainer";
 import ShareBar from "@/components/ShareBar";
+import ShareFact from "@/components/ShareFact";
 import cityOg from "@/data/city-og.json";
 
 const CITY_OG = new Set(cityOg as string[]);
@@ -359,6 +360,13 @@ export default async function CityPage({ params }: Props) {
               <a href={r.debt.source.url} target="_blank" rel="noopener noreferrer" className="text-[11px] text-muted underline hover:text-fg">
                 {r.debt.source.name}
               </a>
+              <ShareFact
+                className="mt-2"
+                lang={es ? "es" : "it"}
+                text={es
+                  ? `🏦 ${r.name} debe ${r.debt.amount > 0 ? formatEuro(r.debt.amount) : "0 €"}. Dato oficial 👀`
+                  : `🏦 ${r.name} ha un debito di ${r.debt.amount > 0 ? formatEuro(r.debt.amount) : "0 €"}. Dato ufficiale 👀`}
+              />
             </div>
           )}
           {r.mayorSalary && (
@@ -378,6 +386,15 @@ export default async function CityPage({ params }: Props) {
                   {r.mayorSalary.source.name}
                 </a>
               </p>
+              {/* Pulsante esplicito: funziona anche su telefono, dove la
+                  condivisione per selezione viene coperta dal menu di sistema. */}
+              <ShareFact
+                className="mt-2"
+                lang={es ? "es" : "it"}
+                text={es
+                  ? `🏛️ El alcalde de ${r.name} cobra ${formatEuro(r.mayorSalary.amount)} al año. Dato oficial 👀`
+                  : `🏛️ Il sindaco di ${r.name} guadagna ${formatEuro(r.mayorSalary.amount)} all'anno. Dato ufficiale 👀`}
+              />
             </div>
           )}
         </section>

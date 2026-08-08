@@ -35,8 +35,8 @@ function Inner() {
       ]
     : [
         { q: "¿Cuál es el alcalde que más cobra de España?", a: `El alcalde de ${top[0].name}, con ${formatEuro(top[0].amount)} brutos al año (${ranks.year}), seguido de ${top[1].name} (${formatEuro(top[1].amount)}) y ${top[2].name} (${formatEuro(top[2].amount)}).` },
-        { q: "¿Cuánto cobra un alcalde de media en España?", a: `La retribución media de los ${nf(ranks.salaryReporting)} ayuntamientos que declaran sus datos al ISPA es de ${formatEuro(ranks.salaryAvg)} brutos al año. Pero hay enormes diferencias según el tamaño del municipio.` },
-        { q: "¿Todos los alcaldes cobran un sueldo?", a: `No. ${nf(ranks.salaryZero)} alcaldes declaran una retribución de 0 € y ${nf(ranks.salarySinDedic)} ejercen sin dedicación exclusiva (cobran solo por asistencia a plenos o nada), sobre todo en municipios pequeños.` },
+        { q: "¿Cuánto cobra un alcalde de media en España?", a: `De media, ${formatEuro(ranks.salaryAvg)} brutos al año entre los ${nf(ranks.salaryReporting)} ayuntamientos que dan sus datos. Pero la media dice poco: entre un pueblo pequeño y una gran ciudad hay un abismo.` },
+        { q: "¿Todos los alcaldes cobran un sueldo?", a: `No. ${nf(ranks.salaryZero)} alcaldes cobran 0 €, y ${nf(ranks.salarySinDedic)} no se dedican solo al ayuntamiento: siguen con su trabajo y cobran únicamente por ir a los plenos, o nada. Pasa sobre todo en los pueblos pequeños.` },
         { q: "¿De qué depende cuánto cobra un alcalde?", a: "Del tamaño del municipio y de su «dedicación»: quien se dedica solo al ayuntamiento (exclusiva) cobra un sueldo fijo; quien no, cobra poco o nada. Los topes los fija la ley según la población." },
         { q: "¿Cuánto cobra el alcalde de un pueblo pequeño?", a: "A menudo 0 € o muy poco: en los municipios pequeños el alcalde suele seguir con su trabajo normal y solo cobra por asistir a los plenos." },
         { q: "¿De dónde salen estos datos?", a: `Del ISPA (Información Salarial de los Puestos de la Administración) del Ministerio de Hacienda y Función Pública, ejercicio ${ranks.year}. Es información oficial y verificable.` },
@@ -77,7 +77,7 @@ function Inner() {
             it ? (
               <p>Nei paesi piccoli molti sindaci prendono poco o nulla (lavorano senza incarico esclusivo). Nelle grandi città lo stipendio è più alto. È un dato ufficiale, comunicato all'ISPA del Ministero delle Finanze spagnolo.</p>
             ) : (
-              <p>En los pueblos pequeños muchos alcaldes cobran poco o nada (ejercen sin dedicación exclusiva). En las grandes ciudades el sueldo es más alto. Es un dato oficial, declarado al ISPA del Ministerio de Hacienda.</p>
+              <p>En los pueblos pequeños muchos alcaldes cobran poco o nada: siguen con su trabajo de siempre y solo les pagan por ir a los plenos. En las grandes ciudades sí es un sueldo completo. Son datos oficiales, los que cada ayuntamiento declara al Ministerio de Hacienda.</p>
             )
           }
         >

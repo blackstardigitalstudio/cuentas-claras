@@ -160,13 +160,13 @@ export default async function CityPage({ params }: Props) {
         { q: `¿En qué se gasta el dinero público en ${r.name}?`, a: `Las principales áreas de gasto son: ${gList}.` },
         r.mayorSalary && {
           q: `¿Cuánto cobra el alcalde de ${r.name}?`,
-          a: `El alcalde de ${r.name} percibe ${formatEuro(r.mayorSalary.amount)} brutos al año${r.mayorSalary.dedicacion ? ` (${r.mayorSalary.dedicacion})` : ""}. Fuente: ${r.mayorSalary.source.name}.`,
+          a: `El alcalde de ${r.name} cobra ${formatEuro(r.mayorSalary.amount)} brutos al año${r.mayorSalary.dedicacion ? ` (${r.mayorSalary.dedicacion})` : ""}. No se lo pone él: lo aprueba el pleno del ayuntamiento, con topes que marca la ley según el tamaño del municipio. Fuente: ${r.mayorSalary.source.name}.`,
         },
         r.debt && {
           q: `¿Cuánta deuda tiene ${r.name}?`,
           a: r.debt.amount > 0
-            ? `La deuda viva del Ayuntamiento de ${r.name} asciende a ${formatEuro(r.debt.amount)} a 31/12/${r.debt.year}. Fuente: Ministerio de Hacienda (deuda viva de las entidades locales).`
-            : `El Ayuntamiento de ${r.name} no registra deuda viva a 31/12/${r.debt.year}. Fuente: Ministerio de Hacienda (deuda viva de las entidades locales).`,
+            ? `A 31/12/${r.debt.year} el Ayuntamiento de ${r.name} aún tenía que devolver ${formatEuro(r.debt.amount)}. Es lo que llaman «deuda viva»: los préstamos que todavía no ha terminado de pagar, como una hipoteca. Fuente: Ministerio de Hacienda.`
+            : `A 31/12/${r.debt.year} el Ayuntamiento de ${r.name} no tenía préstamos que devolver: cero deuda. Fuente: Ministerio de Hacienda.`,
         },
         topI && {
           q: `¿De dónde vienen los ingresos de ${r.name}?`,
@@ -191,13 +191,13 @@ export default async function CityPage({ params }: Props) {
         { q: `Dove vanno i soldi pubblici a ${r.name}?`, a: `Le principali aree di spesa sono: ${gList}.` },
         r.mayorSalary && {
           q: `Quanto guadagna il sindaco di ${r.name}?`,
-          a: `Il sindaco di ${r.name} percepisce un'indennità di funzione di ${formatEuro(r.mayorSalary.amount)} lordi all'anno, come stabilito dalla legge (L. 234/2021 e DM Interno 30/05/2022). L'importo è ridotto del 50% se il sindaco è un lavoratore dipendente non in aspettativa.`,
+          a: `Il sindaco di ${r.name} prende ${formatEuro(r.mayorSalary.amount)} lordi all'anno. Non se lo decide lui: lo fissa la legge, in base a quanti abitanti ha il comune. E se il sindaco ha un altro lavoro e non si mette in aspettativa, ne prende la metà.`,
         },
         r.debt && {
           q: `Quanto debito ha il Comune di ${r.name}?`,
           a: r.debt.amount > 0
-            ? `Il debito residuo del Comune di ${r.name} è di ${formatEuro(r.debt.amount)} al 31/12/${r.debt.year}.`
-            : `Il Comune di ${r.name} non registra debito residuo al 31/12/${r.debt.year}.`,
+            ? `Al 31/12/${r.debt.year} il Comune di ${r.name} doveva ancora restituire ${formatEuro(r.debt.amount)}. È il «debito residuo»: i prestiti che non ha ancora finito di pagare, come un mutuo.`
+            : `Al 31/12/${r.debt.year} il Comune di ${r.name} non aveva prestiti da restituire: zero debiti.`,
         },
         topI && {
           q: `Da dove arrivano le entrate di ${r.name}?`,
@@ -381,7 +381,7 @@ export default async function CityPage({ params }: Props) {
                 {formatEuro(r.mayorSalary.amount)}<span className="text-sm text-muted font-normal">{es ? "/año" : "/anno"}</span>
               </p>
               <p className="text-[11px] text-muted">
-                {r.mayorSalary.dedicacion || (es ? "Indemnización de función (por ley)" : "Indennità di funzione (di legge)")} ·{" "}
+                {r.mayorSalary.dedicacion || (es ? "lo marca la ley, según el tamaño del municipio" : "lo fissa la legge, in base agli abitanti")} ·{" "}
                 <a href={r.mayorSalary.source.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">
                   {r.mayorSalary.source.name}
                 </a>

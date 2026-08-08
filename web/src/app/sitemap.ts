@@ -48,6 +48,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/tasse-benzina/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/spesa-sanita/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/gasto-sanidad/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/spesa-pensioni/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/gasto-pensiones/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/stipendi-professioni/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE}/debito-pubblico/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE}/fondi-europei-pnrr/`, lastModified, changeFrequency: "weekly", priority: 0.85 },

@@ -114,6 +114,9 @@ function Inner() {
                 { q: "Quanto deve la Spagna?", a: "A fine 2025 il debito pubblico spagnolo era di 1.699 miliardi di euro (100,8% del PIL), circa 35.000 € per abitante. Fonte: Banco de España." },
                 { q: "È un male avere debito?", a: "Un po' di debito è normale. Il problema è quando è troppo: gli interessi da pagare ogni anno si mangiano una fetta del bilancio, soldi che non vanno a scuole, sanità o strade. La regola europea è non superare il 60% del PIL." },
                 { q: "Chi presta questi soldi allo Stato?", a: "Investitori che comprano i titoli di Stato (BTP in Italia): banche, fondi, risparmiatori e altri Paesi. Lo Stato promette di restituire con gli interessi." },
+                { q: "Quanto debito pubblico c'è per ogni italiano?", a: "Circa 53.000 € a testa: si ottiene dividendo i 3.095 miliardi di debito per i quasi 59 milioni di abitanti. Non è una somma che devi pagare tu personalmente: è il debito dello Stato diviso per quanti siamo." },
+                { q: "Perché l'Italia ha un debito pubblico così alto?", a: "Si è accumulato in decenni: per molti anni lo Stato ha speso più di quanto incassava e ha coperto la differenza con nuovi prestiti. A quel punto scattano gli interessi, che fanno crescere il debito anche quando i conti dell'anno migliorano." },
+                { q: "Quando l'Italia finirà di pagare il debito pubblico?", a: "Uno Stato non estingue il debito come una famiglia estingue il mutuo: quando un titolo scade ne emette uno nuovo. Quello che conta non è azzerarlo, ma che cresca meno dell'economia — cioè che scenda il rapporto con il PIL (oggi 137,1%, contro un limite europeo del 60%)." },
               ]
             : [
                 { q: "¿Cuánto debe España?", a: "A cierre de 2025 la deuda pública española era de 1,7 billones de euros (1.699 miles de millones), el 100,8% del PIB: unos 35.000 € por habitante. Fuente: Banco de España." },

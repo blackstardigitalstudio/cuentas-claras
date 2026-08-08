@@ -117,7 +117,7 @@ export default function Home() {
         <p className="text-xs uppercase tracking-widest text-cyan/70 mb-3">{locale === "it" ? "Esplora" : "Explora"}</p>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {[
-            { href: "/sueldos-alcaldes/", emoji: "🏛️", accent: "#a5b4fc", es: "Sueldos de alcaldes", it: "Stipendi dei sindaci", subEs: "quién cobra más", subIt: "chi guadagna di più" },
+            { href: locale === "it" ? "/stipendi-sindaci/" : "/sueldos-alcaldes/", emoji: "🏛️", accent: "#a5b4fc", es: "Sueldos de alcaldes", it: "Stipendi dei sindaci", subEs: "quién cobra más", subIt: "quanto prende il tuo" },
             { href: locale === "it" ? "/stipendi-politici/" : "/sueldos-politicos/", emoji: "🏛️", accent: "#818cf8", es: "Sueldos de políticos", it: "Stipendi dei politici", subEs: "presidente, ministros…", subIt: "presidente, ministri…" },
             { href: locale === "it" ? "/stipendi-professioni/" : "/sueldos-profesiones/", emoji: "💼", accent: "#22d3ee", es: "¿Cuánto gana un médico?", it: "Quanto guadagna un medico?", subEs: "médico, profe, policía…", subIt: "medico, prof, poliziotto…" },
             { href: "/deuda-municipios/", emoji: "🏦", accent: "#fdba74", es: "Deuda municipal", it: "Debito dei comuni", subEs: "quién debe más", subIt: "chi deve di più" },

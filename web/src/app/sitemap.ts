@@ -39,6 +39,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/eurocopa/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/jugadores/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/escandalos/`, lastModified, changeFrequency: "hourly", priority: 0.8 },
+    // Versioni ITALIANE delle pagine tematiche (URL e metadati in italiano, così
+    // Google le mostra a chi cerca in italiano). Contenuto equivalente allo
+    // spagnolo, collegate tra loro con hreflang.
+    { url: `${SITE}/stipendi-politici/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${SITE}/stipendi-professioni/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${SITE}/debito-pubblico/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${SITE}/fondi-europei-pnrr/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${SITE}/soldi-giocatori/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/premi-champions-league/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/premi-europei/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/premi-mondiali-2026/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/calcio/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${SITE}/record-soldi-pubblici/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
   ];
   // Páginas de comparación "X vs Y" (mismas listas que las rutas /comparar y /confronta).
   const addPairs = (list: string[], base: string) => {

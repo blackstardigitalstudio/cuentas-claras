@@ -149,9 +149,9 @@ function Inner() {
   );
 }
 
-export default function FondosClient() {
+export default function FondosClient({ locale }: { locale?: "es" | "it" }) {
   return (
-    <LocaleProvider>
+    <LocaleProvider force={locale}>
       <Inner />
     </LocaleProvider>
   );

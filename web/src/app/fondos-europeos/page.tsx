@@ -17,7 +17,10 @@ export const metadata: Metadata = {
     "PNRR miliardi",
     "dinero europeo pandemia",
   ],
-  alternates: { canonical: `${SITE}/fondos-europeos/` },
+  alternates: {
+    canonical: `${SITE}/fondos-europeos/`,
+    languages: { "es-ES": `${SITE}/fondos-europeos/`, "it-IT": `${SITE}/fondi-europei-pnrr/` },
+  },
   openGraph: {
     title: "El dinero de Europa: Next Generation / PNRR",
     description: "España hasta 163.000 M€; Italia 194.400 M€ (PNRR). A gastar antes de fin de 2026. Cifras oficiales.",

@@ -17,7 +17,10 @@ export const metadata: Metadata = {
     "premio Coppa del Mondo 2026",
     "premi FIFA Mondiali",
   ],
-  alternates: { canonical: `${SITE}/mundial-2026/` },
+  alternates: {
+    canonical: `${SITE}/mundial-2026/`,
+    languages: { "es-ES": `${SITE}/mundial-2026/`, "it-IT": `${SITE}/premi-mondiali-2026/` },
+  },
   openGraph: {
     title: "Premios del Mundial 2026: cuánto gana el campeón (FIFA)",
     description: "El campeón se lleva 50 mln $; total 655 mln $ entre 48 selecciones. Cifras oficiales de la FIFA.",

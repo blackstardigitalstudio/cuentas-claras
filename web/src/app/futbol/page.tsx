@@ -6,7 +6,7 @@ import FutbolClient from "./FutbolClient";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "El dinero del fútbol: presupuestos, ingresos y deuda de los clubes (datos oficiales)",
+  title: "El dinero del fútbol: quién ingresa y quién debe más",
   description:
     `Cuánto puede gastar cada club de LaLiga (límite de coste de plantilla oficial ${LALIGA_LCPD_SEASON}), ingresos (Deloitte) y deuda de los grandes clubes de España e Italia. Solo datos oficiales y verificables. Real Madrid lidera con ${formatEuro(LALIGA_LCPD[0].amount)} de límite salarial.`,
   keywords: [
@@ -19,7 +19,10 @@ export const metadata: Metadata = {
     "bilancio Juventus",
     "debito Inter",
   ],
-  alternates: { canonical: `${SITE}/futbol/` },
+  alternates: {
+    canonical: `${SITE}/futbol/`,
+    languages: { "es-ES": `${SITE}/futbol/`, "it-IT": `${SITE}/calcio/` },
+  },
   openGraph: {
     title: "El dinero del fútbol · datos oficiales (LaLiga + Serie A)",
     description: `Límite salarial LaLiga ${LALIGA_LCPD_SEASON}, ingresos y deuda de los grandes clubes. Solo datos oficiales.`,

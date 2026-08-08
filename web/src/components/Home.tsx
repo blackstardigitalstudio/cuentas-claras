@@ -118,17 +118,17 @@ export default function Home() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             { href: "/sueldos-alcaldes/", emoji: "🏛️", accent: "#a5b4fc", es: "Sueldos de alcaldes", it: "Stipendi dei sindaci", subEs: "quién cobra más", subIt: "chi guadagna di più" },
-            { href: "/sueldos-politicos/", emoji: "🏛️", accent: "#818cf8", es: "Sueldos de políticos", it: "Stipendi dei politici", subEs: "presidente, ministros…", subIt: "presidente, ministri…" },
-            { href: "/sueldos-profesiones/", emoji: "💼", accent: "#22d3ee", es: "¿Cuánto gana un médico?", it: "Quanto guadagna un medico?", subEs: "médico, profe, policía…", subIt: "medico, prof, poliziotto…" },
+            { href: locale === "it" ? "/stipendi-politici/" : "/sueldos-politicos/", emoji: "🏛️", accent: "#818cf8", es: "Sueldos de políticos", it: "Stipendi dei politici", subEs: "presidente, ministros…", subIt: "presidente, ministri…" },
+            { href: locale === "it" ? "/stipendi-professioni/" : "/sueldos-profesiones/", emoji: "💼", accent: "#22d3ee", es: "¿Cuánto gana un médico?", it: "Quanto guadagna un medico?", subEs: "médico, profe, policía…", subIt: "medico, prof, poliziotto…" },
             { href: "/deuda-municipios/", emoji: "🏦", accent: "#fdba74", es: "Deuda municipal", it: "Debito dei comuni", subEs: "quién debe más", subIt: "chi deve di più" },
-            { href: "/deuda-nacional/", emoji: "🏛️", accent: "#f472b6", es: "¿Cuánto debe España?", it: "Quanto deve lo Stato?", subEs: "la deuda del país", subIt: "il debito del Paese" },
-            { href: "/fondos-europeos/", emoji: "🇪🇺", accent: "#60a5fa", es: "El dinero de Europa", it: "I soldi dell'Europa", subEs: "Next Generation / fondos", subIt: "PNRR / Next Generation" },
+            { href: locale === "it" ? "/debito-pubblico/" : "/deuda-nacional/", emoji: "🏛️", accent: "#f472b6", es: "¿Cuánto debe España?", it: "Quanto deve lo Stato?", subEs: "la deuda del país", subIt: "il debito del Paese" },
+            { href: locale === "it" ? "/fondi-europei-pnrr/" : "/fondos-europeos/", emoji: "🇪🇺", accent: "#60a5fa", es: "El dinero de Europa", it: "I soldi dell'Europa", subEs: "Next Generation / fondos", subIt: "PNRR / Next Generation" },
             { href: "/ranking/", emoji: "📊", accent: "#22d3ee", es: "Ranking de gasto", it: "Classifica di spesa", subEs: "quién gasta más", subIt: "chi spende di più" },
-            { href: "/records/", emoji: "🏆", accent: "#34d399", es: "Récords", it: "Record", subEs: "los extremos", subIt: "gli estremi" },
+            { href: locale === "it" ? "/record-soldi-pubblici/" : "/records/", emoji: "🏆", accent: "#34d399", es: "Récords", it: "Record", subEs: "los extremos", subIt: "gli estremi" },
             { href: locale === "it" ? "/confronta/" : "/comparar/", emoji: "⚖️", accent: "#c084fc", es: "Comparar", it: "Confronta", subEs: "ciudad vs ciudad", subIt: "città vs città" },
             { href: "/bulos/", emoji: "📰", accent: "#f472b6", es: "Bulos", it: "Bufale", subEs: "verificados", subIt: "smontate" },
-            { href: "/futbol/", emoji: "⚽", accent: "#4ade80", es: "Fútbol", it: "Calcio", subEs: "clubes y ligas", subIt: "club e leghe" },
-            { href: "/jugadores/", emoji: "💸", accent: "#38bdf8", es: "Jugadores", it: "Giocatori", subEs: "fichajes y sueldos", subIt: "trasferimenti" },
+            { href: locale === "it" ? "/calcio/" : "/futbol/", emoji: "⚽", accent: "#4ade80", es: "Fútbol", it: "Calcio", subEs: "clubes y ligas", subIt: "club e leghe" },
+            { href: locale === "it" ? "/soldi-giocatori/" : "/jugadores/", emoji: "💸", accent: "#38bdf8", es: "Jugadores", it: "Giocatori", subEs: "fichajes y sueldos", subIt: "trasferimenti" },
           ].map((c, i) => (
             <Reveal key={c.href} delay={(i % 4) * 0.06}>
               <Link
@@ -196,11 +196,14 @@ export default function Home() {
         <div className="flex flex-wrap gap-2">
           {(locale === "it"
             ? [
-                { href: "/mundial-2026/", t: "🏆 I premi dei Mondiali 2026" },
-                { href: "/champions-league/", t: "🏆 I premi della Champions" },
-                { href: "/eurocopa/", t: "🏅 I premi degli Europei" },
-                { href: "/jugadores/", t: "⚽ I soldi dei giocatori" },
-                { href: "/records/", t: "🏆 I record dei soldi pubblici" },
+                { href: "/premi-mondiali-2026/", t: "🏆 I premi dei Mondiali 2026" },
+                { href: "/premi-champions-league/", t: "🏆 I premi della Champions" },
+                { href: "/premi-europei/", t: "🏅 I premi degli Europei" },
+                { href: "/soldi-giocatori/", t: "⚽ I soldi dei giocatori" },
+                { href: "/record-soldi-pubblici/", t: "🏆 I record dei soldi pubblici" },
+                { href: "/stipendi-politici/", t: "🏛️ Quanto guadagna un parlamentare" },
+                { href: "/debito-pubblico/", t: "🏦 Il debito pubblico italiano" },
+                { href: "/fondi-europei-pnrr/", t: "🇪🇺 PNRR: dove sono finiti i soldi" },
                 { href: "/spesa-comuni/", t: "La spesa dei comuni" },
                 { href: "/ranking/", t: "Classifica di spesa" },
                 { href: "/dove-vanno-i-soldi-pubblici/", t: "Dove vanno i soldi pubblici" },

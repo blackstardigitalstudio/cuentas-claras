@@ -4,7 +4,7 @@ import EurocopaClient from "./EurocopaClient";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "Premios de la Eurocopa: España ganó 28,25 millones €",
+  title: "Premios de la Eurocopa: ¿cuánto ganó España?",
   description:
     "¿Cuánto se gana en la Eurocopa? España cobró hasta 28,25 mln € por ganar la Euro 2024, sobre un total de 331 millones repartidos entre las 24 selecciones. Cifras oficiales UEFA. Montepremi Europei: quanto guadagna chi vince.",
   keywords: [
@@ -17,7 +17,10 @@ export const metadata: Metadata = {
     "premi UEFA Europei",
     "premios Euro 2028",
   ],
-  alternates: { canonical: `${SITE}/eurocopa/` },
+  alternates: {
+    canonical: `${SITE}/eurocopa/`,
+    languages: { "es-ES": `${SITE}/eurocopa/`, "it-IT": `${SITE}/premi-europei/` },
+  },
   openGraph: {
     title: "Premios de la Eurocopa (UEFA)",
     description: "España ganó hasta 28,25 mln € en la Euro 2024; total 331 millones entre 24 selecciones. Cifras oficiales UEFA.",

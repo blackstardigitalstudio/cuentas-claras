@@ -17,7 +17,10 @@ export const metadata: Metadata = {
     "deuda sobre el PIB",
     "debito PIL Italia Spagna",
   ],
-  alternates: { canonical: `${SITE}/deuda-nacional/` },
+  alternates: {
+    canonical: `${SITE}/deuda-nacional/`,
+    languages: { "es-ES": `${SITE}/deuda-nacional/`, "it-IT": `${SITE}/debito-pubblico/` },
+  },
   openGraph: {
     title: "¿Cuánto debe España? ¿Y Italia?",
     description: "Deuda pública: España 1,7 billones € (100,8% PIB); Italia 3.095 mil millones (137,1%). Límite UE 60%. Cifras oficiales.",

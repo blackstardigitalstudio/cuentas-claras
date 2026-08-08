@@ -156,9 +156,9 @@ function Inner() {
   );
 }
 
-export default function ProfesionesClient() {
+export default function ProfesionesClient({ locale }: { locale?: "es" | "it" }) {
   return (
-    <LocaleProvider>
+    <LocaleProvider force={locale}>
       <Inner />
     </LocaleProvider>
   );

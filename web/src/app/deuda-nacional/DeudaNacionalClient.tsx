@@ -155,9 +155,9 @@ function Inner() {
   );
 }
 
-export default function DeudaNacionalClient() {
+export default function DeudaNacionalClient({ locale }: { locale?: "es" | "it" }) {
   return (
-    <LocaleProvider>
+    <LocaleProvider force={locale}>
       <Inner />
     </LocaleProvider>
   );

@@ -17,7 +17,10 @@ export const metadata: Metadata = {
     "indennità parlamentare",
     "sueldos políticos oficiales",
   ],
-  alternates: { canonical: `${SITE}/sueldos-politicos/` },
+  alternates: {
+    canonical: `${SITE}/sueldos-politicos/`,
+    languages: { "es-ES": `${SITE}/sueldos-politicos/`, "it-IT": `${SITE}/stipendi-politici/` },
+  },
   openGraph: {
     title: "¿Cuánto cobra un político? España e Italia",
     description: "Presidente 95.944 €/año en España; parlamentario 10.435 €/mes en Italia. Cifras oficiales.",

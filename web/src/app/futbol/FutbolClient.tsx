@@ -322,9 +322,9 @@ function Inner() {
   );
 }
 
-export default function FutbolClient() {
+export default function FutbolClient({ locale }: { locale?: "es" | "it" }) {
   return (
-    <LocaleProvider>
+    <LocaleProvider force={locale}>
       <Inner />
     </LocaleProvider>
   );

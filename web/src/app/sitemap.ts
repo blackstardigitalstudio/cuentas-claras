@@ -44,6 +44,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // spagnolo, collegate tra loro con hreflang.
     { url: `${SITE}/stipendi-politici/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE}/stipendi-sindaci/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/stipendi-motogp/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/tasse-benzina/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/stipendi-professioni/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE}/debito-pubblico/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE}/fondi-europei-pnrr/`, lastModified, changeFrequency: "weekly", priority: 0.85 },

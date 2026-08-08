@@ -88,6 +88,38 @@ il layout aggiunge " · Cuentas Claras").
 Il numero serve per credibilità e per rispondere alla ricerca; la domanda lascia
 aperta la curiosità. Media del sito senza formula: ~1%.
 
+## 2-quater. ✍️ COME SI SCRIVE QUI (voce "umana")
+Il lettore è una persona normale, spesso al telefono, che ha 10 secondi. Non è un
+economista e non deve diventarlo. Scrivi come parleresti a un amico al bar, non
+come un ministero.
+
+**Le regole:**
+1. **Dai del tu.** «Fai il pieno e pensi di pagare la benzina» — non «l'utente
+   percepisce».
+2. **Frasi corte.** Un'idea per frase. Se c'è una virgola dopo l'altra, spezza.
+3. **Parti da una scena concreta**, non dalla definizione: prima «fai il pieno»,
+   poi il numero.
+4. **Traduci i numeri**: «0,6729 €/litro» → «quasi 70 centesimi al litro».
+   «137,1% del PIL» → «più di quanto produce il Paese in un anno».
+5. **Vietate le parole da burocrate.** Se la useresti solo in un ufficio, non va:
+   | ❌ | ✅ |
+   |---|---|
+   | base imponibile | il prezzo su cui si calcola la tassa |
+   | indennità di funzione | quanto prende |
+   | rimodulare / erogare | cambiare / dare |
+   | in ottemperanza a | per legge |
+   | trattamento economico | stipendio |
+   | deuda viva / debito residuo | quello che deve ancora restituire |
+6. **Un paragone di vita vera** vale più di una definizione: il mutuo, lo
+   stipendio, la spesa, il pieno.
+7. **Nomina il trucco.** Se c'è qualcosa che quasi nessuno sa (l'IVA sopra
+   l'accisa, il taglio del 50% al sindaco che lavora), dillo chiaro: è la parte
+   che la gente condivide.
+8. **Niente morale e niente slogan.** Diamo il numero e la fonte, non l'indignazione:
+   la neutralità è il nostro asset. Nessun punto esclamativo a raffica.
+
+Test finale: **se tua madre non lo capisce al primo colpo, riscrivilo.**
+
 ## 3. SEO (hub-and-spoke) — checklist per OGNI pagina nuova
 1. `metadata` completo (title, description, keywords ES+IT, `alternates.canonical`, OG, twitter).
 2. JSON-LD: `FAQPage` (dalle FAQ) + `BreadcrumbList`. Iniettati dal `page.tsx` server.

@@ -80,15 +80,24 @@ export default function MascotGuide() {
   // Todas las llamadas están en orden (italiano, español).
   const T = (itx: string, es: string) => (it ? itx : es);
 
+  // Ogni tema ha due indirizzi (spagnolo e italiano): qui li riconosciamo entrambi,
+  // altrimenti sulle pagine italiane Claro diventerebbe generico e inutile.
+  const is = (...prefixes: string[]) => prefixes.some((p) => pathname.startsWith(p));
+
   const intro = (): string => {
     if (/^\/(es|it)\/[^/]+/.test(pathname)) return T("Questa è la scheda della tua città. Posso spiegarti i numeri:", "Esta es la ficha de tu ciudad. Puedo explicarte los números:");
-    if (pathname.startsWith("/deuda")) return T("Il debito dei comuni, spiegato:", "La deuda de los municipios, explicada:");
-    if (pathname.startsWith("/sueldos")) return T("Gli stipendi dei sindaci, spiegati:", "Los sueldos de los alcaldes, explicados:");
-    if (pathname.startsWith("/ranking")) return T("La classifica di spesa, spiegata:", "El ranking de gasto, explicado:");
-    if (pathname.startsWith("/records")) return T("I record dei soldi pubblici:", "Los récords del dinero público:");
-    if (pathname.startsWith("/futbol")) return T("I soldi del calcio, spiegati:", "El dinero del fútbol, explicado:");
-    if (pathname.startsWith("/escandalos")) return T("Gli scandali sui soldi pubblici:", "Los escándalos del dinero público:");
-    if (pathname.startsWith("/bulos")) return T("Le bufale, smontate:", "Los bulos, desmontados:");
+    if (is("/deuda", "/debito-pubblico")) return T("Il debito, spiegato:", "La deuda, explicada:");
+    if (is("/sueldos-alcaldes", "/stipendi-sindaci")) return T("Gli stipendi dei sindaci, spiegati:", "Los sueldos de los alcaldes, explicados:");
+    if (is("/sueldos-politicos", "/stipendi-politici")) return T("Gli stipendi dei politici, spiegati:", "Los sueldos de los políticos, explicados:");
+    if (is("/sueldos-profesiones", "/stipendi-professioni")) return T("Gli stipendi dei mestieri pubblici:", "Los sueldos de las profesiones públicas:");
+    if (is("/fondos-europeos", "/fondi-europei-pnrr")) return T("I soldi dell'Europa, spiegati:", "El dinero de Europa, explicado:");
+    if (is("/ranking")) return T("La classifica di spesa, spiegata:", "El ranking de gasto, explicado:");
+    if (is("/records", "/record-soldi-pubblici")) return T("I record dei soldi pubblici:", "Los récords del dinero público:");
+    if (is("/stipendi-motogp")) return T("I soldi della MotoGP:", "El dinero de MotoGP:");
+    if (is("/jugadores", "/soldi-giocatori")) return T("I soldi dei giocatori:", "El dinero de los jugadores:");
+    if (is("/futbol", "/calcio", "/champions-league", "/premi-", "/eurocopa", "/mundial-2026")) return T("I soldi del calcio, spiegati:", "El dinero del fútbol, explicado:");
+    if (is("/escandalos")) return T("Gli scandali sui soldi pubblici:", "Los escándalos del dinero público:");
+    if (is("/bulos")) return T("Le bufale, smontate:", "Los bulos, desmontados:");
     return T("Ciao! Come posso aiutarti?", "¡Hola! ¿En qué te ayudo?");
   };
 
@@ -100,32 +109,57 @@ export default function MascotGuide() {
       { icon: "🏦", label: T("Cos'è il «debito»?", "¿Qué es la «deuda»?"), answer: debtA },
       { icon: "🔎", label: T("Cerca un'altra città", "Buscar otra ciudad"), act: () => nav("/") },
     ];
-    if (pathname.startsWith("/deuda")) return [
+    if (is("/deuda", "/debito-pubblico")) return [
       { icon: "🏦", label: T("Cos'è il debito?", "¿Qué es la deuda?"), answer: debtA },
       { icon: "❓", label: T("Perché alcune città hanno 0 debito?", "¿Por qué hay ciudades sin deuda?"), answer: T("Molti comuni non hanno prestiti in corso, soprattutto i piccoli. Avere 0 debito è un buon segno.", "Muchos ayuntamientos no tienen préstamos pendientes, sobre todo los pequeños. Tener 0 deuda es buena señal.") },
       { icon: "💡", label: T("Spiegami questa pagina", "Explícame esta página"), act: goExplainer },
     ];
-    if (pathname.startsWith("/sueldos")) return [
+    if (is("/sueldos-alcaldes", "/stipendi-sindaci")) return [
       { icon: "💰", label: T("Perché i sindaci guadagnano diverso?", "¿Por qué cobran distinto?"), answer: T("Lo stipendio dipende per legge dalla dimensione del comune. Nei paesi piccoli spesso è 0 o pochi euro; nelle grandi città è più alto.", "El sueldo depende por ley del tamaño del municipio. En pueblos pequeños suele ser 0 o poco; en grandes ciudades es más alto.") },
+      { icon: "✂️", label: T("Perché a volte è dimezzato?", "¿Por qué a veces es la mitad?"), answer: T("Se il sindaco è un lavoratore dipendente e non si mette in aspettativa, per legge l'indennità viene ridotta del 50%.", "Si el alcalde sigue con su trabajo y no pide excedencia, por ley la retribución se reduce a la mitad.") },
       { icon: "💡", label: T("Spiegami questa pagina", "Explícame esta página"), act: goExplainer },
     ];
-    if (pathname.startsWith("/ranking")) return [
+    if (is("/sueldos-politicos", "/stipendi-politici")) return [
+      { icon: "🏛️", label: T("Chi decide questi stipendi?", "¿Quién decide estos sueldos?"), answer: T("Li fissa la legge, non il politico. E sono pubblicati: in Italia da Camera e Senato, in Spagna dal Portale della Trasparenza.", "Los fija la ley, no el político. Y se publican: en España en el Portal de Transparencia, en Italia por Cámara y Senado.") },
+      { icon: "💡", label: T("Spiegami questa pagina", "Explícame esta página"), act: goExplainer },
+    ];
+    if (is("/sueldos-profesiones", "/stipendi-professioni")) return [
+      { icon: "⚠️", label: T("Perché dite «stipendio tipico»?", "¿Por qué decís «sueldo típico»?"), answer: T("Perché non è una cifra fissa: cambia molto secondo regione, anzianità e ruolo. Diamo la media, non una promessa.", "Porque no es una cifra fija: cambia mucho según comunidad, antigüedad y puesto. Damos la media, no una promesa.") },
+      { icon: "💡", label: T("Spiegami questa pagina", "Explícame esta página"), act: goExplainer },
+    ];
+    if (is("/fondos-europeos", "/fondi-europei-pnrr")) return [
+      { icon: "🎁", label: T("Questi soldi vanno restituiti?", "¿Hay que devolver este dinero?"), answer: T("In parte no: le sovvenzioni «a fondo perduto» sono regalate. I prestiti invece sì, ma a condizioni vantaggiose.", "En parte no: las subvenciones «a fondo perdido» son regaladas. Los préstamos sí, pero en condiciones ventajosas.") },
+      { icon: "💡", label: T("Spiegami questa pagina", "Explícame esta página"), act: goExplainer },
+    ];
+    if (is("/stipendi-motogp")) return [
+      { icon: "⚠️", label: T("Sono cifre ufficiali?", "¿Son cifras oficiales?"), answer: T("No: i team non pubblicano gli ingaggi. Quelle che vedi sono stime di stampa, e te lo scriviamo chiaro. L'unico dato certo è il salario minimo dal 2027.", "No: los equipos no publican los contratos. Lo que ves son estimaciones de prensa, y te lo decimos claro. El único dato cierto es el salario mínimo desde 2027.") },
+      { icon: "💡", label: T("Spiegami questa pagina", "Explícame esta página"), act: goExplainer },
+    ];
+    if (is("/jugadores", "/soldi-giocatori")) return [
+      { icon: "💸", label: T("Differenza tra trasferimento e stipendio?", "¿Diferencia entre fichaje y sueldo?"), answer: T("Il trasferimento è quanto un club paga a un altro per il cartellino (è pubblico). Lo stipendio è quanto prende il giocatore, e quello NON è ufficiale: girano solo stime.", "El fichaje es lo que un club paga a otro por el traspaso (es público). El sueldo es lo que cobra el jugador, y eso NO es oficial: solo hay estimaciones.") },
+      { icon: "💡", label: T("Spiegami questa pagina", "Explícame esta página"), act: goExplainer },
+    ];
+    if (is("/champions-league", "/premi-champions-league", "/eurocopa", "/premi-europei", "/mundial-2026", "/premi-mondiali-2026")) return [
+      { icon: "🏆", label: T("Chi prende questi soldi?", "¿Quién cobra este dinero?"), answer: T("Le federazioni e i club, non i singoli giocatori. Poi ognuno decide quanto girare a squadra e staff.", "Las federaciones y los clubes, no los jugadores directamente. Luego cada uno decide cuánto da al equipo y al cuerpo técnico.") },
+      { icon: "💡", label: T("Spiegami questa pagina", "Explícame esta página"), act: goExplainer },
+    ];
+    if (is("/ranking")) return [
       { icon: "📊", label: T("Cosa vuol dire?", "¿Qué significa esto?"), act: goExplainer },
       { icon: "❓", label: T("Chi spende di più «sperpera»?", "¿Quien más gasta «derrocha»?"), answer: T("No per forza: le città grandi spendono di più perché hanno più abitanti e più servizi da pagare.", "No por fuerza: las ciudades grandes gastan más porque tienen más habitantes y más servicios que pagar.") },
     ];
-    if (pathname.startsWith("/records")) return [
+    if (is("/records", "/record-soldi-pubblici")) return [
       { icon: "💡", label: T("Cosa sono i record?", "¿Qué son los récords?"), act: goExplainer },
       { icon: "🏦", label: T("Cos'è il debito?", "¿Qué es la deuda?"), answer: debtA },
     ];
-    if (pathname.startsWith("/futbol")) return [
+    if (is("/futbol", "/calcio")) return [
       { icon: "⚽", label: T("Cos'è il «tetto salariale»?", "¿Qué es el «límite salarial»?"), answer: T("È il tetto massimo che la LaLiga permette a un club di spendere per la rosa, in base a ricavi e debiti. Non è quanto spende davvero.", "Es el tope máximo que LaLiga permite gastar a un club en su plantilla, según sus ingresos y deudas. No es lo que gasta de verdad.") },
       { icon: "💶", label: T("Cosa sono i «ricavi»?", "¿Qué son los «ingresos»?"), answer: T("I soldi che il club incassa in un anno (biglietti, TV, sponsor). Non è quanto «vale» la squadra.", "El dinero que el club recauda en un año (entradas, TV, patrocinios). No es cuánto «vale» el equipo.") },
     ];
-    if (pathname.startsWith("/escandalos")) return [
+    if (is("/escandalos")) return [
       { icon: "🕵️", label: T("Come funziona?", "¿Cómo funciona?"), answer: T("Raccolgo notizie vere di giornali sui soldi pubblici, ognuna con la sua fonte. Non accuso nessuno: fino a sentenza, ognuno è innocente.", "Reúno noticias reales de medios sobre el dinero público, cada una con su fuente. No acuso a nadie: hasta sentencia, todos inocentes.") },
       { icon: "🏠", label: T("Torna alla home", "Volver al inicio"), act: () => nav("/") },
     ];
-    if (pathname.startsWith("/bulos")) return [
+    if (is("/bulos")) return [
       { icon: "✅", label: T("Come funziona?", "¿Cómo funciona?"), answer: T("Prendo le bufale virali e ti mostro la cifra vera, con il link alla verifica fatta da fact-checker indipendenti.", "Cojo los bulos virales y te muestro la cifra real, con el enlace a la verificación de fact-checkers independientes.") },
       { icon: "🏠", label: T("Torna alla home", "Volver al inicio"), act: () => nav("/") },
     ];

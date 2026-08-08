@@ -11,6 +11,22 @@ import ranks from "@/data/rankings-es.json";
 
 const esSlugs = new Set(Object.values(COUNTRIES.es.regions).filter((r) => !r.isSample).map((r) => r.slug));
 
+// TOPE máximo que la ley permite cobrar a un alcalde, según los habitantes del
+// municipio. Ley 31/2022 (Presupuestos Generales del Estado 2023), los últimos
+// aprobados: al prorrogarse el presupuesto, estos límites siguen de referencia.
+// OJO: es el techo legal, NO lo que se cobra de verdad (ver el contraste abajo).
+const TOPES = [
+  { hab: "Más de 500.000", max: 116160.05 },
+  { hab: "De 300.001 a 500.000", max: 104544.03 },
+  { hab: "De 150.001 a 300.000", max: 92928.03 },
+  { hab: "De 75.001 a 150.000", max: 87120.59 },
+  { hab: "De 50.001 a 75.000", max: 75504.62 },
+  { hab: "De 20.001 a 50.000", max: 63888.61 },
+  { hab: "De 10.001 a 20.000", max: 58080.05 },
+  { hab: "De 5.001 a 10.000", max: 52272.61 },
+  { hab: "De 1.000 a 5.000", max: 46464.02 },
+];
+
 function CityName({ name }: { name: string }) {
   const slug = slugify(name);
   if (esSlugs.has(slug)) return <Link href={`/es/${slug}/`} className="font-medium hover:text-cyan">{name}</Link>;
@@ -125,6 +141,46 @@ function Inner() {
           {it ? "Fonte: " : "Fuente: "}
           <a href={ranks.salarySource.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{ranks.salarySource.name}</a>
         </p>
+      </section>
+
+      {/* Tope legal por habitantes: es LA búsqueda ("cuánto cobra el alcalde de un
+          pueblo de 500 habitantes"). Va junto al contraste con lo que se cobra
+          de verdad, si no da una idea falsa. */}
+      <section className="mt-12">
+        <h2 className="text-lg md:text-xl font-semibold">
+          📊 {it ? "Quanto può guadagnare, secondo gli abitanti" : "Cuánto puede cobrar, según los habitantes"}
+        </h2>
+        <p className="text-[11px] text-cyan/70 mb-4">
+          {it
+            ? "Il massimo che la legge permette. Non è quello che prende: è il tetto che non può superare."
+            : "El máximo que permite la ley. No es lo que cobra: es el techo que no puede pasar."}
+        </p>
+        <ol className="space-y-1.5">
+          {TOPES.map((t2) => (
+            <li key={t2.hab} className="glass flex items-center gap-3 px-3 py-2.5">
+              <span className="flex-1 min-w-0">
+                <span className="block text-sm font-medium">{t2.hab} {it ? "abitanti" : "habitantes"}</span>
+                <span className="mt-1 block h-1.5 rounded-full bg-white/5 overflow-hidden">
+                  <span className="block h-full rounded-full bg-gradient-to-r from-cyan to-violet" style={{ width: `${(t2.max / TOPES[0].max) * 100}%` }} />
+                </span>
+              </span>
+              <span className="tabular text-sm font-semibold text-[#a5b4fc] shrink-0">{formatEuro(Math.round(t2.max))}</span>
+            </li>
+          ))}
+        </ol>
+        <p className="text-[11px] text-muted mt-3">
+          {it
+            ? "Fonte: Ley 31/2022 (Presupuestos Generales del Estado 2023), gli ultimi approvati. Nei comuni sotto i 1.000 abitanti il sindaco non può avere l'incarico esclusivo: al massimo parziale, con tetti più bassi."
+            : "Fuente: Ley 31/2022 (Presupuestos Generales del Estado 2023), los últimos aprobados. En municipios de menos de 1.000 habitantes el alcalde no puede tener dedicación exclusiva: como mucho parcial, con topes más bajos."}
+        </p>
+
+        <div className="glass p-4 mt-3 border border-amber-400/25">
+          <p className="text-sm text-amber-200/90">
+            ⚠️ {it
+              ? `Attenzione a non confondersi: questo è il tetto, non la realtà. La media vera è ${formatEuro(ranks.salaryAvg)} all'anno e ${nf(ranks.salaryZero)} sindaci su ${nf(ranks.salaryReporting)} — uno su tre — prendono 0 €.`
+              : `Cuidado con confundirlo: esto es el techo, no la realidad. La media de verdad es ${formatEuro(ranks.salaryAvg)} al año y ${nf(ranks.salaryZero)} alcaldes de ${nf(ranks.salaryReporting)} — uno de cada tres — cobran 0 €.`}
+          </p>
+        </div>
       </section>
 
       <section className="mt-12">

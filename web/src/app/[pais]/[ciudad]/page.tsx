@@ -343,7 +343,12 @@ export default async function CityPage({ params }: Props) {
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
           {r.debt && (
             <div className="glass p-4 border border-[rgba(251,146,60,0.28)]">
-              <p className="text-xs text-muted">{es ? "Deuda viva" : "Debito residuo"} · 31/12/{r.debt.year}</p>
+              {/* Titolo in forma di DOMANDA: è esattamente ciò che la gente cerca
+                  ("quanto debito ha X"). Vale per tutte le città in un colpo solo. */}
+              <h2 className="text-xs text-muted font-normal">
+                {es ? `¿Cuánta deuda tiene ${r.name}?` : `Quanto debito ha ${r.name}?`}
+                <span className="opacity-60"> · 31/12/{r.debt.year}</span>
+              </h2>
               <p className="tabular text-2xl font-semibold text-[#fdba74] mt-1">
                 {r.debt.amount > 0 ? formatEuro(r.debt.amount) : es ? "Sin deuda" : "Nessun debito"}
               </p>
@@ -358,7 +363,12 @@ export default async function CityPage({ params }: Props) {
           )}
           {r.mayorSalary && (
             <div className="glass p-4 border border-[rgba(129,140,248,0.28)]">
-              <p className="text-xs text-muted">{es ? "Sueldo del alcalde" : "Stipendio del sindaco"} · {r.year}</p>
+              {/* Idem: "quanto guadagna il sindaco di X" è una delle ricerche più
+                  frequenti e abbiamo il dato per centinaia di comuni. */}
+              <h2 className="text-xs text-muted font-normal">
+                {es ? `¿Cuánto cobra el alcalde de ${r.name}?` : `Quanto guadagna il sindaco di ${r.name}?`}
+                <span className="opacity-60"> · {r.year}</span>
+              </h2>
               <p className="tabular text-2xl font-semibold text-[#a5b4fc] mt-1">
                 {formatEuro(r.mayorSalary.amount)}<span className="text-sm text-muted font-normal">{es ? "/año" : "/anno"}</span>
               </p>

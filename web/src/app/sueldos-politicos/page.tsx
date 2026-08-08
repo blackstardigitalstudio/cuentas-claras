@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 const faqLd = {
   "@context": "https://schema.org", "@type": "FAQPage",
   mainEntity: [
-    { q: "¿Cuánto cobra el presidente del Gobierno de España?", a: "95.944 € brutos al año (2025), según el Portal de Transparencia. Además percibe 14 pagas de 1.032 € como diputado." },
+    { q: "¿Cuánto cobra el presidente del Gobierno de España?", a: "95.944 € brutos al año (2025), según el Portal de Transparencia. Y por ser además diputado, cobra otras 14 pagas de 1.032 € al año que no pagan impuestos." },
     { q: "¿Cuánto gana un parlamentario en Italia?", a: "La indemnización es de 10.435 € brutos al mes (unos 125.220 € al año), más una dieta de 3.503 €/mes y otros reembolsos para gastos." },
     { q: "¿Cuánto gana un diputado en España?", a: "3.050,62 € brutos al mes de base (unos 55.804 € al año), más dietas y otras indemnizaciones." },
   ].map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),

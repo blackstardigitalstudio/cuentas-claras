@@ -53,6 +53,41 @@ Tailwind v4, TypeScript. Hosting: Cloudflare Pages via GitHub Actions.
   In `MascotGuide` l'helper è **IT-first**: `const T = (itx, es) => (it ? itx : es)` (opposto a `t`!).
 - Marcatori DOM per l'aiuto di Claro: `data-claro="explainer" | "detail" | "search"`.
 
+## 2-bis. ⚠️ REGOLA CRITICA: ogni pagina tematica va fatta in DUE lingue
+Il testo tradotto lato client **Google non lo vede**: legge solo l'HTML statico e i
+`metadata`. Una pagina con metadata solo in spagnolo è **invisibile** a chi cerca in
+italiano (nell'agosto 2026 questo costava all'Italia l'80% del traffico potenziale).
+
+Quindi, per ogni nuovo tema, si creano **due pagine** con URL propri:
+- `page.tsx` spagnolo → `<XClient />` (default ES)
+- `page.tsx` italiano con **URL italiano** → `<XClient locale="it" />`
+
+Entrambe con: metadata nella propria lingua, `alternates.canonical` proprio,
+`languages: { "es-ES": …, "it-IT": … }` (**hreflang**, così non sono doppioni),
+JSON-LD nella propria lingua, voce nel sitemap, e link interni che puntano alla
+versione giusta (`locale === "it" ? "/url-it/" : "/url-es/"`).
+
+Il meccanismo è la prop **`force`** di `LocaleProvider`: fissa la lingua e disattiva
+l'autodetezione, così l'HTML statico esce già tradotto. I client accettano
+`{ locale?: "es" | "it" }` e lo passano a `<LocaleProvider force={locale}>`.
+
+Coppie esistenti: `/sueldos-politicos/`↔`/stipendi-politici/` ·
+`/sueldos-profesiones/`↔`/stipendi-professioni/` · `/deuda-nacional/`↔`/debito-pubblico/` ·
+`/fondos-europeos/`↔`/fondi-europei-pnrr/` · `/jugadores/`↔`/soldi-giocatori/` ·
+`/champions-league/`↔`/premi-champions-league/` · `/eurocopa/`↔`/premi-europei/` ·
+`/mundial-2026/`↔`/premi-mondiali-2026/` · `/futbol/`↔`/calcio/` ·
+`/records/`↔`/record-soldi-pubblici/`.
+
+## 2-ter. Titoli: la formula che porta clic (verificata sui dati GSC)
+**Numero + domanda aperta**, sotto i ~58 caratteri (oltre, Google taglia; ricorda che
+il layout aggiunge " · Cuentas Claras").
+- ✅ `"Presupuesto de X 2025: ¿en qué se gastan 51 M€?"` → CTR 9-14%
+- ✅ `"A vs B: quién ingresa y debe más"` → CTR 7-15%
+- ❌ `"España ganó 28,25 millones €"` → 1% (dà la risposta completa: nessuno clicca)
+
+Il numero serve per credibilità e per rispondere alla ricerca; la domanda lascia
+aperta la curiosità. Media del sito senza formula: ~1%.
+
 ## 3. SEO (hub-and-spoke) — checklist per OGNI pagina nuova
 1. `metadata` completo (title, description, keywords ES+IT, `alternates.canonical`, OG, twitter).
 2. JSON-LD: `FAQPage` (dalle FAQ) + `BreadcrumbList`. Iniettati dal `page.tsx` server.

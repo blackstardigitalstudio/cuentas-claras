@@ -18,7 +18,17 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    // Feed RSS: permettono a lettori e giornalisti di seguire gli aggiornamenti
+    // senza dover tornare sul sito (e agli aggregatori di ripubblicarci).
+    types: {
+      "application/rss+xml": [
+        { url: "/rss.xml", title: "Cuentas Claras — dinero público (ES)" },
+        { url: "/rss-it.xml", title: "Cuentas Claras — soldi pubblici (IT)" },
+      ],
+    },
+  },
   title: {
     default: "Cuentas Claras — ¿A dónde va el dinero público en España e Italia?",
     template: "%s · Cuentas Claras",

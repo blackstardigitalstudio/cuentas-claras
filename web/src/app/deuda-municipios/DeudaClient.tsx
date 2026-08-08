@@ -32,7 +32,7 @@ function Inner() {
         { q: "Quanti comuni non hanno debito?", a: `${nf(ranks.debtFree)} comuni su ${nf(ranks.debtCount)} (${pct}%) non registrano alcun debito residuo. Il debito è concentrato nelle grandi città.` },
         { q: "È un male che un comune abbia debito?", a: "Non sempre: come un mutuo, il debito serve per grandi investimenti (scuole, strade). Il problema è quando è troppo rispetto a quanto il comune incassa." },
         { q: "Perché alcune città devono più di altre?", a: "Dipende dalla dimensione, dagli investimenti fatti e dalla gestione passata. Le grandi città concentrano quasi tutto il debito; molti comuni piccoli ne hanno zero." },
-        { q: "Cos'è il debito residuo?", a: `È il denaro che il comune deve ancora restituire (prestiti e crediti in essere), misurato secondo il Protocollo sui Disavanzi Eccessivi (PDE). È un dato ufficiale e confrontabile tra comuni.` },
+        { q: "Cos'è il debito residuo?", a: `Sono i soldi che il comune ha preso in prestito e non ha ancora finito di restituire — come il mutuo di casa. In Europa lo misurano tutti allo stesso modo, così i comuni si possono confrontare davvero.` },
       ]
     : [
         { q: "¿Cuál es la ciudad más endeudada de España?", a: `${top[0].name}, con una deuda viva de ${formatEuro(top[0].amount)} a 31/12/${ranks.year}, seguida de ${top[1].name} (${formatEuro(top[1].amount)}) y ${top[2].name} (${formatEuro(top[2].amount)}).` },
@@ -40,7 +40,7 @@ function Inner() {
         { q: "¿Cuántos municipios no tienen deuda?", a: `${nf(ranks.debtFree)} de ${nf(ranks.debtCount)} municipios (${pct}%) no registran ninguna deuda viva. La deuda se concentra en las grandes ciudades.` },
         { q: "¿Es malo que un ayuntamiento tenga deuda?", a: "No siempre: como una hipoteca, la deuda sirve para grandes inversiones (colegios, calles). El problema es cuando es demasiada frente a lo que el ayuntamiento ingresa." },
         { q: "¿Por qué unas ciudades deben más que otras?", a: "Depende del tamaño, de las inversiones hechas y de la gestión pasada. Las grandes ciudades concentran casi toda la deuda; muchos municipios pequeños tienen cero." },
-        { q: "¿Qué es la deuda viva?", a: `Es el dinero que el ayuntamiento aún debe devolver (préstamos y créditos pendientes), medido según el Protocolo de Déficit Excesivo (PDE) del Ministerio de Hacienda. Es un dato oficial y comparable entre municipios.` },
+        { q: "¿Qué es la deuda viva?", a: `Es el dinero que el ayuntamiento pidió prestado y todavía no ha terminado de devolver — como una hipoteca. En toda Europa se mide igual, así que los municipios se pueden comparar de verdad. El dato lo publica el Ministerio de Hacienda.` },
       ];
 
   return (

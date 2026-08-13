@@ -141,8 +141,8 @@ export default async function CityPage({ params }: Props) {
         { href: "/dove-vanno-i-soldi-pubblici/", t: "Dove vanno i soldi" },
         { href: "/quanto-guadagna-un-consigliere-comunale/", t: "Stipendio del consigliere" },
         { href: "/deuda-municipios/", t: "Debito dei comuni" },
-        { href: "/bulos/", t: "Bufale, smontate" },
-        { href: "/futbol/", t: "I soldi del calcio" },
+        { href: "/bufale-soldi-pubblici/", t: "Bufale, smontate" },
+        { href: "/calcio/", t: "I soldi del calcio" },
       ];
 
   // FAQ con le domande che la gente cerca davvero, costruite dai dati reali della città.

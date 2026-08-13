@@ -39,12 +39,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/eurocopa/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/jugadores/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/escandalos/`, lastModified, changeFrequency: "hourly", priority: 0.8 },
+    { url: `${SITE}/sueldos-motogp/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     // Versioni ITALIANE delle pagine tematiche (URL e metadati in italiano, così
     // Google le mostra a chi cerca in italiano). Contenuto equivalente allo
     // spagnolo, collegate tra loro con hreflang.
     { url: `${SITE}/stipendi-politici/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE}/stipendi-sindaci/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/stipendi-motogp/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/calcio-mondiale/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/bufale-soldi-pubblici/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/scandali-soldi-pubblici/`, lastModified, changeFrequency: "hourly", priority: 0.8 },
     { url: `${SITE}/tasse-benzina/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/spesa-sanita/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/gasto-sanidad/`, lastModified, changeFrequency: "weekly", priority: 0.9 },

@@ -21,7 +21,7 @@ export default function SiteNav() {
     { href: "/deuda-municipios", label: it ? "Debito" : "Deuda", show: "hidden md:inline-block" },
     { href: "/spesa-comuni", label: it ? "Spesa comuni" : "Gasto Italia", show: "hidden lg:inline-block" },
     { href: "/#noticias", label: m.nav.news, show: "hidden sm:inline-block", anchor: true },
-    { href: "/bulos", label: it ? "Bufale" : "Bulos", show: "hidden sm:inline-block" },
+    { href: it ? "/bufale-soldi-pubblici" : "/bulos", label: it ? "Bufale" : "Bulos", show: "hidden sm:inline-block" },
     { href: it ? "/calcio" : "/futbol", label: <>⚽ {it ? "Calcio" : "Fútbol"}</>, show: "hidden sm:inline-block" },
   ];
   const isActive = (href: string) => !href.startsWith("/#") && (pathname === href || pathname.startsWith(`${href}/`));
@@ -43,8 +43,8 @@ export default function SiteNav() {
             );
           })}
           <Link
-            href="/escandalos"
-            aria-current={isActive("/escandalos") ? "page" : undefined}
+            href={it ? "/scandali-soldi-pubblici" : "/escandalos"}
+            aria-current={isActive(it ? "/scandali-soldi-pubblici" : "/escandalos") ? "page" : undefined}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-medium whitespace-nowrap text-[#ff7a7a] border border-[rgba(255,107,107,0.45)] bg-[rgba(255,107,107,0.1)] hover:bg-[rgba(255,107,107,0.18)] transition"
           >
             <span className="relative flex h-1.5 w-1.5">

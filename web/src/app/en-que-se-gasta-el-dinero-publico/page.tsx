@@ -12,7 +12,7 @@ const realGastos = COUNTRIES.es.realNames.reduce((s, n) => s + (COUNTRIES.es.reg
 const cityCount = COUNTRIES.es.realNames.length;
 
 export const metadata: Metadata = {
-  title: "¿En qué se gasta el dinero público en España? Explicado fácil, con datos",
+  title: "¿En qué se gasta el dinero de tu ayuntamiento?",
   description:
     "¿A dónde va el dinero público de tu ayuntamiento? Las grandes áreas de gasto (servicios básicos, protección social, educación y cultura, deuda…) explicadas en palabras sencillas, con datos oficiales de cientos de ciudades.",
   keywords: [

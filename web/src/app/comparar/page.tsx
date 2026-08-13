@@ -8,7 +8,7 @@ import { CMP_ES } from "@/data/compare-lists";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "Comparar presupuestos de ciudades: ingresos, gastos, deuda y sueldo del alcalde",
+  title: "Dos ciudades cara a cara: ¿cuál gasta y debe más?",
   description:
     "Compara dos ciudades de España lado a lado: cuánto ingresan, gastan y deben, y cuánto cobra su alcalde. Datos oficiales. Elige dos ciudades y mira sus cuentas juntas.",
   keywords: ["comparar ciudades", "comparar presupuestos ayuntamientos", "comparativa gasto municipios", "comparar deuda ciudades"],

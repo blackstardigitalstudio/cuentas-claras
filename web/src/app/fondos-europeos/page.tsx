@@ -4,7 +4,7 @@ import FondosClient from "./FondosClient";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "Fondos Next Generation / PNRR: ¿cuánto dinero manda Europa a España e Italia?",
+  title: "España recibe 163.000 M€ de Europa. ¿En qué se van?",
   description:
     "¿Cuánto dinero de Europa recibe España e Italia tras la pandemia? España, hasta 163.000 M€ (unos 80.000 a fondo perdido); Italia, 194.400 M€ con el PNRR. Hay que gastarlo antes de fin de 2026. Cifras oficiales. Quanti soldi riceve l'Italia col PNRR.",
   keywords: [

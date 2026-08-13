@@ -9,7 +9,7 @@ import ranks from "@/data/rankings-es.json";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "¿Qué ciudad gasta más por habitante en España? Ranking (datos oficiales)",
+  title: "Mogán gasta 2.741 € por vecino. ¿Y tu ciudad?",
   description: `Gasto público municipal por habitante en España: qué ayuntamientos gastan más por cada vecino. ${ranks.gastoPerCapita?.[0]?.name} encabeza con ${formatEuro(ranks.gastoPerCapita?.[0]?.perCapita || 0)} por habitante. Datos oficiales.`,
   keywords: [
     "gasto por habitante",

@@ -8,7 +8,7 @@ import ranks from "@/data/rankings-it.json";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "Quanto spende il tuo comune? Classifica dei comuni italiani (dati ufficiali)",
+  title: "Roma spende 6,6 miliardi. E il tuo comune quanto?",
   description: `Quali comuni italiani spendono di più — in totale e per abitante — con dati ufficiali SIOPE (RGS-MEF). Roma guida con ${formatEuro(ranks.topSpending[0].gastos)}. In testa alla spesa per abitante: ${ranks.topPerCapita[0].name} (${formatEuro(ranks.topPerCapita[0].perCapita)}/abitante).`,
   keywords: [
     "quanto spende il comune",

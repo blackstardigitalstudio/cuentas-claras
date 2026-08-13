@@ -6,7 +6,7 @@ import SueldosClient from "./SueldosClient";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: `¿Cuánto cobra un alcalde en España? Sueldos ${ranks.year} (ranking oficial)`,
+  title: `¿Cuánto cobra tu alcalde? Ranking oficial ${ranks.year}`,
   description: `Ranking de los alcaldes que más cobran en España en ${ranks.year}, con datos oficiales del ISPA. El alcalde de Madrid encabeza con ${formatEuro(ranks.topSalaries[0].amount)}/año. La media de los ${ranks.salaryReporting.toLocaleString("es")} ayuntamientos que declaran es ${formatEuro(ranks.salaryAvg)}/año.`,
   keywords: [
     "cuánto cobra un alcalde",

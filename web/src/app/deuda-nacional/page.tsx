@@ -4,7 +4,7 @@ import DeudaNacionalClient from "./DeudaNacionalClient";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "¿Cuánto debe España? Y ¿cuánto debe Italia? La deuda pública, explicada",
+  title: "España debe 1,7 billones. ¿Cuánto te toca a ti?",
   description:
     "¿Cuánto debe el Estado? España debe 1,7 billones de euros (100,8% del PIB, ~35.000 € por habitante); Italia 3.095 miles de millones (137,1% del PIB). El límite europeo es el 60%. Cifras oficiales del Banco de España y Banca d'Italia. Quanto deve lo Stato.",
   keywords: [

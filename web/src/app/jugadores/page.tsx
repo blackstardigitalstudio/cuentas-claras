@@ -4,7 +4,7 @@ import JugadoresClient from "./JugadoresClient";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "El dinero de los jugadores: fichajes, cláusulas y cuánto ganan",
+  title: "Neymar costó 222 mln €. ¿Y las cláusulas de hoy?",
   description:
     "Los fichajes más caros de la historia (Neymar, 222 mln €), las cláusulas de rescisión más altas (hasta 1.000 mln €) y cuánto se estima que ganan Mbappé, Vinícius o Lamine Yamal. Datos verificables y estimaciones de prensa, siempre con su fuente. I soldi dei giocatori.",
   keywords: [

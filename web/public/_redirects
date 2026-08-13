@@ -1,0 +1,7 @@
+# Reindirizzamenti Cloudflare Pages.
+# /it/ e /es/ da soli davano 404 (funzionano solo con la città: /it/milano/).
+# Google li ha trovati e segnalati: li mandiamo alla pagina giusta del Paese.
+/it   /italia/   301
+/it/  /italia/   301
+/es   /          301
+/es/  /          301

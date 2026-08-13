@@ -76,7 +76,18 @@ Coppie esistenti: `/sueldos-politicos/`↔`/stipendi-politici/` ·
 `/fondos-europeos/`↔`/fondi-europei-pnrr/` · `/jugadores/`↔`/soldi-giocatori/` ·
 `/champions-league/`↔`/premi-champions-league/` · `/eurocopa/`↔`/premi-europei/` ·
 `/mundial-2026/`↔`/premi-mondiali-2026/` · `/futbol/`↔`/calcio/` ·
-`/records/`↔`/record-soldi-pubblici/`.
+`/records/`↔`/record-soldi-pubblici/` · `/futbol-mundial/`↔`/calcio-mondiale/` ·
+`/escandalos/`↔`/scandali-soldi-pubblici/` · `/bulos/`↔`/bufale-soldi-pubblici/` ·
+`/stipendi-motogp/`↔`/sueldos-motogp/`.
+
+**Ancora scoperte (con il motivo, non dimenticanze):**
+- `/tasse-benzina/` non ha la versione ES: il RDL 18/2026 cambia l'accisa spagnola
+  ogni mese fino a settembre 2026 e la cifra di settembre dipende dall'IPC; le
+  tabelle dell'Agencia Tributaria sono immagini, non testo. Senza cifra
+  verificabile non si pubblica (§0).
+- `/deuda-municipios/` e `/gasto-por-habitante/` non hanno la versione IT:
+  `rankings-it.json` contiene solo la spesa dei comuni italiani, **non il debito**.
+  Servirebbe prima un ETL sul debito dei comuni italiani.
 
 ## 2-ter. Titoli: la formula che porta clic (verificata sui dati GSC)
 **Numero + domanda aperta**, sotto i ~58 caratteri (oltre, Google taglia; ricorda che

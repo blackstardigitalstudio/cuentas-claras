@@ -7,7 +7,7 @@ import HeroBanner from "@/components/HeroBanner";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "Quanto guadagna un consigliere comunale? Solo un gettone",
+  title: "Quanto guadagna un consigliere comunale? Caso per caso",
   description:
     "Quanto guadagna un consigliere comunale in Italia? Non ha uno stipendio fisso: prende un «gettone di presenza» per ogni seduta. Ti spieghiamo facile come funziona e dove vedere lo stipendio del sindaco.",
   keywords: ["quanto guadagna un consigliere comunale", "gettone di presenza consiglieri", "stipendio consigliere comunale", "indennità consiglieri"],

@@ -4,7 +4,7 @@ import MundialCopaClient from "./MundialCopaClient";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "Premios del Mundial 2026: cuánto gana el campeón y cada selección (FIFA)",
+  title: "Mundial 2026: 50 mln $ al campeón. ¿Y los demás?",
   description:
     "¿Cuánto gana el que gana el Mundial 2026? El campeón se lleva 50 millones de dólares de la FIFA, sobre un total de 655 millones repartidos entre las 48 selecciones. Cifras oficiales. Montepremi Mondiali 2026: quanto guadagna chi vince.",
   keywords: [

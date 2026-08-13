@@ -5,7 +5,7 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com"
 
 // Versione ITALIANA della pagina sui premi degli Europei.
 export const metadata: Metadata = {
-  title: "Europei: quanto guadagna chi vince? I premi UEFA",
+  title: "Europei: quanto prende ogni nazionale, turno per turno",
   description:
     "Quanto si guadagna agli Europei di calcio? Una nazionale prende 9,25 milioni di euro solo per partecipare e chi vince arriva fino a 28,25 milioni (come la Spagna a Euro 2024). Il montepremi totale è di 331 milioni. Cifre ufficiali UEFA.",
   keywords: [

@@ -29,7 +29,7 @@ export default function Scoop() {
           <p className="text-sm text-muted mt-1 max-w-2xl">{m.scoop.subtitle}</p>
         </div>
         <Link
-          href="/escandalos"
+          href={locale === "it" ? "/scandali-soldi-pubblici" : "/escandalos"}
           className="shrink-0 text-sm font-medium px-4 py-2 rounded-full text-[#ff7a7a] border border-[rgba(255,107,107,0.45)] bg-[rgba(255,107,107,0.1)] hover:bg-[rgba(255,107,107,0.18)] transition"
         >
           {m.scoop.seeAll} →

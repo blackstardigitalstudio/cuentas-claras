@@ -115,7 +115,7 @@ export default function ItaliaPage() {
           <Link href="/ranking" className="px-5 py-2.5 rounded-full font-medium border border-[var(--panel-border)] text-muted hover:text-fg transition">
             Classifica della spesa →
           </Link>
-          <Link href="/escandalos" className="px-5 py-2.5 rounded-full font-medium text-[#ff7a7a] border border-[rgba(255,107,107,0.45)] bg-[rgba(255,107,107,0.1)] hover:bg-[rgba(255,107,107,0.18)] transition">
+          <Link href="/scandali-soldi-pubblici/" className="px-5 py-2.5 rounded-full font-medium text-[#ff7a7a] border border-[rgba(255,107,107,0.45)] bg-[rgba(255,107,107,0.1)] hover:bg-[rgba(255,107,107,0.18)] transition">
             Scandali del denaro pubblico →
           </Link>
         </section>

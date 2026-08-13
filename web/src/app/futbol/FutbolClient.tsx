@@ -52,7 +52,7 @@ function Inner() {
         </SimpleExplainer>
       </div>
 
-      <Link href="/futbol-mundial/" className="mt-5 glass p-4 flex items-center justify-between gap-3 group hover:border-cyan transition">
+      <Link href={it ? "/calcio-mondiale/" : "/futbol-mundial/"} className="mt-5 glass p-4 flex items-center justify-between gap-3 group hover:border-cyan transition">
         <span>
           <span className="block font-semibold">🌍 {t("El dinero del fútbol mundial", "I soldi del calcio mondiale")}</span>
           <span className="block text-xs text-muted">{t("Qué liga y qué club ingresan más del mundo", "Quale lega e quale club incassano di più al mondo")} · Premier, Bundesliga, LaLiga, Serie A</span>

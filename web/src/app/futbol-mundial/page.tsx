@@ -21,7 +21,10 @@ export const metadata: Metadata = {
     "quale campionato incassa di più",
     "club più ricco del mondo",
   ],
-  alternates: { canonical: `${SITE}/futbol-mundial/` },
+  alternates: {
+    canonical: `${SITE}/futbol-mundial/`,
+    languages: { "es-ES": `${SITE}/futbol-mundial/`, "it-IT": `${SITE}/calcio-mondiale/` },
+  },
   openGraph: {
     title: "El dinero del fútbol mundial · ligas y clubes que más ingresan",
     description: `La ${leagues[0].league} es la liga más rica; el ${clubs[0].club}, el club que más ingresa. Datos oficiales.`,

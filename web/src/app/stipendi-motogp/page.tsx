@@ -21,7 +21,10 @@ export const metadata: Metadata = {
     "salario minimo MotoGP",
     "stipendio Bezzecchi",
   ],
-  alternates: { canonical: `${SITE}/stipendi-motogp/` },
+  alternates: {
+    canonical: `${SITE}/stipendi-motogp/`,
+    languages: { "it-IT": `${SITE}/stipendi-motogp/`, "es-ES": `${SITE}/sueldos-motogp/` },
+  },
   openGraph: {
     title: "Quanto guadagna un pilota MotoGP?",
     description: "Le stime degli ingaggi (fino a ~12 mln €) e il salario minimo garantito dal 2027.",

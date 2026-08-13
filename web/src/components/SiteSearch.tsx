@@ -32,8 +32,9 @@ function buildIndex(locale: "es" | "it"): Entry[] {
         ["Debito dei comuni", "/deuda-municipios/"],
         ["Classifica di spesa", "/ranking/"],
         ["I record dei soldi pubblici", "/records/"],
-        ["I soldi del calcio", "/futbol/"],
-        ["Scandali e notizie", "/escandalos/"],
+        ["I soldi del calcio", "/calcio/"],
+        ["Scandali e notizie", "/scandali-soldi-pubblici/"],
+        ["Bufale sui soldi pubblici", "/bufale-soldi-pubblici/"],
         ["Confronta due comuni", "/confronta/"],
       ]
     : [

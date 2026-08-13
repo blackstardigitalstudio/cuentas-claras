@@ -6,49 +6,49 @@ import newsData from "@/data/news.json";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
+// Versione ITALIANA della bacheca degli scandali sui soldi pubblici.
 export const metadata: Metadata = {
-  title: "¿Adónde fue el dinero? Escándalos, caso por caso",
+  title: "Dove sono finiti i soldi? Scandali, caso per caso",
   description:
-    "Corrupción, fraude, fondos europeos, sentencias y despilfarro del dinero público en España e Italia. Titulares de medios, con enlace a la fuente.",
+    "Corruzione, sprechi, danno erariale, fondi PNRR e appalti: i casi sui soldi pubblici in Italia e Spagna, presi dai titoli dei giornali, ognuno con il link alla fonte.",
   keywords: [
-    "corrupción dinero público",
-    "malversación fondos públicos",
-    "escándalos ayuntamiento",
-    "fraude dinero público",
-    "despilfarro dinero público",
-    "fondos europeos irregularidades",
     "corruzione fondi pubblici",
     "danno erariale",
     "scandali appalti comune",
     "sprechi soldi pubblici",
     "fondi PNRR irregolarità",
+    "malversazione denaro pubblico",
+    "inchieste soldi pubblici",
+    "corrupción dinero público",
+    "despilfarro dinero público",
   ],
   alternates: {
-    canonical: `${SITE}/escandalos/`,
-    languages: { "es-ES": `${SITE}/escandalos/`, "it-IT": `${SITE}/scandali-soldi-pubblici/` },
+    canonical: `${SITE}/scandali-soldi-pubblici/`,
+    languages: { "it-IT": `${SITE}/scandali-soldi-pubblici/`, "es-ES": `${SITE}/escandalos/` },
   },
   openGraph: {
-    title: "Escándalos del dinero público · España e Italia",
+    title: "Scandali sui soldi pubblici · Italia e Spagna",
     description:
-      "Corrupción, fraude, fondos europeos, sentencias y despilfarro según los medios. Casos recientes, con enlace a la fuente.",
-    url: `${SITE}/escandalos/`,
+      "Corruzione, sprechi, sentenze e fondi europei secondo i giornali. Casi recenti, ognuno con il link alla fonte.",
+    url: `${SITE}/scandali-soldi-pubblici/`,
     type: "website",
+    locale: "it_IT",
   },
 };
 
 type NewsItem = { title: string; source: string; url: string; date: string | null };
 const NEWS = newsData as Record<string, NewsItem[]>;
 
-// ItemList con los titulares (idioma por defecto ES) para datos estructurados.
-const top = ["es_scoop", "es_funds", "es_verdicts", "es_waste", "es_salaries", "es_works", "es_subsidies", "es_taxes", "es_transparency", "es_nepotism", "es_sanctions", "es_investigations"]
+// ItemList con i titoli italiani per i dati strutturati.
+const top = ["it_scoop", "it_funds", "it_verdicts", "it_waste", "it_salaries", "it_works", "it_subsidies", "it_taxes", "it_transparency", "it_nepotism", "it_sanctions", "it_investigations"]
   .flatMap((k) => NEWS[k] || [])
   .slice(0, 30);
 
-export default function EscandalosPage() {
+export default function ScandaliPage() {
   const itemListLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Escándalos del dinero público (España e Italia)",
+    name: "Scandali sui soldi pubblici (Italia e Spagna)",
     itemListElement: top.map((n, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -61,7 +61,7 @@ export default function EscandalosPage() {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` },
-      { "@type": "ListItem", position: 2, name: "Escándalos", item: `${SITE}/escandalos/` },
+      { "@type": "ListItem", position: 2, name: "Scandali", item: `${SITE}/scandali-soldi-pubblici/` },
     ],
   };
 
@@ -73,18 +73,18 @@ export default function EscandalosPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            name: "Escándalos del dinero público · España e Italia",
-            url: `${SITE}/escandalos/`,
-            inLanguage: ["es", "it"],
+            name: "Scandali sui soldi pubblici · Italia e Spagna",
+            url: `${SITE}/scandali-soldi-pubblici/`,
+            inLanguage: ["it", "es"],
             isPartOf: { "@type": "WebSite", name: "Cuentas Claras", url: SITE },
             description:
-              "Recopilación de titulares de medios sobre corrupción, fraude, fondos europeos, sentencias y despilfarro del dinero público en España e Italia.",
+              "Raccolta di titoli di giornale su corruzione, sprechi, danno erariale, appalti e fondi europei legati ai soldi pubblici in Italia e Spagna.",
           }),
         }}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
-      <LocaleProvider>
+      <LocaleProvider force="it">
         <SiteNav />
         <ScoopBoard />
 

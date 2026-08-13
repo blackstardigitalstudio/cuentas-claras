@@ -129,7 +129,7 @@ export default function Home() {
             { href: "/ranking/", emoji: "📊", accent: "#22d3ee", es: "Ranking de gasto", it: "Classifica di spesa", subEs: "quién gasta más", subIt: "chi spende di più" },
             { href: locale === "it" ? "/record-soldi-pubblici/" : "/records/", emoji: "🏆", accent: "#34d399", es: "Récords", it: "Record", subEs: "los extremos", subIt: "gli estremi" },
             { href: locale === "it" ? "/confronta/" : "/comparar/", emoji: "⚖️", accent: "#c084fc", es: "Comparar", it: "Confronta", subEs: "ciudad vs ciudad", subIt: "città vs città" },
-            { href: "/bulos/", emoji: "📰", accent: "#f472b6", es: "Bulos", it: "Bufale", subEs: "verificados", subIt: "smontate" },
+            { href: locale === "it" ? "/bufale-soldi-pubblici/" : "/bulos/", emoji: "📰", accent: "#f472b6", es: "Bulos", it: "Bufale", subEs: "verificados", subIt: "smontate" },
             { href: locale === "it" ? "/calcio/" : "/futbol/", emoji: "⚽", accent: "#4ade80", es: "Fútbol", it: "Calcio", subEs: "clubes y ligas", subIt: "club e leghe" },
             { href: locale === "it" ? "/soldi-giocatori/" : "/jugadores/", emoji: "💸", accent: "#38bdf8", es: "Jugadores", it: "Giocatori", subEs: "fichajes y sueldos", subIt: "trasferimenti" },
           ].map((c, i) => (
@@ -210,6 +210,7 @@ export default function Home() {
                 { href: "/tasse-benzina/", t: "⛽ Quante tasse paghi sulla benzina" },
                 { href: "/stipendi-sindaci/", t: "🏛️ Quanto guadagna il tuo sindaco" },
                 { href: "/stipendi-motogp/", t: "🏍️ Quanto guadagna un pilota MotoGP" },
+                { href: "/calcio-mondiale/", t: "🌍 I soldi del calcio mondiale" },
                 { href: "/spesa-comuni/", t: "La spesa dei comuni" },
                 { href: "/ranking/", t: "Classifica di spesa" },
                 { href: "/dove-vanno-i-soldi-pubblici/", t: "Dove vanno i soldi pubblici" },
@@ -225,6 +226,7 @@ export default function Home() {
                 { href: "/eurocopa/", t: "🏅 Los premios de la Eurocopa" },
                 { href: "/gasto-sanidad/", t: "🏥 ¿Cuánto gasta tu comunidad en sanidad?" },
                 { href: "/jugadores/", t: "⚽ El dinero de los jugadores" },
+                { href: "/sueldos-motogp/", t: "🏍️ ¿Cuánto gana un piloto de MotoGP?" },
                 { href: "/records/", t: "🏆 Los récords del dinero público" },
                 { href: "/gasto-por-habitante/", t: "Gasto por habitante" },
                 { href: "/ranking/", t: "Ranking de gasto" },
@@ -251,7 +253,7 @@ export default function Home() {
             {locale === "it" ? "Tutto il calcio →" : "Todo el fútbol →"}
           </Link>
         </div>
-        <Link href="/futbol-mundial/" className="glass p-4 mb-4 flex items-center justify-between gap-3 group hover:border-cyan transition">
+        <Link href={locale === "it" ? "/calcio-mondiale/" : "/futbol-mundial/"} className="glass p-4 mb-4 flex items-center justify-between gap-3 group hover:border-cyan transition">
           <span>
             <span className="block font-semibold">🌍 {locale === "it" ? "I soldi del calcio mondiale" : "El dinero del fútbol mundial"}</span>
             <span className="block text-xs text-muted">{locale === "it" ? "Quale lega e quale club incassano di più al mondo" : "Qué liga y qué club ingresan más del mundo"}</span>

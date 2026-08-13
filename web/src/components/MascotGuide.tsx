@@ -93,11 +93,11 @@ export default function MascotGuide() {
     if (is("/fondos-europeos", "/fondi-europei-pnrr")) return T("I soldi dell'Europa, spiegati:", "El dinero de Europa, explicado:");
     if (is("/ranking")) return T("La classifica di spesa, spiegata:", "El ranking de gasto, explicado:");
     if (is("/records", "/record-soldi-pubblici")) return T("I record dei soldi pubblici:", "Los récords del dinero público:");
-    if (is("/stipendi-motogp")) return T("I soldi della MotoGP:", "El dinero de MotoGP:");
+    if (is("/stipendi-motogp", "/sueldos-motogp")) return T("I soldi della MotoGP:", "El dinero de MotoGP:");
     if (is("/jugadores", "/soldi-giocatori")) return T("I soldi dei giocatori:", "El dinero de los jugadores:");
     if (is("/futbol", "/calcio", "/champions-league", "/premi-", "/eurocopa", "/mundial-2026")) return T("I soldi del calcio, spiegati:", "El dinero del fútbol, explicado:");
-    if (is("/escandalos")) return T("Gli scandali sui soldi pubblici:", "Los escándalos del dinero público:");
-    if (is("/bulos")) return T("Le bufale, smontate:", "Los bulos, desmontados:");
+    if (is("/escandalos", "/scandali-soldi-pubblici")) return T("Gli scandali sui soldi pubblici:", "Los escándalos del dinero público:");
+    if (is("/bulos", "/bufale-soldi-pubblici")) return T("Le bufale, smontate:", "Los bulos, desmontados:");
     return T("Ciao! Come posso aiutarti?", "¡Hola! ¿En qué te ayudo?");
   };
 
@@ -131,7 +131,7 @@ export default function MascotGuide() {
       { icon: "🎁", label: T("Questi soldi vanno restituiti?", "¿Hay que devolver este dinero?"), answer: T("In parte no: le sovvenzioni «a fondo perduto» sono regalate. I prestiti invece sì, ma a condizioni vantaggiose.", "En parte no: las subvenciones «a fondo perdido» son regaladas. Los préstamos sí, pero en condiciones ventajosas.") },
       { icon: "💡", label: T("Spiegami questa pagina", "Explícame esta página"), act: goExplainer },
     ];
-    if (is("/stipendi-motogp")) return [
+    if (is("/stipendi-motogp", "/sueldos-motogp")) return [
       { icon: "⚠️", label: T("Sono cifre ufficiali?", "¿Son cifras oficiales?"), answer: T("No: i team non pubblicano gli ingaggi. Quelle che vedi sono stime di stampa, e te lo scriviamo chiaro. L'unico dato certo è il salario minimo dal 2027.", "No: los equipos no publican los contratos. Lo que ves son estimaciones de prensa, y te lo decimos claro. El único dato cierto es el salario mínimo desde 2027.") },
       { icon: "💡", label: T("Spiegami questa pagina", "Explícame esta página"), act: goExplainer },
     ];
@@ -155,11 +155,11 @@ export default function MascotGuide() {
       { icon: "⚽", label: T("Cos'è il «tetto salariale»?", "¿Qué es el «límite salarial»?"), answer: T("È il tetto massimo che la LaLiga permette a un club di spendere per la rosa, in base a ricavi e debiti. Non è quanto spende davvero.", "Es el tope máximo que LaLiga permite gastar a un club en su plantilla, según sus ingresos y deudas. No es lo que gasta de verdad.") },
       { icon: "💶", label: T("Cosa sono i «ricavi»?", "¿Qué son los «ingresos»?"), answer: T("I soldi che il club incassa in un anno (biglietti, TV, sponsor). Non è quanto «vale» la squadra.", "El dinero que el club recauda en un año (entradas, TV, patrocinios). No es cuánto «vale» el equipo.") },
     ];
-    if (is("/escandalos")) return [
+    if (is("/escandalos", "/scandali-soldi-pubblici")) return [
       { icon: "🕵️", label: T("Come funziona?", "¿Cómo funciona?"), answer: T("Raccolgo notizie vere di giornali sui soldi pubblici, ognuna con la sua fonte. Non accuso nessuno: fino a sentenza, ognuno è innocente.", "Reúno noticias reales de medios sobre el dinero público, cada una con su fuente. No acuso a nadie: hasta sentencia, todos inocentes.") },
       { icon: "🏠", label: T("Torna alla home", "Volver al inicio"), act: () => nav("/") },
     ];
-    if (is("/bulos")) return [
+    if (is("/bulos", "/bufale-soldi-pubblici")) return [
       { icon: "✅", label: T("Come funziona?", "¿Cómo funciona?"), answer: T("Prendo le bufale virali e ti mostro la cifra vera, con il link alla verifica fatta da fact-checker indipendenti.", "Cojo los bulos virales y te muestro la cifra real, con el enlace a la verificación de fact-checkers independientes.") },
       { icon: "🏠", label: T("Torna alla home", "Volver al inicio"), act: () => nav("/") },
     ];

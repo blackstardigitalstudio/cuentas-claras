@@ -4,7 +4,7 @@ import EurocopaClient from "./EurocopaClient";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "Premios de la Eurocopa: ¿cuánto ganó España?",
+  title: "Premios de la Eurocopa: lo que cobra cada selección",
   description:
     "¿Cuánto se gana en la Eurocopa? España cobró hasta 28,25 mln € por ganar la Euro 2024, sobre un total de 331 millones repartidos entre las 24 selecciones. Cifras oficiales UEFA. Montepremi Europei: quanto guadagna chi vince.",
   keywords: [

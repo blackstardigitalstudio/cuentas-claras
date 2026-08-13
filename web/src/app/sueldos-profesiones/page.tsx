@@ -4,7 +4,7 @@ import ProfesionesClient from "./ProfesionesClient";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "¿Cuánto gana un médico, un profesor o un policía? Sueldos públicos",
+  title: "Un médico gana 54.000 €. ¿Y un enfermero?",
   description:
     "¿Cuánto gana un médico, un enfermero, un profesor o un policía en España e Italia? Sueldos típicos: médico ~54.000 €, enfermero ~29.000 €, profesor ~34.000 €/año. Trabajan con dinero público. Cifras con fuente (INE, CCNL). Quanto guadagna un medico.",
   keywords: [

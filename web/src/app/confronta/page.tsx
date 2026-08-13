@@ -8,7 +8,7 @@ import { CMP_IT } from "@/data/compare-lists";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "Confronta i bilanci dei comuni: entrate, spese, debito e stipendio del sindaco",
+  title: "Due comuni a confronto: chi spende e chi deve di più?",
   description:
     "Confronta due città italiane fianco a fianco: quanto incassano, spendono e devono, e quanto guadagna il sindaco. Dati ufficiali. Scegli due comuni e guarda i conti insieme.",
   keywords: ["confronta comuni", "confronto bilanci comuni", "confronto spesa città", "confronto debito comuni"],

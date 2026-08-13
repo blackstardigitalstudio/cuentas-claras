@@ -12,7 +12,7 @@ const realGastos = COUNTRIES.it.realNames.reduce((s, n) => s + (COUNTRIES.it.reg
 const cityCount = COUNTRIES.it.realNames.length;
 
 export const metadata: Metadata = {
-  title: "Dove vanno i soldi pubblici in Italia? Spiegato facile, con i dati",
+  title: "Dove finiscono i soldi del tuo Comune?",
   description:
     "Dove va il denaro pubblico del tuo Comune? Le grandi aree di spesa (servizi di base, sociale, istruzione e cultura, debito…) spiegate in parole semplici, con dati ufficiali di centinaia di comuni italiani.",
   keywords: [

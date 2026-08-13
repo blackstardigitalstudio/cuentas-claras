@@ -9,7 +9,7 @@ const leagues = [...LEAGUES].sort((a, b) => b.revenue - a.revenue);
 const clubs = [...CLUB_REVENUE].sort((a, b) => b.amount - a.amount);
 
 export const metadata: Metadata = {
-  title: "El dinero del fútbol mundial: qué liga y qué club ingresan más (datos oficiales)",
+  title: "La Premier ingresa 9,6 mil M€. ¿Y las demás ligas?",
   description: `¿Qué liga es la más rica del mundo? La ${leagues[0].league}, con ${formatCompact(leagues[0].revenue)}. ¿Y el club que más ingresa? El ${clubs[0].club} (${formatCompact(clubs[0].amount)}), único por encima de 1.000 M€. Ingresos de las grandes ligas y clubes, con datos oficiales.`,
   keywords: [
     "liga más rica del mundo",

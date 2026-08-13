@@ -7,7 +7,7 @@ import newsData from "@/data/news.json";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "Escándalos del dinero público · corrupción, fraude y despilfarro (España e Italia)",
+  title: "¿Adónde fue el dinero? Escándalos, caso por caso",
   description:
     "Corrupción, fraude, fondos europeos, sentencias y despilfarro del dinero público en España e Italia. Titulares de medios, con enlace a la fuente.",
   keywords: [

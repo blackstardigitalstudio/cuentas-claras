@@ -80,6 +80,14 @@ Coppie esistenti: `/sueldos-politicos/`↔`/stipendi-politici/` ·
 `/escandalos/`↔`/scandali-soldi-pubblici/` · `/bulos/`↔`/bufale-soldi-pubblici/` ·
 `/stipendi-motogp/`↔`/sueldos-motogp/`.
 
+⚠️ **Ogni pagina italiana DEVE dichiarare `openGraph: { locale: "it_IT" }`.**
+Il layout radice è uno solo, quindi l'HTML statico esce sempre con `<html lang="es">`.
+Lo script `scripts/fix-lang.mjs` (agganciato a `postbuild`, gira da solo dopo ogni
+`npm run build`) rimette `lang="it"` alle pagine italiane, e le riconosce **proprio
+da `og:locale`**. Se lo dimentichi, la pagina resta dichiarata spagnola a Google e
+agli screen reader. Se lo script non trova nessuna pagina italiana, il build fallisce
+apposta.
+
 **Ancora scoperte (con il motivo, non dimenticanze):**
 - `/tasse-benzina/` non ha la versione ES: il RDL 18/2026 cambia l'accisa spagnola
   ogni mese fino a settembre 2026 e la cifra di settembre dipende dall'IPC; le

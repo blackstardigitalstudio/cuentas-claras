@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${t} (confronto con dati ufficiali)`,
     description: `Confronta ${p.a.name} e ${p.b.name}: entrate, spese, spesa per abitante e stipendio del sindaco, con dati ufficiali. ${p.a.name} spende ${formatCompact(p.a.gastos)} e ${p.b.name} ${formatCompact(p.b.gastos)}.`,
     alternates: { canonical: `${SITE}/confronta/${coppia}/` },
-    openGraph: { title: t, description: `Entrate, spese, spesa per abitante e stipendio del sindaco a confronto.`, type: "article" },
+    openGraph: { title: t, description: `Entrate, spese, spesa per abitante e stipendio del sindaco a confronto.`, type: "article", locale: "it_IT" },
   };
 }
 

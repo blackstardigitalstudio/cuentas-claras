@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Confronta due città italiane fianco a fianco: quanto incassano, spendono e devono, e quanto guadagna il sindaco. Dati ufficiali. Scegli due comuni e guarda i conti insieme.",
   keywords: ["confronta comuni", "confronto bilanci comuni", "confronto spesa città", "confronto debito comuni"],
   alternates: { canonical: `${SITE}/confronta/` },
-  openGraph: { title: "Confronta i bilanci dei comuni", description: "Due comuni, i conti fianco a fianco, con dati ufficiali.", url: `${SITE}/confronta/`, type: "website" },
+  openGraph: { title: "Confronta i bilanci dei comuni", description: "Due comuni, i conti fianco a fianco, con dati ufficiali.", url: `${SITE}/confronta/`, type: "website", locale: "it_IT" },
 };
 
 function nameFor(slug: string): string {

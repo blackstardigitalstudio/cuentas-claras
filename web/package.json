@@ -9,7 +9,8 @@
     "etl": "node ../data/etl-all.mjs",
     "etl:news": "node ../data/etl-news.mjs",
     "serve": "npx --yes serve out",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postbuild": "node scripts/fix-lang.mjs"
   },
   "overrides": {
     "postcss": "^8.5.10"

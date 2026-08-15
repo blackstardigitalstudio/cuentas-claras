@@ -6,6 +6,7 @@ import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
 import SimpleExplainer from "@/components/SimpleExplainer";
 import ShareBar from "@/components/ShareBar";
+import { TAGLIE_IT, nEu } from "@/data/fasce-sindaci";
 
 // Indennità di funzione dei sindaci italiani: importi UFFICIALI, fissati per legge
 // (Legge di Bilancio 2022, a regime dal 2024). Sono una percentuale del trattamento
@@ -87,6 +88,28 @@ function Inner() {
           Fonte: Legge di Bilancio 2022 (art. 1, commi 583-587), a regime dal 2024. L&apos;indennità è parametrata al
           trattamento economico dei Presidenti di Regione (13.800 € lordi al mese).
         </p>
+      </section>
+
+      {/* Scorciatoia per dimensione: la gente non cerca "quanto guadagna un
+          sindaco", cerca "stipendio sindaco 10.000 abitanti". Ogni tessera
+          porta alla pagina che risponde a quella domanda esatta, col netto
+          calcolato e i comuni veri di quella taglia. */}
+      <section className="mt-8">
+        <h2 className="text-lg md:text-xl font-semibold mb-1">Quanti abitanti ha il tuo comune?</h2>
+        <p className="text-[11px] text-cyan/70 mb-4">
+          Scegli la dimensione e ti diciamo quanto prende il sindaco: lordo, netto e i comuni veri di quella taglia.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {TAGLIE_IT.map((t) => (
+            <Link
+              key={t}
+              href={`/stipendio-sindaco/${t}-abitanti/`}
+              className="px-3.5 py-2 rounded-full text-sm border border-[var(--panel-border)] text-muted hover:text-fg hover:border-cyan transition"
+            >
+              {nEu(t)} abitanti
+            </Link>
+          ))}
+        </div>
       </section>
 
       {/* Le due cose che la gente chiede sempre */}

@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { COUNTRIES, type CountryCode } from "@/lib/data";
 import { CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS } from "@/data/futbol";
 import { CMP_ES, CMP_IT } from "@/data/compare-lists";
+import { TAGLIE_IT } from "@/data/fasce-sindaci";
 
 export const dynamic = "force-static";
 
@@ -46,6 +47,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/stipendi-politici/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE}/stipendi-sindaci/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/stipendi-motogp/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    // Una pagina per ogni dimensione di comune: e' cosi' che la gente cerca
+    // davvero ("stipendio sindaco 10.000 abitanti"), non in modo generico.
+    ...TAGLIE_IT.map((t) => ({
+      url: `${SITE}/stipendio-sindaco/${t}-abitanti/`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
     { url: `${SITE}/calcio-mondiale/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/bufale-soldi-pubblici/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/scandali-soldi-pubblici/`, lastModified, changeFrequency: "hourly", priority: 0.8 },

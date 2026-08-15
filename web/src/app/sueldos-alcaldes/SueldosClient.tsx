@@ -8,6 +8,7 @@ import SimpleExplainer from "@/components/SimpleExplainer";
 import { COUNTRIES, slugify } from "@/lib/data";
 import { formatEuro } from "@/lib/format";
 import ranks from "@/data/rankings-es.json";
+import { TAGLIE_ES, nEu } from "@/data/fasce-sindaci";
 
 const esSlugs = new Set(Object.values(COUNTRIES.es.regions).filter((r) => !r.isSample).map((r) => r.slug));
 
@@ -173,6 +174,31 @@ function Inner() {
             ? "Fonte: Ley 31/2022 (Presupuestos Generales del Estado 2023), gli ultimi approvati. Nei comuni sotto i 1.000 abitanti il sindaco non può avere l'incarico esclusivo: al massimo parziale, con tetti più bassi."
             : "Fuente: Ley 31/2022 (Presupuestos Generales del Estado 2023), los últimos aprobados. En municipios de menos de 1.000 habitantes el alcalde no puede tener dedicación exclusiva: como mucho parcial, con topes más bajos."}
         </p>
+
+        {/* Atajo por tamaño: la gente no busca "cuánto cobra un alcalde", busca
+            "de un pueblo de 500 habitantes". Cada ficha lleva a la página que
+            responde justo a eso, con el tope Y la mediana real. */}
+        <div className="mt-6">
+          <p className="text-sm font-medium mb-1">
+            {it ? "Quanti abitanti ha il tuo comune?" : "¿Cuántos habitantes tiene tu pueblo?"}
+          </p>
+          <p className="text-[11px] text-cyan/70 mb-3">
+            {it
+              ? "Scegli la dimensione: ti diciamo il tetto di legge e quanto prendono davvero i sindaci di quella taglia."
+              : "Elige el tamaño: te decimos el tope legal y lo que cobran de verdad los alcaldes de ese tamaño."}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {TAGLIE_ES.map((t2) => (
+              <Link
+                key={t2}
+                href={`/sueldo-alcalde/${t2}-habitantes/`}
+                className="px-3.5 py-2 rounded-full text-sm border border-[var(--panel-border)] text-muted hover:text-fg hover:border-cyan transition"
+              >
+                {nEu(t2)} {it ? "abitanti" : "habitantes"}
+              </Link>
+            ))}
+          </div>
+        </div>
 
         <div className="glass p-4 mt-3 border border-amber-400/25">
           <p className="text-sm text-amber-200/90">

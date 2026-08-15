@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { COUNTRIES, type CountryCode } from "@/lib/data";
 import { CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS } from "@/data/futbol";
 import { CMP_ES, CMP_IT } from "@/data/compare-lists";
-import { TAGLIE_IT } from "@/data/fasce-sindaci";
+import { TAGLIE_IT, TAGLIE_ES } from "@/data/fasce-sindaci";
 
 export const dynamic = "force-static";
 
@@ -41,6 +41,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/jugadores/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/escandalos/`, lastModified, changeFrequency: "hourly", priority: 0.8 },
     { url: `${SITE}/sueldos-motogp/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    // Una página por cada tamaño de municipio: es como busca la gente de verdad
+    // ("cuánto cobra un alcalde de un pueblo de 500 habitantes").
+    ...TAGLIE_ES.map((t) => ({
+      url: `${SITE}/sueldo-alcalde/${t}-habitantes/`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
     // Versioni ITALIANE delle pagine tematiche (URL e metadati in italiano, così
     // Google le mostra a chi cerca in italiano). Contenuto equivalente allo
     // spagnolo, collegate tra loro con hreflang.

@@ -1,0 +1,2038 @@
+{
+ "fuente": {
+  "name": "Ministerio de Política Territorial · Cargos Representativos Locales (mandato 2023-2027)",
+  "url": "https://concejales.redsara.es/consulta"
+ },
+ "alcaldes": {
+  "madrid": {
+   "nombre": "José Luis Martínez-Almeida Navasqües",
+   "desde": "17/06/2023",
+   "ine": "280796"
+  },
+  "zaragoza": {
+   "nombre": "Natalia Chueca Muñoz",
+   "desde": "17/06/2023",
+   "ine": "502973"
+  },
+  "murcia": {
+   "nombre": "Jose Francisco Ballesta German",
+   "desde": "17/06/2023",
+   "ine": "300308"
+  },
+  "palma": {
+   "nombre": "Jaime Martínez Llabrés",
+   "desde": "17/06/2023",
+   "ine": "070407"
+  },
+  "bilbao": {
+   "nombre": "Juan Maria Aburto Rike",
+   "desde": "17/06/2023",
+   "ine": "480209"
+  },
+  "valladolid": {
+   "nombre": "Jesus Julio Carnero Garcia",
+   "desde": "17/06/2023",
+   "ine": "471868"
+  },
+  "cordoba": {
+   "nombre": "José María Bellido Roche",
+   "desde": "17/06/2023",
+   "ine": "140214"
+  },
+  "alicante": {
+   "nombre": "Luis Jose Barcala Sierra",
+   "desde": "17/06/2023",
+   "ine": "030149"
+  },
+  "gijon": {
+   "nombre": "María del Carmen Moriyón Entrialgo",
+   "desde": "17/06/2023",
+   "ine": "330241"
+  },
+  "granada": {
+   "nombre": "Joan Amat i Domènech",
+   "desde": "17/06/2023",
+   "ine": "080945"
+  },
+  "a-coruna": {
+   "nombre": "Inés Rey García",
+   "desde": "17/06/2023",
+   "ine": "150308"
+  },
+  "vigo": {
+   "nombre": "Abel Ramon Caballero Alvarez",
+   "desde": "17/06/2023",
+   "ine": "360577"
+  },
+  "pamplona": {
+   "nombre": "Joseba Asiron Saez",
+   "desde": "28/12/2023",
+   "ine": "312016"
+  },
+  "santander": {
+   "nombre": "Gema Igual Ortiz",
+   "desde": "17/06/2023",
+   "ine": "390759"
+  },
+  "donostia-san-sebastian": {
+   "nombre": "Jon Insausti Maisterrena",
+   "desde": "29/10/2025",
+   "ine": "200697"
+  },
+  "logrono": {
+   "nombre": "Conrado Escobar las Heras",
+   "desde": "17/06/2023",
+   "ine": "260892"
+  },
+  "castello-de-la-plana": {
+   "nombre": "Begoña Carrasco García",
+   "desde": "17/06/2023",
+   "ine": "120402"
+  },
+  "tarragona": {
+   "nombre": "Rubén Viñuales Elías",
+   "desde": "17/06/2023",
+   "ine": "431482"
+  },
+  "lleida": {
+   "nombre": "Fèlix Larrosa Piqué",
+   "desde": "17/06/2023",
+   "ine": "251207"
+  },
+  "girona": {
+   "nombre": "Lluc Salellas Vilar",
+   "desde": "17/06/2023",
+   "ine": "170792"
+  },
+  "salamanca": {
+   "nombre": "Carlos Manuel Garcia Carbayo",
+   "desde": "17/06/2023",
+   "ine": "372745"
+  },
+  "burgos": {
+   "nombre": "Cristina Ayala Santamaria",
+   "desde": "17/06/2023",
+   "ine": "090597"
+  },
+  "leon": {
+   "nombre": "Jose Antonio Diez Diaz",
+   "desde": "07/07/2023",
+   "ine": "240896"
+  },
+  "albacete": {
+   "nombre": "Manuel Ramon Serrano Lopez",
+   "desde": "17/06/2023",
+   "ine": "020030"
+  },
+  "toledo": {
+   "nombre": "Carlos Velazquez Romo",
+   "desde": "17/06/2023",
+   "ine": "451685"
+  },
+  "cadiz": {
+   "nombre": "Bruno Garcia de Leon",
+   "desde": "17/06/2023",
+   "ine": "110125"
+  },
+  "huelva": {
+   "nombre": "Maria del Pilar Miranda Plata",
+   "desde": "17/06/2023",
+   "ine": "210412"
+  },
+  "almeria": {
+   "nombre": "María del Mar Vázquez Agüero",
+   "desde": "17/06/2023",
+   "ine": "040139"
+  },
+  "jaen": {
+   "nombre": "Julio Millan Muñoz",
+   "desde": "02/01/2025",
+   "ine": "230503"
+  },
+  "caceres": {
+   "nombre": "Rafael Antonio Mateos Pizarro",
+   "desde": "17/06/2023",
+   "ine": "100377"
+  },
+  "badajoz": {
+   "nombre": "Ignacio Gragera Barrera",
+   "desde": "17/06/2023",
+   "ine": "060153"
+  },
+  "ourense": {
+   "nombre": "Gonzalo Pérez Jácome",
+   "desde": "17/06/2023",
+   "ine": "320548"
+  },
+  "lugo": {
+   "nombre": "Miguel Fernandez Mendez",
+   "desde": "11/03/2025",
+   "ine": "270288"
+  },
+  "huesca": {
+   "nombre": "Lorena Orduna Pons",
+   "desde": "17/06/2023",
+   "ine": "221259"
+  },
+  "teruel": {
+   "nombre": "Emma Buj Sánchez",
+   "desde": "17/06/2023",
+   "ine": "442160"
+  },
+  "cuenca": {
+   "nombre": "Dario Francisco Dolz Fernandez",
+   "desde": "17/06/2023",
+   "ine": "160783"
+  },
+  "guadalajara": {
+   "nombre": "Ana Cristina Guarinos Lopez",
+   "desde": "17/06/2023",
+   "ine": "191305"
+  },
+  "ciudad-real": {
+   "nombre": "Francisco Cañizares Jiménez",
+   "desde": "17/06/2023",
+   "ine": "130343"
+  },
+  "segovia": {
+   "nombre": "Jose Mazarias Perez",
+   "desde": "17/06/2023",
+   "ine": "401945"
+  },
+  "avila": {
+   "nombre": "Jesus Manuel Sanchez Cabrera",
+   "desde": "17/06/2023",
+   "ine": "050198"
+  },
+  "soria": {
+   "nombre": "Javier Anton Cacho",
+   "desde": "27/04/2026",
+   "ine": "421736"
+  },
+  "palencia": {
+   "nombre": "Raquel Miriam Andrés Prieto",
+   "desde": "17/06/2023",
+   "ine": "341202"
+  },
+  "zamora": {
+   "nombre": "Francisco Guarido Viñuela",
+   "desde": "17/06/2023",
+   "ine": "492755"
+  },
+  "las-palmas-de-gran-canaria": {
+   "nombre": "Carolina Darias San Sebastián",
+   "desde": "17/06/2023",
+   "ine": "350167"
+  },
+  "santa-cruz-de-tenerife": {
+   "nombre": "José Manuel Bermúdez Esparza",
+   "desde": "17/06/2023",
+   "ine": "380380"
+  },
+  "marbella": {
+   "nombre": "Maria Angeles Muñoz Uriol",
+   "desde": "17/06/2023",
+   "ine": "290691"
+  },
+  "l-hospitalet-de-llobregat": {
+   "nombre": "David Quirós Brito",
+   "desde": "15/06/2024",
+   "ine": "081017"
+  },
+  "badalona": {
+   "nombre": "Xavier García Albiol",
+   "desde": "17/06/2023",
+   "ine": "080155"
+  },
+  "sabadell": {
+   "nombre": "Marta Farres Falgueras",
+   "desde": "17/06/2023",
+   "ine": "081878"
+  },
+  "terrassa": {
+   "nombre": "Jordi Ballart Pastor",
+   "desde": "17/06/2023",
+   "ine": "082798"
+  },
+  "elche-elx": {
+   "nombre": "Pablo Ruz Villanueva",
+   "desde": "17/06/2023",
+   "ine": "030651"
+  },
+  "cartagena": {
+   "nombre": "Noelia María Arroyo Hernández",
+   "desde": "17/06/2023",
+   "ine": "300161"
+  },
+  "jerez-de-la-frontera": {
+   "nombre": "María José García-Pelayo Jurado",
+   "desde": "17/06/2023",
+   "ine": "110201"
+  },
+  "alcobendas": {
+   "nombre": "Rocio Sara García Alcantara",
+   "desde": "17/06/2023",
+   "ine": "280066"
+  },
+  "san-cristobal-de-la-laguna": {
+   "nombre": "Luis Yeray Gutiérrez Pérez",
+   "desde": "17/06/2023",
+   "ine": "380239"
+  },
+  "fuenlabrada": {
+   "nombre": "Francisco Javier Ayala Ortega",
+   "desde": "17/06/2023",
+   "ine": "280587"
+  },
+  "alcala-de-henares": {
+   "nombre": "Judith Piquet Flores",
+   "desde": "17/06/2023",
+   "ine": "280053"
+  },
+  "mostoles": {
+   "nombre": "Manuel Bautista Monjon",
+   "desde": "17/06/2023",
+   "ine": "280920"
+  },
+  "alcorcon": {
+   "nombre": "Candelaria Testa Romero",
+   "desde": "17/06/2023",
+   "ine": "280072"
+  },
+  "sant-cugat-del-valles": {
+   "nombre": "Josep Maria Vallès Navarro",
+   "desde": "17/06/2023",
+   "ine": "082055"
+  },
+  "mataro": {
+   "nombre": "David Bote Paz",
+   "desde": "17/06/2023",
+   "ine": "081213"
+  },
+  "torrevieja": {
+   "nombre": "Eduardo Jorge Dolón Sánchez",
+   "desde": "17/06/2023",
+   "ine": "031339"
+  },
+  "torrejon-de-ardoz": {
+   "nombre": "Alejandro Navarro Prieto",
+   "desde": "25/08/2023",
+   "ine": "281489"
+  },
+  "reus": {
+   "nombre": "Sandra Guaita Esteruelas",
+   "desde": "17/06/2023",
+   "ine": "431233"
+  },
+  "leganes": {
+   "nombre": "Miguel Angel Recuenco Checa",
+   "desde": "17/06/2023",
+   "ine": "280745"
+  },
+  "santa-coloma-de-gramenet": {
+   "nombre": "Mireia González Sáez",
+   "desde": "27/08/2024",
+   "ine": "082457"
+  },
+  "dos-hermanas": {
+   "nombre": "Francisco Rodriguez Garcia",
+   "desde": "17/06/2023",
+   "ine": "410384"
+  },
+  "santiago-de-compostela": {
+   "nombre": "María Goretti Sanmartín Rei",
+   "desde": "17/06/2023",
+   "ine": "150780"
+  },
+  "rivas-vaciamadrid": {
+   "nombre": "Aída Castillejo Parrilla",
+   "desde": "17/06/2023",
+   "ine": "281230"
+  },
+  "el-prat-de-llobregat": {
+   "nombre": "Alba Bou Jorda",
+   "desde": "16/01/2025",
+   "ine": "081691"
+  },
+  "manresa": {
+   "nombre": "Marc Aloy i Guàrdia",
+   "desde": "17/06/2023",
+   "ine": "081136"
+  },
+  "las-rozas-de-madrid": {
+   "nombre": "José de la Uz Pardos",
+   "desde": "17/06/2023",
+   "ine": "281277"
+  },
+  "pozuelo-de-alarcon": {
+   "nombre": "Paloma Tejero Toledo",
+   "desde": "17/06/2023",
+   "ine": "281150"
+  },
+  "mijas": {
+   "nombre": "Ana Carmen Mata Rico",
+   "desde": "02/11/2023",
+   "ine": "290705"
+  },
+  "alcala-de-guadaira": {
+   "nombre": "Ana Isabel Jiménez Contreras",
+   "desde": "17/06/2023",
+   "ine": "410042"
+  },
+  "getxo": {
+   "nombre": "Amaia Agirre Muñoa",
+   "desde": "17/06/2023",
+   "ine": "480448"
+  },
+  "algeciras": {
+   "nombre": "José Ignacio Landaluce Calleja",
+   "desde": "17/06/2023",
+   "ine": "110048"
+  },
+  "benidorm": {
+   "nombre": "Antonio Perez Perez",
+   "desde": "17/06/2023",
+   "ine": "030319"
+  },
+  "roquetas-de-mar": {
+   "nombre": "Gabriel Amat Ayllón",
+   "desde": "17/06/2023",
+   "ine": "040792"
+  },
+  "calvia": {
+   "nombre": "Juan Antonio Amengual Guasp",
+   "desde": "17/06/2023",
+   "ine": "070110"
+  },
+  "estepona": {
+   "nombre": "Jose Maria Garcia Urbano",
+   "desde": "17/06/2023",
+   "ine": "290516"
+  },
+  "adeje": {
+   "nombre": "José Miguel Rodríguez Fraga",
+   "desde": "17/06/2023",
+   "ine": "380012"
+  },
+  "castelldefels": {
+   "nombre": "Manuel Reyes Lopez",
+   "desde": "17/06/2023",
+   "ine": "080569"
+  },
+  "granollers": {
+   "nombre": "Alba Barnusell Ortuño",
+   "desde": "17/06/2023",
+   "ine": "080961"
+  },
+  "torremolinos": {
+   "nombre": "Margarita del Carmen del Cid Muñoz",
+   "desde": "17/06/2023",
+   "ine": "299018"
+  },
+  "orihuela": {
+   "nombre": "Jose Vegara Dura",
+   "desde": "17/06/2023",
+   "ine": "030993"
+  },
+  "arona": {
+   "nombre": "Fatima Lemes Reveron",
+   "desde": "17/06/2023",
+   "ine": "380064"
+  },
+  "parla": {
+   "nombre": "Ramón Jurado Rodríguez",
+   "desde": "17/06/2023",
+   "ine": "281065"
+  },
+  "telde": {
+   "nombre": "Juan Antonio Peña Medina",
+   "desde": "17/06/2023",
+   "ine": "350265"
+  },
+  "cornella-de-llobregat": {
+   "nombre": "Antonio Balmón Arévalo",
+   "desde": "17/06/2023",
+   "ine": "080734"
+  },
+  "fuengirola": {
+   "nombre": "Ana Maria Mula Redruello",
+   "desde": "17/06/2023",
+   "ine": "290542"
+  },
+  "velez-malaga": {
+   "nombre": "Jesus Lupiañez Herrera",
+   "desde": "17/06/2023",
+   "ine": "290944"
+  },
+  "chiclana-de-la-frontera": {
+   "nombre": "Jose Maria Roman Guerrero",
+   "desde": "17/06/2023",
+   "ine": "110159"
+  },
+  "sant-boi-de-llobregat": {
+   "nombre": "Lluïsa Moret Sabido",
+   "desde": "17/06/2023",
+   "ine": "082009"
+  },
+  "vilanova-i-la-geltru": {
+   "nombre": "Juan Luis Ruiz López",
+   "desde": "17/06/2023",
+   "ine": "083073"
+  },
+  "gandia": {
+   "nombre": "José Manuel Prieto Part",
+   "desde": "17/06/2023",
+   "ine": "461311"
+  },
+  "san-sebastian-de-los-reyes": {
+   "nombre": "Lucía Soledad Fernández Alonso",
+   "desde": "17/06/2023",
+   "ine": "281343"
+  },
+  "san-fernando": {
+   "nombre": "Patricia Cabada Montañes",
+   "desde": "17/06/2023",
+   "ine": "110316"
+  },
+  "el-ejido": {
+   "nombre": "Francisco Gongora Cara",
+   "desde": "17/06/2023",
+   "ine": "049026"
+  },
+  "sagunto": {
+   "nombre": "Dario Moreno Lerga",
+   "desde": "17/06/2023",
+   "ine": "462205"
+  },
+  "irun": {
+   "nombre": "Cristina Laborda Albolea",
+   "desde": "13/12/2023",
+   "ine": "200454"
+  },
+  "lloret-de-mar": {
+   "nombre": "Adrià Lamelas Martínez",
+   "desde": "17/06/2023",
+   "ine": "170950"
+  },
+  "majadahonda": {
+   "nombre": "María Dolores Moreno Molino",
+   "desde": "17/06/2023",
+   "ine": "280800"
+  },
+  "rubi": {
+   "nombre": "Ana María Martínez Martínez",
+   "desde": "17/06/2023",
+   "ine": "081846"
+  },
+  "molina-de-segura": {
+   "nombre": "Jose Angel Alfonso Hernandez",
+   "desde": "17/06/2023",
+   "ine": "300275"
+  },
+  "ferrol": {
+   "nombre": "Jose Manuel Rey Varela",
+   "desde": "17/06/2023",
+   "ine": "150367"
+  },
+  "viladecans": {
+   "nombre": "Olga Morales Segura",
+   "desde": "10/10/2024",
+   "ine": "083015"
+  },
+  "lorca": {
+   "nombre": "Fulgencio Gil Jodar",
+   "desde": "17/06/2023",
+   "ine": "300243"
+  },
+  "el-puerto-de-santa-maria": {
+   "nombre": "German Beardo Caro",
+   "desde": "17/06/2023",
+   "ine": "110276"
+  },
+  "mollet-del-valles": {
+   "nombre": "Mireia Dionisio Calé",
+   "desde": "17/06/2023",
+   "ine": "081249"
+  },
+  "san-roque": {
+   "nombre": "Juan Carlos Ruiz Boix",
+   "desde": "17/06/2023",
+   "ine": "110337"
+  },
+  "aviles": {
+   "nombre": "Maria Virtudes Monteserin Rodriguez",
+   "desde": "17/06/2023",
+   "ine": "330045"
+  },
+  "talavera-de-la-reina": {
+   "nombre": "Jose Julian Gregorio Lopez",
+   "desde": "17/06/2023",
+   "ine": "451650"
+  },
+  "boadilla-del-monte": {
+   "nombre": "Francisco Javier Úbeda Liébana",
+   "desde": "17/06/2023",
+   "ine": "280225"
+  },
+  "denia": {
+   "nombre": "Rafael Ferran Carrio Company",
+   "desde": "20/06/2026",
+   "ine": "030633"
+  },
+  "valdemoro": {
+   "nombre": "David Conde Rodríguez",
+   "desde": "17/06/2023",
+   "ine": "281610"
+  },
+  "cerdanyola-del-valles": {
+   "nombre": "Carlos Cordon Nuñez",
+   "desde": "17/06/2023",
+   "ine": "082665"
+  },
+  "torrelavega": {
+   "nombre": "Javier Lopez Estrada",
+   "desde": "17/06/2023",
+   "ine": "390876"
+  },
+  "coslada": {
+   "nombre": "Ángel Viveros Gutiérrez",
+   "desde": "17/06/2023",
+   "ine": "280493"
+  },
+  "esplugues-de-llobregat": {
+   "nombre": "Eduard Sanz García",
+   "desde": "02/10/2024",
+   "ine": "080771"
+  },
+  "arrecife": {
+   "nombre": "Yonathan Jesús de León Machín",
+   "desde": "07/07/2023",
+   "ine": "350043"
+  },
+  "paterna": {
+   "nombre": "Juan Antonio Sagredo Marco",
+   "desde": "17/06/2023",
+   "ine": "461901"
+  },
+  "igualada": {
+   "nombre": "Marc Castells Berzosa",
+   "desde": "17/06/2023",
+   "ine": "081022"
+  },
+  "arganda-del-rey": {
+   "nombre": "Alberto Escribano García",
+   "desde": "17/06/2023",
+   "ine": "280148"
+  },
+  "alcoy-alcoi": {
+   "nombre": "Antonio Alfonso Francés Pérez",
+   "desde": "17/06/2023",
+   "ine": "030092"
+  },
+  "figueres": {
+   "nombre": "Jordi Masquef Creus",
+   "desde": "17/06/2023",
+   "ine": "170669"
+  },
+  "sanlucar-de-barrameda": {
+   "nombre": "Maria Carmen Alvarez Marin",
+   "desde": "17/06/2023",
+   "ine": "110321"
+  },
+  "ripollet": {
+   "nombre": "Luis Manuel Tirado Garcia",
+   "desde": "17/06/2023",
+   "ine": "081803"
+  },
+  "merida": {
+   "nombre": "Antonio Rodríguez Osuna",
+   "desde": "17/06/2023",
+   "ine": "060830"
+  },
+  "arteixo": {
+   "nombre": "José Carlos Calvelo Martínez",
+   "desde": "17/06/2023",
+   "ine": "150050"
+  },
+  "torrent": {
+   "nombre": "Josep Maria Ros Marull",
+   "desde": "17/06/2023",
+   "ine": "171978"
+  },
+  "vic": {
+   "nombre": "Albert Castells Vilalta",
+   "desde": "17/06/2023",
+   "ine": "082981"
+  },
+  "ponferrada": {
+   "nombre": "Marco Antonio Morala Lopez",
+   "desde": "17/06/2023",
+   "ine": "241152"
+  },
+  "tres-cantos": {
+   "nombre": "Jesús Moreno García",
+   "desde": "17/06/2023",
+   "ine": "289036"
+  },
+  "errenteria": {
+   "nombre": "Aizpea Otaegi Mitxelena",
+   "desde": "17/06/2023",
+   "ine": "200678"
+  },
+  "gava": {
+   "nombre": "Gemma Badia i Cequier",
+   "desde": "17/06/2023",
+   "ine": "080898"
+  },
+  "linares": {
+   "nombre": "María Auxiliadora del Olmo Ruiz",
+   "desde": "17/06/2023",
+   "ine": "230559"
+  },
+  "sitges": {
+   "nombre": "Aurora Carbonell i Abella",
+   "desde": "17/06/2023",
+   "ine": "082704"
+  },
+  "granadilla-de-abona": {
+   "nombre": "Jose Domingo Regalado Gonzalez",
+   "desde": "26/03/2025",
+   "ine": "380178"
+  },
+  "motril": {
+   "nombre": "Luisa María García Chamorro",
+   "desde": "17/06/2023",
+   "ine": "181400"
+  },
+  "el-vendrell": {
+   "nombre": "Kenneth Martínez Molina",
+   "desde": "17/06/2023",
+   "ine": "431634"
+  },
+  "salou": {
+   "nombre": "Pere Granados Carrillo",
+   "desde": "17/06/2023",
+   "ine": "439057"
+  },
+  "colmenar-viejo": {
+   "nombre": "Carlos Blazquez Rodríguez",
+   "desde": "17/06/2023",
+   "ine": "280455"
+  },
+  "la-linea-de-la-concepcion": {
+   "nombre": "Jose Juan Franco Rodriguez",
+   "desde": "17/06/2023",
+   "ine": "110223"
+  },
+  "calafell": {
+   "nombre": "Ramon Ferre Sole",
+   "desde": "17/06/2023",
+   "ine": "430379"
+  },
+  "blanes": {
+   "nombre": "Jordi Hernandez Martinez",
+   "desde": "17/06/2023",
+   "ine": "170237"
+  },
+  "vilafranca-del-penedes": {
+   "nombre": "Francisco Romero Gamarra",
+   "desde": "17/06/2023",
+   "ine": "083054"
+  },
+  "barbera-del-valles": {
+   "nombre": "Francisco Javier (xavier) Garces Trillo",
+   "desde": "17/06/2023",
+   "ine": "082520"
+  },
+  "sant-joan-despi": {
+   "nombre": "Maria Belén García Criado",
+   "desde": "17/06/2023",
+   "ine": "082172"
+  },
+  "basauri": {
+   "nombre": "Asier Iragorri Basaguren",
+   "desde": "17/06/2023",
+   "ine": "480157"
+  },
+  "alhaurin-de-la-torre": {
+   "nombre": "Joaquín Villanova Rueda",
+   "desde": "17/06/2023",
+   "ine": "290075"
+  },
+  "aranjuez": {
+   "nombre": "Miguel Gómez Herrero",
+   "desde": "26/06/2024",
+   "ine": "280133"
+  },
+  "la-rinconada": {
+   "nombre": "Francisco Javier Fernández de los Ríos Torres",
+   "desde": "17/06/2023",
+   "ine": "410819"
+  },
+  "el-campello": {
+   "nombre": "Juan Jose Berenguer Alcobendas",
+   "desde": "17/06/2023",
+   "ine": "030507"
+  },
+  "siero": {
+   "nombre": "Angel Antonio Garcia Gonzalez",
+   "desde": "17/06/2023",
+   "ine": "330668"
+  },
+  "mogan": {
+   "nombre": "Onalia Bueno García",
+   "desde": "17/06/2023",
+   "ine": "350120"
+  },
+  "san-fernando-de-henares": {
+   "nombre": "Francisco Javier Corpa Rubio",
+   "desde": "17/06/2023",
+   "ine": "281300"
+  },
+  "sant-feliu-de-llobregat": {
+   "nombre": "Lourdes Borrell Moreno",
+   "desde": "17/06/2023",
+   "ine": "082114"
+  },
+  "rincon-de-la-victoria": {
+   "nombre": "José Francisco Salado Escaño",
+   "desde": "17/06/2023",
+   "ine": "290825"
+  },
+  "utrera": {
+   "nombre": "Francisco Paula Jimenez Morales",
+   "desde": "17/06/2023",
+   "ine": "410956"
+  },
+  "san-vicente-del-raspeig": {
+   "nombre": "Jose Rafael Pascual Llopis",
+   "desde": "17/06/2023",
+   "ine": "031225"
+  },
+  "rota": {
+   "nombre": "Jose Javier Ruiz Arana",
+   "desde": "17/06/2023",
+   "ine": "110309"
+  },
+  "calp": {
+   "nombre": "Ana Maria Sala Fernandez",
+   "desde": "17/06/2023",
+   "ine": "030475"
+  },
+  "benicarlo": {
+   "nombre": "Juan Manuel Cerda Tena",
+   "desde": "17/06/2023",
+   "ine": "120271"
+  },
+  "pinto": {
+   "nombre": "Salomón Aguado Manzanares",
+   "desde": "17/06/2023",
+   "ine": "281132"
+  },
+  "la-orotava": {
+   "nombre": "Francisco Eulogio Linares Garcia",
+   "desde": "17/06/2023",
+   "ine": "380260"
+  },
+  "vila-real": {
+   "nombre": "Jose Benlloch Fernandez",
+   "desde": "17/06/2023",
+   "ine": "121359"
+  },
+  "montcada-i-reixac": {
+   "nombre": "Bartolome Egea Sabate",
+   "desde": "17/06/2023",
+   "ine": "081252"
+  },
+  "alzira": {
+   "nombre": "Alfons Domínguez Gento",
+   "desde": "17/06/2023",
+   "ine": "460174"
+  },
+  "puertollano": {
+   "nombre": "Miguel Ángel Rúiz Rodríguez",
+   "desde": "17/06/2023",
+   "ine": "130718"
+  },
+  "palafrugell": {
+   "nombre": "Laura Millán Morales",
+   "desde": "08/10/2024",
+   "ine": "171175"
+  },
+  "collado-villalba": {
+   "nombre": "María Dolores Vargas Fernández",
+   "desde": "17/06/2023",
+   "ine": "280474"
+  },
+  "antequera": {
+   "nombre": "Manuel Jesus Baron Rios",
+   "desde": "17/06/2023",
+   "ine": "290154"
+  },
+  "la-vall-d-uixo": {
+   "nombre": "Tania Baños Martos",
+   "desde": "17/06/2023",
+   "ine": "121264"
+  },
+  "cambrils": {
+   "nombre": "Oliver Klein Bosquet",
+   "desde": "06/03/2025",
+   "ine": "430385"
+  },
+  "nerja": {
+   "nombre": "Jose Alberto Armijo Navas",
+   "desde": "17/06/2023",
+   "ine": "290751"
+  },
+  "sant-adria-de-besos": {
+   "nombre": "Filomena Cañete Carrillo (filo)",
+   "desde": "17/06/2023",
+   "ine": "081944"
+  },
+  "manacor": {
+   "nombre": "Miquel Oliver Gomila",
+   "desde": "17/06/2023",
+   "ine": "070337"
+  },
+  "la-vila-joiosa": {
+   "nombre": "Marcos Enrique Zaragoza Mayor",
+   "desde": "17/06/2023",
+   "ine": "031395"
+  },
+  "aranda-de-duero": {
+   "nombre": "Antonio Linaje Niño",
+   "desde": "17/06/2023",
+   "ine": "090183"
+  },
+  "llucmajor": {
+   "nombre": "María Francisca Lascolas Rosselló",
+   "desde": "17/06/2023",
+   "ine": "070316"
+  },
+  "mairena-del-aljarafe": {
+   "nombre": "Antonio Conde Sánchez",
+   "desde": "17/06/2023",
+   "ine": "410592"
+  },
+  "mao": {
+   "nombre": "Héctor Pons Riudavets",
+   "desde": "17/06/2023",
+   "ine": "070321"
+  },
+  "vinaros": {
+   "nombre": "Maria Dolores Miralles Mir",
+   "desde": "29/12/2023",
+   "ine": "121384"
+  },
+  "tortosa": {
+   "nombre": "Mar Lleixà i Fortuño",
+   "desde": "10/01/2026",
+   "ine": "431554"
+  },
+  "oleiros": {
+   "nombre": "Ángel García Seoane",
+   "desde": "17/06/2023",
+   "ine": "150584"
+  },
+  "andujar": {
+   "nombre": "Francisco Carmona Limón",
+   "desde": "17/06/2023",
+   "ine": "230050"
+  },
+  "olot": {
+   "nombre": "Agustí Arbós i Torrent",
+   "desde": "05/03/2025",
+   "ine": "171143"
+  },
+  "almassora": {
+   "nombre": "Maria Tormo Casañ",
+   "desde": "17/06/2023",
+   "ine": "120094"
+  },
+  "elda": {
+   "nombre": "Rubén Alfaro Bernabé",
+   "desde": "17/06/2023",
+   "ine": "030664"
+  },
+  "martorell": {
+   "nombre": "Xavier Fonollosa Comas",
+   "desde": "17/06/2023",
+   "ine": "081141"
+  },
+  "santa-pola": {
+   "nombre": "Maria Loreto Serrano Pomares",
+   "desde": "17/06/2023",
+   "ine": "031210"
+  },
+  "puerto-de-la-cruz": {
+   "nombre": "Leopoldo José Afonso Hernández",
+   "desde": "16/08/2024",
+   "ine": "380282"
+  },
+  "lepe": {
+   "nombre": "Adolfo Verano Dominguez",
+   "desde": "17/10/2024",
+   "ine": "210448"
+  },
+  "miranda-de-ebro": {
+   "nombre": "Maria Aitana Hernando Ruiz",
+   "desde": "17/06/2023",
+   "ine": "092194"
+  },
+  "aguimes": {
+   "nombre": "Oscar Ramón Hernandez Suarez",
+   "desde": "17/06/2023",
+   "ine": "350022"
+  },
+  "roses": {
+   "nombre": "Jose Maria Martinez Chinchilla",
+   "desde": "17/06/2023",
+   "ine": "171523"
+  },
+  "ecija": {
+   "nombre": "Silvia Heredia Martín",
+   "desde": "17/06/2023",
+   "ine": "410397"
+  },
+  "inca": {
+   "nombre": "Virgilio Moreno Sarrio",
+   "desde": "17/06/2023",
+   "ine": "070276"
+  },
+  "almunecar": {
+   "nombre": "Juan José Ruiz Joya",
+   "desde": "17/06/2023",
+   "ine": "180172"
+  },
+  "mieres": {
+   "nombre": "Manuel Angel Alvarez Alvarez",
+   "desde": "27/11/2023",
+   "ine": "330371"
+  },
+  "cullera": {
+   "nombre": "Jordi Mayor Vallet",
+   "desde": "17/06/2023",
+   "ine": "461056"
+  },
+  "carmona": {
+   "nombre": "Juan Manuel Avila Gutierrez",
+   "desde": "17/06/2023",
+   "ine": "410248"
+  },
+  "ubeda": {
+   "nombre": "Antonia Olivares Martinez",
+   "desde": "17/06/2023",
+   "ine": "230927"
+  },
+  "ingenio": {
+   "nombre": "Vanesa Belen Martin Herrera",
+   "desde": "10/02/2024",
+   "ine": "350115"
+  },
+  "ciutadella-de-menorca": {
+   "nombre": "Mª Jesús Bagur Benejam",
+   "desde": "31/01/2026",
+   "ine": "070159"
+  },
+  "quart-de-poblet": {
+   "nombre": "Cristina Mora Luján",
+   "desde": "18/06/2023",
+   "ine": "461022"
+  },
+  "galdar": {
+   "nombre": "Teodoro Claret Sosa Monzón",
+   "desde": "17/06/2023",
+   "ine": "350094"
+  },
+  "plasencia": {
+   "nombre": "David Casimiro Doniga Estevez",
+   "desde": "24/06/2026",
+   "ine": "101480"
+  },
+  "los-realejos": {
+   "nombre": "Adolfo González Pérez-Siverio",
+   "desde": "17/06/2023",
+   "ine": "380316"
+  },
+  "burriana": {
+   "nombre": "Jorge Monferrer Daudí",
+   "desde": "17/06/2023",
+   "ine": "120326"
+  },
+  "arcos-de-la-frontera": {
+   "nombre": "Miguel Rodríguez Rodríguez",
+   "desde": "17/06/2023",
+   "ine": "110064"
+  },
+  "don-benito": {
+   "nombre": "Elisabeth Medina Bravo",
+   "desde": "02/07/2025",
+   "ine": "060444"
+  },
+  "xativa": {
+   "nombre": "Roger Cerda Boluda",
+   "desde": "17/06/2023",
+   "ine": "461458"
+  },
+  "vila-seca": {
+   "nombre": "Pere Segura Xatruch",
+   "desde": "17/06/2023",
+   "ine": "431711"
+  },
+  "alcantarilla": {
+   "nombre": "Francisca Terol Cano",
+   "desde": "30/04/2025",
+   "ine": "300050"
+  },
+  "ronda": {
+   "nombre": "Maria Paz Fernandez Lobato",
+   "desde": "17/06/2023",
+   "ine": "290846"
+  },
+  "villaviciosa-de-odon": {
+   "nombre": "Juan Pedro Izquierdo Casquero",
+   "desde": "17/06/2023",
+   "ine": "281816"
+  },
+  "salt": {
+   "nombre": "Cristina Alarcón i Piedra",
+   "desde": "13/12/2025",
+   "ine": "171557"
+  },
+  "valls": {
+   "nombre": "Dolors Farré Cuadras",
+   "desde": "17/06/2023",
+   "ine": "431613"
+  },
+  "aguilas": {
+   "nombre": "Cristobal Casado Garcia",
+   "desde": "19/09/2025",
+   "ine": "300032"
+  },
+  "onda": {
+   "nombre": "Carmen Ballester Feliu",
+   "desde": "17/06/2023",
+   "ine": "120846"
+  },
+  "arucas": {
+   "nombre": "Juan Jesús Facundo Suárez",
+   "desde": "17/06/2023",
+   "ine": "350069"
+  },
+  "sueca": {
+   "nombre": "Julian Saez Vercher",
+   "desde": "14/08/2024",
+   "ine": "462359"
+  },
+  "illescas": {
+   "nombre": "José Manuel Tofiño Pérez",
+   "desde": "17/06/2023",
+   "ine": "450818"
+  },
+  "alcudia": {
+   "nombre": "Josefina Linares Capó",
+   "desde": "17/06/2023",
+   "ine": "070033"
+  },
+  "mislata": {
+   "nombre": "Carlos Fernández Bielsa",
+   "desde": "17/06/2023",
+   "ine": "461691"
+  },
+  "almendralejo": {
+   "nombre": "Jose Maria Ramirez Moran",
+   "desde": "17/06/2023",
+   "ine": "060114"
+  },
+  "azuqueca-de-henares": {
+   "nombre": "Miguel Oscar Aparicio de Lucas",
+   "desde": "04/03/2024",
+   "ine": "190463"
+  },
+  "galapagar": {
+   "nombre": "Carla Isabel Greciano Barrado",
+   "desde": "17/06/2023",
+   "ine": "280611"
+  },
+  "alcazar-de-san-juan": {
+   "nombre": "Rosa Melchor Quiralte",
+   "desde": "17/06/2023",
+   "ine": "130052"
+  },
+  "valdepenas": {
+   "nombre": "Jesus Martin Rodriguez",
+   "desde": "17/06/2023",
+   "ine": "130874"
+  },
+  "los-barrios": {
+   "nombre": "Miguel Fermin Alconchez Jiménez",
+   "desde": "17/06/2023",
+   "ine": "110086"
+  },
+  "naron": {
+   "nombre": "Marian Ferreiro Diaz",
+   "desde": "17/06/2023",
+   "ine": "150546"
+  },
+  "villena": {
+   "nombre": "Fulgencio Jose Cerdan Barcelo",
+   "desde": "17/06/2023",
+   "ine": "031409"
+  },
+  "mazarron": {
+   "nombre": "Ginés Campillo Méndez",
+   "desde": "17/06/2023",
+   "ine": "300269"
+  },
+  "crevillent": {
+   "nombre": "Lourdes Aznar Miralles",
+   "desde": "17/06/2023",
+   "ine": "030591"
+  },
+  "benicassim": {
+   "nombre": "Maria Susana Marques Escoin",
+   "desde": "17/06/2023",
+   "ine": "120287"
+  },
+  "castro-urdiales": {
+   "nombre": "Susana Herrán Martín",
+   "desde": "17/06/2023",
+   "ine": "390204"
+  },
+  "altea": {
+   "nombre": "Diego Zaragozi Llorens",
+   "desde": "17/06/2023",
+   "ine": "030187"
+  },
+  "langreo": {
+   "nombre": "Roberto Marcos Garcia Rodriguez",
+   "desde": "17/06/2023",
+   "ine": "330313"
+  },
+  "cartaya": {
+   "nombre": "Manuel Barroso Valdes",
+   "desde": "17/06/2023",
+   "ine": "210216"
+  },
+  "puerto-real": {
+   "nombre": "Aurora Salvador Colorado",
+   "desde": "17/06/2023",
+   "ine": "110282"
+  },
+  "tomelloso": {
+   "nombre": "Javier Navarro Muelas",
+   "desde": "17/06/2023",
+   "ine": "130821"
+  },
+  "premia-de-mar": {
+   "nombre": "Rafael Navarro Álvarez",
+   "desde": "17/06/2023",
+   "ine": "081727"
+  },
+  "arroyomolinos": {
+   "nombre": "Pedro Manuel Corral Rebollo",
+   "desde": "28/01/2026",
+   "ine": "100232"
+  },
+  "carballo": {
+   "nombre": "Jose Daniel Perez Lopez",
+   "desde": "11/10/2025",
+   "ine": "150196"
+  },
+  "vilagarcia-de-arousa": {
+   "nombre": "Alberto Varela Paz",
+   "desde": "17/06/2023",
+   "ine": "360600"
+  },
+  "san-pedro-del-pinatar": {
+   "nombre": "Pedro Javier Sanchez Aznar",
+   "desde": "18/04/2024",
+   "ine": "300367"
+  },
+  "coria-del-rio": {
+   "nombre": "Modesto González Márquez",
+   "desde": "17/06/2023",
+   "ine": "410346"
+  },
+  "manises": {
+   "nombre": "Javier Mansilla Bermejo",
+   "desde": "17/06/2023",
+   "ine": "461593"
+  },
+  "amposta": {
+   "nombre": "Adam Tomàs i Roiget",
+   "desde": "17/06/2023",
+   "ine": "430141"
+  },
+  "lebrija": {
+   "nombre": "Jose Benito Barroso Sanchez",
+   "desde": "17/06/2023",
+   "ine": "410536"
+  },
+  "yecla": {
+   "nombre": "María Remedios Lajara Domínguez",
+   "desde": "17/06/2023",
+   "ine": "300434"
+  },
+  "totana": {
+   "nombre": "Juan Pagan Sanchez",
+   "desde": "17/06/2023",
+   "ine": "300392"
+  },
+  "vicar": {
+   "nombre": "Antonio Bonilla Rodriguez",
+   "desde": "17/06/2023",
+   "ine": "041024"
+  },
+  "calatayud": {
+   "nombre": "José Manuel Aranda Lassa",
+   "desde": "17/06/2023",
+   "ine": "500671"
+  },
+  "baza": {
+   "nombre": "Pedro Justo Ramos Martinez",
+   "desde": "17/06/2023",
+   "ine": "180233"
+  },
+  "petrer": {
+   "nombre": "Irene Navarro Díaz",
+   "desde": "17/06/2023",
+   "ine": "031040"
+  },
+  "novelda": {
+   "nombre": "Francisco José Martínez Alted",
+   "desde": "17/06/2023",
+   "ine": "030937"
+  },
+  "camas": {
+   "nombre": "Victor Manuel Muñoz Ávila",
+   "desde": "17/06/2023",
+   "ine": "410212"
+  },
+  "aldaia": {
+   "nombre": "Guillermo Luján Valero",
+   "desde": "17/06/2023",
+   "ine": "460214"
+  },
+  "oliva": {
+   "nombre": "Isai Blanco Marrero",
+   "desde": "17/06/2023",
+   "ine": "350141"
+  },
+  "martos": {
+   "nombre": "Emilio Torres Velasco",
+   "desde": "17/06/2023",
+   "ine": "230601"
+  },
+  "banyoles": {
+   "nombre": "Miquel Noguer i Planas",
+   "desde": "17/06/2023",
+   "ine": "170157"
+  },
+  "almansa": {
+   "nombre": "Maria Pilar Callado Garcia",
+   "desde": "17/06/2023",
+   "ine": "020096"
+  },
+  "isla-cristina": {
+   "nombre": "Genaro Orta Perez",
+   "desde": "17/06/2023",
+   "ine": "210427"
+  },
+  "mutxamel": {
+   "nombre": "Rafael Garcia Berenguer",
+   "desde": "17/06/2023",
+   "ine": "030909"
+  },
+  "torredembarra": {
+   "nombre": "Raúl García Vicente",
+   "desde": "13/06/2026",
+   "ine": "431536"
+  },
+  "candelaria": {
+   "nombre": "María Concepción Brito Nuñez",
+   "desde": "17/06/2023",
+   "ine": "380110"
+  },
+  "alcala-la-real": {
+   "nombre": "Antonio Marino Aguilera Peñalver",
+   "desde": "17/06/2023",
+   "ine": "230026"
+  },
+  "villarrobledo": {
+   "nombre": "Simon Valentin Bueno Vargas",
+   "desde": "17/06/2023",
+   "ine": "020812"
+  },
+  "loja": {
+   "nombre": "Joaquin Ordoñez Gamez",
+   "desde": "20/10/2025",
+   "ine": "181226"
+  },
+  "atarfe": {
+   "nombre": "Yolanda Fernandez Morales",
+   "desde": "17/06/2023",
+   "ine": "180227"
+  },
+  "ames": {
+   "nombre": "José Blas García Piñeiro",
+   "desde": "17/06/2023",
+   "ine": "150026"
+  },
+  "ribeira": {
+   "nombre": "Maria Jose Sampedro Fernandez",
+   "desde": "13/10/2025",
+   "ine": "150737"
+  },
+  "tacoronte": {
+   "nombre": "María Sandra Izquierdo Fernández",
+   "desde": "19/06/2023",
+   "ine": "380435"
+  },
+  "guia-de-isora": {
+   "nombre": "Ana Isabel Dorta Alonso",
+   "desde": "17/06/2023",
+   "ine": "380197"
+  },
+  "cabra": {
+   "nombre": "Fernando Priego Chacón",
+   "desde": "17/06/2023",
+   "ine": "140137"
+  },
+  "ayamonte": {
+   "nombre": "Manuel Alberto Fernandez Rodriguez",
+   "desde": "17/06/2023",
+   "ine": "210101"
+  },
+  "caravaca-de-la-cruz": {
+   "nombre": "Jose Francisco Garcia Fernandez",
+   "desde": "17/06/2023",
+   "ine": "300158"
+  },
+  "montilla": {
+   "nombre": "Rafael Ángel Llamas Salas",
+   "desde": "17/06/2023",
+   "ine": "140425"
+  },
+  "culleredo": {
+   "nombre": "José Ramón Rioboo Castro",
+   "desde": "17/06/2023",
+   "ine": "150315"
+  },
+  "xirivella": {
+   "nombre": "Francisca Bartual Bermell",
+   "desde": "17/06/2023",
+   "ine": "461108"
+  },
+  "icod-de-los-vinos": {
+   "nombre": "Javier Sierra Jorge",
+   "desde": "17/06/2023",
+   "ine": "380223"
+  },
+  "alaquas": {
+   "nombre": "Antonio Saura Martín",
+   "desde": "17/06/2023",
+   "ine": "460057"
+  },
+  "moron-de-la-frontera": {
+   "nombre": "Juan Manuel Rodríguez Domínguez",
+   "desde": "17/06/2023",
+   "ine": "410652"
+  },
+  "lliria": {
+   "nombre": "Francisco Javier Gorrea Bañuls",
+   "desde": "07/07/2025",
+   "ine": "461477"
+  },
+  "hellin": {
+   "nombre": "Manuel Serena Fernandez",
+   "desde": "17/06/2023",
+   "ine": "020371"
+  },
+  "conil-de-la-frontera": {
+   "nombre": "Inmaculada Sanchez Zara",
+   "desde": "17/06/2023",
+   "ine": "110146"
+  },
+  "castrillon": {
+   "nombre": "Jesus Eloy Alonso Prieto",
+   "desde": "17/06/2023",
+   "ine": "330169"
+  },
+  "baena": {
+   "nombre": "Maria Jesus Serrano Jimenez",
+   "desde": "17/06/2023",
+   "ine": "140076"
+  },
+  "jumilla": {
+   "nombre": "Severa González López",
+   "desde": "17/06/2023",
+   "ine": "300222"
+  },
+  "palma-del-rio": {
+   "nombre": "Matilde Esteo Domínguez",
+   "desde": "17/06/2023",
+   "ine": "140497"
+  },
+  "pielagos": {
+   "nombre": "Carlos Alberto Carames Luengo",
+   "desde": "17/06/2023",
+   "ine": "390529"
+  },
+  "cieza": {
+   "nombre": "Juan Manuel Cuevas Perez",
+   "desde": "17/06/2023",
+   "ine": "390211"
+  },
+  "punta-umbria": {
+   "nombre": "Jose Carlos Hernandez Cansino",
+   "desde": "17/06/2023",
+   "ine": "210600"
+  },
+  "manzanares": {
+   "nombre": "Julian Nieva Delgado",
+   "desde": "17/06/2023",
+   "ine": "130533"
+  },
+  "priego-de-cordoba": {
+   "nombre": "Juan Ramon Valdivia Rosa",
+   "desde": "17/06/2023",
+   "ine": "140556"
+  },
+  "huercal-overa": {
+   "nombre": "Domingo Fernandez Zurano",
+   "desde": "17/06/2023",
+   "ine": "040530"
+  },
+  "tarrega": {
+   "nombre": "Rosa M. Perelló Escoda",
+   "desde": "18/03/2026",
+   "ine": "252173"
+  },
+  "aspe": {
+   "nombre": "Antonio Puerto Garcia",
+   "desde": "17/06/2023",
+   "ine": "030190"
+  },
+  "medina-del-campo": {
+   "nombre": "Guzman Gomez Alonso",
+   "desde": "17/06/2023",
+   "ine": "470856"
+  },
+  "maracena": {
+   "nombre": "Carlos Porcel Aibar",
+   "desde": "16/04/2024",
+   "ine": "181279"
+  },
+  "paiporta": {
+   "nombre": "Vicent Císcar Chisbert",
+   "desde": "04/07/2025",
+   "ine": "461862"
+  },
+  "lalin": {
+   "nombre": "Jose Crespo Iglesias",
+   "desde": "17/06/2023",
+   "ine": "360242"
+  },
+  "daimiel": {
+   "nombre": "Leopoldo-Jerónimo Sierra Gallardo",
+   "desde": "17/06/2023",
+   "ine": "130394"
+  },
+  "ponteareas": {
+   "nombre": "Maria Nava Castro Dominguez",
+   "desde": "17/06/2023",
+   "ine": "360427"
+  },
+  "o-porrino": {
+   "nombre": "Manuel Alejandro Lorenzo Alonso Caroca",
+   "desde": "17/06/2023",
+   "ine": "360391"
+  },
+  "redondela": {
+   "nombre": "Digna Rosa Rivas Gomez",
+   "desde": "17/06/2023",
+   "ine": "360451"
+  },
+  "barcelona": {
+   "nombre": "Jaume Collboni Cuadrado",
+   "desde": "17/06/2023",
+   "ine": "080193"
+  },
+  "valencia": {
+   "nombre": "Maria Jose Catala Verdet",
+   "desde": "17/06/2023",
+   "ine": "462508"
+  },
+  "vitoria-gasteiz": {
+   "nombre": "Maider Etxebarria Garcia",
+   "desde": "17/06/2023",
+   "ine": "010590"
+  },
+  "sevilla": {
+   "nombre": "Jose Luis Sanz Ruiz",
+   "desde": "17/06/2023",
+   "ine": "410917"
+  },
+  "malaga": {
+   "nombre": "Francisco Manuel de la Torre Prados",
+   "desde": "17/06/2023",
+   "ine": "290672"
+  },
+  "oviedo": {
+   "nombre": "Alfredo Canteli Fernandez",
+   "desde": "17/06/2023",
+   "ine": "330447"
+  },
+  "pontevedra": {
+   "nombre": "Miguel Anxo Fernandez Lores",
+   "desde": "17/06/2023",
+   "ine": "360388"
+  },
+  "santa-lucia-de-tirajana": {
+   "nombre": "Francisco Jose Garcia Lopez",
+   "desde": "17/06/2023",
+   "ine": "350228"
+  },
+  "benalmadena": {
+   "nombre": "Juan Antonio Lara Martin",
+   "desde": "17/06/2023",
+   "ine": "290252"
+  },
+  "eivissa": {
+   "nombre": "Rafael Triguero Costa",
+   "desde": "17/06/2023",
+   "ine": "070260"
+  },
+  "san-bartolome-de-tirajana": {
+   "nombre": "Marco Aurelio Pérez Sánchez",
+   "desde": "17/06/2023",
+   "ine": "350192"
+  },
+  "puerto-del-rosario": {
+   "nombre": "Cristobal (david) de Vera Cabrera",
+   "desde": "17/06/2023",
+   "ine": "350173"
+  },
+  "lucena": {
+   "nombre": "Aurelio Fernández García",
+   "desde": "17/06/2023",
+   "ine": "140386"
+  },
+  "santa-eularia-des-riu": {
+   "nombre": "Maria del Carmen Ferrer Torres",
+   "desde": "17/06/2023",
+   "ine": "070547"
+  },
+  "torre-pacheco": {
+   "nombre": "Pedro Ángel Roca Tornel",
+   "desde": "17/06/2023",
+   "ine": "300373"
+  },
+  "burjassot": {
+   "nombre": "Rafael García García",
+   "desde": "17/06/2023",
+   "ine": "460787"
+  },
+  "marratxi": {
+   "nombre": "Jaime Llompart Caldés",
+   "desde": "17/06/2023",
+   "ine": "070368"
+  },
+  "tudela": {
+   "nombre": "Alejandro Toquero Gil",
+   "desde": "17/06/2023",
+   "ine": "312325"
+  },
+  "los-palacios-y-villafranca": {
+   "nombre": "Juan Manuel Valle Chacon",
+   "desde": "17/06/2023",
+   "ine": "410690"
+  },
+  "ontinyent": {
+   "nombre": "Jorge Rodríguez Gramage",
+   "desde": "17/06/2023",
+   "ine": "461846"
+  },
+  "san-javier": {
+   "nombre": "Jose Miguel Luengo Gallego",
+   "desde": "17/06/2023",
+   "ine": "300354"
+  },
+  "navalcarnero": {
+   "nombre": "José Luis Adell Fernández",
+   "desde": "17/06/2023",
+   "ine": "280967"
+  },
+  "nijar": {
+   "nombre": "José Francisco Garrido Requena",
+   "desde": "17/06/2023",
+   "ine": "040669"
+  },
+  "leioa": {
+   "nombre": "Iban Rodriguez Etxebarria",
+   "desde": "17/06/2023",
+   "ine": "480545"
+  },
+  "sant-pere-de-ribes": {
+   "nombre": "Ana María Herrera Bordallo",
+   "desde": "09/11/2024",
+   "ine": "082310"
+  },
+  "xabia-javea": {
+   "nombre": "Rosa Vicenta Cardona Vives",
+   "desde": "17/06/2023",
+   "ine": "030823"
+  },
+  "catarroja": {
+   "nombre": "Lorena Silvent Ruiz",
+   "desde": "17/06/2023",
+   "ine": "460945"
+  },
+  "camargo": {
+   "nombre": "Diego Movellan Lombilla",
+   "desde": "17/06/2023",
+   "ine": "390165"
+  },
+  "pineda-de-mar": {
+   "nombre": "Sílvia Biosca Estopà",
+   "desde": "13/09/2024",
+   "ine": "081635"
+  },
+  "la-oliva": {
+   "nombre": "Isai Blanco Marrero",
+   "desde": "17/06/2023",
+   "ine": "350141"
+  },
+  "puente-genil": {
+   "nombre": "Sergio María Velasco Albalá",
+   "desde": "17/06/2023",
+   "ine": "140569"
+  },
+  "san-andres-del-rabanedo": {
+   "nombre": "Ana María Fernández Caurel",
+   "desde": "17/06/2023",
+   "ine": "241422"
+  },
+  "sant-josep-de-sa-talaia": {
+   "nombre": "Vicente Roig Tur",
+   "desde": "17/06/2023",
+   "ine": "070488"
+  },
+  "cartama": {
+   "nombre": "Jorge Gallardo Gandulla",
+   "desde": "17/06/2023",
+   "ine": "290385"
+  },
+  "sant-antoni-de-portmany": {
+   "nombre": "Marcos Serra Colomar",
+   "desde": "17/06/2023",
+   "ine": "070466"
+  },
+  "sant-vicenc-dels-horts": {
+   "nombre": "Miguel Comino Haro",
+   "desde": "17/06/2023",
+   "ine": "082634"
+  },
+  "betera": {
+   "nombre": "Maria Elia Verdevío Escribá",
+   "desde": "17/06/2023",
+   "ine": "460706"
+  },
+  "algemesi": {
+   "nombre": "Jose Javier Sanchis Bretones",
+   "desde": "17/06/2023",
+   "ine": "460291"
+  },
+  "paracuellos-de-jarama": {
+   "nombre": "Jesús Muñoz Muñoz",
+   "desde": "17/06/2023",
+   "ine": "281049"
+  },
+  "alhaurin-el-grande": {
+   "nombre": "Antonio Bermúdez Beltrón",
+   "desde": "17/06/2023",
+   "ine": "290081"
+  },
+  "eibar": {
+   "nombre": "Jon Iraola Iriondo",
+   "desde": "17/06/2023",
+   "ine": "200300"
+  },
+  "la-pobla-de-vallbona": {
+   "nombre": "Jaime Ruix Serra",
+   "desde": "23/05/2026",
+   "ine": "462021"
+  },
+  "molins-de-rei": {
+   "nombre": "Xavier (xavi) Paz Penche",
+   "desde": "17/06/2023",
+   "ine": "081234"
+  },
+  "sant-andreu-de-la-barca": {
+   "nombre": "Marc Giribet i Gavara",
+   "desde": "17/06/2023",
+   "ine": "081960"
+  },
+  "sant-joan-d-alacant": {
+   "nombre": "Santiago Roman Gomez",
+   "desde": "17/06/2023",
+   "ine": "031199"
+  },
+  "coin": {
+   "nombre": "Francisco Javier Santos Cantos",
+   "desde": "17/06/2023",
+   "ine": "290424"
+  },
+  "alboraia-alboraya": {
+   "nombre": "Miguel Chavarria Diaz",
+   "desde": "17/06/2023",
+   "ine": "460137"
+  },
+  "santa-perpetua-de-mogoda": {
+   "nombre": "Isabel Garcia Ripoll",
+   "desde": "17/06/2023",
+   "ine": "082606"
+  },
+  "villanueva-de-la-serena": {
+   "nombre": "Ana Belén Fernández González",
+   "desde": "05/04/2024",
+   "ine": "061535"
+  },
+  "adra": {
+   "nombre": "Manuel Cortes Perez",
+   "desde": "17/06/2023",
+   "ine": "040031"
+  },
+  "torrelodones": {
+   "nombre": "Almudena Negro Konrad",
+   "desde": "17/06/2023",
+   "ine": "281527"
+  },
+  "castellar-del-valles": {
+   "nombre": "Yolanda Rivera Dueñas",
+   "desde": "13/12/2024",
+   "ine": "080517"
+  },
+  "calahorra": {
+   "nombre": "Alejandro Ramirez Perez",
+   "desde": "17/06/2023",
+   "ine": "181149"
+  },
+  "armilla": {
+   "nombre": "Dolores Cañavate Jimenez",
+   "desde": "17/06/2023",
+   "ine": "180212"
+  },
+  "mejorada-del-campo": {
+   "nombre": "Jorge Capa Carralero",
+   "desde": "17/06/2023",
+   "ine": "280843"
+  },
+  "olesa-de-montserrat": {
+   "nombre": "Marc Serradó Mestres",
+   "desde": "14/06/2025",
+   "ine": "081477"
+  },
+  "almonte": {
+   "nombre": "Francisco Bella Galan",
+   "desde": "17/06/2023",
+   "ine": "210059"
+  },
+  "galdakao": {
+   "nombre": "Iñigo Arriandiaga Hernando",
+   "desde": "17/06/2023",
+   "ine": "480366"
+  },
+  "el-masnou": {
+   "nombre": "Jaume Oliveras i Maristany",
+   "desde": "17/06/2023",
+   "ine": "081189"
+  },
+  "riba-roja-de-turia": {
+   "nombre": "Roberto Pascual Raga Gadea",
+   "desde": "17/06/2023",
+   "ine": "462140"
+  },
+  "mairena-del-alcor": {
+   "nombre": "Juan Manuel Lopez Dominguez",
+   "desde": "17/06/2023",
+   "ine": "410589"
+  },
+  "pilar-de-la-horadada": {
+   "nombre": "José María Pérez Sánchez",
+   "desde": "17/06/2023",
+   "ine": "039021"
+  },
+  "alhama-de-murcia": {
+   "nombre": "Rosa Sanchez Bishop",
+   "desde": "08/01/2025",
+   "ine": "300085"
+  },
+  "moguer": {
+   "nombre": "Gustavo Cuéllar Cruz",
+   "desde": "17/06/2023",
+   "ine": "210502"
+  },
+  "villanueva-de-la-canada": {
+   "nombre": "Luis Manuel Partida Brunete",
+   "desde": "17/06/2023",
+   "ine": "281760"
+  },
+  "teguise": {
+   "nombre": "Olivia Duque Perez",
+   "desde": "17/06/2023",
+   "ine": "350249"
+  },
+  "san-miguel-de-abona": {
+   "nombre": "Arturo González Hernández",
+   "desde": "17/06/2023",
+   "ine": "380355"
+  },
+  "zarautz": {
+   "nombre": "Xabier Churruca Fernandez",
+   "desde": "17/06/2023",
+   "ine": "200795"
+  },
+  "san-juan-de-aznalfarache": {
+   "nombre": "María Luisa Moya Tejera",
+   "desde": "17/06/2023",
+   "ine": "410861"
+  },
+  "picassent": {
+   "nombre": "Conxa Garcia Ferrer",
+   "desde": "17/06/2023",
+   "ine": "461944"
+  },
+  "sant-feliu-de-guixols": {
+   "nombre": "Carles Motas López",
+   "desde": "17/06/2023",
+   "ine": "171609"
+  },
+  "arroyo-de-la-encomienda": {
+   "nombre": "Sarbelio Fernández Pablos",
+   "desde": "17/06/2023",
+   "ine": "470105"
+  },
+  "las-torres-de-cotillas": {
+   "nombre": "Pedro Jose Noguera Asensio",
+   "desde": "03/08/2023",
+   "ine": "300389"
+  },
+  "esparreguera": {
+   "nombre": "Juan Jurado Bracero",
+   "desde": "04/09/2024",
+   "ine": "080765"
+  },
+  "barbate": {
+   "nombre": "Miguel Francisco Molina Chamorro",
+   "desde": "17/06/2023",
+   "ine": "110070"
+  },
+  "arrasate-mondragon": {
+   "nombre": "Maider Morras Azpiazu",
+   "desde": "17/06/2023",
+   "ine": "200551"
+  },
+  "alfafar": {
+   "nombre": "Juan Ramon Adsuara Monlleo",
+   "desde": "17/06/2023",
+   "ine": "460229"
+  },
+  "torrox": {
+   "nombre": "Oscar Medina España",
+   "desde": "17/06/2023",
+   "ine": "290918"
+  },
+  "guimar": {
+   "nombre": "Carmen Luisa Castro Dorta",
+   "desde": "11/08/2025",
+   "ine": "380201"
+  },
+  "carcaixent": {
+   "nombre": "Carolina Almiñana Lledo",
+   "desde": "17/06/2023",
+   "ine": "460832"
+  },
+  "pucol": {
+   "nombre": "Maria Paz Carceller Llaneza",
+   "desde": "17/06/2023",
+   "ine": "462055"
+  },
+  "tias": {
+   "nombre": "Jose Juan Cruz Saavedra",
+   "desde": "17/06/2023",
+   "ine": "350287"
+  },
+  "pajara": {
+   "nombre": "Alejandro Jesús Jorge Moreno",
+   "desde": "17/06/2023",
+   "ine": "350154"
+  },
+  "manlleu": {
+   "nombre": "Arnau Rovira Martínez",
+   "desde": "17/06/2023",
+   "ine": "081120"
+  },
+  "vilassar-de-mar": {
+   "nombre": "Elena López Lujan",
+   "desde": "25/03/2025",
+   "ine": "082191"
+  },
+  "l-alfas-del-pi": {
+   "nombre": "Vicente Arques Cortés",
+   "desde": "17/06/2023",
+   "ine": "030113"
+  },
+  "sant-just-desvern": {
+   "nombre": "Joan Basagañas Camps",
+   "desde": "17/06/2023",
+   "ine": "082212"
+  },
+  "les-franqueses-del-valles": {
+   "nombre": "Juan Antonio Corchado Ponce",
+   "desde": "17/06/2023",
+   "ine": "080863"
+  },
+  "calella": {
+   "nombre": "Marc Buch Rigola",
+   "desde": "17/06/2023",
+   "ine": "080351"
+  },
+  "los-llanos-de-aridane": {
+   "nombre": "Jose Javier Perez Llamas",
+   "desde": "17/06/2023",
+   "ine": "380244"
+  },
+  "los-alcazares": {
+   "nombre": "Mario Gines Perez Cervera",
+   "desde": "17/06/2023",
+   "ine": "309027"
+  },
+  "hernani": {
+   "nombre": "Xabier Lertxundi Asteasuinzarra",
+   "desde": "17/06/2023",
+   "ine": "200408"
+  },
+  "vera": {
+   "nombre": "Alfonso García Ramos",
+   "desde": "17/06/2023",
+   "ine": "041002"
+  },
+  "sant-quirze-del-valles": {
+   "nombre": "Elisabeth Oliveras Jorba",
+   "desde": "17/06/2023",
+   "ine": "082384"
+  },
+  "chipiona": {
+   "nombre": "Luis Mario Aparcero Fernandez de Retana",
+   "desde": "17/06/2023",
+   "ine": "110162"
+  },
+  "tolosa": {
+   "nombre": "Angel Andu Martinez de Rituerto Arregui",
+   "desde": "17/06/2023",
+   "ine": "200718"
+  }
+ }
+}

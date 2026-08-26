@@ -50,9 +50,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = es
     ? `Presupuesto de ${r.name} ${r.year}: ¿en qué se gastan ${formatCompact(r.gastos)}?`
     : `Bilancio di ${r.name} ${r.year}: dove vanno ${formatCompact(r.gastos)}?`;
-  const extra = es
+  // Il NOME del sindaco davanti a tutto: le ricerche col nome della persona
+  // erano centinaia di impressioni a zero clic, perché lo snippet non lo diceva.
+  const quien = r.alcalde
+    ? (es
+        ? ` Alcalde: ${r.alcalde.nombre}${r.alcalde.desde ? ` (desde el ${r.alcalde.desde})` : ""}.`
+        : ` Sindaco: ${r.alcalde.nombre}.`)
+    : "";
+  const extra = quien + (es
     ? `${r.mayorSalary ? ` Sueldo del alcalde: ${formatCompact(r.mayorSalary.amount)}/año.` : ""}${r.debt ? ` Deuda viva: ${r.debt.amount > 0 ? formatCompact(r.debt.amount) : "sin deuda"}.` : ""}`
-    : `${r.mayorSalary ? ` Stipendio del sindaco: ${formatCompact(r.mayorSalary.amount)}/anno.` : ""}${r.debt ? ` Debito: ${r.debt.amount > 0 ? formatCompact(r.debt.amount) : "nessuno"}.` : ""}`;
+    : `${r.mayorSalary ? ` Stipendio del sindaco: ${formatCompact(r.mayorSalary.amount)}/anno.` : ""}${r.debt ? ` Debito: ${r.debt.amount > 0 ? formatCompact(r.debt.amount) : "nessuno"}.` : ""}`);
   const description = (es
     ? `Ingresos ${formatCompact(r.ingresos)} y gastos ${formatCompact(r.gastos)} de ${r.name} en ${r.year}. Desglose detallado por capítulo y por área del gasto público. Datos ${r.isSample ? "de ejemplo" : "oficiales"}.`
     : `Entrate ${formatCompact(r.ingresos)} e spese ${formatCompact(r.gastos)} di ${r.name} nel ${r.year}. Dettaglio per capitolo e per missione della spesa pubblica. Dati ${r.isSample ? "di esempio" : "ufficiali"}.`) + extra;
@@ -158,6 +165,10 @@ export default async function CityPage({ params }: Props) {
           a: `En ${r.year}, ${r.name} tiene unos ingresos de ${formatEuro(r.ingresos)} y unos gastos de ${formatEuro(r.gastos)}, ${bal === 0 ? "con un presupuesto equilibrado (ingresos = gastos)" : `con un ${bal > 0 ? "superávit" : "déficit"} de ${formatCompact(Math.abs(bal))}`}.`,
         },
         { q: `¿En qué se gasta el dinero público en ${r.name}?`, a: `Las principales áreas de gasto son: ${gList}.` },
+        r.alcalde && {
+          q: `¿Quién es el alcalde de ${r.name}?`,
+          a: `${r.alcalde.nombre}${r.alcalde.desde ? `, en el cargo desde el ${r.alcalde.desde}` : ""}.${r.mayorSalary ? ` Cobra ${formatEuro(r.mayorSalary.amount)} brutos al año.` : ""} Dato del registro oficial de cargos representativos locales del Ministerio de Política Territorial.`,
+        },
         r.mayorSalary && {
           q: `¿Cuánto cobra el alcalde de ${r.name}?`,
           a: `El alcalde de ${r.name} cobra ${formatEuro(r.mayorSalary.amount)} brutos al año${r.mayorSalary.dedicacion ? ` (${r.mayorSalary.dedicacion})` : ""}. No se lo pone él: lo aprueba el pleno del ayuntamiento, con topes que marca la ley según el tamaño del municipio. Fuente: ${r.mayorSalary.source.name}.`,
@@ -374,9 +385,19 @@ export default async function CityPage({ params }: Props) {
               {/* Idem: "quanto guadagna il sindaco di X" è una delle ricerche più
                   frequenti e abbiamo il dato per centinaia di comuni. */}
               <h2 className="text-xs text-muted font-normal">
-                {es ? `¿Cuánto cobra el alcalde de ${r.name}?` : `Quanto guadagna il sindaco di ${r.name}?`}
+                {es ? `¿Quién es el alcalde de ${r.name} y cuánto cobra?` : `Chi è il sindaco di ${r.name} e quanto guadagna?`}
                 <span className="opacity-60"> · {r.year}</span>
               </h2>
+              {r.alcalde && (
+                <p className="text-lg font-semibold mt-1 leading-tight">
+                  {r.alcalde.nombre}
+                  {r.alcalde.desde && (
+                    <span className="block text-[11px] text-muted font-normal">
+                      {es ? `en el cargo desde el ${r.alcalde.desde}` : `in carica dal ${r.alcalde.desde}`}
+                    </span>
+                  )}
+                </p>
+              )}
               <p className="tabular text-2xl font-semibold text-[#a5b4fc] mt-1">
                 {formatEuro(r.mayorSalary.amount)}<span className="text-sm text-muted font-normal">{es ? "/año" : "/anno"}</span>
               </p>

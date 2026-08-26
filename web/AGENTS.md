@@ -13,6 +13,20 @@ Italia (entrate/spese/debito/stipendi sindaci) + una sezione **calcio-finanza**.
 Next.js 16 App Router, **static export** (`output: "export"`, `trailingSlash: true`),
 Tailwind v4, TypeScript. Hosting: Cloudflare Pages via GitHub Actions.
 
+## ⛔ LE DUE REGOLE CHE NON SI TOCCANO
+
+Prima di scrivere codice o testo, queste due. Tutto il resto viene dopo.
+
+1. **Solo dati veri e ufficiali, con la fonte.** Mai inventare un numero. Se non è
+   verificabile, non si pubblica: si dice che manca. → §0
+2. **Si scrive da umani ("humanizer").** Ogni riga di testo destinata al lettore passa
+   dalle regole della voce umana: dai del tu, frasi corte, prima la scena poi il numero,
+   niente parole da burocrate né da AI. Test: se tua madre non lo capisce al primo colpo,
+   riscrivilo. → §2-quater
+
+Valgono per ogni pagina nuova, ogni riscrittura, ogni titolo, ogni FAQ.
+
+---
 ## 0. Regola d'oro: SOLO dati veri e ufficiali (non negoziabile)
 - Pubblica **solo dati ufficiali e verificabili**. Cita sempre la fonte (link).
 - **Mai inventare numeri.** Se un dato non è verificabile, NON si pubblica.
@@ -148,6 +162,29 @@ Test finale: **se tua madre non lo capisce al primo colpo, riscrivilo.**
 5. Coppie di confronto: unica fonte `src/data/compare-lists.ts` (`CMP_ES`, `CMP_IT`,
    `comparePairsFor()`).
 6. FAQ costruite dalle **query reali** (Google Search Console) — vedi memoria `gsc-baseline-strategy`.
+
+
+## 3-bis. Nomi dei sindaci (Spagna) — perché ci sono e come si aggiornano
+La Search Console mostrava **775 impressioni con ZERO clic** su ricerche fatte col
+NOME del sindaco (es. «tania baños martos»: 499 impressioni in **posizione 3**, nessun
+clic). Le schede città scrivevano «alcalde» decine di volte senza mai nominarlo: Google
+ci mostrava per pertinenza sul comune, ma chi cercava la persona non trovava risposta
+nello snippet e passava oltre.
+
+Ora il nome sta nella **description**, in un **H2** e nelle **FAQ** (anche in JSON-LD).
+⚠️ **Il title NON è stato toccato**: la formula «numero + domanda» porta il 9-14% di CTR
+sulle schede città, non si rompe per un caso.
+
+Aggiornamento: `cd web && npm run etl:alcaldes` (rilegge il registro ufficiale del
+Ministerio de Política Territorial). Copertura attuale **406/406 comuni**. Se il match
+scende sotto il 90% lo script **fallisce apposta**: vuol dire che il ministero ha
+cambiato il formato.
+
+Il **partito NON si salva**, per scelta: è un dato ufficiale ma sposterebbe il sito sul
+terreno politico, e le ricerche sono sul nome della persona, non sul partito.
+
+**Manca l'Italia:** non abbiamo una fonte per i nomi dei sindaci italiani. È il prossimo
+buco da chiudere su questo fronte.
 
 ## 4. Immagini
 - CSP `img-src 'self' data: blob:` → le immagini devono essere **self-hosted** in

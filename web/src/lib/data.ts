@@ -21,6 +21,7 @@ import bolognaReal from "@/data/real/bologna.json";
 import extraCitiesEs from "@/data/real/extra-cities.json";
 import itExtraCities from "@/data/real/it-extra-cities.json";
 import esPopulation from "@/data/real/es-population.json";
+import ALCALDES_ES from "@/data/real/alcaldes-es.json";
 import { CITY_EXTRAS } from "@/data/real/city-extras";
 
 const ES_POP = esPopulation as Record<string, number>;
@@ -39,6 +40,15 @@ export type CategoryDatum = {
 };
 
 // Retribución del alcalde / indennità del sindaco (dato oficial y verificable).
+// Nome ufficiale del sindaco in carica. Serve a rispondere alle ricerche fatte
+// col NOME della persona, che sono tantissime e su cui eravamo gia posizionati
+// senza prendere un clic (vedi data/etl-alcaldes.mjs).
+export type Alcalde = {
+  nombre: string;
+  desde?: string | null; // data di insediamento, dd/mm/aaaa
+  source: { name: string; url: string };
+};
+
 export type MayorSalary = {
   amount: number; // € brutos al año
   dedicacion?: string; // ES: Exclusiva / Parcial / Sin dedicación
@@ -67,6 +77,7 @@ export type RegionData = {
   basis?: string;
   isCity?: boolean;
   mayorSalary?: MayorSalary;
+  alcalde?: Alcalde; // nome del sindaco in carica (solo Spagna, per ora)
   debt?: Debt;
   poblacion?: number; // popolazione (per calcolare valori "per abitante", quando disponibile)
 };
@@ -269,6 +280,9 @@ function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[], extras: RealC
     // Población oficial (INE, padrón 2025) para valores "por habitante" en España.
     // No pisa la de Italia (SIOPE), que ya viene puesta en los extras.
     if (!r.poblacion && ES_POP[r.slug]) r.poblacion = ES_POP[r.slug];
+    // Nome del sindaco in carica (registro ufficiale del Ministerio).
+    const al = (ALCALDES_ES.alcaldes as Record<string, { nombre: string; desde?: string | null }>)[r.slug];
+    if (al) r.alcalde = { nombre: al.nombre, desde: al.desde ?? null, source: ALCALDES_ES.fuente };
   }
   return {
     regions,

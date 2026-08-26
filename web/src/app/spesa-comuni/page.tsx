@@ -4,6 +4,7 @@ import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
 import { formatEuro, formatCompact } from "@/lib/format";
 import ranks from "@/data/rankings-it.json";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -27,6 +28,16 @@ export const metadata: Metadata = {
   },
 };
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Spesa pubblica dei comuni italiani",
+  lang: "it",
+  url: `https://www.cuentas-clara.com/spesa-comuni/`,
+  source: FONTI.siope,
+  about: "Spesa pubblica dei comuni italiani",
+});
+
 export default function SpesaComuniPage() {
   const top = ranks.topSpending;
   const maxT = top[0].gastos;
@@ -47,6 +58,7 @@ export default function SpesaComuniPage() {
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <LocaleProvider>

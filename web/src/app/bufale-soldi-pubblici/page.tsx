@@ -76,6 +76,7 @@ function Card({ b }: { b: Bulo }) {
   );
 }
 
+
 export default function BufalePage() {
   const esItems = ITEMS.filter((b) => b.lang === "es");
   const itItems = ITEMS.filter((b) => b.lang === "it");

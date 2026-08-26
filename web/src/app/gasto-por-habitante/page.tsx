@@ -5,6 +5,7 @@ import SiteNav from "@/components/SiteNav";
 import { COUNTRIES, slugify } from "@/lib/data";
 import { formatEuro, formatCompact } from "@/lib/format";
 import ranks from "@/data/rankings-es.json";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -33,6 +34,16 @@ function CityName({ name, slug }: { name: string; slug: string }) {
   return esSlugs.has(s) ? <Link href={`/es/${s}/`} className="font-medium hover:text-cyan">{name}</Link> : <span className="font-medium">{name}</span>;
 }
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Gasto público municipal por habitante",
+  lang: "es",
+  url: `https://www.cuentas-clara.com/gasto-por-habitante/`,
+  source: FONTI.haciendaDeuda,
+  about: "Gasto público municipal por habitante",
+});
+
 export default function GastoPorHabitantePage() {
   const pc = ranks.gastoPerCapita || [];
   const max = pc[0]?.perCapita || 1;
@@ -51,6 +62,7 @@ export default function GastoPorHabitantePage() {
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <LocaleProvider>

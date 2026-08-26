@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SanitaClient from "../spesa-sanita/SanitaClient";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -43,10 +44,21 @@ const faqLd = {
 };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Gasto sanitario", item: `${SITE}/gasto-sanidad/` }] };
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Gasto sanitario público",
+  lang: "es",
+  url: `https://www.cuentas-clara.com/gasto-sanidad/`,
+  source: FONTI.sanidad,
+  about: "Gasto sanitario público",
+});
+
 export default function GastoSanidadPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <SanitaClient locale="es" />
     </>

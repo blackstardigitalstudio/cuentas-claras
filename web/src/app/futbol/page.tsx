@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { formatEuro, formatCompact } from "@/lib/format";
 import { LALIGA_LCPD, LALIGA_LCPD_SEASON, REVENUE_SEASON, CLUB_REVENUE } from "@/data/futbol";
 import FutbolClient from "./FutbolClient";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -47,10 +48,21 @@ const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity
 const itemListLd = { "@context": "https://schema.org", "@type": "ItemList", name: `Límite de coste de plantilla LaLiga ${LALIGA_LCPD_SEASON}`, itemListElement: LALIGA_LCPD.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: `${c.club}: ${formatEuro(c.amount)}` })) };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Fútbol", item: `${SITE}/futbol/` }] };
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Cuentas de los clubes de fútbol",
+  lang: "es",
+  url: `https://www.cuentas-clara.com/futbol/`,
+  source: FONTI.deloitte,
+  about: "Cuentas de los clubes de fútbol",
+});
+
 export default function FutbolPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <FutbolClient />

@@ -45,6 +45,7 @@ const faqLd = {
 };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "MotoGP", item: `${SITE}/sueldos-motogp/` }] };
 
+
 export default function SueldosMotogpPage() {
   return (
     <>

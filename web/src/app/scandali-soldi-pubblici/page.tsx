@@ -44,6 +44,7 @@ const top = ["it_scoop", "it_funds", "it_verdicts", "it_waste", "it_salaries", "
   .flatMap((k) => NEWS[k] || [])
   .slice(0, 30);
 
+
 export default function ScandaliPage() {
   const itemListLd = {
     "@context": "https://schema.org",

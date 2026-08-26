@@ -72,14 +72,14 @@ function Inner() {
             tot: t("364.132 M€", "364,1 miliardi €"),
             people: t("17,7 millones de pensionistas", "17,7 milioni di pensionati"),
             media: "1.359,53 €", mediaLab: t("pensión media de jubilación (al mes)", "pensione media di vecchiaia (al mese)"),
-            src: "Istat / Inps", accent: "#34d399",
+            src: "Istat / Inps", srcUrl: "https://www.istat.it/statistiche-per-tema/settori/assistenza-e-previdenza/", accent: "#34d399",
           },
           {
             flag: "🇪🇸", name: t("España", "Spagna"), year: "2025",
             tot: t("189.598 M€", "189,6 miliardi €"),
             people: t("9,4 millones de pensionistas", "9,4 milioni di pensionati"),
             media: "1.512,7 €", mediaLab: t("pensión media de jubilación (al mes)", "pensione media di vecchiaia (al mese)"),
-            src: "Seguridad Social", accent: "#a5b4fc",
+            src: "Seguridad Social", srcUrl: "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios", accent: "#a5b4fc",
           },
         ].map((c) => (
           <div key={c.name} className="glass p-5 relative overflow-hidden">
@@ -97,7 +97,7 @@ function Inner() {
                 <span className="tabular font-semibold" style={{ color: c.accent }}>{c.media}</span>
               </div>
             </div>
-            <p className="text-[10px] text-muted/70 mt-2">{t("Fuente", "Fonte")}: {c.src}</p>
+            <p className="text-[10px] text-muted/70 mt-2">{t("Fuente", "Fonte")}: {c.srcUrl ? <a href={c.srcUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{c.src}</a> : c.src}</p>
           </div>
         ))}
       </div>

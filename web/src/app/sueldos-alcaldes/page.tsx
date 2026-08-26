@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { formatEuro } from "@/lib/format";
 import ranks from "@/data/rankings-es.json";
 import SueldosClient from "./SueldosClient";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -38,10 +39,21 @@ const faqLd = {
 const itemListLd = { "@context": "https://schema.org", "@type": "ItemList", name: `Alcaldes que más cobran en España (${ranks.year})`, itemListElement: top.map((s, i) => ({ "@type": "ListItem", position: i + 1, name: `${s.name}: ${formatEuro(s.amount)}` })) };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Sueldos de alcaldes", item: `${SITE}/sueldos-alcaldes/` }] };
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Retribuciones de los alcaldes en España",
+  lang: "es",
+  url: `https://www.cuentas-clara.com/sueldos-alcaldes/`,
+  source: [FONTI.ispa, FONTI.ley31],
+  about: "Retribuciones de los alcaldes en España",
+});
+
 export default function SueldosPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <SueldosClient />

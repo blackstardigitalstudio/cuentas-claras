@@ -5,6 +5,7 @@ import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
 import { COUNTRIES } from "@/lib/data";
 import { formatCompact } from "@/lib/format";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -34,6 +35,16 @@ const AREE = [
   { t: "Amministrazione e debito", d: "Il costo di far funzionare il Comune (personale, uffici) e restituire i mutui con gli interessi.", c: "#818cf8" },
 ];
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Missioni della spesa pubblica comunale",
+  lang: "it",
+  url: `https://www.cuentas-clara.com/dove-vanno-i-soldi-pubblici/`,
+  source: FONTI.siope,
+  about: "Missioni della spesa pubblica comunale",
+});
+
 export default function GuidaSpesaPage() {
   const faqs = [
     { q: "In cosa spende i soldi un Comune?", a: "Soprattutto in servizi pubblici di base (rifiuti, pulizia, acqua, strade, sicurezza), diritti sociali (aiuti, non autosufficienza), istruzione-cultura-sport, sviluppo economico (trasporti, turismo) e amministrazione e debito. Nella scheda di ogni comune vedi la ripartizione esatta." },
@@ -47,6 +58,7 @@ export default function GuidaSpesaPage() {
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <LocaleProvider>
         <SiteNav />

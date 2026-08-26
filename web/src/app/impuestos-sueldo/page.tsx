@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import StipendioClient from "../tasse-stipendio/StipendioClient";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -43,10 +44,21 @@ const faqLd = {
 };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Impuestos sobre el sueldo", item: `${SITE}/impuestos-sueldo/` }] };
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Impuestos sobre el salario",
+  lang: "es",
+  url: `https://www.cuentas-clara.com/impuestos-sueldo/`,
+  source: FONTI.ocse,
+  about: "Impuestos sobre el salario",
+});
+
 export default function ImpuestosSueldoPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <StipendioClient locale="es" />
     </>

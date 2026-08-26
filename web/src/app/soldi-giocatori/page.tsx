@@ -43,6 +43,7 @@ const faqLd = {
 };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Calcio", item: `${SITE}/calcio/` }, { "@type": "ListItem", position: 3, name: "I soldi dei giocatori", item: `${SITE}/soldi-giocatori/` }] };
 
+
 export default function SoldiGiocatoriPage() {
   return (
     <>

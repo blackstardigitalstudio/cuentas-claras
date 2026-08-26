@@ -106,7 +106,7 @@ function Inner() {
           ))}
         </ol>
         <p className="text-[11px] text-muted mt-3">
-          {t("Fuente: OCDE, informe «Taxing Wages» (2024). Italia es el cuarto país de la OCDE con más carga.", "Fonte: OCSE, rapporto «Taxing Wages» (2024). L'Italia è il quarto Paese OCSE per carico fiscale sul lavoro.")}
+          {t("Fuente: ", "Fonte: ")}<a href="https://www.oecd.org/en/publications/taxing-wages-2026_3a5169ef-en.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{t("OCDE, informe «Taxing Wages» (edición 2024; la OCDE lo actualiza cada año)", "OCSE, rapporto «Taxing Wages» (edizione 2024; l'OCSE lo aggiorna ogni anno)")}</a>{t(". Italia es el cuarto país de la OCDE con más carga.", ". L'Italia è il quarto Paese OCSE per carico fiscale sul lavoro.")}
         </p>
       </section>
 

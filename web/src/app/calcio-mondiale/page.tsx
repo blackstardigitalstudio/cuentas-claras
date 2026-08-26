@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { formatCompact } from "@/lib/format";
 import { LEAGUES, CLUB_REVENUE } from "@/data/futbol";
 import MundialClient from "../futbol-mundial/MundialClient";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -46,10 +47,21 @@ const faqLd = {
 };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Calcio", item: `${SITE}/calcio/` }, { "@type": "ListItem", position: 3, name: "Calcio mondiale", item: `${SITE}/calcio-mondiale/` }] };
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Ricavi dei campionati e dei club di calcio",
+  lang: "it",
+  url: `https://www.cuentas-clara.com/calcio-mondiale/`,
+  source: FONTI.deloitte,
+  about: "Ricavi dei campionati e dei club di calcio",
+});
+
 export default function CalcioMondialePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <MundialClient locale="it" />
     </>

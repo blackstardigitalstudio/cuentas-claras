@@ -41,6 +41,7 @@ const faqLd = {
 };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Fútbol", item: `${SITE}/futbol/` }, { "@type": "ListItem", position: 3, name: "Jugadores", item: `${SITE}/jugadores/` }] };
 
+
 export default function JugadoresPage() {
   return (
     <>

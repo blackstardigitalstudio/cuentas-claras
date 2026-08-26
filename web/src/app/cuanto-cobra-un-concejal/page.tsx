@@ -3,6 +3,7 @@ import Link from "next/link";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -14,6 +15,16 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE}/cuanto-cobra-un-concejal/` },
   openGraph: { title: "¿Cuánto cobra un concejal?", description: "Cómo funciona el sueldo de los concejales, explicado fácil.", url: `${SITE}/cuanto-cobra-un-concejal/`, type: "article" },
 };
+
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Retribuciones de los concejales",
+  lang: "es",
+  url: `https://www.cuentas-clara.com/cuanto-cobra-un-concejal/`,
+  source: [FONTI.lbrl, FONTI.ley31],
+  about: "Retribuciones de los concejales",
+});
 
 export default function ConcejalPage() {
   const faqs = [
@@ -34,6 +45,7 @@ export default function ConcejalPage() {
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <LocaleProvider>
         <SiteNav />

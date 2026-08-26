@@ -5,6 +5,7 @@ import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
 import { COUNTRIES } from "@/lib/data";
 import { formatCompact } from "@/lib/format";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -34,6 +35,16 @@ const AREAS = [
   { t: "Administración y deuda", d: "El coste de gestionar el ayuntamiento (personal, oficinas) y devolver los préstamos con sus intereses.", c: "#818cf8" },
 ];
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Áreas del gasto público municipal",
+  lang: "es",
+  url: `https://www.cuentas-clara.com/en-que-se-gasta-el-dinero-publico/`,
+  source: FONTI.haciendaDeuda,
+  about: "Áreas del gasto público municipal",
+});
+
 export default function GuiaGastoPage() {
   const faqs = [
     { q: "¿En qué se gasta el dinero público de un ayuntamiento?", a: "Sobre todo en servicios públicos básicos (basura, limpieza, agua, calles, seguridad), protección social (ayudas, dependencia), educación-cultura-deporte, actuaciones económicas (transporte, turismo) y administración y deuda. En la ficha de cada ciudad puedes ver el reparto exacto." },
@@ -47,6 +58,7 @@ export default function GuiaGastoPage() {
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <LocaleProvider>
         <SiteNav />

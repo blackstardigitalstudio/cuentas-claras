@@ -141,7 +141,7 @@ function Inner() {
           ))}
         </ol>
         <p className="text-[11px] text-muted mt-3">
-          {t("Fuente: Ministerio de Sanidad, Estadística de Gasto Sanitario Público 2024. Se muestran las tres comunidades que más y las tres que menos gastan por habitante.", "Fonte: Ministero della Salute spagnolo, Statistica della spesa sanitaria pubblica 2024. Mostrate le tre comunità che spendono di più e le tre che spendono di meno per abitante.")}
+          {t("Fuente: ", "Fonte: ")}<a href="https://www.sanidad.gob.es/estadEstudios/estadisticas/inforRecopilaciones/gastoSanitario2005/home.htm" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{t("Ministerio de Sanidad, Estadística de Gasto Sanitario Público 2024", "Ministero della Salute spagnolo, Statistica della spesa sanitaria pubblica 2024")}</a>{t(". Se muestran las tres comunidades que más y las tres que menos gastan por habitante.", ". Mostrate le tre comunità che spendono di più e le tre che spendono di meno per abitante.")}
         </p>
       </section>
 
@@ -155,7 +155,7 @@ function Inner() {
           )}
         </p>
         <p className="text-[11px] text-muted mt-2">
-          {t("Fuentes: Istat (Italia), Ufficio parlamentare di bilancio, Ministerio de Sanidad (España).", "Fonti: Istat, Ufficio parlamentare di bilancio, Ministero della Salute spagnolo.")}
+          {t("Fuentes: ", "Fonti: ")}<a href="https://www.istat.it/" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">Istat</a>, <a href="https://www.upbilancio.it/" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">Ufficio parlamentare di bilancio</a>, <a href="https://www.sanidad.gob.es/estadEstudios/estadisticas/inforRecopilaciones/gastoSanitario2005/home.htm" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{t("Ministerio de Sanidad (España)", "Ministero della Salute spagnolo")}</a>.
         </p>
       </section>
 

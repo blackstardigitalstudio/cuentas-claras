@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PoliticosClient from "../sueldos-politicos/PoliticosClient";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -45,10 +46,21 @@ const faqLd = {
 };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Italia", item: `${SITE}/italia/` }, { "@type": "ListItem", position: 3, name: "Stipendi dei politici", item: `${SITE}/stipendi-politici/` }] };
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Trattamento economico dei parlamentari",
+  lang: "it",
+  url: `https://www.cuentas-clara.com/stipendi-politici/`,
+  source: FONTI.tuel,
+  about: "Trattamento economico dei parlamentari",
+});
+
 export default function StipendiPoliticiPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <PoliticosClient locale="it" />
     </>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { COUNTRIES, type CountryCode } from "@/lib/data";
 import RankingClient from "./RankingClient";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -33,6 +34,16 @@ function ranked(p: CountryCode) {
     .sort((a, b) => b.gastos - a.gastos);
 }
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Gasto público de los municipios españoles",
+  lang: "es",
+  url: `https://www.cuentas-clara.com/ranking/`,
+  source: FONTI.haciendaDeuda,
+  about: "Gasto público de los municipios españoles",
+});
+
 export default function RankingPage() {
   const top = [
     ...ranked("es").map((r) => ({ r, pais: "es" as const })),
@@ -63,6 +74,7 @@ export default function RankingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       <RankingClient />
     </>

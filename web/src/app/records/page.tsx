@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import RecordsClient from "./RecordsClient";
 import { buildRecordsData } from "./records-data";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -23,12 +24,23 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: "Récords del dinero público", description: "El alcalde mejor pagado, la ciudad más endeudada y más.", images: ["/og-records.png"] },
 };
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Récords del dinero público",
+  lang: "es",
+  url: `https://www.cuentas-clara.com/records/`,
+  source: [FONTI.haciendaDeuda, FONTI.ispa],
+  about: "Récords del dinero público",
+});
+
 export default function RecordsPage() {
   const data = buildRecordsData();
   const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Récords", item: `${SITE}/records/` }] };
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <RecordsClient data={data} />
     </>
   );

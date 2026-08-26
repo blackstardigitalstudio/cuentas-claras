@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import DeudaNacionalClient from "./DeudaNacionalClient";
+import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -41,10 +42,21 @@ const faqLd = {
 };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Deuda pública nacional", item: `${SITE}/deuda-nacional/` }] };
 
+// Dati strutturati con la CITAZIONE della fonte: è così che i motori con
+// l'AI sanno da dove vengono i nostri numeri, e ci citano invece di riassumerci.
+const artLd = articleLd({
+  headline: (metadata.title as string) || "Deuda pública de España e Italia",
+  lang: "es",
+  url: `https://www.cuentas-clara.com/deuda-nacional/`,
+  source: [FONTI.bde, FONTI.bankitalia],
+  about: "Deuda pública de España e Italia",
+});
+
 export default function DeudaNacionalPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <DeudaNacionalClient />
     </>

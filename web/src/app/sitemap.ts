@@ -35,6 +35,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/bulos/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/futbol/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/futbol-mundial/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/deuda-clubes-futbol/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${SITE}/debito-club-calcio/`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE}/mundial-2026/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/champions-league/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/eurocopa/`, lastModified, changeFrequency: "weekly", priority: 0.8 },

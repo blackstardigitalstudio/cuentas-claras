@@ -52,6 +52,14 @@ function Inner() {
         </SimpleExplainer>
       </div>
 
+      <Link href={it ? "/debito-club-calcio/" : "/deuda-clubes-futbol/"} className="mt-3 glass p-4 flex items-center justify-between gap-3 group hover:border-cyan transition">
+        <span>
+          <span className="block font-semibold">💳 {t("¿Cuánta deuda tiene tu club?", "Quanti debiti ha il tuo club?")}</span>
+          <span className="block text-xs text-muted">{t("Real Madrid, Barça, Juve, Inter: cifras de las cuentas oficiales", "Real Madrid, Barça, Juve, Inter: cifre dai bilanci ufficiali")}</span>
+        </span>
+        <span className="text-cyan text-lg shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
+      </Link>
+
       <Link href={it ? "/calcio-mondiale/" : "/futbol-mundial/"} className="mt-5 glass p-4 flex items-center justify-between gap-3 group hover:border-cyan transition">
         <span>
           <span className="block font-semibold">🌍 {t("El dinero del fútbol mundial", "I soldi del calcio mondiale")}</span>

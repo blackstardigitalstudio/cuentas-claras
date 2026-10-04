@@ -31,3 +31,6 @@ tools/doctor-cuentas/ultima-leggibilita.json
 # Copiato da node_modules a ogni build (scripts/copia-worker-mappa.mjs): sempre della stessa versione della libreria
 web/public/maplibre-gl-worker.mjs
 web/public/maplibre-gl-shared.mjs
+
+# Caroselli Instagram generati (si rivedono e si caricano a mano, poi si cancellano)
+/instagram/

@@ -27,3 +27,7 @@ graphify-out/
 
 # Report locale del dottore: cambia a ogni giro, serve solo per il confronto col giro dopo
 tools/doctor-cuentas/ultima-leggibilita.json
+
+# Copiato da node_modules a ogni build (scripts/copia-worker-mappa.mjs): sempre della stessa versione della libreria
+web/public/maplibre-gl-worker.mjs
+web/public/maplibre-gl-shared.mjs

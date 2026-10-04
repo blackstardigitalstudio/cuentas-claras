@@ -10,7 +10,7 @@
     "etl:news": "node ../data/etl-news.mjs",
     "serve": "npx --yes serve out",
     "lint": "eslint",
-    "postbuild": "node scripts/fix-lang.mjs",
+    "postbuild": "node scripts/fix-lang.mjs && node scripts/fix-prefetch.mjs",
     "etl:alcaldes": "node ../data/etl-alcaldes.mjs"
   },
   "overrides": {
@@ -26,7 +26,7 @@
     "d3-scale": "^4.0.2",
     "maplibre-gl": "^5.24.0",
     "motion": "^12.40.0",
-    "next": "16.3.0",
+    "next": "^16.3.8",
     "pdf-parse": "^2.4.5",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -42,7 +42,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.3.0",
+    "eslint-config-next": "^16.3.8",
     "satori": "^0.26.0",
     "satori-html": "^0.3.2",
     "tailwindcss": "^4",

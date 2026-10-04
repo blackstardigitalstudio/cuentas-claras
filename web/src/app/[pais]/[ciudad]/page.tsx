@@ -521,6 +521,9 @@ export default async function CityPage({ params }: Props) {
           </div>
         </nav>
       )}
+      <footer className="mt-16 pt-8 border-t border-[var(--panel-border)] text-sm text-muted">
+        <p><span className="neon-text font-semibold">Cuentas Claras</span> · {es ? "Hecho en Italia" : "Made in Italy"} 🇮🇹</p>
+      </footer>
     </main>
   );
 }

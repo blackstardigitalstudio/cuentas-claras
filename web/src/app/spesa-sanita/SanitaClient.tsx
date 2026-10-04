@@ -181,7 +181,7 @@ function Inner() {
                 { q: "¿Cuánto cuesta la sanidad a cada ciudadano?", a: "Unos 2.084 € al año por habitante en España y unos 2.500 € en Italia, contando solo la parte pública. No es una factura que te llegue a casa: la pagas durante el año con tus impuestos." },
                 { q: "¿Qué comunidad gasta más en sanidad?", a: "País Vasco (2.332 € por habitante), seguido de Asturias (2.322 €) y Extremadura (2.246 €). Las que menos: Andalucía (1.658 €), Madrid (1.779 €) y la Comunitat Valenciana (1.867 €). Datos de 2024." },
                 { q: "¿Por qué una comunidad gasta más que otra?", a: "Porque la sanidad la gestionan las comunidades autónomas (en Italia, las regiones). Influyen la edad de la población, el territorio y las decisiones de cada gobierno autonómico. Entre la primera y la última hay más de 670 € por habitante." },
-                { q: "¿La sanidad es gratis?", a: "No: ya está pagada. La pagas todo el año con tus impuestos. Además, una parte la pagas directamente de tu bolsillo (dentista, gafas, seguros, medicinas): en España es alrededor del 26% del gasto sanitario total." },
+                { q: "¿La sanidad es gratis?", a: "No: ya está pagada. La pagas todo el año con tus impuestos. Y encima, una parte la pagas tú, de tu bolsillo (dentista, gafas, seguros, medicinas): en España es alrededor del 26% del gasto sanitario total." },
               ]
           ).map((f, i) => (
             <details key={i} className="glass p-4" {...(i === 0 ? { open: true } : {})}>

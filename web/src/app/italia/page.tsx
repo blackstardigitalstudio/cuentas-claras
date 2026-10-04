@@ -48,6 +48,18 @@ const artLd = articleLd({
 });
 
 export default function ItaliaPage() {
+  // FAQ dalle domande vere, con i numeri presi dai comuni mostrati in pagina.
+  const primo = cities[0];
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      { q: "Quanti comuni italiani ci sono su Cuentas Claras?", a: `${cities.length} comuni con i conti ufficiali, per una spesa totale di ${formatCompact(totalGastos)}.` },
+      primo && { q: "Quale comune italiano spende di più?", a: `${primo.name}, con ${formatEuro(primo.gastos)} di spesa secondo SIOPE, il sistema della Ragioneria Generale dello Stato.` },
+      { q: "Da dove vengono i dati dei comuni?", a: "Da SIOPE, il sistema della Ragioneria Generale dello Stato (Ministero dell'Economia) che registra entrate e uscite di ogni comune. Ogni scheda indica la fonte e l'anno." },
+      { q: "Come trovo il mio comune?", a: "Cercalo nell'elenco qui sotto o nella mappa. Se non c'è, vuol dire che non ha ancora pubblicato dati verificabili: preferiamo il buco a un numero inventato." },
+    ].filter(Boolean).map((f) => ({ "@type": "Question", name: f!.q, acceptedAnswer: { "@type": "Answer", text: f!.a } })),
+  };
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -69,6 +81,7 @@ export default function ItaliaPage() {
 
   return (
     <main lang="it" className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 pb-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageLd) }} />

@@ -140,6 +140,9 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
         ))}
         . {t("Solo cifras verificables.", "Solo cifre verificabili.")}
       </p>
+      <footer className="mt-16 pt-8 border-t border-[var(--panel-border)] text-sm text-muted">
+        <p><span className="neon-text font-semibold">Cuentas Claras</span> · {t("Hecho en Italia", "Made in Italy")} 🇮🇹</p>
+      </footer>
     </main>
   );
 }
@@ -200,6 +203,9 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
       </div>
 
       <p className="text-[11px] text-muted mt-8">{t("Fuentes oficiales: LaLiga (límite de coste de plantilla), Deloitte Football Money League y cuentas anuales de los clubes. Solo cifras verificables; los huecos (—) son datos que ese club no publica en ese apartado.", "Fonti ufficiali: LaLiga (tetto salariale), Deloitte Football Money League e bilanci dei club. Solo cifre verificabili; i trattini (—) sono dati che il club non pubblica in quella voce.")}</p>
+      <footer className="mt-16 pt-8 border-t border-[var(--panel-border)] text-sm text-muted">
+        <p><span className="neon-text font-semibold">Cuentas Claras</span> · {t("Hecho en Italia", "Made in Italy")} 🇮🇹</p>
+      </footer>
     </main>
   );
 }

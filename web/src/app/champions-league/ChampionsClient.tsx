@@ -82,7 +82,7 @@ function Inner() {
         <h2 className="text-lg font-semibold mb-2">💶 {t("La fase liga (36 clubes)", "La fase campionato (36 club)")}</h2>
         <p className="text-sm text-muted">
           {t(
-            "Cada club recibe 18,62 mln € solo por entrar. Además, 2,1 mln € por cada victoria y 700.000 € por cada empate. Y un bono por la clasificación final de la fase liga: desde 275.000 € (último) hasta 9,9 mln € (primero).",
+            "Cada club recibe 18,62 mln € solo por entrar. Y luego, 2,1 mln € más por cada victoria y 700.000 € por cada empate. Y un bono por la clasificación final de la fase liga: desde 275.000 € (último) hasta 9,9 mln € (primero).",
             "Ogni club riceve 18,62 mln € solo per entrare. In più, 2,1 mln € per ogni vittoria e 700.000 € per ogni pareggio. E un bonus in base alla classifica finale della fase campionato: da 275.000 € (ultimo) fino a 9,9 mln € (primo).",
           )}
         </p>

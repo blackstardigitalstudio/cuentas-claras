@@ -34,7 +34,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!p) return {};
   const t = `${p.a.name} vs ${p.b.name}: presupuesto, deuda y sueldo del alcalde`;
   return {
-    title: `${t} (comparativa con datos oficiales)`,
+    // La coda "(comparativa con datos oficiales)" portava il titolo a ~94 caratteri:
+    // Google la tagliava comunque. Togliendola il risultato in pagina resta identico.
+    title: t,
     description: `Compara ${p.a.name} y ${p.b.name}: ingresos, gastos, deuda y sueldo del alcalde, con datos oficiales. ${p.a.name} gasta ${formatCompact(p.a.gastos)} y ${p.b.name} ${formatCompact(p.b.gastos)}.`,
     alternates: { canonical: `${SITE}/comparar/${par}/` },
     openGraph: { title: t, description: `Ingresos, gastos, deuda y sueldo del alcalde comparados.`, type: "article" },
@@ -114,6 +116,9 @@ export default async function CompararPage({ params }: Props) {
       </div>
 
       <p className="text-[11px] text-muted mt-8">Datos oficiales (Ministerio de Hacienda, ISPA, presupuestos municipales; población INE 2025). Cada cifra enlaza a su fuente en la ficha de la ciudad.</p>
+      <footer className="mt-16 pt-8 border-t border-[var(--panel-border)] text-sm text-muted">
+        <p><span className="neon-text font-semibold">Cuentas Claras</span> · Hecho en Italia 🇮🇹</p>
+      </footer>
     </main>
   );
 }

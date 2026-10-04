@@ -57,7 +57,7 @@
     "lang": "it",
     "claim": "Chi accoglie i migranti 'incassa' 35 euro al giorno per ogni immigrato.",
     "verdict": "Fuori contesto",
-    "reality": "I 35 euro erano la stima del costo medio giornaliero a carico dello Stato per l'accoglienza, non un guadagno: coprivano stipendi del personale, servizi e gestione dei centri. Al singolo richiedente asilo arrivavano solo circa 2,50 euro al giorno come 'pocket money'.",
+    "reality": "I 35 euro non erano un guadagno. Erano quanto spendeva lo Stato, in media, per ogni persona accolta in un giorno. Servivano a pagare chi lavora nei centri, i servizi e la gestione. Al richiedente asilo, in tasca, arrivavano circa 2,50 euro al giorno.",
     "topic": "gasto",
     "source": { "name": "Pagella Politica", "url": "https://pagellapolitica.it/fact-checking/salvini-sbaglia-i-numeri-sullaccoglienza-dei-migranti" },
     "date": "2019-08"
@@ -66,7 +66,7 @@
     "lang": "it",
     "claim": "Un immigrato con sette mogli percepisce otto redditi di cittadinanza.",
     "verdict": "Senza prove",
-    "reality": "La storia non ha mai trovato alcuna conferma documentale. È inoltre implausibile: la poligamia è vietata dal codice penale italiano e il ricongiungimento è consentito con una sola moglie, mentre per il reddito di cittadinanza serviva la residenza in Italia da almeno 10 anni.",
+    "reality": "Nessun documento ha mai confermato questa storia. E non può nemmeno funzionare così. In Italia la poligamia è un reato, e si può far venire una sola moglie. Per il reddito di cittadinanza, poi, bisognava vivere in Italia da almeno 10 anni.",
     "topic": "prestaciones",
     "source": { "name": "Pagella Politica", "url": "https://pagellapolitica.it/articoli/salvini-immigrato-otto-redditi-cittadinanza" },
     "date": "2022-10"
@@ -75,7 +75,7 @@
     "lang": "it",
     "claim": "Lo Stato paga circa 1 miliardo di euro di pensioni sociali a immigrati che non hanno mai versato contributi.",
     "verdict": "Ingannevole",
-    "reality": "La cifra è irrealistica: presupporrebbe che l'intera popolazione straniera over 66 sia poverissima, non abbia mai versato contributi e sia in Italia da oltre 10 anni. Con circa 155.000 residenti stranieri over 66, il costo massimo teorico sarebbe intorno ai 910 milioni, ma i beneficiari reali sono molti meno per i requisiti richiesti.",
+    "reality": "Il conto non torna. Per arrivare a quella cifra, tutti gli stranieri sopra i 66 anni dovrebbero essere poverissimi, non aver mai versato contributi e vivere qui da più di 10 anni. Sono circa 155.000. Anche nel caso peggiore si arriverebbe a circa 910 milioni. Ma chi ne ha davvero diritto è molto meno, per via dei requisiti.",
     "topic": "prestaciones",
     "source": { "name": "AGI Verify · Pagella Politica", "url": "https://www.agi.it/fact-checking/news/2018-07-25/immigrati_pensioni_sociali_contributi_salvini-4196463/" },
     "date": "2018-07"
@@ -84,7 +84,7 @@
     "lang": "it",
     "claim": "I parlamentari italiani sono i più pagati d'Europa.",
     "verdict": "Ingannevole",
-    "reality": "L'indennità lorda italiana (circa 10.435 € al mese) è simile a quella tedesca (circa 10.591 €) e superiore a Francia o Spagna, ma il confronto netto è inaffidabile perché tassazione, previdenza e rimborsi variano molto tra Paesi. Non esiste un semplice 'primato' come circola online.",
+    "reality": "Un parlamentare italiano prende circa 10.435 € lordi al mese. Un tedesco circa 10.591 €. Francia e Spagna pagano meno. Ma confrontare il netto non ha senso: tasse, pensione e rimborsi cambiano molto da un Paese all'altro. Il «record europeo» che gira online non esiste.",
     "topic": "sueldos",
     "source": { "name": "Pagella Politica", "url": "https://pagellapolitica.it/articoli/stipendi-parlamentari-italia-europa" },
     "date": "2023-08"
@@ -93,7 +93,7 @@
     "lang": "it",
     "claim": "L'Italia è la prima nazione europea per attuazione del PNRR.",
     "verdict": "Ingannevole",
-    "reality": "A giugno 2024 l'Italia aveva raggiunto circa il 29 % di obiettivi e traguardi concordati con l'UE, sesta tra gli Stati membri. Il piano italiano è il più grande in valore assoluto (194,4 miliardi), ma questo non equivale a essere primi nell'attuazione.",
+    "reality": "A giugno 2024 l'Italia aveva raggiunto circa il 29% degli obiettivi fissati con l'Europa. Era sesta tra i Paesi dell'Unione, non prima. Il piano italiano è il più grande in soldi: 194,4 miliardi. Ma essere il più grande non vuol dire essere il più avanti.",
     "topic": "fondos-ue",
     "source": { "name": "Pagella Politica", "url": "https://pagellapolitica.it/fact-checking/classifica-attuazione-pnrr-paesi-europei" },
     "date": "2024-06"

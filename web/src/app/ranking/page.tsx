@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { COUNTRIES, type CountryCode } from "@/lib/data";
+import { formatEuro } from "@/lib/format";
 import RankingClient from "./RankingClient";
 import { articleLd, FONTI } from "@/lib/jsonld";
 
@@ -51,6 +52,19 @@ export default function RankingPage() {
   ]
     .sort((a, b) => b.r.gastos - a.r.gastos)
     .slice(0, 20);
+  // FAQ dalle domande vere, con i numeri presi dalla classifica stessa.
+  const es1 = ranked("es")[0];
+  const it1 = ranked("it")[0];
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      es1 && { q: "¿Qué ciudad española gasta más dinero público?", a: `${es1.name}, con ${formatEuro(es1.gastos)} de gasto en su último presupuesto publicado.` },
+      it1 && { q: "¿Qué ciudad italiana gasta más?", a: `${it1.name}, con ${formatEuro(it1.gastos)} de gasto según SIOPE (Contaduría General del Estado italiano).` },
+      { q: "¿Gastar más significa gastar peor?", a: "No. Una ciudad grande gasta más porque tiene más gente y más servicios. Para comparar de verdad hay que mirar el gasto por habitante, que también tienes en esta web." },
+      { q: "¿De dónde salen estas cifras?", a: "De los presupuestos oficiales de cada ayuntamiento (Ministerio de Hacienda en España, SIOPE en Italia). Cada ciudad enlaza a su fuente en su ficha." },
+    ].filter(Boolean).map((f) => ({ "@type": "Question", name: f!.q, acceptedAnswer: { "@type": "Answer", text: f!.a } })),
+  };
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -73,6 +87,7 @@ export default function RankingPage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />

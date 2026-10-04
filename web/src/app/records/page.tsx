@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import RecordsClient from "./RecordsClient";
 import { buildRecordsData } from "./records-data";
 import { articleLd, FONTI } from "@/lib/jsonld";
+import { recordsFaqLd } from "./records-faq";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -36,9 +37,11 @@ const artLd = articleLd({
 
 export default function RecordsPage() {
   const data = buildRecordsData();
+  const faqLd = recordsFaqLd("es");
   const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Récords", item: `${SITE}/records/` }] };
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <RecordsClient data={data} />

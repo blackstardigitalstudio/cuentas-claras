@@ -4,8 +4,24 @@
     {
       "name": "web",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "port": 3000,
+      "cwd": "web"
+    },
+    {
+      "name": "web-statico",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "serve",
+        "out",
+        "-l",
+        "3031"
+      ],
+      "port": 3031,
       "cwd": "web"
     }
   ]

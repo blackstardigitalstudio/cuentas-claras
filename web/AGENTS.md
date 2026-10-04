@@ -222,5 +222,18 @@ Pagine `mundial-2026`, `champions-league`, `eurocopa`: HeroBanner + SimpleExplai
 lista per fase (tier universali: `PO/R16/QF/SF/FIN/🏆`) + ShareBar + sezione "vs" + FAQ.
 Cifre **ufficiali** (FIFA/UEFA) con link alla fonte. Tutte interconnesse + nel sitemap + in home.
 
+
+## 10. Il dottore del progetto — check-up dalla A alla Z
+`python tools/doctor-cuentas/dottore_cuentas.py` visita il sito **online** e controlla:
+pagine che rispondono, formula SEO, fonti ufficiali vive, **leggibilità misurata**
+(Gulpease ≥ 60 per l'italiano, INFLESZ ≥ 55 per lo spagnolo), parole da AI e da ufficio,
+dati freschi. Finisce con un verdetto per gravità. La procedura completa — compresa la
+lettura di Search Console e il **registro dei falsi allarmi** — è nella skill
+`.claude/skills/dottore-cuentas/`. Lo lancia anche `/doctor` globale e il controllo
+programmato settimanale.
+
+**Prima di curare una segnalazione grave, verificala a mano.** Al primo giro lo script
+ha dato tre falsi allarmi: se sbaglia lo script, si corregge lo script.
+
 ## 9. Made in Italy 🇮🇹
 Ogni pagina/README/documento porta la dicitura "Made in Italy".

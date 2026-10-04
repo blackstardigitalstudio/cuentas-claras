@@ -80,7 +80,7 @@ function Inner() {
         <h2 className="text-lg font-semibold mb-2">💶 {t("La fase de grupos (24 selecciones)", "La fase a gironi (24 nazionali)")}</h2>
         <p className="text-sm text-muted">
           {t(
-            "Cada selección recibe 9,25 mln € solo por participar. Además, 1 mln € por cada victoria en la fase de grupos y 500.000 € por cada empate. A partir de ahí, se suma un bono por cada ronda que se supera.",
+            "Cada selección recibe 9,25 mln € solo por participar. Y luego, 1 mln € más por cada victoria en la fase de grupos y 500.000 € por cada empate. A partir de ahí, se suma un bono por cada ronda que se supera.",
             "Ogni nazionale riceve 9,25 mln € solo per partecipare. In più, 1 mln € per ogni vittoria nella fase a gironi e 500.000 € per ogni pareggio. Da lì in poi, si aggiunge un bonus per ogni turno superato.",
           )}
         </p>

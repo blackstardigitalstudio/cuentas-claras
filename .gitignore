@@ -24,3 +24,6 @@ Thumbs.db
 # Impostazioni locali personali di Claude Code
 .claude/settings.local.json
 graphify-out/
+
+# Report locale del dottore: cambia a ogni giro, serve solo per il confronto col giro dopo
+tools/doctor-cuentas/ultima-leggibilita.json

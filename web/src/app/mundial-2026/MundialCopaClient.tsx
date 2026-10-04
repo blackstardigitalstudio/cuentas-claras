@@ -94,7 +94,7 @@ function Inner() {
             </li>
           ))}
         </ol>
-        <p className="text-[11px] text-muted mt-3">{t("Además, cada selección recibe 1,5 mln $ para gastos de preparación. Fuente: ", "In più, ogni nazionale riceve 1,5 mln $ per le spese di preparazione. Fonte: ")}
+        <p className="text-[11px] text-muted mt-3">{t("Y encima, cada selección recibe 1,5 mln $ para gastos de preparación. Fuente: ", "In più, ogni nazionale riceve 1,5 mln $ per le spese di preparazione. Fonte: ")}
           <a href="https://inside.fifa.com/organisation/fifa-council/media-releases/council-approves-record-breaking-world-cup-2026-financial-contribution" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">FIFA</a>.
         </p>
       </section>

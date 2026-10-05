@@ -13,6 +13,10 @@ name: Build & Deploy (Cloudflare Pages)
 
 on:
   workflow_dispatch:
+  # En cada push a main → despliegue automático a Cloudflare Pages (dominio real).
+  # Así cada cambio fusionado sale en vivo sin intervención manual.
+  push:
+    branches: [main]
   # Refresco automático de NOTICIAS en el sitio Cloudflare en vivo, cada 2 horas.
   # (Secrets CLOUDFLARE_API_TOKEN y CLOUDFLARE_ACCOUNT_ID ya configurados.)
   schedule:

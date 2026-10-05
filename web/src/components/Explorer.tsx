@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import RegionPanel from "./RegionPanel";
+import NewsByPlace from "./NewsByPlace";
 
 // MapLibre usa WebGL → solo cliente (sin SSR).
 const RegionMapGL = dynamic(() => import("./RegionMapGL"), {
@@ -89,6 +90,14 @@ export default function Explorer() {
           </span>
           <span className="text-cyan/80">👆 {locale === "it" ? "tocca la tua città per vedere i conti" : "toca tu ciudad para ver sus cuentas"}</span>
         </div>
+
+        {/* Le notizie della zona toccata: subito sotto la mappa, così sul telefono
+            il risultato del tocco si vede senza scorrere fino in fondo. */}
+        <NewsByPlace
+          country={country}
+          provincia={C.regions[selected]?.provincia ?? selected}
+          citta={C.regions[selected]?.provincia ? C.regions[selected].name : null}
+        />
 
         {/* Top spesa — barre orizzontali stile dashboard ("consumption by region") */}
         <div className="mt-4">

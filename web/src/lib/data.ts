@@ -76,6 +76,7 @@ export type RegionData = {
   source?: { name: string; url: string };
   basis?: string;
   isCity?: boolean;
+  provincia?: string; // città non capoluogo (chiave = slug): la sua provincia sulla mappa
   mayorSalary?: MayorSalary;
   alcalde?: Alcalde; // nome del sindaco in carica (solo Spagna, per ora)
   debt?: Debt;
@@ -267,6 +268,7 @@ function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[], extras: RealC
       source: c.source,
       basis: c.basis,
       isCity: true,
+      provincia: c.provincia,
       poblacion: c.poblacion,
     };
   }

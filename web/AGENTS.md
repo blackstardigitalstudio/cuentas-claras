@@ -235,5 +235,30 @@ programmato settimanale.
 **Prima di curare una segnalazione grave, verificala a mano.** Al primo giro lo script
 ha dato tre falsi allarmi: se sbaglia lo script, si corregge lo script.
 
+## 11. Le notizie sulla mappa della home
+Tocchi una provincia (o scegli una città dal menu) e sotto la mappa compaiono le
+notizie di quel posto. Componente: `src/components/NewsByPlace.tsx`.
+
+**Da dove arriva il luogo.** Le notizie hanno solo il titolo. Prima di ogni build
+`scripts/luoghi-notizie.mjs` (prebuild) riconosce il posto dal titolo e scrive
+`src/data/news-luoghi.json`. Usa gli elenchi ufficiali di tutti i comuni in
+`data/gazetteer/` (Ministerio de Política Territorial + ISTAT), rifatti con
+`cd web && node ../data/etl-gazetteer.mjs` una volta l'anno.
+
+**Regola: meglio una notizia in meno che una nel paese sbagliato.** Un nome di
+comune a parola singola vale solo dopo una preposizione («a Fondi», «en Soria») o
+in apertura di titolo. Ci sono stoplist per le parole comuni (Fondi, Arena, Real…),
+i cognomi (Martínez, Torres, Falcone…) e le strade («via Potenza»). Se vedi una
+notizia attribuita male, aggiungi il nome alla stoplist: non allentare le regole.
+Controllo a occhio: `node scripts/luoghi-notizie.mjs --mostra`. Oggi ≈35% delle
+notizie ha un luogo, ≈53 province su 162.
+
+**Il menu passa due tipi di chiave**: il nome della provincia (capoluoghi) o lo
+slug di una città non capoluogo (`marbella`). Per queste `RegionData.provincia`
+dice dove stanno, e il titolo dice «Notizie dalla provincia di Málaga» invece di
+far finta che parlino di Marbella.
+
+Zona senza notizie: lo si dice e si mostrano le 2 ultime del paese. Mai vuoto.
+
 ## 9. Made in Italy 🇮🇹
 Ogni pagina/README/documento porta la dicitura "Made in Italy".

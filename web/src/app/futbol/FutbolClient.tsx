@@ -8,7 +8,7 @@ import SimpleExplainer from "@/components/SimpleExplainer";
 import { formatEuro, formatCompact } from "@/lib/format";
 import {
   LALIGA_LCPD, LALIGA_LCPD_SEASON, LALIGA_LCPD_SOURCE, LALIGA_LCPD_NOTE,
-  CLUB_REVENUE, REVENUE_SEASON, REVENUE_SOURCE, CLUB_DEBT,
+  CLUB_REVENUE, REVENUE_SEASON, REVENUE_SOURCE, CLUB_DEBT, srcName,
   SERIE_A, SERIE_A_SEASON, SERIE_A_SOURCE, LEAGUES, LEAGUE_SOURCE,
   CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS,
 } from "@/data/futbol";
@@ -24,6 +24,8 @@ function Inner({ upcoming = [] }: { upcoming?: Partita[] }) {
   const maxR = revenues[0].amount;
   const revenuesEs = revenues.filter((c) => c.country === "es");
   const debts = [...CLUB_DEBT].sort((a, b) => (a.kind === "caja" ? -1 : b.amount - a.amount));
+  const topDebt = [...CLUB_DEBT].sort((a, b) => b.amount - a.amount)[0];
+  const topNetIt = [...CLUB_DEBT].filter((d) => d.country === "it" && d.kind === "neta").sort((a, b) => b.amount - a.amount)[0];
   const maxD = Math.max(...CLUB_DEBT.filter((d) => d.kind !== "caja").map((d) => d.amount));
   const debtsEs = debts.filter((d) => d.country === "es");
   const debtsIt = debts.filter((d) => d.country === "it");
@@ -126,7 +128,7 @@ function Inner({ upcoming = [] }: { upcoming?: Partita[] }) {
             <HeroBanner as="h2" src="/photos/spain-stadium.jpg" alt={t("Estadio de LaLiga (España)", "Stadio della Liga (Spagna)")}
               kicker={t("🇪🇸 España · LaLiga · datos oficiales", "🇪🇸 Spagna · LaLiga · dati ufficiali")}
               title={t("EL DINERO DEL", "I SOLDI DEL")} highlight={t("FÚTBOL ESPAÑOL", "CALCIO SPAGNOLO")}
-              stat="1.451 M€" statLabel={t("la mayor deuda de Europa (FC Barcelona)", "il debito più alto d'Europa (FC Barcelona)")}
+              stat={`${new Intl.NumberFormat("es-ES", { useGrouping: "always" }).format(Math.round(topDebt.amount / 1e6))} M€`} statLabel={t(`la mayor deuda entre los clubes que seguimos (${topDebt.club})`, `il debito più alto tra i club che seguiamo (${topDebt.club})`)}
               accent="#fdba74" accent2="#f472b6" />
           </section>
 
@@ -146,7 +148,7 @@ function Inner({ upcoming = [] }: { upcoming?: Partita[] }) {
                 </li>
               ))}
             </ol>
-            <p className="text-[11px] text-muted mt-3">{src}<a href={LALIGA_LCPD_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{LALIGA_LCPD_SOURCE.name}</a>. {t(LALIGA_LCPD_NOTE.es, LALIGA_LCPD_NOTE.it)}</p>
+            <p className="text-[11px] text-muted mt-3">{src}<a href={LALIGA_LCPD_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{srcName(LALIGA_LCPD_SOURCE, it)}</a>. {t(LALIGA_LCPD_NOTE.es, LALIGA_LCPD_NOTE.it)}</p>
           </section>
 
           {/* Ingresos ES */}
@@ -165,7 +167,7 @@ function Inner({ upcoming = [] }: { upcoming?: Partita[] }) {
                 </li>
               ))}
             </ol>
-            <p className="text-[11px] text-muted mt-3">{src}<a href={REVENUE_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{REVENUE_SOURCE.name}</a></p>
+            <p className="text-[11px] text-muted mt-3">{src}<a href={REVENUE_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{srcName(REVENUE_SOURCE, it)}</a></p>
           </section>
 
           {/* Deuda ES */}
@@ -178,7 +180,7 @@ function Inner({ upcoming = [] }: { upcoming?: Partita[] }) {
                   <span className="flex-1 min-w-0">
                     <span className="block truncate font-medium">{d.club}</span>
                     {d.kind !== "caja" && (<span className="mt-1 block h-1.5 rounded-full bg-white/5 overflow-hidden"><span className="block h-full rounded-full bg-gradient-to-r from-amber to-magenta" style={{ width: `${Math.max(3, (d.amount / maxD) * 100)}%` }} /></span>)}
-                    <a href={d.source.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-muted/80 underline hover:text-fg">{d.source.name}</a>
+                    <a href={d.source.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-muted/80 underline hover:text-fg">{srcName(d.source, it)}</a>
                   </span>
                   <span className={`tabular text-sm font-semibold shrink-0 ${d.kind === "caja" ? "text-green" : "text-[#fdba74]"}`}>
                     {d.kind === "caja" ? cajaLabel : formatCompact(d.amount)}
@@ -232,7 +234,7 @@ function Inner({ upcoming = [] }: { upcoming?: Partita[] }) {
                   <span className="flex-1 min-w-0">
                     <span className="block truncate font-medium">{d.club}</span>
                     {d.kind !== "caja" && (<span className="mt-1 block h-1.5 rounded-full bg-white/5 overflow-hidden"><span className="block h-full rounded-full bg-gradient-to-r from-amber to-magenta" style={{ width: `${Math.max(3, (d.amount / maxD) * 100)}%` }} /></span>)}
-                    <a href={d.source.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-muted/80 underline hover:text-fg">{d.source.name}</a>
+                    <a href={d.source.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-muted/80 underline hover:text-fg">{srcName(d.source, it)}</a>
                   </span>
                   <span className={`tabular text-sm font-semibold shrink-0 ${d.kind === "caja" ? "text-green" : "text-[#fdba74]"}`}>
                     {d.kind === "caja" ? cajaLabel : formatCompact(d.amount)}
@@ -322,14 +324,14 @@ function Inner({ upcoming = [] }: { upcoming?: Partita[] }) {
                 { q: "Qual è il club di LaLiga che può spendere di più per la rosa?", a: `Il Real Madrid, con un tetto salariale di ${formatEuro(LALIGA_LCPD[0].amount)} nel ${LALIGA_LCPD_SEASON}, davanti a FC Barcelona (${formatEuro(LALIGA_LCPD[1].amount)}) e Atlético de Madrid (${formatEuro(LALIGA_LCPD[2].amount)}). È il tetto fissato dalla LaLiga, non quello che spendono davvero.` },
                 { q: "Cos'è il tetto salariale della LaLiga?", a: "È la spesa massima che la LaLiga autorizza a ogni club per la rosa (stipendi, ammortamenti dei cartellini, ecc.), in base a ricavi e debiti. La LaLiga lo pubblica ufficialmente ogni stagione." },
                 { q: "Quale club incassa di più in Spagna e Italia?", a: `Il Real Madrid, con circa ${formatCompact(revenues[0].amount)} di ricavi nel ${REVENUE_SEASON} (Deloitte), unico club al mondo sopra il miliardo. In Italia guida l'Inter (${formatCompact(CLUB_REVENUE.find((c) => c.club === "Inter")!.amount)}).` },
-                { q: "Quale club ha più debito?", a: `Per debito finanziario lordo, il FC Barcelona (${formatCompact(1451000000)}, il più alto d'Europa). In Italia la Juventus guida il debito netto (${formatCompact(302800000)}). Dati dai bilanci 2024/25.` },
+                { q: "Quale club ha più debito?", a: `Per debito finanziario lordo, il ${topDebt.club} (${formatCompact(topDebt.amount)}, il più alto tra i club che seguiamo). In Italia la ${topNetIt.club} guida il debito netto (${formatCompact(topNetIt.amount)}). Dati dai bilanci 2024/25.` },
                 { q: "Da dove arrivano questi dati?", a: "Solo da fonti ufficiali e verificabili: il tetto salariale dalla LaLiga; i ricavi dalla Deloitte Football Money League; il debito dai bilanci di ogni club. Niente valori di mercato né stipendi stimati." },
               ]
             : [
                 { q: "¿Cuál es el club de LaLiga que más puede gastar en su plantilla?", a: `El Real Madrid, con un límite de coste de plantilla de ${formatEuro(LALIGA_LCPD[0].amount)} en ${LALIGA_LCPD_SEASON}, seguido del FC Barcelona (${formatEuro(LALIGA_LCPD[1].amount)}) y el Atlético de Madrid (${formatEuro(LALIGA_LCPD[2].amount)}). Es el tope que fija LaLiga, no lo que efectivamente gastan.` },
                 { q: "¿Qué es el límite de coste de plantilla de LaLiga?", a: "Es el gasto máximo que LaLiga autoriza a cada club para su plantilla deportiva (salarios, fichajes amortizados, etc.), según sus ingresos y deudas. Lo publica LaLiga de forma oficial cada temporada." },
                 { q: "¿Qué club de fútbol ingresa más en España e Italia?", a: `El Real Madrid, con unos ${formatCompact(revenues[0].amount)} de ingresos en ${REVENUE_SEASON} (Deloitte), único club del mundo por encima de los 1.000 M€. En Italia lidera el Inter (${formatCompact(CLUB_REVENUE.find((c) => c.club === "Inter")!.amount)}).` },
-                { q: "¿Qué club tiene más deuda?", a: `Por deuda financiera bruta, el FC Barcelona (${formatCompact(1451000000)}, la mayor de Europa). En Italia, la Juventus lidera la deuda neta (${formatCompact(302800000)}). Datos de las cuentas anuales 2024/25.` },
+                { q: "¿Qué club tiene más deuda?", a: `Por deuda financiera bruta, el ${topDebt.club} (${formatCompact(topDebt.amount)}, la mayor entre los clubes que seguimos). En Italia, la ${topNetIt.club} lidera la deuda neta (${formatCompact(topNetIt.amount)}). Datos de las cuentas anuales 2024/25.` },
                 { q: "¿De dónde salen estos datos?", a: "Solo de fuentes oficiales y verificables: el límite salarial lo publica LaLiga; los ingresos, la Deloitte Football Money League; la deuda, las cuentas de cada club. No usamos valores de mercado ni sueldos estimados." },
               ]
           ).map((f, i) => (

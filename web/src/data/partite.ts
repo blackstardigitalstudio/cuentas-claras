@@ -73,7 +73,11 @@ export const PARTITE: Partita[] = [
   sa(11, "2026-11-08T14:00:00Z", "genoa", "ac-milan", MILAN),
   sa(11, "2026-11-08T19:45:00Z", "fiorentina", "juventus", JUVE),
   sa(12, "2026-11-23T19:45:00Z", "juventus", "venezia", JUVE),
-].filter((p) => CLUBS[p.home] && CLUBS[p.away]);
+];
+// Uno slug sbagliato non deve far sparire la partita in silenzio: si ferma la build.
+for (const p of PARTITE) {
+  if (!CLUBS[p.home] || !CLUBS[p.away]) throw new Error(`partite.ts: squadra sconosciuta in ${p.home}-${p.away}`);
+}
 
 export const matchPair = (p: Partita) => canonicalPair(p.home, p.away);
 

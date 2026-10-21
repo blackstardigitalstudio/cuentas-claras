@@ -7,7 +7,7 @@ import SimpleExplainer from "@/components/SimpleExplainer";
 import ShareBar from "@/components/ShareBar";
 import {
   CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS, type ClubMetrics,
-  LALIGA_LCPD_SOURCE, LALIGA_LCPD_SEASON, LALIGA_LCPD_NOTE, REVENUE_SOURCE, REVENUE_SEASON, SERIE_A_SOURCE, SERIE_A_SEASON,
+  srcName, LALIGA_LCPD_SOURCE, LALIGA_LCPD_SEASON, LALIGA_LCPD_NOTE, REVENUE_SOURCE, REVENUE_SEASON, SERIE_A_SOURCE, SERIE_A_SEASON,
 } from "@/data/futbol";
 import { type Partita, compLabel, longDate, shortName, sourceName } from "@/data/partite";
 import { formatEuro, formatCompact } from "@/lib/format";
@@ -38,8 +38,8 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
   if (c.debt) rows.push({ label: `${t("Deuda", "Debito")} (${kindLabel(c.debt.kind, it)})`, value: formatEuro(c.debt.amount), hint: `${t("a", "al")} ${c.debt.year}`, accent: "#fdba74" });
 
   const faqs: { q: string; a: string }[] = [];
-  if (c.revenue) faqs.push(it ? { q: `Quanto incassa il ${c.name}?`, a: `Il ${c.name} incassa ${formatEuro(c.revenue)} all'anno (stagione ${c.league === "laliga" ? REVENUE_SEASON : SERIE_A_SEASON}), secondo ${c.league === "laliga" ? REVENUE_SOURCE.name : SERIE_A_SOURCE.name}.` } : { q: `¿Cuánto ingresa el ${c.name}?`, a: `El ${c.name} ingresa ${formatEuro(c.revenue)} al año (temporada ${c.league === "laliga" ? REVENUE_SEASON : SERIE_A_SEASON}), según ${c.league === "laliga" ? REVENUE_SOURCE.name : SERIE_A_SOURCE.name}.` });
-  if (c.debt) faqs.push(it ? { q: `Quanto debito ha il ${c.name}?`, a: `Il ${c.name} ha un debito di ${formatEuro(c.debt.amount)} (${kindLabel(c.debt.kind, true)}) al ${c.debt.year}. Fonte: ${c.debt.source.name}.` } : { q: `¿Cuánta deuda tiene el ${c.name}?`, a: `El ${c.name} tiene una deuda de ${formatEuro(c.debt.amount)} (${c.debt.kind}) a ${c.debt.year}. Fuente: ${c.debt.source.name}.` });
+  if (c.revenue) faqs.push(it ? { q: `Quanto incassa il ${c.name}?`, a: `Il ${c.name} incassa ${formatEuro(c.revenue)} all'anno (stagione ${c.league === "laliga" ? REVENUE_SEASON : SERIE_A_SEASON}), secondo ${srcName(c.league === "laliga" ? REVENUE_SOURCE : SERIE_A_SOURCE, true)}.` } : { q: `¿Cuánto ingresa el ${c.name}?`, a: `El ${c.name} ingresa ${formatEuro(c.revenue)} al año (temporada ${c.league === "laliga" ? REVENUE_SEASON : SERIE_A_SEASON}), según ${c.league === "laliga" ? REVENUE_SOURCE.name : SERIE_A_SOURCE.name}.` });
+  if (c.debt) faqs.push(it ? { q: `Quanto debito ha il ${c.name}?`, a: `Il ${c.name} ha un debito di ${formatEuro(c.debt.amount)} (${kindLabel(c.debt.kind, true)}) al ${c.debt.year}. Fonte: ${srcName(c.debt.source, true)}.` } : { q: `¿Cuánta deuda tiene el ${c.name}?`, a: `El ${c.name} tiene una deuda de ${formatEuro(c.debt.amount)} (${c.debt.kind}) a ${c.debt.year}. Fuente: ${c.debt.source.name}.` });
   if (c.limite) faqs.push(it ? { q: `Qual è il tetto salariale del ${c.name}?`, a: `La LaLiga fissa il tetto salariale del ${c.name} a ${formatEuro(c.limite)} per il ${LALIGA_LCPD_SEASON}.` } : { q: `¿Cuál es el límite salarial del ${c.name}?`, a: `LaLiga fija el límite de coste de plantilla del ${c.name} en ${formatEuro(c.limite)} para ${LALIGA_LCPD_SEASON}.` });
   if (c.wageBill) faqs.push(it ? { q: `Quanto spende il ${c.name} in stipendi?`, a: `Il ${c.name} destina ${formatEuro(c.wageBill)} all'anno agli stipendi dei giocatori (monte ingaggi lordo).` } : { q: `¿Cuánto gasta el ${c.name} en salarios?`, a: `El ${c.name} destina ${formatEuro(c.wageBill)} al año a los salarios de sus jugadores (masa salarial bruta).` });
 
@@ -186,7 +186,7 @@ function Comparison({ a, b, par, itPage, match }: { a: ClubMetrics; b: ClubMetri
       q: t(`¿Quién puede gastar más en su plantilla, ${a.name} o ${b.name}?`, `Chi può spendere di più per la rosa, ${a.name} o ${b.name}?`),
       a: t(
         `${hi.name}. LaLiga le deja gastar hasta ${formatEuro(hi.limite!)} en su plantilla en la temporada ${LALIGA_LCPD_SEASON}. Al ${lo.name}, ${formatEuro(lo.limite!)}. Fuente: ${LALIGA_LCPD_SOURCE.name}.`,
-        `${hi.name}. La LaLiga gli permette di spendere fino a ${formatEuro(hi.limite!)} per la rosa nella stagione ${LALIGA_LCPD_SEASON}. Al ${lo.name}, ${formatEuro(lo.limite!)}. Fonte: ${LALIGA_LCPD_SOURCE.name}.`,
+        `${hi.name}. La LaLiga gli permette di spendere fino a ${formatEuro(hi.limite!)} per la rosa nella stagione ${LALIGA_LCPD_SEASON}. Al ${lo.name}, ${formatEuro(lo.limite!)}. Fonte: ${srcName(LALIGA_LCPD_SOURCE, true)}.`,
       ),
     });
   }
@@ -209,7 +209,7 @@ function Comparison({ a, b, par, itPage, match }: { a: ClubMetrics; b: ClubMetri
         q,
         a: t(
           `${hi.name}: ${formatEuro(hi.debt!.amount)} de deuda ${kindLabel(da.kind, false)} frente a ${formatEuro(lo.debt!.amount)} del ${lo.name}. Fuentes: ${da.source.name}; ${db.source.name}.`,
-          `${hi.name}: ${formatEuro(hi.debt!.amount)} di debito ${kindLabel(da.kind, true)} contro ${formatEuro(lo.debt!.amount)} del ${lo.name}. Fonti: ${da.source.name}; ${db.source.name}.`,
+          `${hi.name}: ${formatEuro(hi.debt!.amount)} di debito ${kindLabel(da.kind, true)} contro ${formatEuro(lo.debt!.amount)} del ${lo.name}. Fonti: ${srcName(da.source, true)}; ${srcName(db.source, true)}.`,
         ),
       });
     } else {
@@ -217,7 +217,7 @@ function Comparison({ a, b, par, itPage, match }: { a: ClubMetrics; b: ClubMetri
         q,
         a: t(
           `No se pueden comparar tal cual, porque cada club publica una medida distinta. ${a.name}: ${formatEuro(da.amount)} (${kindLabel(da.kind, false)}, a ${da.year}). ${b.name}: ${formatEuro(db.amount)} (${kindLabel(db.kind, false)}, a ${db.year}). La deuda neta ya resta el dinero que el club tiene en caja; la bruta no. Fuentes: ${da.source.name}; ${db.source.name}.`,
-          `Non si possono confrontare così come sono, perché ogni club pubblica una misura diversa. ${a.name}: ${formatEuro(da.amount)} (${kindLabel(da.kind, true)}, al ${da.year}). ${b.name}: ${formatEuro(db.amount)} (${kindLabel(db.kind, true)}, al ${db.year}). Il debito netto toglie già i soldi in cassa; quello lordo no. Fonti: ${da.source.name}; ${db.source.name}.`,
+          `Non si possono confrontare così come sono, perché ogni club pubblica una misura diversa. ${a.name}: ${formatEuro(da.amount)} (${kindLabel(da.kind, true)}, al ${da.year}). ${b.name}: ${formatEuro(db.amount)} (${kindLabel(db.kind, true)}, al ${db.year}). Il debito netto toglie già i soldi in cassa; quello lordo no. Fonti: ${srcName(da.source, true)}; ${srcName(db.source, true)}.`,
         ),
       });
     }

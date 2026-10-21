@@ -2,12 +2,15 @@
 // sin sueldos de jugadores estimados). Fuentes citadas en cada bloque.
 // I soldi del calcio — SOLO dati ufficiali/verificabili, con fonte.
 
-export type Src = { name: string; url: string };
+export type Src = { name: string; name_it?: string; url: string };
+/** Nombre de la fuente en el idioma de la página (las páginas IT no llevan español). */
+export const srcName = (s: Src, it: boolean) => (it && s.name_it) || s.name;
 
 // --- LaLiga · Límite de Coste de Plantilla Deportiva (LCPD) — OFICIAL ---
 // Cuánto puede gastar cada club en su plantilla. Publicado por LaLiga.
 export const LALIGA_LCPD_SOURCE: Src = {
   name: "LaLiga · Límite de Coste de Plantilla Deportiva 2026/27 (oficial, sept. 2026)",
+  name_it: "LaLiga · Tetto di spesa per la rosa 2026/27 (ufficiale, sett. 2026)",
   url: "https://www.laliga.com/transparencia/gestion-economica/limite-coste-plantilla",
 };
 // PDF oficial con las cifras club a club (miles de euros, «LCPD J. División Sep 26»):
@@ -44,6 +47,7 @@ export const LALIGA_LCPD: { club: string; amount: number }[] = [
 // --- Ingresos / Ricavi — Deloitte Football Money League (cuentas 2024/25) ---
 export const REVENUE_SOURCE: Src = {
   name: "Deloitte Football Money League 2026 (cuentas 2024/25)",
+  name_it: "Deloitte Football Money League 2026 (bilanci 2024/25)",
   url: "https://www.deloitte.com/uk/en/services/consulting-financial/analysis/deloitte-football-money-league.html",
 };
 export const REVENUE_SEASON = "2024/25";
@@ -62,9 +66,9 @@ export const CLUB_DEBT: {
   club: string; country: "es" | "it"; amount: number; kind: "bruta" | "neta" | "caja"; year: string; source: Src;
 }[] = [
   { club: "FC Barcelona", country: "es", amount: 1451000000, kind: "bruta", year: "2024/25",
-    source: { name: "FC Barcelona · Cuentas anuales (deuda financiera bruta)", url: "https://www.fcbarcelona.es/es/club/organizacion/informacion-economica" } },
-  { club: "Real Madrid", country: "es", amount: 12000000, kind: "neta", year: "30/06/2025",
-    source: { name: "Real Madrid · Informe Económico (deuda neta)", url: "https://www.realmadrid.com/sobre-el-real-madrid/el-club/organigrama-y-datos-economicos" } },
+    source: { name: "FC Barcelona · Cuentas anuales (deuda financiera bruta)", name_it: "FC Barcelona · Bilancio annuale (debito finanziario lordo)", url: "https://www.fcbarcelona.es/es/club/organizacion/informacion-economica" } },
+  { club: "Real Madrid", country: "es", amount: 12000000, kind: "neta", year: "2024/25",
+    source: { name: "Real Madrid · Informe Económico (deuda neta)", name_it: "Real Madrid · Relazione economica (debito netto)", url: "https://www.realmadrid.com/sobre-el-real-madrid/el-club/organigrama-y-datos-economicos" } },
   { club: "Juventus", country: "it", amount: 302800000, kind: "neta", year: "2024/25",
     source: { name: "Juventus · Bilancio 2024/25 (indebitamento finanziario netto)", url: "https://www.juventus.com/it/club/investor-relations" } },
   { club: "Inter", country: "it", amount: 248400000, kind: "neta", year: "2024/25",

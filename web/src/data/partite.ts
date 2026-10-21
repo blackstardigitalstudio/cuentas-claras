@@ -24,6 +24,10 @@ const LL12 = "https://www.laliga.com/noticias/horarios-de-la-duodecima-jornada-d
 // Serie A: date e orari ufficiali pubblicati dai club (3 settembre 2026).
 const MILAN = "https://www.acmilan.com/it/news/articoli/comunicati/2026-09-03/serie-a-2026-27-date-e-orari-dalla-6a-alla-12a-giornata";
 const JUVE = "https://www.juventus.com/it/news/articoli/serie-a-2026-27-anticipi-e-posticipi-dalla-giornata-sei-alla-dodici";
+// Dalla 9ª giornata: comunicati ufficiali della Lega Serie A (C.U. 24 del 03/09; C.U. 39 e 40 del 25/09/2026).
+// La 12ª segue il C.U. 39, che ha cambiato quattro orari: i comunicati dei club del 3/9 sono superati.
+const SA_A = "https://www.legaseriea.it/serie-a/news/quando-si-gioca-anticipi-e-posticipi-fino-alla-12a-giornata";
+const SA_B = "https://www.legaseriea.it/serie-a/news/anticipi-e-posticipi-fino-alla-fine-del-girone-di-andata";
 
 const ll = (round: number, kickoff: string, home: string, away: string, source: string): Partita => ({ comp: "laliga", round, kickoff, home, away, source });
 const sa = (round: number, kickoff: string, home: string, away: string, source: string): Partita => ({ comp: "seriea", round, kickoff, home, away, source });
@@ -66,13 +70,46 @@ export const PARTITE: Partita[] = [
   // Serie A 2026/27 (solo le partite con data e ora ufficiali dei club)
   sa(8, "2026-10-25T17:00:00Z", "lecce", "juventus", JUVE),
   sa(8, "2026-10-25T19:45:00Z", "udinese", "ac-milan", MILAN),
-  sa(9, "2026-10-28T17:30:00Z", "ac-milan", "bologna", MILAN),
-  sa(9, "2026-10-28T19:45:00Z", "genoa", "juventus", JUVE),
-  sa(10, "2026-10-31T19:45:00Z", "ac-milan", "inter", MILAN),
-  sa(10, "2026-11-01T19:45:00Z", "juventus", "ssc-napoli", JUVE),
-  sa(11, "2026-11-08T14:00:00Z", "genoa", "ac-milan", MILAN),
-  sa(11, "2026-11-08T19:45:00Z", "fiorentina", "juventus", JUVE),
-  sa(12, "2026-11-23T19:45:00Z", "juventus", "venezia", JUVE),
+  sa(9, "2026-10-27T19:45:00Z", "as-roma", "cagliari", SA_A),
+  sa(9, "2026-10-27T19:45:00Z", "torino", "como", SA_A),
+  sa(9, "2026-10-28T17:30:00Z", "ac-milan", "bologna", SA_A),
+  sa(9, "2026-10-28T17:30:00Z", "parma", "udinese", SA_A),
+  sa(9, "2026-10-28T17:30:00Z", "venezia", "inter", SA_A),
+  sa(9, "2026-10-28T19:45:00Z", "genoa", "juventus", SA_A),
+  sa(9, "2026-10-28T19:45:00Z", "monza", "ssc-napoli", SA_A),
+  sa(9, "2026-10-29T19:45:00Z", "fiorentina", "atalanta", SA_A),
+  sa(10, "2026-10-31T14:00:00Z", "bologna", "monza", SA_A),
+  sa(10, "2026-10-31T17:00:00Z", "udinese", "as-roma", SA_A),
+  sa(10, "2026-10-31T19:45:00Z", "ac-milan", "inter", SA_A),
+  sa(10, "2026-11-01T11:30:00Z", "como", "venezia", SA_A),
+  sa(10, "2026-11-01T14:00:00Z", "lazio", "cagliari", SA_A),
+  sa(10, "2026-11-01T17:00:00Z", "lecce", "genoa", SA_A),
+  sa(10, "2026-11-01T19:45:00Z", "juventus", "ssc-napoli", SA_A),
+  sa(10, "2026-11-02T19:45:00Z", "atalanta", "parma", SA_A),
+  sa(11, "2026-11-06T19:45:00Z", "venezia", "udinese", SA_A),
+  sa(11, "2026-11-07T14:00:00Z", "torino", "lecce", SA_A),
+  sa(11, "2026-11-07T17:00:00Z", "parma", "bologna", SA_A),
+  sa(11, "2026-11-08T11:30:00Z", "ssc-napoli", "lazio", SA_A),
+  sa(11, "2026-11-08T14:00:00Z", "genoa", "ac-milan", SA_A),
+  sa(11, "2026-11-08T14:00:00Z", "monza", "atalanta", SA_A),
+  sa(11, "2026-11-08T17:00:00Z", "inter", "como", SA_A),
+  sa(11, "2026-11-08T19:45:00Z", "fiorentina", "juventus", SA_A),
+  sa(12, "2026-11-21T14:00:00Z", "como", "cagliari", SA_B),
+  sa(12, "2026-11-21T14:00:00Z", "lazio", "lecce", SA_B),
+  sa(12, "2026-11-21T17:00:00Z", "parma", "as-roma", SA_B),
+  sa(12, "2026-11-21T19:45:00Z", "ssc-napoli", "torino", SA_B),
+  sa(12, "2026-11-22T11:30:00Z", "juventus", "venezia", SA_B),
+  sa(12, "2026-11-22T14:00:00Z", "bologna", "udinese", SA_B),
+  sa(12, "2026-11-22T19:45:00Z", "atalanta", "inter", SA_B),
+  sa(12, "2026-11-23T19:45:00Z", "monza", "fiorentina", SA_B),
+  sa(13, "2026-11-27T19:45:00Z", "venezia", "bologna", SA_B),
+  sa(13, "2026-11-28T17:00:00Z", "torino", "lazio", SA_B),
+  sa(13, "2026-11-28T19:45:00Z", "inter", "genoa", SA_B),
+  sa(13, "2026-11-29T11:30:00Z", "udinese", "fiorentina", SA_B),
+  sa(13, "2026-11-29T17:00:00Z", "as-roma", "monza", SA_B),
+  sa(13, "2026-11-29T19:45:00Z", "como", "juventus", SA_B),
+  sa(13, "2026-11-30T17:30:00Z", "lecce", "atalanta", SA_B),
+  sa(13, "2026-11-30T19:45:00Z", "cagliari", "ac-milan", SA_B),
 ];
 // Uno slug sbagliato non deve far sparire la partita in silenzio: si ferma la build.
 for (const p of PARTITE) {
@@ -152,4 +189,4 @@ export function matchTitle(p: Partita, it: boolean): string {
 
 /** Quién publica la fecha: "LaLiga", "AC Milan", "Juventus". */
 export const sourceName = (p: Partita) =>
-  p.source.includes("laliga.com") ? "LaLiga" : p.source.includes("acmilan.com") ? "AC Milan" : p.source.includes("juventus.com") ? "Juventus" : new URL(p.source).hostname;
+  p.source.includes("laliga.com") ? "LaLiga" : p.source.includes("acmilan.com") ? "AC Milan" : p.source.includes("juventus.com") ? "Juventus" : p.source.includes("legaseriea.it") ? "Lega Serie A" : new URL(p.source).hostname;

@@ -144,7 +144,7 @@ export default function RegionPanel({ region }: { region: RegionData }) {
           <p className="tabular text-xl md:text-2xl font-semibold text-green mt-1">
             <CountUp value={region.ingresos} kind="compact" duration={1.1} />
           </p>
-          <p className="text-[10px] text-muted/70 mt-0.5 leading-tight">
+          <p className="text-[10px] text-muted mt-0.5 leading-tight">
             {locale === "it" ? "i soldi che entrano (tasse, tariffe, aiuti dello Stato)" : "el dinero que entra (impuestos, tasas, ayudas del Estado)"}
           </p>
         </div>
@@ -153,7 +153,7 @@ export default function RegionPanel({ region }: { region: RegionData }) {
           <p className="tabular text-xl md:text-2xl font-semibold text-magenta mt-1">
             <CountUp value={region.gastos} kind="compact" duration={1.1} />
           </p>
-          <p className="text-[10px] text-muted/70 mt-0.5 leading-tight">
+          <p className="text-[10px] text-muted mt-0.5 leading-tight">
             {locale === "it" ? "i soldi che il comune spende in un anno" : "el dinero que gasta el ayuntamiento en un año"}
             {region.poblacion && region.poblacion > 0
               ? (locale === "it" ? ` · ≈ ${formatEuro(Math.round(region.gastos / region.poblacion))} a testa` : ` · ≈ ${formatEuro(Math.round(region.gastos / region.poblacion))} por persona`)
@@ -189,7 +189,7 @@ export default function RegionPanel({ region }: { region: RegionData }) {
                 {region.debt.amount > 0 ? formatEuro(region.debt.amount) + " · " : ""}
                 {locale === "it" ? "al 31/12/" : "a 31/12/"}{region.debt.year}
               </p>
-              <p className="text-[10px] text-muted/70 mt-0.5 leading-tight">
+              <p className="text-[10px] text-muted mt-0.5 leading-tight">
                 {locale === "it" ? "quello che il comune deve ancora restituire (mutui e prestiti)" : "lo que el ayuntamiento aún debe devolver (préstamos)"}
               </p>
               {region.poblacion && region.debt.amount > 0 && (
@@ -198,7 +198,7 @@ export default function RegionPanel({ region }: { region: RegionData }) {
                   <span className="text-muted font-normal">{locale === "it" ? "per abitante" : "por habitante"}</span>
                 </p>
               )}
-              <a href={region.debt.source.url} target="_blank" rel="noopener noreferrer" className="block text-[10px] text-muted/80 mt-1 underline hover:text-fg truncate">
+              <a href={region.debt.source.url} target="_blank" rel="noopener noreferrer" className="block text-[10px] text-muted mt-1 underline hover:text-fg truncate">
                 {region.debt.source.name}
               </a>
             </div>
@@ -222,7 +222,7 @@ export default function RegionPanel({ region }: { region: RegionData }) {
                   ? region.mayorSalary.dedicacion
                   : (locale === "it" ? "Indennità di funzione (di legge)" : "Indemnización de función (por ley)")}
               </p>
-              <a href={region.mayorSalary.source.url} target="_blank" rel="noopener noreferrer" className="block text-[10px] text-muted/80 mt-1 underline hover:text-fg truncate">
+              <a href={region.mayorSalary.source.url} target="_blank" rel="noopener noreferrer" className="block text-[10px] text-muted mt-1 underline hover:text-fg truncate">
                 {region.mayorSalary.source.name}
               </a>
             </div>
@@ -240,7 +240,7 @@ export default function RegionPanel({ region }: { region: RegionData }) {
       <div className="mt-4">
         <div className="mb-3">
           <h3 className="text-sm font-medium text-muted">{m.panel.whereGoes}</h3>
-          <p className="text-[11px] text-cyan/60">{m.panel.whereGoesHint}</p>
+          <p className="text-[11px] text-cyan/90">{m.panel.whereGoesHint}</p>
         </div>
         <ul className="space-y-2.5">
           {[...region.gastosByCat]

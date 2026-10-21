@@ -35,7 +35,7 @@ export default function FasciaClient(p: Props) {
         <header className="pt-8">
           <p className="text-xs uppercase tracking-widest text-cyan/70">🏛️ Indennità del sindaco · dato di legge</p>
           <h1 className="text-2xl md:text-4xl font-bold mt-2 leading-tight">
-            Quanto guadagna il sindaco di un comune con <span className="neon-text">{ab} abitanti</span>?
+            Quanto guadagna il sindaco di un comune di <span className="neon-text">{ab} abitanti</span>?
           </h1>
 
           {/* LA RISPOSTA, subito e per intero: e' quello che cercava chi arriva
@@ -179,13 +179,19 @@ export default function FasciaClient(p: Props) {
           <div className="space-y-2.5">
             {[
               {
-                q: `Quanto guadagna un sindaco con ${ab} abitanti?`,
+                q: `Quanto guadagna il sindaco di un comune di ${ab} abitanti?`,
                 a: `${eur(p.lordoMese)} lordi al mese, cioè ${eur(p.lordoAnno)} lordi all'anno. È il ${p.pct}% del trattamento dei Presidenti di Regione (13.800 € al mese), la percentuale che la legge assegna ai comuni ${p.fasciaLabel}.`,
               },
               {
-                q: `E al netto quanto prende?`,
-                a: `Circa ${eur(Math.round(p.nettoStimato / 12))} al mese, togliendo l'IRPEF secondo gli scaglioni 2026. È una stima: il netto vero cambia con le addizionali del proprio comune e con le detrazioni personali.`,
+                q: `E al netto quanto prende il sindaco di un comune di ${ab} abitanti?`,
+                a: `Circa ${eur(Math.round(p.nettoStimato / 12))} al mese (${eur(p.nettoStimato)} l'anno), togliendo l'IRPEF secondo gli scaglioni 2026: 23% fino a 28.000 €, 33% fino a 50.000 €, 43% oltre. È una stima: il netto vero cambia con le addizionali del proprio comune e con le detrazioni personali.`,
               },
+              ...(p.ruoli.length
+                ? [{
+                    q: `E se il comune di ${ab} abitanti è capoluogo?`,
+                    a: `La cifra sale: ${p.ruoli.map((r) => `${r.label} ${eur(r.lordoMese)} al mese (${r.pct}%)`).join("; ")}. I ${eur(p.lordoMese)} valgono per un comune di questa dimensione che non è capoluogo.`,
+                  }]
+                : []),
               {
                 q: "Il sindaco prende sempre tutta l'indennità?",
                 a: "No. Se resta al suo lavoro da dipendente senza chiedere l'aspettativa, l'indennità è dimezzata. Molti sindaci di piccoli comuni prendono quindi la metà della cifra di legge.",

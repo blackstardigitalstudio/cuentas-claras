@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 import PoliticosClient from "./PoliticosClient";
 import { articleLd, FONTI } from "@/lib/jsonld";
+import { FAQ_ES, RISPOSTA_ES, faqLd } from "./faq";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "¿Cuánto cobra un político? 95.944 € el presidente",
+  title: "¿Cuánto cobra un político en España? Presidente: 95.944 €",
   description:
-    "¿Cuánto gana el presidente del Gobierno, un ministro o un diputado en España? ¿Y un parlamentario en Italia? El presidente español cobra 95.944 €/año y un parlamentario italiano 10.435 €/mes. Cifras oficiales. Quanto guadagna un politico.",
+    "¿Cuánto cobra un político en España? Presidente del Gobierno: 95.944 € al año. Diputado: 3.366,99 € al mes de base. ¿Y tu alcalde? Hay alguno que cobra más que el presidente.",
   keywords: [
     "cuánto cobra un político",
+    "cuánto cobra un político en España",
+    "cuánto cobra un alcalde",
     "sueldo presidente del Gobierno",
     "cuánto gana un diputado",
     "sueldo ministro España",
-    "quanto guadagna un parlamentare",
-    "stipendio deputato senatore",
-    "indennità parlamentare",
     "sueldos políticos oficiales",
   ],
   alternates: {
@@ -23,23 +23,16 @@ export const metadata: Metadata = {
     languages: { "es-ES": `${SITE}/sueldos-politicos/`, "it-IT": `${SITE}/stipendi-politici/` },
   },
   openGraph: {
-    title: "¿Cuánto cobra un político? España e Italia",
-    description: "Presidente 95.944 €/año en España; parlamentario 10.435 €/mes en Italia. Cifras oficiales.",
+    title: "¿Cuánto cobra un político en España?",
+    description: "Presidente del Gobierno 95.944 € al año; diputado 3.366,99 € al mes de base. Cifras oficiales.",
     url: `${SITE}/sueldos-politicos/`,
     type: "article",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Sueldos de los políticos en España e Italia" }],
   },
-  twitter: { card: "summary_large_image", title: "¿Cuánto cobra un político?", description: "Sueldos oficiales de los políticos de España e Italia.", images: ["/og.png"] },
+  twitter: { card: "summary_large_image", title: "¿Cuánto cobra un político en España?", description: "Sueldos oficiales de los políticos de España e Italia.", images: ["/og.png"] },
 };
 
-const faqLd = {
-  "@context": "https://schema.org", "@type": "FAQPage",
-  mainEntity: [
-    { q: "¿Cuánto cobra el presidente del Gobierno de España?", a: "95.944 € brutos al año (2025), según el Portal de Transparencia. Y por ser además diputado, cobra otras 14 pagas de 1.032 € al año que no pagan impuestos." },
-    { q: "¿Cuánto gana un parlamentario en Italia?", a: "La indemnización es de 10.435 € brutos al mes (unos 125.220 € al año), más una dieta de 3.503 €/mes y otros reembolsos para gastos." },
-    { q: "¿Cuánto gana un diputado en España?", a: "3.050,62 € brutos al mes de base (unos 55.804 € al año), más dietas y otras indemnizaciones." },
-  ].map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-};
+const faqJsonLd = faqLd(FAQ_ES);
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Sueldos de políticos", item: `${SITE}/sueldos-politicos/` }] };
 
 // Dati strutturati con la CITAZIONE della fonte: è così che i motori con
@@ -48,17 +41,17 @@ const artLd = articleLd({
   headline: (metadata.title as string) || "Retribuciones de los cargos políticos",
   lang: "es",
   url: `https://www.cuentas-clara.com/sueldos-politicos/`,
-  source: FONTI.ley31,
+  source: [FONTI.ley31, FONTI.ispa],
   about: "Retribuciones de los cargos políticos",
 });
 
 export default function PoliticosPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
-      <PoliticosClient />
+      <PoliticosClient faq={FAQ_ES} risposta={RISPOSTA_ES} />
     </>
   );
 }

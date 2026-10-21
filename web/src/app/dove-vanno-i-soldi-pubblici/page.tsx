@@ -15,7 +15,7 @@ const cityCount = COUNTRIES.it.realNames.length;
 export const metadata: Metadata = {
   title: "Dove finiscono i soldi del tuo Comune?",
   description:
-    "Dove va il denaro pubblico del tuo Comune? Le grandi aree di spesa (servizi di base, sociale, istruzione e cultura, debito…) spiegate in parole semplici, con dati ufficiali di centinaia di comuni italiani.",
+    "Dove va il denaro pubblico del tuo Comune? Le grandi aree di spesa (servizi di base, sociale, istruzione e cultura, debito…) spiegate in parole semplici, con i dati ufficiali dei bilanci dei comuni.",
   keywords: [
     "dove vanno i soldi pubblici",
     "dove va il denaro pubblico",
@@ -23,16 +23,19 @@ export const metadata: Metadata = {
     "in cosa spende il comune",
     "bilancio comunale spiegato",
   ],
-  alternates: { canonical: `${SITE}/dove-vanno-i-soldi-pubblici/` },
-  openGraph: { title: "Dove vanno i soldi pubblici in Italia?", description: "Le aree di spesa del tuo Comune, spiegate facile e con dati ufficiali.", url: `${SITE}/dove-vanno-i-soldi-pubblici/`, type: "article" },
+  alternates: {
+    canonical: `${SITE}/dove-vanno-i-soldi-pubblici/`,
+    languages: { "es-ES": `${SITE}/en-que-se-gasta-el-dinero-publico/`, "it-IT": `${SITE}/dove-vanno-i-soldi-pubblici/` },
+  },
+  openGraph: { title: "Dove vanno i soldi pubblici in Italia?", description: "Le aree di spesa del tuo Comune, spiegate facile e con dati ufficiali.", url: `${SITE}/dove-vanno-i-soldi-pubblici/`, type: "article", locale: "it_IT" },
 };
 
 const AREE = [
-  { t: "Servizi pubblici di base", d: "La vita di tutti i giorni: raccolta rifiuti, pulizia, illuminazione, acqua, strade, sicurezza e mobilità, urbanistica, parchi.", c: "#22d3ee" },
-  { t: "Diritti sociali e famiglia", d: "Aiuti a persone e famiglie, servizi sociali, non autosufficienza, politiche per il lavoro, casa.", c: "#f472b6" },
-  { t: "Istruzione, cultura e sport", d: "Scuole (manutenzione), biblioteche, musei, eventi, impianti sportivi.", c: "#a3e635" },
-  { t: "Sviluppo economico e trasporti", d: "Commercio e turismo, trasporto pubblico, infrastrutture che aiutano l'economia locale.", c: "#fbbf24" },
-  { t: "Amministrazione e debito", d: "Il costo di far funzionare il Comune (personale, uffici) e restituire i mutui con gli interessi.", c: "#818cf8" },
+  { t: "Servizi pubblici di base", d: "La vita di tutti i giorni. Rifiuti, pulizia, luce, acqua e strade. Poi sicurezza, traffico, urbanistica e parchi.", c: "#22d3ee" },
+  { t: "Diritti sociali e famiglia", d: "Aiuti a chi ha bisogno e alle famiglie. Servizi sociali e cura di chi non è autosufficiente. Poi lavoro e casa.", c: "#f472b6" },
+  { t: "Istruzione, cultura e sport", d: "La cura delle scuole. Poi biblioteche, musei, eventi e campi sportivi.", c: "#a3e635" },
+  { t: "Sviluppo economico e trasporti", d: "Negozi e turismo. Bus e trasporto pubblico. Le opere che aiutano il lavoro in città.", c: "#fbbf24" },
+  { t: "Amministrazione e debito", d: "Quanto costa far andare il Comune: personale e uffici. E i mutui da ridare, con gli interessi.", c: "#818cf8" },
 ];
 
 // Dati strutturati con la CITAZIONE della fonte: è così che i motori con
@@ -47,10 +50,10 @@ const artLd = articleLd({
 
 export default function GuidaSpesaPage() {
   const faqs = [
-    { q: "In cosa spende i soldi un Comune?", a: "Soprattutto in servizi pubblici di base (rifiuti, pulizia, acqua, strade, sicurezza), diritti sociali (aiuti, non autosufficienza), istruzione-cultura-sport, sviluppo economico (trasporti, turismo) e amministrazione e debito. Nella scheda di ogni comune vedi la ripartizione esatta." },
-    { q: "Da dove arrivano i soldi che spende il Comune?", a: "Dalle imposte e tariffe che paghi (IMU, TARI, addizionale IRPEF…) e dai trasferimenti dello Stato e della Regione. Le entrate e le uscite di solito vanno quasi pari." },
-    { q: "Come faccio a sapere in cosa spende il MIO comune?", a: "Cerca il tuo comune su Cuentas Claras: vedi quanto incassa, quanto spende, quanto guadagna il sindaco e quanto spende per abitante, con la fonte ufficiale." },
-    { q: "Sono dati ufficiali?", a: "Sì. Vengono dai dati di cassa SIOPE della Ragioneria Generale dello Stato (MEF) e dai bilanci ufficiali dei comuni. Niente stime, niente numeri inventati." },
+    { q: "In cosa spende i soldi un Comune?", a: "Soprattutto in servizi di base: rifiuti, pulizia, acqua, strade, sicurezza. Poi aiuti sociali, scuola, cultura e sport. Poi trasporti e turismo. Infine uffici e debito. Nella scheda di ogni comune vedi le cifre esatte." },
+    { q: "Da dove arrivano i soldi che spende il Comune?", a: "Dalle tasse e tariffe che paghi: IMU, TARI, addizionale IRPEF. E dai soldi che mandano Stato e Regione (i trasferimenti). Di solito entrate e uscite vanno quasi pari." },
+    { q: "Come faccio a sapere in cosa spende il MIO comune?", a: "Cerca il tuo comune su Cuentas Claras. Vedi quanto incassa e quanto spende. Vedi quanto prende il sindaco e la spesa per abitante. Sempre con la fonte ufficiale." },
+    { q: "Sono dati ufficiali?", a: "Sì. Vengono dai dati di cassa SIOPE della Ragioneria Generale dello Stato (MEF). E dai bilanci ufficiali dei comuni. Niente stime. Niente numeri inventati." },
   ];
   const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
   const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Dove vanno i soldi pubblici", item: `${SITE}/dove-vanno-i-soldi-pubblici/` }] };
@@ -65,7 +68,7 @@ export default function GuidaSpesaPage() {
         <article className="pt-8">
           <HeroBanner priority as="h1" src="/photos/money.jpg" alt="Monete da euro" kicker="🇮🇹 Guida · spiegato facile" title="DOVE VANNO I" highlight="SOLDI PUBBLICI?" accent="#22d3ee" accent2="#a78bfa" />
           <p className="text-sm md:text-base text-muted mt-3">
-            Il tuo Comune incassa dei soldi (dalle tue tasse e dallo Stato) e li spende in servizi per la città. Qui vedi
+            Il tuo Comune incassa soldi dalle tue tasse e dallo Stato. Poi li spende in servizi per la città. Qui vedi
             <span className="text-fg/90"> dove vanno questi soldi</span>, spiegato facile. Abbiamo già la spesa di{" "}
             <span className="text-fg/90">{cityCount} comuni</span> ({formatCompact(realGastos)} in totale).
           </p>
@@ -84,9 +87,9 @@ export default function GuidaSpesaPage() {
           <div className="glass p-5 mt-8">
             <h2 className="text-base font-semibold">E da dove arrivano questi soldi?</h2>
             <p className="text-sm text-muted mt-2">
-              Da due fonti: <span className="text-green">le tue tasse e tariffe</span> (IMU, TARI, addizionale IRPEF…) e
-              i <span className="text-green">soldi che gli manda</span> lo Stato e la Regione. In un comune in salute,
-              quello che entra e quello che esce vanno quasi pari.
+              Da due fonti. La prima sono <span className="text-green">le tue tasse e tariffe</span>: IMU, TARI, addizionale IRPEF.
+              La seconda sono i <span className="text-green">soldi che gli manda</span> lo Stato e la Regione. In un comune
+              in salute, quello che entra e quello che esce vanno quasi pari.
             </p>
           </div>
 

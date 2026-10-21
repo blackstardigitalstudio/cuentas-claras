@@ -105,14 +105,14 @@ function Inner() {
                 { q: "Quanti soldi riceve l'Italia con il PNRR?", a: "194,4 miliardi di euro: 71,8 a fondo perduto (regalati) e 122,6 in prestiti a basso costo. A oggi l'Italia ha ricevuto circa l'85% delle risorse. Fonte: Italia Domani / MEF." },
                 { q: "Quanti soldi riceve la Spagna?", a: "Fino a 163.000 milioni di euro (circa 80.000 a fondo perduto). Finora ne ha ricevuti circa 71.000 milioni. Fonte: Plan de Recuperación / Ministero delle Finanze spagnolo." },
                 { q: "Questi soldi vanno restituiti?", a: "Una parte no (le sovvenzioni «a fondo perduto»); l'altra sì (i prestiti, ma a condizioni vantaggiose). Dipende da quanto ogni Paese chiede come prestito." },
-                { q: "Entro quando vanno spesi?", a: "Il fondo europeo si chiude a fine 2026: bisogna completare i progetti e presentare le ultime richieste di pagamento entro l'autunno 2026." },
+                { q: "Entro quando vanno spesi?", a: "Il fondo europeo si chiude a fine 2026: i progetti dovevano essere finiti entro il 31 agosto 2026 e l'Europa fa gli ultimi pagamenti entro il 31 dicembre 2026." },
                 { q: "Da dove escono questi soldi?", a: "Li mette l'Unione Europea insieme (un debito comune europeo), che poi viene restituito da tutti i Paesi nel tempo." },
               ]
             : [
                 { q: "¿Cuánto dinero recibe España de Europa?", a: "Hasta 163.000 millones de euros (unos 80.000 a fondo perdido). Hasta ahora ha recibido unos 71.000 millones. Fuente: Plan de Recuperación / Ministerio de Hacienda." },
                 { q: "¿Cuánto recibe Italia con el PNRR?", a: "194.400 millones de euros: 71.800 a fondo perdido (regalados) y 122.600 en préstamos baratos. Ya ha recibido en torno al 85%. Fuente: Italia Domani / MEF." },
                 { q: "¿Hay que devolver este dinero?", a: "Una parte no (las subvenciones «a fondo perdido»); la otra sí (los préstamos, pero en condiciones ventajosas). Depende de cuánto pida cada país como préstamo." },
-                { q: "¿Hasta cuándo hay plazo para gastarlo?", a: "El fondo europeo se cierra a finales de 2026: hay que completar los proyectos y presentar los últimos pagos antes del otoño de 2026." },
+                { q: "¿Hasta cuándo hay plazo para gastarlo?", a: "El fondo europeo se cierra a finales de 2026: los proyectos tenían que estar terminados antes del 31 de agosto de 2026 y Europa hace los últimos pagos antes del 31 de diciembre de 2026." },
                 { q: "¿De dónde sale ese dinero?", a: "Lo pone la Unión Europea en conjunto (una deuda común europea), que luego se devuelve entre todos los países con el tiempo." },
               ]
           ).map((f, i) => (

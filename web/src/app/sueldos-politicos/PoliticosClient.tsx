@@ -8,13 +8,14 @@ import SimpleExplainer from "@/components/SimpleExplainer";
 import ShareBar from "@/components/ShareBar";
 
 // Cifras OFICIALES (brutas al año). ES: Portal de Transparencia (retribuciones de
-// altos cargos, 2025). IT: Camera/Senato (indennità). Los parlamentarios italianos
+// altos cargos, 2025); diputado: Congreso, asignación 3.366,99 €/mes (2026) × 12.
+// IT: Camera/Senato (indennità). Los parlamentarios italianos
 // cobran además dieta y reembolsos (no es «sueldo»), que se indican aparte.
 const POL_ES = [
   { es: "Presidente del Gobierno", it: "Presidente del Governo", amount: 95944 },
   { es: "Vicepresidente/a", it: "Vicepresidente", amount: 86601 },
   { es: "Ministro/a", it: "Ministro", amount: 79415 },
-  { es: "Diputado/a (base)", it: "Deputato (base)", amount: 55804 },
+  { es: "Diputado/a (base × 12 meses)", it: "Deputato (base × 12 mesi)", amount: 40404 },
 ];
 const POL_IT = [
   { es: "Presidente de la República", it: "Presidente della Repubblica", amount: 239182 },
@@ -50,7 +51,9 @@ function Section({ code, rows }: { code: "es" | "it"; rows: { es: string; it: st
   );
 }
 
-function Inner() {
+type Faq = { q: string; a: string };
+
+function Inner({ faq, risposta }: { faq: Faq[]; risposta: string }) {
   const { locale } = useLocale();
   const it = locale === "it";
   const t = (es: string, itx: string) => (it ? itx : es);
@@ -66,7 +69,7 @@ function Inner() {
           alt={t("Edificio institucional", "Edificio istituzionale")}
           kicker={t("🏛️ Sueldos públicos · cifras oficiales", "🏛️ Stipendi pubblici · cifre ufficiali")}
           title={t("¿CUÁNTO COBRA", "QUANTO GUADAGNA")}
-          highlight={t("UN POLÍTICO?", "UN POLITICO?")}
+          highlight={t("UN POLÍTICO EN ESPAÑA?", "UN POLITICO IN ITALIA?")}
           stat={t("95.944 €", "10.435 €")}
           statLabel={t("al año, el presidente del Gobierno", "al mese, l'indennità di un parlamentare")}
           accent="#a5b4fc"
@@ -74,10 +77,12 @@ function Inner() {
         />
       </div>
       <header className="pt-5">
-        <p className="text-sm md:text-base text-muted max-w-2xl">
+        {/* La respuesta directa va arriba: es la que Google y los buscadores con IA citan. */}
+        <p className="text-base md:text-lg max-w-2xl">{risposta}</p>
+        <p className="text-sm text-muted max-w-2xl mt-2">
           {t(
-            "Cuánto cobran los políticos de España e Italia, con cifras oficiales. Lo pagas tú con tus impuestos.",
-            "Quanto guadagnano i politici di Spagna e Italia, con cifre ufficiali. Li paghi tu con le tue tasse.",
+            "Cifras oficiales de España e Italia. Lo pagas tú con tus impuestos.",
+            "Cifre ufficiali di Italia e Spagna. Li paghi tu con le tue tasse.",
           )}
         </p>
       </header>
@@ -107,7 +112,9 @@ function Inner() {
 
       <Section code="es" rows={POL_ES} />
       <p className="text-[11px] text-muted mt-3">{t("Fuente: ", "Fonte: ")}
-        <a href="https://transparencia.gob.es/transparencia/transparencia_Home/index/PublicidadActiva/PublicidadActivaporMaterias/Altos-cargos/RetribucionesAC.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{t("Portal de Transparencia (España), 2025", "Portale Trasparenza (Spagna), 2025")}</a>.
+        <a href="https://transparencia.gob.es/transparencia/transparencia_Home/index/PublicidadActiva/PublicidadActivaporMaterias/Altos-cargos/RetribucionesAC.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{t("Portal de Transparencia (España), 2025", "Portale Trasparenza (Spagna), 2025")}</a>
+        {" / "}
+        <a href="https://www.congreso.es/es/cem/regecodip" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{t("Congreso de los Diputados, 2026", "Congreso de los Diputados, 2026")}</a>.
       </p>
 
       <Section code="it" rows={POL_IT} />
@@ -138,20 +145,7 @@ function Inner() {
       <section className="mt-10">
         <h2 className="text-lg font-semibold mb-3">{t("Preguntas frecuentes", "Domande frequenti")}</h2>
         <div className="space-y-2.5">
-          {(it
-            ? [
-                { q: "Quanto guadagna il presidente del Governo spagnolo?", a: "95.944 € lordi all'anno (2025), secondo il Portale della Trasparenza. In più riceve 14 mensilità da 1.032 € come deputato." },
-                { q: "Quanto guadagna un parlamentare italiano?", a: "L'indennità è di 10.435 € lordi al mese (circa 125.220 € l'anno). In più: diaria di 3.503 € al mese e altri rimborsi per le spese (non sono stipendio)." },
-                { q: "Quanto guadagna un deputato in Spagna?", a: "3.050,62 € lordi al mese di base (circa 55.804 € l'anno), più diarie e altre indennità." },
-                { q: "Da dove escono questi soldi?", a: "Dalle tue tasse. Gli stipendi delle alte cariche sono pubblicati ufficialmente: Portale della Trasparenza in Spagna; Camera e Senato in Italia." },
-              ]
-            : [
-                { q: "¿Cuánto cobra el presidente del Gobierno?", a: "95.944 € brutos al año (2025), según el Portal de Transparencia. Y por ser además diputado, cobra otras 14 pagas de 1.032 € al año que no pagan impuestos." },
-                { q: "¿Cuánto gana un parlamentario en Italia?", a: "La indemnización es de 10.435 € brutos al mes (unos 125.220 € al año). Además: una dieta de 3.503 €/mes y otros reembolsos para gastos (no son sueldo)." },
-                { q: "¿Cuánto gana un diputado en España?", a: "3.050,62 € brutos al mes de base (unos 55.804 € al año), más dietas y otras indemnizaciones." },
-                { q: "¿De dónde sale este dinero?", a: "De tus impuestos. Los sueldos de los altos cargos se publican oficialmente: Portal de Transparencia en España; Cámara y Senado en Italia." },
-              ]
-          ).map((f, i) => (
+          {faq.map((f, i) => (
             <details key={i} className="glass p-4" {...(i === 0 ? { open: true } : {})}>
               <summary className="font-medium cursor-pointer marker:text-cyan">{f.q}</summary>
               <p className="text-sm text-muted mt-2">{f.a}</p>
@@ -161,7 +155,7 @@ function Inner() {
       </section>
 
       <nav className="mt-10 flex flex-wrap gap-3">
-        <Link href="/sueldos-alcaldes/" className="px-5 py-2.5 rounded-full font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition inline-block">
+        <Link href={it ? "/stipendi-sindaci/" : "/sueldos-alcaldes/"} className="px-5 py-2.5 rounded-full font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition inline-block">
           {t("Los sueldos de los alcaldes →", "Gli stipendi dei sindaci →")}
         </Link>
         <Link href="/" className="px-5 py-2.5 rounded-full font-medium border border-[var(--panel-border)] hover:border-cyan transition inline-block">
@@ -176,10 +170,12 @@ function Inner() {
   );
 }
 
-export default function PoliticosClient({ locale }: { locale?: "es" | "it" }) {
+// Las FAQ y la respuesta llegan del servidor (./faq.ts): así el JSON-LD y lo
+// que se ve son el mismo texto, y los datos de rankings no entran en el bundle.
+export default function PoliticosClient({ locale, faq, risposta }: { locale?: "es" | "it"; faq: Faq[]; risposta: string }) {
   return (
     <LocaleProvider force={locale}>
-      <Inner />
+      <Inner faq={faq} risposta={risposta} />
     </LocaleProvider>
   );
 }

@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     },
   },
   title: {
-    default: "Cuentas Claras — ¿A dónde va el dinero público en España e Italia?",
+    default: "¿A dónde va el dinero público? Alcaldes, deuda y gasto",
     template: "%s · Cuentas Claras",
   },
   description:

@@ -92,7 +92,7 @@ export default function RootLayout({
                   description:
                     "Visualización clara de los presupuestos públicos de los ayuntamientos de España e Italia: ingresos y gastos con datos oficiales.",
                 },
-                { "@type": "Organization", name: "Cuentas Claras", url: SITE },
+                { "@type": "Organization", "@id": `${SITE}/#org`, name: "Cuentas Claras", url: SITE, logo: { "@type": "ImageObject", url: `${SITE}/logo.png`, width: 512, height: 512 } },
               ],
             }),
           }}

@@ -9,6 +9,8 @@
 // Regola: `source` deve puntare alla fonte VERA di quella pagina, quella che la
 // pagina mostra già al lettore. Mai una fonte generica messa lì per riempire.
 
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
+
 export type Fonte = { name: string; url: string };
 
 export function articleLd(opts: {
@@ -28,7 +30,7 @@ export function articleLd(opts: {
     inLanguage: opts.lang,
     url: opts.url,
     isPartOf: { "@type": "WebSite", name: "Cuentas Claras", url: opts.url.split("/").slice(0, 3).join("/") },
-    publisher: { "@type": "Organization", name: "Cuentas Claras" },
+    publisher: { "@type": "Organization", name: "Cuentas Claras", logo: { "@type": "ImageObject", url: `${SITE}/logo.png` } },
     about: { "@type": "Thing", name: opts.about },
     citation: fonti.map((f) => ({ "@type": "CreativeWork", name: f.name, url: f.url })),
     isAccessibleForFree: true,

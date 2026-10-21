@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // La coda "(confronto con dati ufficiali)" portava il titolo a ~86 caratteri:
     // Google la tagliava comunque. Togliendola il risultato in pagina resta identico.
     title: t,
-    description: `Confronta ${p.a.name} e ${p.b.name}: entrate, spese, spesa per abitante e stipendio del sindaco, con dati ufficiali. ${p.a.name} spende ${formatCompact(p.a.gastos)} e ${p.b.name} ${formatCompact(p.b.gastos)}.`,
+    description: `Confronta ${p.a.name} e ${p.b.name}: entrate, spese, spesa per abitante e stipendio del sindaco, con dati ufficiali. ${p.a.name} spende ${formatCompact(p.a.gastos, "it")} e ${p.b.name} ${formatCompact(p.b.gastos, "it")}.`,
     alternates: { canonical: `${SITE}/confronta/${coppia}/` },
     openGraph: { title: t, description: `Entrate, spese, spesa per abitante e stipendio del sindaco a confronto.`, type: "article", locale: "it_IT" },
   };

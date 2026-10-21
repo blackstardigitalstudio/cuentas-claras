@@ -177,8 +177,13 @@ sulle schede città, non si rompe per un caso.
 **Eccezione (21/10/2026):** dove la Search Console mostra ricerche a zero clic sul
 nome o sullo stipendio del sindaco, il title diventa «persona + quanto guadagna».
 Solo per gli slug in `TITOLO_SINDACO` (`src/app/[pais]/[ciudad]/page.tsx`): oggi
-Oleiros, Aldaia, Roma, Genova. Si aggiunge una città solo con la prova in GSC, e
+Oleiros, Aldaia, Blanes, Xàtiva, Redondela, La Vall d'Uixó, Roma, Genova, Torino, Prato,
+Bologna, Napoli, Firenze, Bari, Taranto. Si aggiunge una città solo con la prova in GSC, e
 dopo 3-4 settimane si confronta il CTR: se scende, si torna al titolo base.
+Se il comune spagnolo è guidato da una donna, lo slug va anche in `ALCALDESA`: title, FAQ e
+testi dicono «la alcaldesa» (la gente cerca proprio «sueldo alcaldesa redondela»).
+Il registro del Ministero scrive i nomi senza accenti: la grafia giusta, verificata sugli atti
+del comune, va in `NOMBRE_CORRECTO` (`src/lib/data.ts`), non nel JSON che l'ETL riscrive.
 
 Aggiornamento: `cd web && npm run etl:alcaldes` (rilegge il registro ufficiale del
 Ministerio de Política Territorial). Copertura attuale **406/406 comuni**. Se il match

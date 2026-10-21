@@ -76,7 +76,7 @@ export default function SpesaComuniPage() {
 
         <div className="grid grid-cols-3 gap-3 mt-6">
           {[
-            { v: formatCompact(top[0].gastos), l: `Spende di più (${top[0].name})`, c: "#f472b6" },
+            { v: formatCompact(top[0].gastos, "it"), l: `Spende di più (${top[0].name})`, c: "#f472b6" },
             { v: `${formatEuro(pc[0].perCapita)}`, l: `Più per abitante (${pc[0].name})`, c: "#22d3ee" },
             { v: ranks.count.toLocaleString("it"), l: "Comuni con dati reali", c: "#34d399" },
           ].map((k) => (
@@ -100,7 +100,7 @@ export default function SpesaComuniPage() {
                     <span className="block h-full rounded-full bg-gradient-to-r from-cyan to-magenta" style={{ width: `${Math.max(3, (c.gastos / maxT) * 100)}%` }} />
                   </span>
                 </span>
-                <span className="tabular text-sm font-semibold text-magenta shrink-0">{formatCompact(c.gastos)}</span>
+                <span className="tabular text-sm font-semibold text-magenta shrink-0">{formatCompact(c.gastos, "it")}</span>
               </li>
             ))}
           </ol>
@@ -115,7 +115,7 @@ export default function SpesaComuniPage() {
                 <span className="tabular text-sm text-muted w-7 shrink-0 text-right">{i + 1}</span>
                 <span className="flex-1 min-w-0">
                   <Link href={`/it/${c.slug}/`} className="block truncate font-medium hover:text-cyan">{c.name}</Link>
-                  <span className="text-[10px] text-muted">{formatCompact(c.gastos)} · {c.pop.toLocaleString("it")} ab.</span>
+                  <span className="text-[10px] text-muted">{formatCompact(c.gastos, "it")} · {c.pop.toLocaleString("it")} ab.</span>
                 </span>
                 <span className="tabular text-right shrink-0">
                   <span className="block text-sm font-semibold text-cyan">{formatEuro(c.perCapita)}</span>

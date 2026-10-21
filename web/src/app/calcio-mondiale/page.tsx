@@ -12,7 +12,7 @@ const clubs = [...CLUB_REVENUE].sort((a, b) => b.amount - a.amount);
 // Versione ITALIANA della pagina sui soldi del calcio mondiale.
 export const metadata: Metadata = {
   title: "La Premier incassa 9,6 miliardi. E gli altri?",
-  description: `Qual è il campionato di calcio più ricco del mondo? La ${leagues[0].league}, con ${formatCompact(leagues[0].revenue)} di ricavi, davanti a ${leagues[1].league} (${formatCompact(leagues[1].revenue)}). E il club che incassa di più? Il ${clubs[0].club}, con ${formatCompact(clubs[0].amount)}: l'unico al mondo sopra il miliardo. Dati ufficiali.`,
+  description: `Qual è il campionato di calcio più ricco del mondo? La ${leagues[0].league}, con ${formatCompact(leagues[0].revenue, "it")} di ricavi, davanti a ${leagues[1].league} (${formatCompact(leagues[1].revenue, "it")}). E il club che incassa di più? Il ${clubs[0].club}, con ${formatCompact(clubs[0].amount, "it")}: l'unico al mondo sopra il miliardo. Dati ufficiali.`,
   keywords: [
     "campionato di calcio più ricco",
     "fatturato Premier League",
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
 const faqLd = {
   "@context": "https://schema.org", "@type": "FAQPage",
   mainEntity: [
-    { q: "Qual è il campionato di calcio più ricco del mondo?", a: `La ${leagues[0].league}, con circa ${formatCompact(leagues[0].revenue)} di ricavi totali, davanti a ${leagues[1].league} (${formatCompact(leagues[1].revenue)}).` },
-    { q: "Qual è il club di calcio che incassa di più al mondo?", a: `Il ${clubs[0].club}, con ${formatCompact(clubs[0].amount)} (stagione 2024/25, Deloitte): l'unico club al mondo sopra il miliardo di euro.` },
+    { q: "Qual è il campionato di calcio più ricco del mondo?", a: `La ${leagues[0].league}, con circa ${formatCompact(leagues[0].revenue, "it")} di ricavi totali, davanti a ${leagues[1].league} (${formatCompact(leagues[1].revenue, "it")}).` },
+    { q: "Qual è il club di calcio che incassa di più al mondo?", a: `Il ${clubs[0].club}, con ${formatCompact(clubs[0].amount, "it")} (stagione 2024/25, Deloitte): l'unico club al mondo sopra il miliardo di euro.` },
   ].map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
 };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Calcio", item: `${SITE}/calcio/` }, { "@type": "ListItem", position: 3, name: "Calcio mondiale", item: `${SITE}/calcio-mondiale/` }] };

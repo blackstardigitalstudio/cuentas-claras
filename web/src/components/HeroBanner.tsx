@@ -3,6 +3,14 @@ import type { ElementType } from "react";
 // Hero fotográfico "agresivo": foto real + velo oscuro fuerte + titular ENORME
 // en mayúsculas con degradado neón + cifra-shock. Sin hooks (server o client).
 
+// Las fotos de /photos/ tienen una versión de 800 px (`-800.jpg`, ~4-5 veces
+// más ligera): el móvil descarga esa y no la de 1600 px.
+export const PHOTO_SIZES = "(max-width: 1100px) 100vw, 1100px";
+export function photoSrcSet(src: string) {
+  if (!/^\/photos\/[a-z-]+\.jpg$/.test(src)) return undefined;
+  return `${src.replace(/\.jpg$/, "-800.jpg")} 800w, ${src} 1600w`;
+}
+
 export default function HeroBanner({
   src,
   alt = "",
@@ -31,7 +39,7 @@ export default function HeroBanner({
   return (
     <figure className="relative w-full aspect-[16/10] sm:aspect-[16/6.5] md:aspect-[24/7] overflow-hidden rounded-2xl border border-[var(--panel-border)]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={src} srcSet={photoSrcSet(src)} sizes={photoSrcSet(src) ? PHOTO_SIZES : undefined} width={1600} height={900} alt={alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async" className="absolute inset-0 w-full h-full object-cover" />
       {/* velos: oscuro a la izquierda (legibilidad) + subida desde abajo + tinte neón */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#05070f] via-[#05070f]/75 to-[#05070f]/10" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] via-[#05070f]/20 to-transparent" />

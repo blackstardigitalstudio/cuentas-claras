@@ -911,6 +911,7 @@
  {
   "name": "Cagliari",
   "slug": "cagliari",
+  "region": "Sardegna",
   "poblacion": 0,
   "year": 2025,
   "ingresos": 409269692,
@@ -1778,6 +1779,7 @@
  {
   "name": "Sassari",
   "slug": "sassari",
+  "region": "Sardegna",
   "poblacion": 0,
   "year": 2025,
   "ingresos": 208590238,
@@ -2196,7 +2198,7 @@
   ]
  },
  {
-  "name": "Forli",
+  "name": "Forlì",
   "slug": "forli",
   "provincia": "Forli'-cesena",
   "region": "Emilia-Romagna",
@@ -9303,7 +9305,7 @@
   ]
  },
  {
-  "name": "Cava de Tirreni",
+  "name": "Cava de' Tirreni",
   "slug": "cava-de-tirreni",
   "provincia": "Salerno",
   "region": "Campania",
@@ -11064,7 +11066,7 @@
   ]
  },
  {
-  "name": "San Dona di Piave",
+  "name": "San Donà di Piave",
   "slug": "san-dona-di-piave",
   "provincia": "Venezia",
   "region": "Veneto",
@@ -11184,7 +11186,7 @@
   ]
  },
  {
-  "name": "Paterno",
+  "name": "Paternò",
   "slug": "paterno",
   "provincia": "Potenza",
   "region": "Sicilia",
@@ -11481,7 +11483,7 @@
   ]
  },
  {
-  "name": "Cantu",
+  "name": "Cantù",
   "slug": "cantu",
   "provincia": "Como",
   "region": "Lombardia",

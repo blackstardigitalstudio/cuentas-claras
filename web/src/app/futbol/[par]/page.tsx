@@ -1,50 +1,29 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS, REVENUE_SEASON, type ClubMetrics } from "@/data/futbol";
+import { CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS } from "@/data/futbol";
+import { MATCH_PAIRS, nextMatchForPair } from "@/data/partite";
 import { formatEuro, formatCompact } from "@/lib/format";
+import { SITE, pairMetadata, parsePair } from "@/lib/partitaMeta";
 import ParClient from "./ParClient";
-
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export function generateStaticParams() {
   const list = CLUB_COMPARE_SLUGS.filter((s) => CLUBS[s]);
   const out: { par: string }[] = [];
   for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) out.push({ par: `${list[i]}-vs-${list[j]}` });
+  // Parejas que se enfrentan en las próximas jornadas (calendario oficial en partite.ts).
+  const seen = new Set(out.map((o) => o.par));
+  for (const p of MATCH_PAIRS) if (!seen.has(p)) out.push({ par: p });
   for (const s of CLUB_PAGE_SLUGS) out.push({ par: s });
   return out;
 }
 
-function parsePair(par: string): { a: ClubMetrics; b: ClubMetrics } | null {
-  const idx = par.indexOf("-vs-");
-  if (idx < 0) return null;
-  const a = CLUBS[par.slice(0, idx)];
-  const b = CLUBS[par.slice(idx + 4)];
-  return a && b ? { a, b } : null;
-}
-
 type Props = { params: Promise<{ par: string }> };
-
-function pairDescription(a: string, b: string): string {
-  const base = `¿Quién debe más, ${a} o ${b}? Ingresos, salarios, límite salarial y deuda de la temporada ${REVENUE_SEASON}, lado a lado.`;
-  const tail = " Solo cuentas oficiales.";
-  return base.length + tail.length <= 155 ? base + tail : base;
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { par } = await params;
-  const pair = parsePair(par);
-  if (pair) {
-    const t = `${pair.a.name} vs ${pair.b.name}: quién ingresa y debe más`;
-    return {
-      title: t,
-      // Prima il dubbio (chi deve di più), poi cosa trovi e la stagione: la
-      // vecchia era un elenco di voci. Il titolo resta: è la formula che converte.
-      description: pairDescription(pair.a.name, pair.b.name),
-      alternates: { canonical: `${SITE}/futbol/${par}/` },
-      openGraph: { title: t, description: "Comparativa financiera con datos oficiales.", type: "article", images: [{ url: "/og-futbol.png", width: 1200, height: 630 }] },
-      twitter: { card: "summary_large_image", images: ["/og-futbol.png"] },
-    };
-  }
+  // Coppie: titolo "A vs B" (con la data se si giocano a breve). Vedi lib/partitaMeta.ts.
+  const meta = pairMetadata(par, false);
+  if (meta) return meta;
   const c = CLUBS[par];
   if (!c || !CLUB_PAGE_SLUGS.includes(par)) return {};
   return {
@@ -64,5 +43,5 @@ export default async function FutbolTokenPage({ params }: Props) {
   const pair = parsePair(par);
   const isClub = !pair && CLUBS[par] && CLUB_PAGE_SLUGS.includes(par);
   if (!pair && !isClub) notFound();
-  return <ParClient par={par} />;
+  return <ParClient par={par} match={pair ? nextMatchForPair(par) : null} />;
 }

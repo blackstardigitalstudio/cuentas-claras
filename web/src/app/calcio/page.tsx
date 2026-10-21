@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FutbolClient from "../futbol/FutbolClient";
+import { upcomingMatches } from "@/data/partite";
 import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -60,7 +61,7 @@ export default function CalcioPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
-      <FutbolClient locale="it" />
+      <FutbolClient locale="it" upcoming={upcomingMatches()} />
     </>
   );
 }

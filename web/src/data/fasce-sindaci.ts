@@ -124,8 +124,8 @@ export function tramoPorHabitantes(hab: number): TramoES {
 
 // Le dimensioni che la gente digita davvero, lette dai suggerimenti di Google
 // ("Ricerche correlate" e "Le persone hanno chiesto anche"), agosto 2026.
-export const TAGLIE_IT = [1000, 2000, 3000, 5000, 7000, 10000, 15000, 20000, 30000, 50000, 100000];
-export const TAGLIE_ES = [100, 300, 500, 1000, 1500, 3000, 5000, 10000, 20000, 50000, 100000];
+export const TAGLIE_IT = [1000, 1500, 2000, 3000, 5000, 7000, 10000, 15000, 20000, 30000, 50000, 100000];
+export const TAGLIE_ES = [100, 200, 300, 500, 1000, 1500, 2000, 3000, 5000, 10000, 20000, 50000, 100000];
 
 export const FONTE_IT = {
   name: "Ministero dell'Interno · DM 30/05/2022 (indennità amministratori locali)",

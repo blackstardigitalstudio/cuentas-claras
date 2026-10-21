@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { formatEuro, formatCompact } from "@/lib/format";
 import { LALIGA_LCPD, LALIGA_LCPD_SEASON, REVENUE_SEASON, CLUB_REVENUE } from "@/data/futbol";
 import FutbolClient from "./FutbolClient";
+import { upcomingMatches } from "@/data/partite";
 import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -65,7 +66,7 @@ export default function FutbolPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
-      <FutbolClient />
+      <FutbolClient upcoming={upcomingMatches()} />
     </>
   );
 }

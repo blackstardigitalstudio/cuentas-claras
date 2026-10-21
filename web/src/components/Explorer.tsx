@@ -131,7 +131,7 @@ export default function Explorer() {
                         style={{ width: `${Math.max(6, (r.gastos / max) * 100)}%`, boxShadow: "0 0 8px rgba(34,211,238,0.45)" }}
                       />
                     </span>
-                    <span className="tabular text-[11px] text-fg/90 w-14 shrink-0 text-right">{formatCompact(r.gastos)}</span>
+                    <span className="tabular text-[11px] text-fg/90 w-14 shrink-0 text-right">{formatCompact(r.gastos, locale)}</span>
                   </button>
                 </li>
               ));

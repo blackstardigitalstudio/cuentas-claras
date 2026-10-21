@@ -8,8 +8,8 @@
 // `DATA_IS_SAMPLE` sea true.
 // ---------------------------------------------------------------------------
 
-import provincesGeo from "@/data/spain-provinces.json";
-import italyGeo from "@/data/italy-provinces.json";
+// Solo i nomi delle province: le coordinate (MB) restano fuori dal bundle comune.
+import provinceNames from "@/data/province-names.json";
 import barcelonaReal from "@/data/real/barcelona.json";
 import valenciaReal from "@/data/real/valencia.json";
 import vitoriaReal from "@/data/real/vitoria.json";
@@ -22,6 +22,15 @@ import extraCitiesEs from "@/data/real/extra-cities.json";
 import itExtraCities from "@/data/real/it-extra-cities.json";
 import esPopulation from "@/data/real/es-population.json";
 import ALCALDES_ES from "@/data/real/alcaldes-es.json";
+
+// Il registro del Ministero scrive i nomi senza accenti; qui la grafia giusta,
+// verificata sulla fonte ufficiale del comune (alcaldes-es.json si rigenera
+// con data/etl-alcaldes.mjs, quindi la correzione sta qui e non nel JSON).
+const NOMBRE_CORRECTO: Record<string, string> = {
+  redondela: "Digna Rosa Rivas Gómez", // concello de Redondela
+  xativa: "Roger Cerdà Boluda", // DOGV
+  blanes: "Jordi Hernández Martínez", // actas del Ple de Blanes, 26/03/2026
+};
 import { CITY_EXTRAS } from "@/data/real/city-extras";
 
 const ES_POP = esPopulation as Record<string, number>;
@@ -230,10 +239,8 @@ type RealCity = {
   poblacion?: number;
 };
 
-type GeoFC = { features: { properties: { name: string } }[] };
-
-function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[], extras: RealCity[] = []) {
-  const names = geo.features.map((f) => f.properties.name).sort((a, b) => a.localeCompare(b, "es"));
+function buildCountry(provinces: string[], cats: CatSet, reals: RealCity[], extras: RealCity[] = []) {
+  const names = [...provinces].sort((a, b) => a.localeCompare(b, "es"));
   const regions: Record<string, RegionData> = Object.fromEntries(names.map((n) => [n, buildRegion(n, cats)]));
   for (const c of reals) {
     regions[c.provincia] = {
@@ -284,12 +291,24 @@ function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[], extras: RealC
     if (!r.poblacion && ES_POP[r.slug]) r.poblacion = ES_POP[r.slug];
     // Nome del sindaco in carica (registro ufficiale del Ministerio).
     const al = (ALCALDES_ES.alcaldes as Record<string, { nombre: string; desde?: string | null }>)[r.slug];
-    if (al) r.alcalde = { nombre: al.nombre, desde: al.desde ?? null, source: ALCALDES_ES.fuente };
+    if (al) r.alcalde = { nombre: NOMBRE_CORRECTO[r.slug] ?? al.nombre, desde: al.desde ?? null, source: ALCALDES_ES.fuente };
   }
   return {
     regions,
     list: Object.values(regions).sort((a, b) => b.gastos - a.gastos),
-    realNames: reals.map((c) => c.provincia),
+    // TODAS las ciudades con datos reales: capitales (clave = provincia) y ciudades
+    // extra (clave = slug), una sola vez por slug. Antes solo iban las capitales y
+    // la portada, /italia/ y los totales contaban 2 comuni en vez de ~200.
+    realNames: (() => {
+      const seen = new Set<string>();
+      const keys: string[] = [];
+      for (const [key, c] of [...reals.map((c) => [c.provincia, c] as const), ...extras.map((c) => [c.slug, c] as const)]) {
+        if (seen.has(c.slug)) continue;
+        seen.add(c.slug);
+        keys.push(key);
+      }
+      return keys;
+    })(),
   };
 }
 
@@ -298,13 +317,12 @@ export type Country = {
   code: CountryCode;
   mapKind: "spain" | "italy";
   defaultRegion: string;
-  geo: GeoFC;
   regions: Record<string, RegionData>;
   list: RegionData[];
   realNames: string[];
 };
 
-const ES = buildCountry(provincesGeo as GeoFC, CATS_ES, [
+const ES = buildCountry(provinceNames.es, CATS_ES, [
   barcelonaReal as RealCity,
   valenciaReal as RealCity,
   vitoriaReal as RealCity,
@@ -320,11 +338,11 @@ const itExtras = (itExtraCities as unknown as RealCity[]).map((c) => ({
   source: IT_SIOPE_SRC,
   basis: "Dati di cassa SIOPE 2025 (pagamenti e incassi), Ragioneria Generale dello Stato",
 })) as RealCity[];
-const IT = buildCountry(italyGeo as GeoFC, CATS_IT, [milanoReal as RealCity, bolognaReal as RealCity], itExtras);
+const IT = buildCountry(provinceNames.it, CATS_IT, [milanoReal as RealCity, bolognaReal as RealCity], itExtras);
 
 export const COUNTRIES: Record<CountryCode, Country> = {
-  es: { code: "es", mapKind: "spain", defaultRegion: "Barcelona", geo: provincesGeo as GeoFC, ...ES },
-  it: { code: "it", mapKind: "italy", defaultRegion: "Milano", geo: italyGeo as GeoFC, ...IT },
+  es: { code: "es", mapKind: "spain", defaultRegion: "Barcelona", ...ES },
+  it: { code: "it", mapKind: "italy", defaultRegion: "Milano", ...IT },
 };
 
 // Compatibilidad (la portada usa España).

@@ -31,7 +31,7 @@ function Inner() {
           kicker={it ? "🌍 Calcio mondiale · dati ufficiali" : "🌍 Fútbol mundial · datos oficiales"}
           title={it ? "I SOLDI DEL CALCIO" : "EL DINERO DEL FÚTBOL"}
           highlight={it ? "MONDIALE" : "MUNDIAL"}
-          stat={formatCompact(richestLeague.revenue)}
+          stat={formatCompact(richestLeague.revenue, locale)}
           statLabel={it ? `la ${richestLeague.league}, il campionato più ricco` : `la ${richestLeague.league}, la liga más rica`}
           accent="#34d399"
           accent2="#22d3ee"
@@ -64,9 +64,9 @@ function Inner() {
       {/* KPIs */}
       <div className="grid grid-cols-3 gap-3 mt-6">
         {[
-          { v: formatCompact(richestLeague.revenue), l: it ? `Lega più ricca (${richestLeague.league})` : `Liga más rica (${richestLeague.league})`, c: "#34d399" },
-          { v: formatCompact(clubs[0].amount), l: it ? `Club che incassa di più (${clubs[0].club})` : `Club que más ingresa (${clubs[0].club})`, c: "#22d3ee" },
-          { v: `−${formatCompact(Math.abs(worstNet.net))}`, l: it ? `Perde di più (${worstNet.league})` : `La que más pierde (${worstNet.league})`, c: "#f472b6" },
+          { v: formatCompact(richestLeague.revenue, locale), l: it ? `Lega più ricca (${richestLeague.league})` : `Liga más rica (${richestLeague.league})`, c: "#34d399" },
+          { v: formatCompact(clubs[0].amount, locale), l: it ? `Club che incassa di più (${clubs[0].club})` : `Club que más ingresa (${clubs[0].club})`, c: "#22d3ee" },
+          { v: `−${formatCompact(Math.abs(worstNet.net), locale)}`, l: it ? `Perde di più (${worstNet.league})` : `La que más pierde (${worstNet.league})`, c: "#f472b6" },
         ].map((k) => (
           <div key={k.l} className="glass p-4 text-center">
             <p className="tabular text-lg md:text-2xl font-semibold" style={{ color: k.c }}>{k.v}</p>
@@ -88,9 +88,9 @@ function Inner() {
                 <span className="mt-1 block h-1.5 rounded-full bg-white/5 overflow-hidden">
                   <span className="block h-full rounded-full bg-gradient-to-r from-green to-cyan" style={{ width: `${Math.max(6, (l.revenue / maxL) * 100)}%` }} />
                 </span>
-                <span className="text-[10px] text-muted">{it ? `${l.wageToRevenue}% dei ricavi in stipendi · ${l.net >= 0 ? "utile" : "perdita"} ${formatCompact(Math.abs(l.net))}` : `${l.wageToRevenue}% de los ingresos en salarios · ${l.net >= 0 ? "beneficio" : "pérdida"} ${formatCompact(Math.abs(l.net))}`}</span>
+                <span className="text-[10px] text-muted">{it ? `${l.wageToRevenue}% dei ricavi in stipendi · ${l.net >= 0 ? "utile" : "perdita"} ${formatCompact(Math.abs(l.net), locale)}` : `${l.wageToRevenue}% de los ingresos en salarios · ${l.net >= 0 ? "beneficio" : "pérdida"} ${formatCompact(Math.abs(l.net), locale)}`}</span>
               </span>
-              <span className="tabular text-sm font-semibold text-green shrink-0">{formatCompact(l.revenue)}</span>
+              <span className="tabular text-sm font-semibold text-green shrink-0">{formatCompact(l.revenue, locale)}</span>
             </li>
           ))}
         </ol>
@@ -112,7 +112,7 @@ function Inner() {
                   <span className="block h-full rounded-full bg-gradient-to-r from-cyan to-violet" style={{ width: `${Math.max(6, (c.amount / maxC) * 100)}%` }} />
                 </span>
               </span>
-              <span className="tabular text-sm font-semibold text-cyan shrink-0">{formatCompact(c.amount)}</span>
+              <span className="tabular text-sm font-semibold text-cyan shrink-0">{formatCompact(c.amount, locale)}</span>
             </li>
           ))}
         </ol>
@@ -125,16 +125,16 @@ function Inner() {
         <div className="space-y-2.5">
           {(it
             ? [
-                { q: "Qual è il campionato di calcio più ricco del mondo?", a: `La ${richestLeague.league}, con ${formatCompact(richestLeague.revenue)} di ricavi totali: è il campionato dove girano più soldi al mondo. Fonte: ${LEAGUE_SOURCE.name}.` },
-                { q: "Quale club incassa di più al mondo?", a: `Il ${clubs[0].club}, con ${formatCompact(clubs[0].amount)} di ricavi (${REVENUE_SEASON}): l'unico club al mondo sopra il miliardo di euro.` },
+                { q: "Qual è il campionato di calcio più ricco del mondo?", a: `La ${richestLeague.league}, con ${formatCompact(richestLeague.revenue, locale)} di ricavi totali: è il campionato dove girano più soldi al mondo. Fonte: ${LEAGUE_SOURCE.name}.` },
+                { q: "Quale club incassa di più al mondo?", a: `Il ${clubs[0].club}, con ${formatCompact(clubs[0].amount, locale)} di ricavi (${REVENUE_SEASON}): l'unico club al mondo sopra il miliardo di euro.` },
                 { q: "«Ricavi» è come il «valore» della squadra?", a: "No. I ricavi sono i soldi che entrano in un anno (biglietti, TV, sponsor). Il «valore» è una stima di mercato diversa, che qui non usiamo: mostriamo solo dati ufficiali di bilancio." },
-                { q: "Le leghe guadagnano o perdono?", a: `Non sempre guadagnano: molte spendono quasi tutto in stipendi. Quella che perde di più è la ${worstNet.league} (${formatCompact(Math.abs(worstNet.net))} di perdita).` },
+                { q: "Le leghe guadagnano o perdono?", a: `Non sempre guadagnano: molte spendono quasi tutto in stipendi. Quella che perde di più è la ${worstNet.league} (${formatCompact(Math.abs(worstNet.net), locale)} di perdita).` },
               ]
             : [
-                { q: "¿Qué liga de fútbol es la más rica del mundo?", a: `La ${richestLeague.league}, con ${formatCompact(richestLeague.revenue)} de ingresos totales: es la liga donde más dinero se mueve del mundo. Fuente: ${LEAGUE_SOURCE.name}.` },
-                { q: "¿Qué club ingresa más en el mundo?", a: `El ${clubs[0].club}, con ${formatCompact(clubs[0].amount)} de ingresos (${REVENUE_SEASON}): el único club del mundo por encima de los 1.000 M€.` },
+                { q: "¿Qué liga de fútbol es la más rica del mundo?", a: `La ${richestLeague.league}, con ${formatCompact(richestLeague.revenue, locale)} de ingresos totales: es la liga donde más dinero se mueve del mundo. Fuente: ${LEAGUE_SOURCE.name}.` },
+                { q: "¿Qué club ingresa más en el mundo?", a: `El ${clubs[0].club}, con ${formatCompact(clubs[0].amount, locale)} de ingresos (${REVENUE_SEASON}): el único club del mundo por encima de los 1.000 M€.` },
                 { q: "¿«Ingresos» es lo mismo que el «valor» del club?", a: "No. Los ingresos son el dinero que entra en un año (entradas, TV, patrocinios). El «valor» es una estimación de mercado distinta, que aquí no usamos: solo mostramos datos oficiales de las cuentas." },
-                { q: "¿Las ligas ganan o pierden dinero?", a: `No siempre ganan: muchas gastan casi todo en salarios. La que más pierde es la ${worstNet.league} (${formatCompact(Math.abs(worstNet.net))} de pérdidas).` },
+                { q: "¿Las ligas ganan o pierden dinero?", a: `No siempre ganan: muchas gastan casi todo en salarios. La que más pierde es la ${worstNet.league} (${formatCompact(Math.abs(worstNet.net), locale)} de pérdidas).` },
               ]
           ).map((f, i) => (
             <details key={i} className="glass p-4" {...(i === 0 ? { open: true } : {})}>

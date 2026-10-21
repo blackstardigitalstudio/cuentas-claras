@@ -2,41 +2,52 @@
 // sin sueldos de jugadores estimados). Fuentes citadas en cada bloque.
 // I soldi del calcio — SOLO dati ufficiali/verificabili, con fonte.
 
-export type Src = { name: string; url: string };
+export type Src = { name: string; name_it?: string; url: string };
+/** Nombre de la fuente en el idioma de la página (las páginas IT no llevan español). */
+export const srcName = (s: Src, it: boolean) => (it && s.name_it) || s.name;
 
 // --- LaLiga · Límite de Coste de Plantilla Deportiva (LCPD) — OFICIAL ---
 // Cuánto puede gastar cada club en su plantilla. Publicado por LaLiga.
 export const LALIGA_LCPD_SOURCE: Src = {
-  name: "LaLiga · Límite de Coste de Plantilla Deportiva (oficial)",
-  url: "https://www.laliga.com/transparencia/gestion-economica",
+  name: "LaLiga · Límite de Coste de Plantilla Deportiva 2026/27 (oficial, sept. 2026)",
+  name_it: "LaLiga · Tetto di spesa per la rosa 2026/27 (ufficiale, sett. 2026)",
+  url: "https://www.laliga.com/transparencia/gestion-economica/limite-coste-plantilla",
 };
-export const LALIGA_LCPD_SEASON = "2024/25";
+// PDF oficial con las cifras club a club (miles de euros, «LCPD J. División Sep 26»):
+// https://assets.laliga.com/assets/2026/09/10/originals/d0203a41a3151b7f739d0771155435a7.pdf
+export const LALIGA_LCPD_SEASON = "2026/27";
+// Nota de LaLiga: Real Sociedad y RC Celta incluyen a su filial (Real Sociedad B y Celta Fortuna).
+export const LALIGA_LCPD_NOTE = {
+  es: "La Real Sociedad y el Celta incluyen a su filial (Real Sociedad B y Celta Fortuna), como indica LaLiga.",
+  it: "Real Sociedad e Celta includono la loro seconda squadra (Real Sociedad B e Celta Fortuna), come indica la LaLiga.",
+};
 export const LALIGA_LCPD: { club: string; amount: number }[] = [
-  { club: "Real Madrid", amount: 754894000 },
-  { club: "FC Barcelona", amount: 463642000 },
-  { club: "Atlético de Madrid", amount: 314281000 },
-  { club: "Real Sociedad", amount: 160173000 },
-  { club: "Villarreal CF", amount: 135860000 },
-  { club: "Real Betis", amount: 108387000 },
-  { club: "Athletic Club", amount: 105818000 },
-  { club: "Girona FC", amount: 98877000 },
-  { club: "Valencia CF", amount: 79998000 },
-  { club: "RC Celta", amount: 77570000 },
-  { club: "RCD Mallorca", amount: 58841000 },
-  { club: "CA Osasuna", amount: 52839000 },
-  { club: "Real Valladolid CF", amount: 47037000 },
-  { club: "Deportivo Alavés", amount: 46138000 },
-  { club: "Rayo Vallecano", amount: 45371000 },
-  { club: "UD Las Palmas", amount: 39842000 },
-  { club: "Getafe CF", amount: 39172000 },
-  { club: "CD Leganés", amount: 34661000 },
-  { club: "RCD Espanyol", amount: 7812000 },
-  { club: "Sevilla FC", amount: 684000 },
+  { club: "Real Madrid", amount: 832786000 },
+  { club: "FC Barcelona", amount: 582769000 },
+  { club: "Atlético de Madrid", amount: 361287000 },
+  { club: "Villarreal CF", amount: 170564000 },
+  { club: "Real Betis", amount: 142847000 },
+  { club: "Athletic Club", amount: 139203000 },
+  { club: "Real Sociedad", amount: 137190000 },
+  { club: "Valencia CF", amount: 98812000 },
+  { club: "RC Celta", amount: 88089000 },
+  { club: "RC Deportivo", amount: 64016000 },
+  { club: "Rayo Vallecano", amount: 62319000 },
+  { club: "RCD Espanyol", amount: 61791000 },
+  { club: "Elche CF", amount: 60140000 },
+  { club: "Getafe CF", amount: 56704000 },
+  { club: "CA Osasuna", amount: 55354000 },
+  { club: "Racing de Santander", amount: 53183000 },
+  { club: "Levante UD", amount: 45571000 },
+  { club: "Deportivo Alavés", amount: 43253000 },
+  { club: "Málaga CF", amount: 33634000 },
+  { club: "Sevilla FC", amount: 20161000 },
 ];
 
 // --- Ingresos / Ricavi — Deloitte Football Money League (cuentas 2024/25) ---
 export const REVENUE_SOURCE: Src = {
   name: "Deloitte Football Money League 2026 (cuentas 2024/25)",
+  name_it: "Deloitte Football Money League 2026 (bilanci 2024/25)",
   url: "https://www.deloitte.com/uk/en/services/consulting-financial/analysis/deloitte-football-money-league.html",
 };
 export const REVENUE_SEASON = "2024/25";
@@ -55,9 +66,9 @@ export const CLUB_DEBT: {
   club: string; country: "es" | "it"; amount: number; kind: "bruta" | "neta" | "caja"; year: string; source: Src;
 }[] = [
   { club: "FC Barcelona", country: "es", amount: 1451000000, kind: "bruta", year: "2024/25",
-    source: { name: "FC Barcelona · Cuentas anuales (deuda financiera bruta)", url: "https://www.fcbarcelona.es/es/club/organizacion/informacion-economica" } },
-  { club: "Real Madrid", country: "es", amount: 12000000, kind: "neta", year: "30/06/2025",
-    source: { name: "Real Madrid · Informe Económico (deuda neta)", url: "https://www.realmadrid.com/sobre-el-real-madrid/el-club/organigrama-y-datos-economicos" } },
+    source: { name: "FC Barcelona · Cuentas anuales (deuda financiera bruta)", name_it: "FC Barcelona · Bilancio annuale (debito finanziario lordo)", url: "https://www.fcbarcelona.es/es/club/organizacion/informacion-economica" } },
+  { club: "Real Madrid", country: "es", amount: 12000000, kind: "neta", year: "2024/25",
+    source: { name: "Real Madrid · Informe Económico (deuda neta)", name_it: "Real Madrid · Relazione economica (debito netto)", url: "https://www.realmadrid.com/sobre-el-real-madrid/el-club/organigrama-y-datos-economicos" } },
   { club: "Juventus", country: "it", amount: 302800000, kind: "neta", year: "2024/25",
     source: { name: "Juventus · Bilancio 2024/25 (indebitamento finanziario netto)", url: "https://www.juventus.com/it/club/investor-relations" } },
   { club: "Inter", country: "it", amount: 248400000, kind: "neta", year: "2024/25",
@@ -144,3 +155,15 @@ export const CLUB_PAGE_SLUGS = Object.keys(CLUBS).filter((s) => {
   const c = CLUBS[s];
   return !!(c.revenue || c.wageBill || c.debt);
 });
+
+// Orden canónico de una pareja "a-vs-b": primero el orden de CLUB_COMPARE_SLUGS
+// (el de siempre, para no cambiar URLs ya indexadas); los demás clubes van
+// detrás, en orden alfabético.
+export function canonicalPair(x: string, y: string): string {
+  const ix = CLUB_COMPARE_SLUGS.indexOf(x), iy = CLUB_COMPARE_SLUGS.indexOf(y);
+  let first: boolean;
+  if (ix >= 0 && iy >= 0) first = ix < iy;
+  else if (ix >= 0 || iy >= 0) first = ix >= 0;
+  else first = x < y;
+  return first ? `${x}-vs-${y}` : `${y}-vs-${x}`;
+}

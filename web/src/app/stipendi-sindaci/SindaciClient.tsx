@@ -25,7 +25,11 @@ const FASCE = [
 ];
 const eur = (n: number) => `${n.toLocaleString("it")} €`;
 
-function Inner() {
+type Faq = { q: string; a: string };
+type Citta = { slug: string; name: string; mese: number; anno: number };
+type Props = { faq: Faq[]; citta: Citta[] };
+
+function Inner({ faq, citta }: Props) {
   const max = BASE;
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
@@ -50,6 +54,23 @@ function Inner() {
           Quanto prende un sindaco in Italia dipende da quanti abitanti ha il comune: lo dice la legge. Ecco la tabella completa, fascia per fascia.
         </p>
       </header>
+
+      {/* Chi cerca "stipendio sindaco Roma" o "Genova" deve trovare la sua città subito */}
+      {citta.length > 0 && (
+        <section className="mt-5" aria-labelledby="grandi-citta">
+          <h2 id="grandi-citta" className="text-base font-semibold mb-2">Cerchi una grande città?</h2>
+          <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            {citta.map((c) => (
+              <li key={c.slug}>
+                <Link href={`/it/${c.slug}/`} className="glass flex flex-col justify-center min-h-[56px] px-3.5 py-2.5 hover:border-cyan transition">
+                  <span className="text-sm font-medium">Sindaco di {c.name}</span>
+                  <span className="text-xs text-muted tabular">{eur(c.mese)} lordi al mese</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <div className="mt-5">
         <SimpleExplainer title="In parole semplici" by="te lo spiega Claro">
@@ -138,15 +159,7 @@ function Inner() {
       <section className="mt-10">
         <h2 className="text-lg font-semibold mb-3">Domande frequenti</h2>
         <div className="space-y-2.5">
-          {[
-            { q: "Quanto guadagna il sindaco di un piccolo paese?", a: "In un comune fino a 3.000 abitanti l'indennità è di 2.208 € lordi al mese; da 3.001 a 5.000 abitanti sale a 3.036 €. Se il sindaco è un lavoratore dipendente non in aspettativa, l'importo è dimezzato." },
-            { q: "Quanto guadagna il sindaco di un paese con 5.000 abitanti?", a: "Un comune con 5.000 abitanti rientra nella fascia 3.001-5.000: l'indennità è di 3.036 € lordi al mese. Superati i 5.000 abitanti si passa a 4.002 € lordi al mese." },
-            { q: "Quanto guadagna il sindaco di un comune con 10.000 abitanti?", a: "Da 5.001 a 10.000 abitanti l'indennità è di 4.002 € lordi al mese. Da 10.001 a 30.000 abitanti sale a 4.140 €." },
-            { q: "Quanto guadagna il sindaco al mese?", a: "Dipende dagli abitanti del comune: si va da 2.208 € lordi al mese (fino a 3.000 abitanti) a 13.800 € per i sindaci delle città metropolitane. I capoluoghi di regione prendono 11.040 €." },
-            { q: "Qual è il sindaco più pagato d'Italia?", a: "I sindaci delle città metropolitane, con 13.800 € lordi al mese: è il massimo previsto dalla legge, pari all'indennità di un Presidente di Regione. Subito sotto i capoluoghi di regione e i capoluoghi di provincia sopra i 100.000 abitanti, con 11.040 €." },
-            { q: "Quali sono gli stipendi netti di un sindaco?", a: "Gli importi fissati dalla legge sono lordi. Il netto cambia da persona a persona secondo aliquote, detrazioni e addizionali locali, quindi non esiste una cifra unica: in genere resta poco più della metà del lordo." },
-            { q: "Chi decide quanto guadagna un sindaco?", a: "Lo decide la legge, non il comune: l'indennità è una percentuale fissa del trattamento dei Presidenti di Regione (13.800 € lordi al mese), stabilita in base alla popolazione del comune dalla Legge di Bilancio 2022, a regime dal 2024." },
-          ].map((f, i) => (
+          {faq.map((f, i) => (
             <details key={i} className="glass p-4" {...(i === 0 ? { open: true } : {})}>
               <summary className="font-medium cursor-pointer marker:text-cyan">{f.q}</summary>
               <p className="text-sm text-muted mt-2">{f.a}</p>
@@ -171,10 +184,10 @@ function Inner() {
   );
 }
 
-export default function SindaciClient() {
+export default function SindaciClient(props: Props) {
   return (
     <LocaleProvider force="it">
-      <Inner />
+      <Inner {...props} />
     </LocaleProvider>
   );
 }

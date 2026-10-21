@@ -7,8 +7,9 @@ import SimpleExplainer from "@/components/SimpleExplainer";
 import ShareBar from "@/components/ShareBar";
 import {
   CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS, type ClubMetrics,
-  LALIGA_LCPD_SOURCE, LALIGA_LCPD_SEASON, REVENUE_SOURCE, REVENUE_SEASON, SERIE_A_SOURCE, SERIE_A_SEASON,
+  srcName, LALIGA_LCPD_SOURCE, LALIGA_LCPD_SEASON, LALIGA_LCPD_NOTE, REVENUE_SOURCE, REVENUE_SEASON, SERIE_A_SOURCE, SERIE_A_SEASON,
 } from "@/data/futbol";
+import { type Partita, compLabel, longDate, shortName, sourceName } from "@/data/partite";
 import { formatEuro, formatCompact } from "@/lib/format";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -37,8 +38,8 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
   if (c.debt) rows.push({ label: `${t("Deuda", "Debito")} (${kindLabel(c.debt.kind, it)})`, value: formatEuro(c.debt.amount), hint: `${t("a", "al")} ${c.debt.year}`, accent: "#fdba74" });
 
   const faqs: { q: string; a: string }[] = [];
-  if (c.revenue) faqs.push(it ? { q: `Quanto incassa il ${c.name}?`, a: `Il ${c.name} incassa ${formatEuro(c.revenue)} all'anno (stagione ${c.league === "laliga" ? REVENUE_SEASON : SERIE_A_SEASON}), secondo ${c.league === "laliga" ? REVENUE_SOURCE.name : SERIE_A_SOURCE.name}.` } : { q: `¿Cuánto ingresa el ${c.name}?`, a: `El ${c.name} ingresa ${formatEuro(c.revenue)} al año (temporada ${c.league === "laliga" ? REVENUE_SEASON : SERIE_A_SEASON}), según ${c.league === "laliga" ? REVENUE_SOURCE.name : SERIE_A_SOURCE.name}.` });
-  if (c.debt) faqs.push(it ? { q: `Quanto debito ha il ${c.name}?`, a: `Il ${c.name} ha un debito di ${formatEuro(c.debt.amount)} (${kindLabel(c.debt.kind, true)}) al ${c.debt.year}. Fonte: ${c.debt.source.name}.` } : { q: `¿Cuánta deuda tiene el ${c.name}?`, a: `El ${c.name} tiene una deuda de ${formatEuro(c.debt.amount)} (${c.debt.kind}) a ${c.debt.year}. Fuente: ${c.debt.source.name}.` });
+  if (c.revenue) faqs.push(it ? { q: `Quanto incassa il ${c.name}?`, a: `Il ${c.name} incassa ${formatEuro(c.revenue)} all'anno (stagione ${c.league === "laliga" ? REVENUE_SEASON : SERIE_A_SEASON}), secondo ${srcName(c.league === "laliga" ? REVENUE_SOURCE : SERIE_A_SOURCE, true)}.` } : { q: `¿Cuánto ingresa el ${c.name}?`, a: `El ${c.name} ingresa ${formatEuro(c.revenue)} al año (temporada ${c.league === "laliga" ? REVENUE_SEASON : SERIE_A_SEASON}), según ${c.league === "laliga" ? REVENUE_SOURCE.name : SERIE_A_SOURCE.name}.` });
+  if (c.debt) faqs.push(it ? { q: `Quanto debito ha il ${c.name}?`, a: `Il ${c.name} ha un debito di ${formatEuro(c.debt.amount)} (${kindLabel(c.debt.kind, true)}) al ${c.debt.year}. Fonte: ${srcName(c.debt.source, true)}.` } : { q: `¿Cuánta deuda tiene el ${c.name}?`, a: `El ${c.name} tiene una deuda de ${formatEuro(c.debt.amount)} (${c.debt.kind}) a ${c.debt.year}. Fuente: ${c.debt.source.name}.` });
   if (c.limite) faqs.push(it ? { q: `Qual è il tetto salariale del ${c.name}?`, a: `La LaLiga fissa il tetto salariale del ${c.name} a ${formatEuro(c.limite)} per il ${LALIGA_LCPD_SEASON}.` } : { q: `¿Cuál es el límite salarial del ${c.name}?`, a: `LaLiga fija el límite de coste de plantilla del ${c.name} en ${formatEuro(c.limite)} para ${LALIGA_LCPD_SEASON}.` });
   if (c.wageBill) faqs.push(it ? { q: `Quanto spende il ${c.name} in stipendi?`, a: `Il ${c.name} destina ${formatEuro(c.wageBill)} all'anno agli stipendi dei giocatori (monte ingaggi lordo).` } : { q: `¿Cuánto gasta el ${c.name} en salarios?`, a: `El ${c.name} destina ${formatEuro(c.wageBill)} al año a los salarios de sus jugadores (masa salarial bruta).` });
 
@@ -63,12 +64,12 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
   ].filter(Boolean) as { name: string; url: string }[];
   const uniqSources = Array.from(new Map(sources.map((s) => [s.url, s])).values());
   const heroImg = c.league === "laliga" ? "/photos/spain-stadium.jpg" : "/photos/italy-stadium.jpg";
-  const parts = [c.revenue && `${t("ingresa", "incassa")} ${formatCompact(c.revenue)}`, c.debt && `${t("deuda", "debito")} ${formatCompact(c.debt.amount)}`].filter(Boolean);
+  const parts = [c.revenue && `${t("ingresa", "incassa")} ${formatCompact(c.revenue, locale)}`, c.debt && `${t("deuda", "debito")} ${formatCompact(c.debt.amount, locale)}`].filter(Boolean);
   const shareMsg = `⚽ ${c.name}: ${parts.join(", ")} — ${t("datos oficiales", "dati ufficiali")} 👀`;
 
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      {faqs.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <nav className="text-sm text-muted pt-6 mb-4">
         <Link href="/" className="hover:text-fg neon-text font-semibold">Cuentas Claras</Link>{" "}
@@ -83,7 +84,7 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
         kicker={`${flag(c.league)} ${c.league === "laliga" ? "LaLiga" : "Serie A"} · ${t("cuentas oficiales", "conti ufficiali")}`}
         title={t("LAS CUENTAS DEL", "I CONTI DEL")}
         highlight={c.name.toUpperCase()}
-        stat={c.revenue ? formatCompact(c.revenue) : c.debt ? formatCompact(c.debt.amount) : undefined}
+        stat={c.revenue ? formatCompact(c.revenue, locale) : c.debt ? formatCompact(c.debt.amount, locale) : undefined}
         statLabel={c.revenue ? t("de ingresos al año", "di ricavi all'anno") : c.debt ? t("de deuda", "di debito") : undefined}
         accent="#34d399"
         accent2="#22d3ee"
@@ -118,6 +119,20 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
 
       <ShareBar className="mt-5" text={shareMsg} />
 
+      {faqs.length > 0 && (
+        <section className="mt-8">
+          <h2 className="text-lg font-semibold mb-3">{t("Preguntas frecuentes", "Domande frequenti")}</h2>
+          <div className="space-y-2.5">
+            {faqs.map((f) => (
+              <div key={f.q} className="glass p-4">
+                <h3 className="font-medium">{f.q}</h3>
+                <p className="text-sm text-muted mt-2">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {compareLinks.length > 0 && (
         <section className="mt-6">
           <h2 className="text-sm font-medium text-muted mb-3">{t(`Compara al ${c.name} con otro club`, `Confronta il ${c.name} con un altro club`)}</h2>
@@ -147,10 +162,14 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
   );
 }
 
-function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string }) {
+function Comparison({ a, b, par, itPage, match }: { a: ClubMetrics; b: ClubMetrics; par: string; itPage: boolean; match: Partita | null }) {
   const { locale } = useLocale();
   const it = locale === "it";
   const t = (es: string, itx: string) => (it ? itx : es);
+  // La pagina italiana vive sotto /calcio/: link e breadcrumb restano in italiano.
+  const hub = itPage ? "/calcio/" : "/futbol/";
+  const self = `${hub}${par}/`;
+  const onlyLimit = !((a.revenue && b.revenue) || (a.debt && b.debt)) && !!(a.limite && b.limite);
 
   // Ogni riga dice la stagione e, per il debito, il tipo (bruto/netto/cassa) e
   // la data: Barça pubblica il lordo, Real Madrid il netto. Senza etichetta il
@@ -165,6 +184,26 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
   if (a.debt || b.debt) rows.push({ label: t("Deuda", "Debito"), av: a.debt ? formatEuro(a.debt.amount) : "—", bv: b.debt ? formatEuro(b.debt.amount) : "—", ah: debtHint(a), bh: debtHint(b) });
 
   const faqs: { q: string; a: string }[] = [];
+  if (match) {
+    const h = shortName(match.home), w = shortName(match.away), d = longDate(match.kickoff, it);
+    faqs.push({
+      q: t(`¿Cuándo se juega el ${h}-${w}?`, `Quando si gioca ${h}-${w}?`),
+      a: t(
+        `El ${d} (hora peninsular). Es la jornada ${match.round} de ${match.comp === "laliga" ? "LaLiga" : "la Serie A"}. Fuente: ${sourceName(match)}.`,
+        `${d.charAt(0).toUpperCase()}${d.slice(1)} (ora italiana). È la ${match.round}ª giornata di ${match.comp === "laliga" ? "LaLiga" : "Serie A"}. Fonte: ${sourceName(match)}.`,
+      ),
+    });
+  }
+  if (a.limite && b.limite) {
+    const [hi, lo] = a.limite >= b.limite ? [a, b] : [b, a];
+    faqs.push({
+      q: t(`¿Quién puede gastar más en su plantilla, ${a.name} o ${b.name}?`, `Chi può spendere di più per la rosa, ${a.name} o ${b.name}?`),
+      a: t(
+        `${hi.name}. LaLiga le deja gastar hasta ${formatEuro(hi.limite!)} en su plantilla en la temporada ${LALIGA_LCPD_SEASON}. Al ${lo.name}, ${formatEuro(lo.limite!)}. Fuente: ${LALIGA_LCPD_SOURCE.name}.`,
+        `${hi.name}. La LaLiga gli permette di spendere fino a ${formatEuro(hi.limite!)} per la rosa nella stagione ${LALIGA_LCPD_SEASON}. Al ${lo.name}, ${formatEuro(lo.limite!)}. Fonte: ${srcName(LALIGA_LCPD_SOURCE, true)}.`,
+      ),
+    });
+  }
   if (a.revenue && b.revenue) {
     const [hi, lo] = a.revenue >= b.revenue ? [a, b] : [b, a];
     faqs.push({
@@ -184,7 +223,7 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
         q,
         a: t(
           `${hi.name}: ${formatEuro(hi.debt!.amount)} de deuda ${kindLabel(da.kind, false)} frente a ${formatEuro(lo.debt!.amount)} del ${lo.name}. Fuentes: ${da.source.name}; ${db.source.name}.`,
-          `${hi.name}: ${formatEuro(hi.debt!.amount)} di debito ${kindLabel(da.kind, true)} contro ${formatEuro(lo.debt!.amount)} del ${lo.name}. Fonti: ${da.source.name}; ${db.source.name}.`,
+          `${hi.name}: ${formatEuro(hi.debt!.amount)} di debito ${kindLabel(da.kind, true)} contro ${formatEuro(lo.debt!.amount)} del ${lo.name}. Fonti: ${srcName(da.source, true)}; ${srcName(db.source, true)}.`,
         ),
       });
     } else {
@@ -192,14 +231,24 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
         q,
         a: t(
           `No se pueden comparar tal cual, porque cada club publica una medida distinta. ${a.name}: ${formatEuro(da.amount)} (${kindLabel(da.kind, false)}, a ${da.year}). ${b.name}: ${formatEuro(db.amount)} (${kindLabel(db.kind, false)}, a ${db.year}). La deuda neta ya resta el dinero que el club tiene en caja; la bruta no. Fuentes: ${da.source.name}; ${db.source.name}.`,
-          `Non si possono confrontare così come sono, perché ogni club pubblica una misura diversa. ${a.name}: ${formatEuro(da.amount)} (${kindLabel(da.kind, true)}, al ${da.year}). ${b.name}: ${formatEuro(db.amount)} (${kindLabel(db.kind, true)}, al ${db.year}). Il debito netto toglie già i soldi in cassa; quello lordo no. Fonti: ${da.source.name}; ${db.source.name}.`,
+          `Non si possono confrontare così come sono, perché ogni club pubblica una misura diversa. ${a.name}: ${formatEuro(da.amount)} (${kindLabel(da.kind, true)}, al ${da.year}). ${b.name}: ${formatEuro(db.amount)} (${kindLabel(db.kind, true)}, al ${db.year}). Il debito netto toglie già i soldi in cassa; quello lordo no. Fonti: ${srcName(da.source, true)}; ${srcName(db.source, true)}.`,
         ),
       });
     }
   }
   const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
-  const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Fútbol", item: `${SITE}/futbol/` }, { "@type": "ListItem", position: 3, name: `${a.name} vs ${b.name}`, item: `${SITE}/futbol/${par}/` }] };
-  const clubHref = (c: ClubMetrics) => (CLUB_PAGE_SLUGS.includes(c.slug) ? `/futbol/${c.slug}/` : "/futbol/");
+  const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: t("Fútbol", "Calcio"), item: `${SITE}${hub}` }, { "@type": "ListItem", position: 3, name: `${a.name} vs ${b.name}`, item: `${SITE}${self}` }] };
+  const clubHref = (c: ClubMetrics) => (CLUB_PAGE_SLUGS.includes(c.slug) ? `/futbol/${c.slug}/` : hub);
+  const sources = [
+    match && { name: t(`${sourceName(match)} · calendario oficial`, `${sourceName(match)} · calendario ufficiale`), url: match.source },
+    (a.limite || b.limite) && LALIGA_LCPD_SOURCE,
+    ((a.revenue && a.league === "laliga") || (b.revenue && b.league === "laliga")) && REVENUE_SOURCE,
+    (a.league === "seriea" || b.league === "seriea") && SERIE_A_SOURCE,
+    a.debt && a.debt.source,
+    b.debt && b.debt.source,
+  ].filter(Boolean) as { name: string; url: string }[];
+  const uniqSources = Array.from(new Map(sources.map((s) => [s.url, s])).values());
+  const filialNote = [a.slug, b.slug].some((s) => s === "real-sociedad" || s === "rc-celta");
 
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 py-8">
@@ -207,16 +256,28 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <nav className="text-sm text-muted mb-6">
         <Link href="/" className="hover:text-fg neon-text font-semibold">Cuentas Claras</Link>{" "}
-        <Link href="/futbol/" className="opacity-70 hover:text-fg">/ {t("Fútbol", "Calcio")}</Link>{" "}
+        <Link href={hub} className="opacity-70 hover:text-fg">/ {t("Fútbol", "Calcio")}</Link>{" "}
         <span className="opacity-50">/ {a.name} vs {b.name}</span>
       </nav>
       <header>
-        <p className="text-xs uppercase tracking-widest text-cyan/80">⚽ {t(`Comparativa financiera · temporada ${season}`, `Confronto finanziario · stagione ${season}`)}</p>
+        <p className="text-xs uppercase tracking-widest text-cyan/80">⚽ {t("Comparativa financiera · datos oficiales", "Confronto finanziario · dati ufficiali")}</p>
         <h1 className="text-2xl md:text-4xl font-bold mt-1">
           {flag(a.league)} <span className="neon-text">{a.name}</span> vs {flag(b.league)} <span className="neon-text">{b.name}</span>
         </h1>
-        <p className="text-sm text-muted mt-2">{t("Los dos clubes, lado a lado: quién ingresa, paga y debe más. Solo datos oficiales.", "I due club, fianco a fianco: chi incassa, paga e deve di più. Solo dati ufficiali.")}</p>
+        <p className="text-sm text-muted mt-2">{onlyLimit
+          ? t("Los dos clubes, lado a lado: cuánto les deja gastar LaLiga en la plantilla. Solo datos oficiales.", "I due club, fianco a fianco: quanto la LaLiga gli lascia spendere per la rosa. Solo dati ufficiali.")
+          : t("Los dos clubes, lado a lado: quién ingresa, paga y debe más. Solo datos oficiales.", "I due club, fianco a fianco: chi incassa, paga e deve di più. Solo dati ufficiali.")}</p>
       </header>
+
+      {match && (
+        <a href={match.source} target="_blank" rel="noopener noreferrer" className="glass mt-5 flex min-h-[44px] items-center gap-3 px-4 py-3 hover:border-cyan transition">
+          <span aria-hidden className="text-xl">📅</span>
+          <span className="text-sm">
+            <b className="text-fg">{t(`Se juegan el ${longDate(match.kickoff, false)}`, `Si giocano ${longDate(match.kickoff, true)}`)}</b>
+            <span className="block text-[12px] text-muted">{shortName(match.home)}-{shortName(match.away)} · {compLabel(match, it)} · {t("hora peninsular · fuente:", "ora italiana · fonte:")} {sourceName(match)} ↗</span>
+          </span>
+        </a>
+      )}
 
       <div className="glass mt-6 overflow-hidden">
         <div className="grid grid-cols-[1.3fr_1fr_1fr] text-sm">
@@ -256,15 +317,22 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
         </section>
       )}
 
-      <ShareBar className="mt-5" text={`⚽ ${a.name} vs ${b.name} — ${t("¿quién ingresa y debe más?", "chi incassa e deve di più?")} 👀 ${t("datos oficiales", "dati ufficiali")}`} />
+      <ShareBar className="mt-5" text={`⚽ ${a.name} vs ${b.name} — ${onlyLimit ? t("¿quién puede gastar más?", "chi può spendere di più?") : t("¿quién ingresa y debe más?", "chi incassa e deve di più?")} 👀 ${t("datos oficiales", "dati ufficiali")}`} />
 
       <div className="mt-6 flex flex-wrap gap-3">
         <Link href={clubHref(a)} className="px-4 py-2 rounded-full text-sm font-medium border border-[var(--panel-border)] hover:border-cyan transition">{t("Cuentas de", "Conti di")} {a.name}</Link>
         <Link href={clubHref(b)} className="px-4 py-2 rounded-full text-sm font-medium border border-[var(--panel-border)] hover:border-cyan transition">{t("Cuentas de", "Conti di")} {b.name}</Link>
-        <Link href="/futbol/" className="px-4 py-2 rounded-full text-sm font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition">{t("Todo el dinero del fútbol →", "Tutti i soldi del calcio →")}</Link>
+        <Link href={hub} className="px-4 py-2 rounded-full text-sm font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition">{t("Todo el dinero del fútbol →", "Tutti i soldi del calcio →")}</Link>
       </div>
 
-      <p className="text-[11px] text-muted mt-8">{t("Fuentes oficiales: LaLiga (límite de coste de plantilla), Deloitte Football Money League y cuentas anuales de los clubes. Solo cifras verificables; los huecos (—) son datos que ese club no publica en ese apartado.", "Fonti ufficiali: LaLiga (tetto salariale), Deloitte Football Money League e bilanci dei club. Solo cifre verificabili; i trattini (—) sono dati che il club non pubblica in quella voce.")}</p>
+      <p className="text-[11px] text-muted mt-8">
+        {t("Fuentes oficiales: ", "Fonti ufficiali: ")}
+        {uniqSources.map((s, i) => (
+          <span key={s.url}>{i > 0 ? " · " : ""}<a href={s.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{s.name}</a></span>
+        ))}
+        . {t("Solo cifras verificables; los huecos (—) son datos que ese club no publica en ese apartado.", "Solo cifre verificabili; i trattini (—) sono dati che il club non pubblica in quella voce.")}
+        {filialNote && <> {t(LALIGA_LCPD_NOTE.es, LALIGA_LCPD_NOTE.it)}</>}
+      </p>
       <footer className="mt-16 pt-8 border-t border-[var(--panel-border)] text-sm text-muted">
         <p><span className="neon-text font-semibold">Cuentas Claras</span> · {t("Hecho en Italia", "Made in Italy")} 🇮🇹</p>
       </footer>
@@ -272,11 +340,11 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
   );
 }
 
-export default function ParClient({ par }: { par: string }) {
+export default function ParClient({ par, locale, match = null }: { par: string; locale?: "es" | "it"; match?: Partita | null }) {
   const pair = parsePair(par);
   return (
-    <LocaleProvider>
-      {pair ? <Comparison a={pair.a} b={pair.b} par={par} /> : CLUBS[par] ? <ClubDetail c={CLUBS[par]} slug={par} /> : null}
+    <LocaleProvider force={locale}>
+      {pair ? <Comparison a={pair.a} b={pair.b} par={par} itPage={locale === "it"} match={match} /> : CLUBS[par] ? <ClubDetail c={CLUBS[par]} slug={par} /> : null}
     </LocaleProvider>
   );
 }

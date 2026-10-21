@@ -12,7 +12,7 @@
     "lint": "eslint",
     "postbuild": "node scripts/fix-lang.mjs && node scripts/fix-prefetch.mjs",
     "etl:alcaldes": "node ../data/etl-alcaldes.mjs",
-    "prebuild": "node scripts/luoghi-notizie.mjs"
+    "prebuild": "node scripts/luoghi-notizie.mjs && node scripts/province-names.mjs"
   },
   "overrides": {
     "postcss": "^8.5.10"

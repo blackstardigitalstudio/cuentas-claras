@@ -8,8 +8,8 @@
 // `DATA_IS_SAMPLE` sea true.
 // ---------------------------------------------------------------------------
 
-import provincesGeo from "@/data/spain-provinces.json";
-import italyGeo from "@/data/italy-provinces.json";
+// Solo i nomi delle province: le coordinate (MB) restano fuori dal bundle comune.
+import provinceNames from "@/data/province-names.json";
 import barcelonaReal from "@/data/real/barcelona.json";
 import valenciaReal from "@/data/real/valencia.json";
 import vitoriaReal from "@/data/real/vitoria.json";
@@ -230,10 +230,8 @@ type RealCity = {
   poblacion?: number;
 };
 
-type GeoFC = { features: { properties: { name: string } }[] };
-
-function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[], extras: RealCity[] = []) {
-  const names = geo.features.map((f) => f.properties.name).sort((a, b) => a.localeCompare(b, "es"));
+function buildCountry(provinces: string[], cats: CatSet, reals: RealCity[], extras: RealCity[] = []) {
+  const names = [...provinces].sort((a, b) => a.localeCompare(b, "es"));
   const regions: Record<string, RegionData> = Object.fromEntries(names.map((n) => [n, buildRegion(n, cats)]));
   for (const c of reals) {
     regions[c.provincia] = {
@@ -298,13 +296,12 @@ export type Country = {
   code: CountryCode;
   mapKind: "spain" | "italy";
   defaultRegion: string;
-  geo: GeoFC;
   regions: Record<string, RegionData>;
   list: RegionData[];
   realNames: string[];
 };
 
-const ES = buildCountry(provincesGeo as GeoFC, CATS_ES, [
+const ES = buildCountry(provinceNames.es, CATS_ES, [
   barcelonaReal as RealCity,
   valenciaReal as RealCity,
   vitoriaReal as RealCity,
@@ -320,11 +317,11 @@ const itExtras = (itExtraCities as unknown as RealCity[]).map((c) => ({
   source: IT_SIOPE_SRC,
   basis: "Dati di cassa SIOPE 2025 (pagamenti e incassi), Ragioneria Generale dello Stato",
 })) as RealCity[];
-const IT = buildCountry(italyGeo as GeoFC, CATS_IT, [milanoReal as RealCity, bolognaReal as RealCity], itExtras);
+const IT = buildCountry(provinceNames.it, CATS_IT, [milanoReal as RealCity, bolognaReal as RealCity], itExtras);
 
 export const COUNTRIES: Record<CountryCode, Country> = {
-  es: { code: "es", mapKind: "spain", defaultRegion: "Barcelona", geo: provincesGeo as GeoFC, ...ES },
-  it: { code: "it", mapKind: "italy", defaultRegion: "Milano", geo: italyGeo as GeoFC, ...IT },
+  es: { code: "es", mapKind: "spain", defaultRegion: "Barcelona", ...ES },
+  it: { code: "it", mapKind: "italy", defaultRegion: "Milano", ...IT },
 };
 
 // Compatibilidad (la portada usa España).

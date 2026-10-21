@@ -7,11 +7,15 @@ import { scaleLinear } from "d3-scale";
 import { interpolateHcl } from "d3-interpolate";
 import { COUNTRIES, type Country } from "@/lib/data";
 import worldGeo from "@/data/world.geo.json";
+// Le coordinate delle province vivono solo qui (chunk pigro della mappa), non in lib/data.
+import spainGeo from "@/data/spain-provinces.json";
+import italyGeo from "@/data/italy-provinces.json";
 
 type Feat = { type: "Feature"; properties: { name: string }; geometry: GeoJSON.Geometry };
+const GEO = { es: spainGeo, it: italyGeo } as unknown as Record<Country["code"], { features: Feat[] }>;
 
 function coloredFC(country: Country) {
-  const feats = country.geo.features as Feat[];
+  const feats = GEO[country.code].features as Feat[];
   const vals = feats.map((f) => country.regions[f.properties.name]?.gastos ?? 0);
   const min = Math.min(...vals);
   const max = Math.max(...vals);
@@ -29,7 +33,7 @@ function coloredFC(country: Country) {
 }
 
 function colorScaleFor(country: Country) {
-  const feats = country.geo.features as Feat[];
+  const feats = GEO[country.code].features as Feat[];
   const vals = feats.map((f) => country.regions[f.properties.name]?.gastos ?? 0);
   const min = Math.min(...vals);
   const max = Math.max(...vals);
@@ -61,7 +65,7 @@ function placeMarkers(
   try {
     store.forEach((m) => m.remove());
     store.length = 0;
-    const feats = country.geo.features as Feat[];
+    const feats = GEO[country.code].features as Feat[];
     const color = colorScaleFor(country);
     // Usa direttamente le feature geo (nome sempre coerente con le regioni) e tieni
     // solo quelle con dati reali; poi i 10 comuni con più spesa → nodi pulsanti.
@@ -95,7 +99,7 @@ function bounds(country: Country): [[number, number], [number, number]] {
       minY = Math.min(minY, y); maxY = Math.max(maxY, y);
     } else if (Array.isArray(c)) c.forEach(walk);
   };
-  (country.geo.features as Feat[]).forEach((f) => walk((f.geometry as { coordinates: unknown }).coordinates));
+  (GEO[country.code].features as Feat[]).forEach((f) => walk((f.geometry as { coordinates: unknown }).coordinates));
   return [[minX, minY], [maxX, maxY]];
 }
 

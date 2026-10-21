@@ -177,10 +177,12 @@ export default function MascotGuide() {
   const steps = TOUR[lang];
   const list = items();
 
+  // El globo va en absolute: así, al abrirse solo, no mueve la caja de Claro
+  // (Lighthouse lo contaba como salto de página, CLS).
   return (
     <div className="fixed z-[60] right-3 bottom-3 sm:right-5 sm:bottom-5 flex flex-col items-end gap-2 pointer-events-none">
       {open && (
-        <div className="mascot-bubble-in pointer-events-auto relative w-[86vw] max-w-[20rem] glass px-4 py-3.5 rounded-2xl rounded-br-sm shadow-[0_18px_50px_-18px_rgba(0,0,0,0.75)]">
+        <div className="mascot-bubble-in pointer-events-auto absolute bottom-full right-0 mb-2 w-[86vw] max-w-[20rem] glass px-4 py-3.5 rounded-2xl rounded-br-sm shadow-[0_18px_50px_-18px_rgba(0,0,0,0.75)]">
           <button onClick={() => (inTour ? endTour() : setOpen(false))} aria-label={it ? "Chiudi" : "Cerrar"} className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[#0b1226] border border-[var(--panel-border)] text-muted hover:text-fg text-sm leading-none">×</button>
 
           {inTour ? (

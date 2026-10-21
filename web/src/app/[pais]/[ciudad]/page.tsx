@@ -359,7 +359,7 @@ export default async function CityPage({ params }: Props) {
                   ("quanto debito ha X"). Vale per tutte le città in un colpo solo. */}
               <h2 className="text-xs text-muted font-normal">
                 {es ? `¿Cuánta deuda tiene ${r.name}?` : `Quanto debito ha ${r.name}?`}
-                <span className="opacity-60"> · 31/12/{r.debt.year}</span>
+                <span className="opacity-90"> · 31/12/{r.debt.year}</span>
               </h2>
               <p className="tabular text-2xl font-semibold text-[#fdba74] mt-1">
                 {r.debt.amount > 0 ? formatEuro(r.debt.amount) : es ? "Sin deuda" : "Nessun debito"}
@@ -386,7 +386,7 @@ export default async function CityPage({ params }: Props) {
                   frequenti e abbiamo il dato per centinaia di comuni. */}
               <h2 className="text-xs text-muted font-normal">
                 {es ? `¿Quién es el alcalde de ${r.name} y cuánto cobra?` : `Chi è il sindaco di ${r.name} e quanto guadagna?`}
-                <span className="opacity-60"> · {r.year}</span>
+                <span className="opacity-90"> · {r.year}</span>
               </h2>
               {r.alcalde && (
                 <p className="text-lg font-semibold mt-1 leading-tight">
@@ -487,7 +487,7 @@ export default async function CityPage({ params }: Props) {
       {comparePairs.length > 0 && (
         <nav className="mt-12 pt-6 border-t border-[var(--panel-border)]">
           <h2 className="text-sm font-medium text-muted mb-1">{es ? `Compara ${r.name} con otra ciudad` : `Confronta ${r.name} con un'altra città`}</h2>
-          <p className="text-xs text-muted/70 mb-3">{es ? "Ingresos, gastos, deuda y sueldo del alcalde, uno al lado del otro." : "Entrate, spese, debito e stipendio del sindaco, fianco a fianco."}</p>
+          <p className="text-xs text-muted mb-3">{es ? "Ingresos, gastos, deuda y sueldo del alcalde, uno al lado del otro." : "Entrate, spese, debito e stipendio del sindaco, fianco a fianco."}</p>
           <div className="flex flex-wrap gap-2">
             {comparePairs.map(({ pair, name }) => (
               <Link key={pair} href={`/${cmpBase}/${pair}/`} className="px-3 py-1.5 rounded-full text-sm border border-[var(--panel-border)] hover:border-cyan hover:text-fg transition">

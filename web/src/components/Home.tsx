@@ -6,6 +6,7 @@ import News from "@/components/News";
 import Scoop from "@/components/Scoop";
 import SiteNav from "@/components/SiteNav";
 import SiteSearch from "@/components/SiteSearch";
+import { PHOTO_SIZES, photoSrcSet } from "@/components/HeroBanner";
 import { CLUBS, CLUB_PAGE_SLUGS } from "@/data/futbol";
 import { CountUp, Reveal } from "@/components/Motion";
 import { useLocale } from "@/i18n/LocaleProvider";
@@ -85,10 +86,11 @@ export default function Home() {
       </section>
 
       {/* Fútbol — tarjeta destacada, en primer plano */}
-      <Reveal>
+      {/* Sin <Reveal>: es lo más grande de la pantalla (LCP) y tiene que verse ya, no tras la hidratación. */}
+      <div>
         <Link href="/futbol/" className="block mt-8 group relative overflow-hidden rounded-2xl border border-[var(--panel-border)] aspect-[16/10] sm:aspect-[21/8]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/photos/spain-stadium.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105" />
+          <img src="/photos/spain-stadium.jpg" srcSet={photoSrcSet("/photos/spain-stadium.jpg")} sizes={PHOTO_SIZES} width={1600} height={900} alt="" aria-hidden="true" loading="eager" fetchPriority="high" decoding="async" className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#05070f] via-[#05070f]/75 to-[#05070f]/10" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] via-transparent to-transparent" />
           <span className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-green via-cyan to-violet" />
@@ -110,7 +112,7 @@ export default function Home() {
             </span>
           </div>
         </Link>
-      </Reveal>
+      </div>
 
       {/* Rejilla de accesos: tarjetas clicables, poco texto, fácil de escanear. */}
       <section className="mt-8 mb-12">
@@ -434,7 +436,7 @@ export default function Home() {
           <p>{m.footer.tagline} · Made in Italy 🇮🇹</p>
         </div>
         {/* Disclaimer legal (texto pequeño) */}
-        <p className="mt-6 text-[11px] leading-relaxed text-muted/70 max-w-4xl">{m.footer.disclaimer}</p>
+        <p className="mt-6 text-[11px] leading-relaxed text-muted max-w-4xl">{m.footer.disclaimer}</p>
       </footer>
     </main>
   );

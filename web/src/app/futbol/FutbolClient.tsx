@@ -7,13 +7,14 @@ import HeroBanner from "@/components/HeroBanner";
 import SimpleExplainer from "@/components/SimpleExplainer";
 import { formatEuro, formatCompact } from "@/lib/format";
 import {
-  LALIGA_LCPD, LALIGA_LCPD_SEASON, LALIGA_LCPD_SOURCE,
+  LALIGA_LCPD, LALIGA_LCPD_SEASON, LALIGA_LCPD_SOURCE, LALIGA_LCPD_NOTE,
   CLUB_REVENUE, REVENUE_SEASON, REVENUE_SOURCE, CLUB_DEBT,
   SERIE_A, SERIE_A_SEASON, SERIE_A_SOURCE, LEAGUES, LEAGUE_SOURCE,
   CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS,
 } from "@/data/futbol";
+import { type Partita, compLabel, listDate, matchPair, shortName } from "@/data/partite";
 
-function Inner() {
+function Inner({ upcoming = [] }: { upcoming?: Partita[] }) {
   const { locale } = useLocale();
   const it = locale === "it";
   const t = (es: string, itx: string) => (it ? itx : es);
@@ -51,6 +52,27 @@ function Inner() {
           <p>{t("Un club de fútbol es como una empresa: ingresa dinero (entradas, TV, patrocinios), paga sueldos y a veces tiene deudas. Aquí ves esas cuentas con datos oficiales.", "Un club di calcio è come un'azienda: incassa soldi (biglietti, TV, sponsor), paga stipendi e a volte ha debiti. Qui vedi questi conti con dati ufficiali.")}</p>
         </SimpleExplainer>
       </div>
+
+      {upcoming.length > 0 && (
+        <section className="mt-5" aria-labelledby="proximos">
+          <h2 id="proximos" className="text-lg md:text-xl font-semibold">📅 {t("Próximos partidos", "Prossime partite")}</h2>
+          <p className="text-xs text-muted mt-1">{t("Toca un partido: ves quién tiene más dinero de los dos.", "Tocca una partita: vedi chi dei due ha più soldi.")}</p>
+          <ul className="mt-3 grid gap-2">
+            {upcoming.map((p) => (
+              <li key={`${p.comp}-${p.round}-${p.home}-${p.away}`}>
+                <Link href={`${it ? "/calcio/" : "/futbol/"}${matchPair(p)}/`} className="glass flex min-h-[44px] items-center justify-between gap-3 px-4 py-3 group hover:border-cyan transition">
+                  <span className="min-w-0">
+                    <span className="block font-semibold truncate">{shortName(p.home)} - {shortName(p.away)}</span>
+                    <span className="block text-[12px] text-muted">{listDate(p.kickoff, it)} · {compLabel(p, it)}</span>
+                  </span>
+                  <span className="text-cyan text-lg shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="text-[11px] text-muted mt-2">{t("Fechas y horas oficiales de LaLiga y de los clubes (hora peninsular).", "Date e orari ufficiali di LaLiga e dei club (ora italiana).")}</p>
+        </section>
+      )}
 
       <Link href={it ? "/debito-club-calcio/" : "/deuda-clubes-futbol/"} className="mt-3 glass p-4 flex items-center justify-between gap-3 group hover:border-cyan transition">
         <span>
@@ -124,7 +146,7 @@ function Inner() {
                 </li>
               ))}
             </ol>
-            <p className="text-[11px] text-muted mt-3">{src}<a href={LALIGA_LCPD_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{LALIGA_LCPD_SOURCE.name}</a></p>
+            <p className="text-[11px] text-muted mt-3">{src}<a href={LALIGA_LCPD_SOURCE.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{LALIGA_LCPD_SOURCE.name}</a>. {t(LALIGA_LCPD_NOTE.es, LALIGA_LCPD_NOTE.it)}</p>
           </section>
 
           {/* Ingresos ES */}
@@ -330,10 +352,10 @@ function Inner() {
   );
 }
 
-export default function FutbolClient({ locale }: { locale?: "es" | "it" }) {
+export default function FutbolClient({ locale, upcoming }: { locale?: "es" | "it"; upcoming?: Partita[] }) {
   return (
     <LocaleProvider force={locale}>
-      <Inner />
+      <Inner upcoming={upcoming} />
     </LocaleProvider>
   );
 }

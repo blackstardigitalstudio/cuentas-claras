@@ -7,8 +7,9 @@ import SimpleExplainer from "@/components/SimpleExplainer";
 import ShareBar from "@/components/ShareBar";
 import {
   CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS, type ClubMetrics,
-  LALIGA_LCPD_SOURCE, LALIGA_LCPD_SEASON, REVENUE_SOURCE, REVENUE_SEASON, SERIE_A_SOURCE, SERIE_A_SEASON,
+  LALIGA_LCPD_SOURCE, LALIGA_LCPD_SEASON, LALIGA_LCPD_NOTE, REVENUE_SOURCE, REVENUE_SEASON, SERIE_A_SOURCE, SERIE_A_SEASON,
 } from "@/data/futbol";
+import { type Partita, compLabel, longDate, shortName, sourceName } from "@/data/partite";
 import { formatEuro, formatCompact } from "@/lib/format";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -147,10 +148,14 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
   );
 }
 
-function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string }) {
+function Comparison({ a, b, par, itPage, match }: { a: ClubMetrics; b: ClubMetrics; par: string; itPage: boolean; match: Partita | null }) {
   const { locale } = useLocale();
   const it = locale === "it";
   const t = (es: string, itx: string) => (it ? itx : es);
+  // La pagina italiana vive sotto /calcio/: link e breadcrumb restano in italiano.
+  const hub = itPage ? "/calcio/" : "/futbol/";
+  const self = `${hub}${par}/`;
+  const onlyLimit = !((a.revenue && b.revenue) || (a.debt && b.debt)) && !!(a.limite && b.limite);
 
   // Ogni riga dice la stagione e, per il debito, il tipo (bruto/netto/cassa) e
   // la data: Barça pubblica il lordo, Real Madrid il netto. Senza etichetta il
@@ -165,6 +170,26 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
   if (a.debt || b.debt) rows.push({ label: t("Deuda", "Debito"), av: a.debt ? formatEuro(a.debt.amount) : "—", bv: b.debt ? formatEuro(b.debt.amount) : "—", ah: debtHint(a), bh: debtHint(b) });
 
   const faqs: { q: string; a: string }[] = [];
+  if (match) {
+    const h = shortName(match.home), w = shortName(match.away), d = longDate(match.kickoff, it);
+    faqs.push({
+      q: t(`¿Cuándo se juega el ${h}-${w}?`, `Quando si gioca ${h}-${w}?`),
+      a: t(
+        `El ${d} (hora peninsular). Es la jornada ${match.round} de ${match.comp === "laliga" ? "LaLiga" : "la Serie A"}. Fuente: ${sourceName(match)}.`,
+        `${d.charAt(0).toUpperCase()}${d.slice(1)} (ora italiana). È la ${match.round}ª giornata di ${match.comp === "laliga" ? "LaLiga" : "Serie A"}. Fonte: ${sourceName(match)}.`,
+      ),
+    });
+  }
+  if (a.limite && b.limite) {
+    const [hi, lo] = a.limite >= b.limite ? [a, b] : [b, a];
+    faqs.push({
+      q: t(`¿Quién puede gastar más en su plantilla, ${a.name} o ${b.name}?`, `Chi può spendere di più per la rosa, ${a.name} o ${b.name}?`),
+      a: t(
+        `${hi.name}. LaLiga le deja gastar hasta ${formatEuro(hi.limite!)} en su plantilla en la temporada ${LALIGA_LCPD_SEASON}. Al ${lo.name}, ${formatEuro(lo.limite!)}. Fuente: ${LALIGA_LCPD_SOURCE.name}.`,
+        `${hi.name}. La LaLiga gli permette di spendere fino a ${formatEuro(hi.limite!)} per la rosa nella stagione ${LALIGA_LCPD_SEASON}. Al ${lo.name}, ${formatEuro(lo.limite!)}. Fonte: ${LALIGA_LCPD_SOURCE.name}.`,
+      ),
+    });
+  }
   if (a.revenue && b.revenue) {
     const [hi, lo] = a.revenue >= b.revenue ? [a, b] : [b, a];
     faqs.push({
@@ -198,8 +223,18 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
     }
   }
   const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
-  const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Fútbol", item: `${SITE}/futbol/` }, { "@type": "ListItem", position: 3, name: `${a.name} vs ${b.name}`, item: `${SITE}/futbol/${par}/` }] };
-  const clubHref = (c: ClubMetrics) => (CLUB_PAGE_SLUGS.includes(c.slug) ? `/futbol/${c.slug}/` : "/futbol/");
+  const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: t("Fútbol", "Calcio"), item: `${SITE}${hub}` }, { "@type": "ListItem", position: 3, name: `${a.name} vs ${b.name}`, item: `${SITE}${self}` }] };
+  const clubHref = (c: ClubMetrics) => (CLUB_PAGE_SLUGS.includes(c.slug) ? `/futbol/${c.slug}/` : hub);
+  const sources = [
+    match && { name: t(`${sourceName(match)} · calendario oficial`, `${sourceName(match)} · calendario ufficiale`), url: match.source },
+    (a.limite || b.limite) && LALIGA_LCPD_SOURCE,
+    ((a.revenue && a.league === "laliga") || (b.revenue && b.league === "laliga")) && REVENUE_SOURCE,
+    (a.league === "seriea" || b.league === "seriea") && SERIE_A_SOURCE,
+    a.debt && a.debt.source,
+    b.debt && b.debt.source,
+  ].filter(Boolean) as { name: string; url: string }[];
+  const uniqSources = Array.from(new Map(sources.map((s) => [s.url, s])).values());
+  const filialNote = [a.slug, b.slug].some((s) => s === "real-sociedad" || s === "rc-celta");
 
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 py-8">
@@ -207,16 +242,28 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <nav className="text-sm text-muted mb-6">
         <Link href="/" className="hover:text-fg neon-text font-semibold">Cuentas Claras</Link>{" "}
-        <Link href="/futbol/" className="opacity-70 hover:text-fg">/ {t("Fútbol", "Calcio")}</Link>{" "}
+        <Link href={hub} className="opacity-70 hover:text-fg">/ {t("Fútbol", "Calcio")}</Link>{" "}
         <span className="opacity-50">/ {a.name} vs {b.name}</span>
       </nav>
       <header>
-        <p className="text-xs uppercase tracking-widest text-cyan/80">⚽ {t(`Comparativa financiera · temporada ${season}`, `Confronto finanziario · stagione ${season}`)}</p>
+        <p className="text-xs uppercase tracking-widest text-cyan/80">⚽ {t("Comparativa financiera · datos oficiales", "Confronto finanziario · dati ufficiali")}</p>
         <h1 className="text-2xl md:text-4xl font-bold mt-1">
           {flag(a.league)} <span className="neon-text">{a.name}</span> vs {flag(b.league)} <span className="neon-text">{b.name}</span>
         </h1>
-        <p className="text-sm text-muted mt-2">{t("Los dos clubes, lado a lado: quién ingresa, paga y debe más. Solo datos oficiales.", "I due club, fianco a fianco: chi incassa, paga e deve di più. Solo dati ufficiali.")}</p>
+        <p className="text-sm text-muted mt-2">{onlyLimit
+          ? t("Los dos clubes, lado a lado: cuánto les deja gastar LaLiga en la plantilla. Solo datos oficiales.", "I due club, fianco a fianco: quanto la LaLiga gli lascia spendere per la rosa. Solo dati ufficiali.")
+          : t("Los dos clubes, lado a lado: quién ingresa, paga y debe más. Solo datos oficiales.", "I due club, fianco a fianco: chi incassa, paga e deve di più. Solo dati ufficiali.")}</p>
       </header>
+
+      {match && (
+        <a href={match.source} target="_blank" rel="noopener noreferrer" className="glass mt-5 flex min-h-[44px] items-center gap-3 px-4 py-3 hover:border-cyan transition">
+          <span aria-hidden className="text-xl">📅</span>
+          <span className="text-sm">
+            <b className="text-fg">{t(`Se juegan el ${longDate(match.kickoff, false)}`, `Si giocano ${longDate(match.kickoff, true)}`)}</b>
+            <span className="block text-[12px] text-muted">{shortName(match.home)}-{shortName(match.away)} · {compLabel(match, it)} · {t("hora peninsular · fuente:", "ora italiana · fonte:")} {sourceName(match)} ↗</span>
+          </span>
+        </a>
+      )}
 
       <div className="glass mt-6 overflow-hidden">
         <div className="grid grid-cols-[1.3fr_1fr_1fr] text-sm">
@@ -256,15 +303,22 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
         </section>
       )}
 
-      <ShareBar className="mt-5" text={`⚽ ${a.name} vs ${b.name} — ${t("¿quién ingresa y debe más?", "chi incassa e deve di più?")} 👀 ${t("datos oficiales", "dati ufficiali")}`} />
+      <ShareBar className="mt-5" text={`⚽ ${a.name} vs ${b.name} — ${onlyLimit ? t("¿quién puede gastar más?", "chi può spendere di più?") : t("¿quién ingresa y debe más?", "chi incassa e deve di più?")} 👀 ${t("datos oficiales", "dati ufficiali")}`} />
 
       <div className="mt-6 flex flex-wrap gap-3">
         <Link href={clubHref(a)} className="px-4 py-2 rounded-full text-sm font-medium border border-[var(--panel-border)] hover:border-cyan transition">{t("Cuentas de", "Conti di")} {a.name}</Link>
         <Link href={clubHref(b)} className="px-4 py-2 rounded-full text-sm font-medium border border-[var(--panel-border)] hover:border-cyan transition">{t("Cuentas de", "Conti di")} {b.name}</Link>
-        <Link href="/futbol/" className="px-4 py-2 rounded-full text-sm font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition">{t("Todo el dinero del fútbol →", "Tutti i soldi del calcio →")}</Link>
+        <Link href={hub} className="px-4 py-2 rounded-full text-sm font-medium text-[#05070f] bg-gradient-to-r from-cyan to-violet hover:brightness-110 transition">{t("Todo el dinero del fútbol →", "Tutti i soldi del calcio →")}</Link>
       </div>
 
-      <p className="text-[11px] text-muted mt-8">{t("Fuentes oficiales: LaLiga (límite de coste de plantilla), Deloitte Football Money League y cuentas anuales de los clubes. Solo cifras verificables; los huecos (—) son datos que ese club no publica en ese apartado.", "Fonti ufficiali: LaLiga (tetto salariale), Deloitte Football Money League e bilanci dei club. Solo cifre verificabili; i trattini (—) sono dati che il club non pubblica in quella voce.")}</p>
+      <p className="text-[11px] text-muted mt-8">
+        {t("Fuentes oficiales: ", "Fonti ufficiali: ")}
+        {uniqSources.map((s, i) => (
+          <span key={s.url}>{i > 0 ? " · " : ""}<a href={s.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">{s.name}</a></span>
+        ))}
+        . {t("Solo cifras verificables; los huecos (—) son datos que ese club no publica en ese apartado.", "Solo cifre verificabili; i trattini (—) sono dati che il club non pubblica in quella voce.")}
+        {filialNote && <> {t(LALIGA_LCPD_NOTE.es, LALIGA_LCPD_NOTE.it)}</>}
+      </p>
       <footer className="mt-16 pt-8 border-t border-[var(--panel-border)] text-sm text-muted">
         <p><span className="neon-text font-semibold">Cuentas Claras</span> · {t("Hecho en Italia", "Made in Italy")} 🇮🇹</p>
       </footer>
@@ -272,11 +326,11 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
   );
 }
 
-export default function ParClient({ par }: { par: string }) {
+export default function ParClient({ par, locale, match = null }: { par: string; locale?: "es" | "it"; match?: Partita | null }) {
   const pair = parsePair(par);
   return (
-    <LocaleProvider>
-      {pair ? <Comparison a={pair.a} b={pair.b} par={par} /> : CLUBS[par] ? <ClubDetail c={CLUBS[par]} slug={par} /> : null}
+    <LocaleProvider force={locale}>
+      {pair ? <Comparison a={pair.a} b={pair.b} par={par} itPage={locale === "it"} match={match} /> : CLUBS[par] ? <ClubDetail c={CLUBS[par]} slug={par} /> : null}
     </LocaleProvider>
   );
 }

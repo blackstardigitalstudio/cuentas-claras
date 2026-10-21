@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { COUNTRIES, type CountryCode } from "@/lib/data";
 import { CLUBS, CLUB_COMPARE_SLUGS, CLUB_PAGE_SLUGS } from "@/data/futbol";
+import { MATCH_PAIRS } from "@/data/partite";
 import { CMP_ES, CMP_IT } from "@/data/compare-lists";
 import { TAGLIE_IT, TAGLIE_ES } from "@/data/fasce-sindaci";
 
@@ -96,8 +97,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Comparaciones de clubes de fútbol (X vs Y).
   const clubs = CLUB_COMPARE_SLUGS.filter((s) => CLUBS[s]);
+  // Las parejas con partido en el calendario tienen versión ES (/futbol/) e IT (/calcio/).
+  const matchLangs = (par: string) => ({ languages: { "es-ES": `${SITE}/futbol/${par}/`, "it-IT": `${SITE}/calcio/${par}/` } });
+  const futbolPairs = new Set<string>();
   for (let i = 0; i < clubs.length; i++) for (let j = i + 1; j < clubs.length; j++) {
-    urls.push({ url: `${SITE}/futbol/${clubs[i]}-vs-${clubs[j]}/`, lastModified, changeFrequency: "monthly", priority: 0.5 });
+    const par = `${clubs[i]}-vs-${clubs[j]}`;
+    futbolPairs.add(par);
+    urls.push({ url: `${SITE}/futbol/${par}/`, lastModified, changeFrequency: "monthly", priority: 0.5, ...(MATCH_PAIRS.includes(par) ? { alternates: matchLangs(par) } : {}) });
+  }
+  // Partidos próximos (LaLiga + Serie A): página ES + página IT.
+  for (const par of MATCH_PAIRS) {
+    if (!futbolPairs.has(par)) urls.push({ url: `${SITE}/futbol/${par}/`, lastModified, changeFrequency: "weekly", priority: 0.6, alternates: matchLangs(par) });
+    urls.push({ url: `${SITE}/calcio/${par}/`, lastModified, changeFrequency: "weekly", priority: 0.6, alternates: matchLangs(par) });
   }
   // Fichas de un solo club.
   for (const s of CLUB_PAGE_SLUGS) urls.push({ url: `${SITE}/futbol/${s}/`, lastModified, changeFrequency: "monthly", priority: 0.6 });

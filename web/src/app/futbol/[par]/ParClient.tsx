@@ -152,19 +152,58 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
   const it = locale === "it";
   const t = (es: string, itx: string) => (it ? itx : es);
 
-  const rows: { label: string; av: string; bv: string }[] = [];
-  if (a.limite || b.limite) rows.push({ label: t("Límite salarial (LaLiga)", "Tetto salariale (LaLiga)"), av: a.limite ? formatEuro(a.limite) : "—", bv: b.limite ? formatEuro(b.limite) : "—" });
-  if (a.revenue || b.revenue) rows.push({ label: t("Ingresos (al año)", "Ricavi (all'anno)"), av: a.revenue ? formatEuro(a.revenue) : "—", bv: b.revenue ? formatEuro(b.revenue) : "—" });
-  if (a.wageBill || b.wageBill) rows.push({ label: t("Salarios de jugadores", "Stipendi dei giocatori"), av: a.wageBill ? formatEuro(a.wageBill) : "—", bv: b.wageBill ? formatEuro(b.wageBill) : "—" });
-  if (a.debt || b.debt) rows.push({ label: t("Deuda", "Debito"), av: a.debt ? formatEuro(a.debt.amount) : "—", bv: b.debt ? formatEuro(b.debt.amount) : "—" });
+  // Ogni riga dice la stagione e, per il debito, il tipo (bruto/netto/cassa) e
+  // la data: Barça pubblica il lordo, Real Madrid il netto. Senza etichetta il
+  // confronto sembrava 1.451 M€ contro 12 M€ sulla stessa misura, e non lo è.
+  const revSeason = (c: ClubMetrics) => (c.league === "laliga" ? REVENUE_SEASON : SERIE_A_SEASON);
+  const season = revSeason(a);
+  const debtHint = (c: ClubMetrics) => (c.debt ? `${kindLabel(c.debt.kind, it)} · ${t("a", "al")} ${c.debt.year}` : undefined);
+  const rows: { label: string; hint?: string; av: string; bv: string; ah?: string; bh?: string }[] = [];
+  if (a.limite || b.limite) rows.push({ label: t("Límite salarial (LaLiga)", "Tetto salariale (LaLiga)"), hint: LALIGA_LCPD_SEASON, av: a.limite ? formatEuro(a.limite) : "—", bv: b.limite ? formatEuro(b.limite) : "—" });
+  if (a.revenue || b.revenue) rows.push({ label: t("Ingresos (al año)", "Ricavi (all'anno)"), hint: revSeason(a) === revSeason(b) ? revSeason(a) : undefined, av: a.revenue ? formatEuro(a.revenue) : "—", bv: b.revenue ? formatEuro(b.revenue) : "—" });
+  if (a.wageBill || b.wageBill) rows.push({ label: t("Salarios de jugadores", "Stipendi dei giocatori"), hint: SERIE_A_SEASON, av: a.wageBill ? formatEuro(a.wageBill) : "—", bv: b.wageBill ? formatEuro(b.wageBill) : "—" });
+  if (a.debt || b.debt) rows.push({ label: t("Deuda", "Debito"), av: a.debt ? formatEuro(a.debt.amount) : "—", bv: b.debt ? formatEuro(b.debt.amount) : "—", ah: debtHint(a), bh: debtHint(b) });
 
-  const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: [(a.revenue && b.revenue) ? { "@type": "Question", name: `¿Quién ingresa más, ${a.name} o ${b.name}?`, acceptedAnswer: { "@type": "Answer", text: `${a.revenue >= b.revenue ? a.name : b.name}, con ${formatEuro(Math.max(a.revenue, b.revenue))} de ingresos frente a ${formatEuro(Math.min(a.revenue, b.revenue))}.` } } : null].filter(Boolean) };
+  const faqs: { q: string; a: string }[] = [];
+  if (a.revenue && b.revenue) {
+    const [hi, lo] = a.revenue >= b.revenue ? [a, b] : [b, a];
+    faqs.push({
+      q: t(`¿Quién ingresa más, ${a.name} o ${b.name}?`, `Chi incassa di più, ${a.name} o ${b.name}?`),
+      a: t(
+        `${hi.name}, con ${formatEuro(hi.revenue!)} de ingresos frente a ${formatEuro(lo.revenue!)} del ${lo.name} (temporada ${season}).`,
+        `${hi.name}, con ${formatEuro(hi.revenue!)} di ricavi contro ${formatEuro(lo.revenue!)} del ${lo.name} (stagione ${season}).`,
+      ),
+    });
+  }
+  if (a.debt && b.debt) {
+    const da = a.debt, db = b.debt;
+    const q = t(`¿Quién tiene más deuda, ${a.name} o ${b.name}?`, `Chi ha più debito, ${a.name} o ${b.name}?`);
+    if (da.kind === db.kind && da.kind !== "caja") {
+      const [hi, lo] = da.amount >= db.amount ? [a, b] : [b, a];
+      faqs.push({
+        q,
+        a: t(
+          `${hi.name}: ${formatEuro(hi.debt!.amount)} de deuda ${kindLabel(da.kind, false)} frente a ${formatEuro(lo.debt!.amount)} del ${lo.name}. Fuentes: ${da.source.name}; ${db.source.name}.`,
+          `${hi.name}: ${formatEuro(hi.debt!.amount)} di debito ${kindLabel(da.kind, true)} contro ${formatEuro(lo.debt!.amount)} del ${lo.name}. Fonti: ${da.source.name}; ${db.source.name}.`,
+        ),
+      });
+    } else {
+      faqs.push({
+        q,
+        a: t(
+          `No se pueden comparar tal cual, porque cada club publica una medida distinta. ${a.name}: ${formatEuro(da.amount)} (${kindLabel(da.kind, false)}, a ${da.year}). ${b.name}: ${formatEuro(db.amount)} (${kindLabel(db.kind, false)}, a ${db.year}). La deuda neta ya resta el dinero que el club tiene en caja; la bruta no. Fuentes: ${da.source.name}; ${db.source.name}.`,
+          `Non si possono confrontare così come sono, perché ogni club pubblica una misura diversa. ${a.name}: ${formatEuro(da.amount)} (${kindLabel(da.kind, true)}, al ${da.year}). ${b.name}: ${formatEuro(db.amount)} (${kindLabel(db.kind, true)}, al ${db.year}). Il debito netto toglie già i soldi in cassa; quello lordo no. Fonti: ${da.source.name}; ${db.source.name}.`,
+        ),
+      });
+    }
+  }
+  const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
   const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Fútbol", item: `${SITE}/futbol/` }, { "@type": "ListItem", position: 3, name: `${a.name} vs ${b.name}`, item: `${SITE}/futbol/${par}/` }] };
   const clubHref = (c: ClubMetrics) => (CLUB_PAGE_SLUGS.includes(c.slug) ? `/futbol/${c.slug}/` : "/futbol/");
 
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 py-8">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      {faqs.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <nav className="text-sm text-muted mb-6">
         <Link href="/" className="hover:text-fg neon-text font-semibold">Cuentas Claras</Link>{" "}
@@ -172,7 +211,7 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
         <span className="opacity-50">/ {a.name} vs {b.name}</span>
       </nav>
       <header>
-        <p className="text-xs uppercase tracking-widest text-cyan/80">⚽ {t("Comparativa financiera · datos oficiales", "Confronto finanziario · dati ufficiali")}</p>
+        <p className="text-xs uppercase tracking-widest text-cyan/80">⚽ {t(`Comparativa financiera · temporada ${season}`, `Confronto finanziario · stagione ${season}`)}</p>
         <h1 className="text-2xl md:text-4xl font-bold mt-1">
           {flag(a.league)} <span className="neon-text">{a.name}</span> vs {flag(b.league)} <span className="neon-text">{b.name}</span>
         </h1>
@@ -186,13 +225,36 @@ function Comparison({ a, b, par }: { a: ClubMetrics; b: ClubMetrics; par: string
           <div className="px-3 py-2.5 font-semibold text-center border-l border-[var(--panel-border)]">{b.name}</div>
           {rows.map((r) => (
             <div key={r.label} className="contents">
-              <div className="px-3 py-2.5 text-muted border-t border-[var(--panel-border)]">{r.label}</div>
-              <div className="px-3 py-2.5 tabular text-center border-t border-l border-[var(--panel-border)]">{r.av}</div>
-              <div className="px-3 py-2.5 tabular text-center border-t border-l border-[var(--panel-border)]">{r.bv}</div>
+              <div className="px-3 py-2.5 text-muted border-t border-[var(--panel-border)]">
+                {r.label}
+                {r.hint && <span className="block text-[11px] opacity-70">{r.hint}</span>}
+              </div>
+              <div className="px-3 py-2.5 tabular text-center border-t border-l border-[var(--panel-border)]">
+                {r.av}
+                {r.ah && <span className="block text-[11px] text-muted">{r.ah}</span>}
+              </div>
+              <div className="px-3 py-2.5 tabular text-center border-t border-l border-[var(--panel-border)]">
+                {r.bv}
+                {r.bh && <span className="block text-[11px] text-muted">{r.bh}</span>}
+              </div>
             </div>
           ))}
         </div>
       </div>
+
+      {faqs.length > 0 && (
+        <section className="mt-8">
+          <h2 className="text-lg font-semibold mb-3">{t("Preguntas frecuentes", "Domande frequenti")}</h2>
+          <div className="space-y-2.5">
+            {faqs.map((f, i) => (
+              <details key={f.q} className="glass p-4" {...(i === 0 ? { open: true } : {})}>
+                <summary className="font-medium cursor-pointer marker:text-cyan">{f.q}</summary>
+                <p className="text-sm text-muted mt-2">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
 
       <ShareBar className="mt-5" text={`⚽ ${a.name} vs ${b.name} — ${t("¿quién ingresa y debe más?", "chi incassa e deve di più?")} 👀 ${t("datos oficiales", "dati ufficiali")}`} />
 

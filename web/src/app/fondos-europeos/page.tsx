@@ -5,9 +5,11 @@ import { articleLd, FONTI } from "@/lib/jsonld";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "España recibe 163.000 M€ de Europa. ¿En qué se van?",
+  // CTR 1,2% (647 impr / 8 clic, ott 2026): mancava la parola che la gente
+  // cerca («fondos europeos») e la description mescolava IT e dava già tutto.
+  title: "Fondos europeos: 163.000 M€ para España. ¿En qué se van?",
   description:
-    "¿Cuánto dinero de Europa recibe España e Italia tras la pandemia? España, hasta 163.000 M€ (unos 80.000 a fondo perdido); Italia, 194.400 M€ con el PNRR. Hay que gastarlo antes de fin de 2026. Cifras oficiales. Quanti soldi riceve l'Italia col PNRR.",
+    "¿Sabes en qué se gasta el dinero de Europa? España puede recibir hasta 163.000 M€ y el plazo acaba a fin de 2026. Mira cuánto llegó y qué falta.",
   keywords: [
     "fondos Next Generation España",
     "cuánto dinero recibe España de Europa",
@@ -38,6 +40,7 @@ const faqLd = {
     { q: "¿Cuánto dinero recibe España de Europa?", a: "Hasta 163.000 millones de euros (unos 80.000 a fondo perdido). Hasta ahora ha recibido unos 71.000 millones. Fuente: Plan de Recuperación." },
     { q: "¿Cuánto recibe Italia con el PNRR?", a: "194.400 millones de euros: 71.800 a fondo perdido y 122.600 en préstamos. Ya ha recibido en torno al 85%. Fuente: Italia Domani / MEF." },
     { q: "¿Hay que devolver este dinero?", a: "Una parte no (las subvenciones a fondo perdido); la otra sí (los préstamos, en condiciones ventajosas)." },
+    { q: "¿Hasta cuándo hay plazo para gastarlo?", a: "El fondo europeo se cierra a finales de 2026: los proyectos tenían que estar terminados antes del 31 de agosto de 2026 y Europa hace los últimos pagos antes del 31 de diciembre de 2026." },
   ].map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
 };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Fondos europeos", item: `${SITE}/fondos-europeos/` }] };

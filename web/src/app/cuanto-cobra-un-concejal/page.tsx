@@ -4,13 +4,17 @@ import { LocaleProvider } from "@/i18n/LocaleProvider";
 import SiteNav from "@/components/SiteNav";
 import HeroBanner from "@/components/HeroBanner";
 import { articleLd, FONTI } from "@/lib/jsonld";
+import { TRAMOS_ES, FUENTE_ES, nEu } from "@/data/fasce-sindaci";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
 export const metadata: Metadata = {
-  title: "¿Cuánto cobra un concejal? Desde 0 € a sueldo completo",
+  // CTR 1,3% (468 impr / 6 clic, ott 2026): il titolo non aveva un numero e
+  // la description non diceva che esiste un tetto. Il tetto (116.160 €, oltre
+  // 500.000 abitanti) è quello della Ley 31/2022 PGE 2023 art. 18 (TRAMOS_ES).
+  title: "¿Cuánto cobra un concejal? De 0 € a 116.160 € al año",
   description:
-    "¿Cuánto cobra un concejal de un ayuntamiento? Te explicamos fácil los tres casos (dedicación exclusiva, parcial o solo por asistencia a plenos) y dónde ver el sueldo real del alcalde de tu ciudad.",
+    "¿Tu concejal cobra sueldo o solo por pleno? Hay tres casos y un tope legal según los habitantes. Mira cuánto puede cobrar en tu municipio.",
   keywords: ["cuánto cobra un concejal", "sueldo concejal", "retribuciones concejales", "dedicación exclusiva concejal", "dietas concejales"],
   alternates: { canonical: `${SITE}/cuanto-cobra-un-concejal/` },
   openGraph: { title: "¿Cuánto cobra un concejal?", description: "Cómo funciona el sueldo de los concejales, explicado fácil.", url: `${SITE}/cuanto-cobra-un-concejal/`, type: "article" },
@@ -31,6 +35,10 @@ export default function ConcejalPage() {
     { q: "¿Cuánto cobra un concejal?", a: "Depende del ayuntamiento y de si tiene dedicación. No hay una cifra única: la fija el pleno de cada ayuntamiento, con topes según el tamaño del municipio. Un concejal sin dedicación puede cobrar solo unos euros por pleno; uno con dedicación exclusiva cobra un sueldo que en las grandes ciudades ronda decenas de miles de euros al año." },
     { q: "¿Todos los concejales cobran un sueldo?", a: "No. Solo los que tienen dedicación exclusiva o parcial (reconocida por el pleno) cobran una retribución fija. El resto cobra únicamente por asistir a plenos y comisiones (una cantidad por sesión) y, muchas veces, poco o nada." },
     { q: "¿Y el alcalde?", a: "El alcalde suele tener dedicación exclusiva y una retribución más alta, también fijada por el pleno con topes legales. En Cuentas Claras puedes ver el sueldo real del alcalde de cada ciudad, con la fuente oficial." },
+    {
+      q: "¿Cuánto es lo máximo que puede cobrar un concejal?",
+      a: `Depende de los habitantes. La ley pone un tope al año por cargo: ${nEu(TRAMOS_ES[1].tope ?? 0)} € de 1.000 a 5.000 habitantes y hasta ${nEu(TRAMOS_ES[TRAMOS_ES.length - 1].tope ?? 0)} € en los municipios de más de 500.000. Por debajo de 1.000 habitantes no hay dedicación exclusiva. Fuente: ${FUENTE_ES.name}.`,
+    },
     { q: "¿Quién decide cuánto cobran?", a: "El pleno del ayuntamiento, dentro de los límites máximos que marca la ley (Ley de Bases de Régimen Local y los topes anuales de los Presupuestos Generales del Estado según la población)." },
   ];
   const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
@@ -92,6 +100,22 @@ export default function ConcejalPage() {
                 </details>
               ))}
             </div>
+          </section>
+
+          <section className="mt-12">
+            <h2 className="text-lg font-semibold mb-3">El tope legal, según los habitantes</h2>
+            <p className="text-sm text-muted mb-3">Es lo máximo al año que puede cobrar un cargo del ayuntamiento (alcalde o concejal). Cada pleno decide cuánto, sin pasar de aquí.</p>
+            <ul className="glass p-4 space-y-1.5 text-sm">
+              {TRAMOS_ES.map((t) => (
+                <li key={t.min} className="flex justify-between gap-3">
+                  <span className="text-muted">{t.label}</span>
+                  <span className="font-medium tabular-nums">{t.tope === null ? "sin dedicación exclusiva" : `${nEu(t.tope)} €`}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-muted mt-2">
+              Fuente: <a href={FUENTE_ES.url} target="_blank" rel="noopener" className="underline hover:text-cyan">{FUENTE_ES.name}</a>.
+            </p>
           </section>
 
           <footer className="mt-16 pt-8 border-t border-[var(--panel-border)] text-sm text-muted">

@@ -174,6 +174,11 @@ nello snippet e passava oltre.
 Ora il nome sta nella **description**, in un **H2** e nelle **FAQ** (anche in JSON-LD).
 ⚠️ **Il title NON è stato toccato**: la formula «numero + domanda» porta il 9-14% di CTR
 sulle schede città, non si rompe per un caso.
+**Eccezione (21/10/2026):** dove la Search Console mostra ricerche a zero clic sul
+nome o sullo stipendio del sindaco, il title diventa «persona + quanto guadagna».
+Solo per gli slug in `TITOLO_SINDACO` (`src/app/[pais]/[ciudad]/page.tsx`): oggi
+Oleiros, Aldaia, Roma, Genova. Si aggiunge una città solo con la prova in GSC, e
+dopo 3-4 settimane si confronta il CTR: se scende, si torna al titolo base.
 
 Aggiornamento: `cd web && npm run etl:alcaldes` (rilegge il registro ufficiale del
 Ministerio de Política Territorial). Copertura attuale **406/406 comuni**. Se il match

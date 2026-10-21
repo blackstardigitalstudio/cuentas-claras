@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { COUNTRIES } from "@/lib/data";
 import { TAGLIE_ES, tramoPorHabitantes, FUENTE_ES, nEu } from "@/data/fasce-sindaci";
 import TramoClient, { type Municipio, type Real } from "./TramoClient";
+import { faqTramo, lugar } from "./faq";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 
@@ -77,22 +78,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // La pregunta del título tiene que ser una que la página responda de verdad.
   // Si no tenemos la mediana real de ese tramo, prometer "¿Y real?" sería
   // vender algo que dentro no está.
+  // Bajo 1.000 habitantes no hay tope que enseñar: el título es la pregunta
+  // tal cual la teclea la gente ("cuánto cobra un alcalde de un pueblo de 500
+  // habitantes", 69 impresiones y 0 clics con el título anterior). El número
+  // ya va dentro: los habitantes.
   const title = t.tope === null
-    ? `Alcalde de ${n} habitantes: ¿puede cobrar sueldo?`
+    ? `¿Cuánto cobra un alcalde de un pueblo de ${n} habitantes?`
     : real
       ? `Alcalde de ${n} habitantes: tope ${eur(t.tope)}. ¿Y real?`
       : `Alcalde de ${n} habitantes: hasta ${eur(t.tope)}. ¿Lo cobra?`;
 
+  const pregunta = `¿Cuánto cobra un alcalde de ${lugar(hab)} de ${n} habitantes?`;
   const description = t.tope === null
-    ? `¿Cuánto cobra el alcalde de un pueblo de ${n} habitantes? Por debajo de 1.000 habitantes la ley no permite la dedicación exclusiva: como mucho parcial, o solo asistencias por pleno. Muchos alcaldes no cobran nada del ayuntamiento. Te explicamos quién lo decide y por qué.`
-    : `¿Cuánto cobra el alcalde de un pueblo de ${n} habitantes? La ley permite hasta ${eur(t.tope)} al año en municipios ${t.label}` +
-      (real ? `, pero la mitad de los alcaldes de ese tamaño cobra ${eur(real.mediana)} o menos: lo hemos calculado sobre ${real.n} municipios con la retribución oficial declarada.` : ". Te contamos quién decide la cifra real.");
+    ? `${pregunta} Por debajo de 1.000 habitantes la ley no le deja tener dedicación exclusiva. Entonces, ¿cobra algo? Depende de una decisión del pleno: te lo explicamos con la ley en la mano.`
+    : `${pregunta} La ley permite hasta ${eur(t.tope)} brutos al año en municipios ${t.label}` +
+      (real
+        ? `, pero la mitad de los alcaldes de ese tamaño cobra ${eur(real.mediana)} o menos (${real.n} municipios con la retribución oficial). Al mes, en neto y quién lo decide, dentro.`
+        : `: unos ${eur(t.tope / 14)} por paga en 14 pagas. ¿Lo cobra de verdad? Te contamos quién decide la cifra.`);
 
   return {
     title,
     description,
     keywords: [
       `cuánto cobra un alcalde de un pueblo de ${n} habitantes`,
+      `cuánto cobra un alcalde de ${n} habitantes al mes`,
       `sueldo alcalde ${n} habitantes`,
       "sueldo alcaldes pueblos pequeños",
       "cuánto cobra un alcalde en España",
@@ -127,18 +136,7 @@ export default async function SueldoAlcaldePage({ params }: Props) {
   const faqLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        q: `¿Cuánto cobra el alcalde de un pueblo de ${n} habitantes?`,
-        a: t.tope === null
-          ? "En municipios de menos de 1.000 habitantes el alcalde no puede tener dedicación exclusiva. Como mucho dedicación parcial, o solo asistencias por cada pleno al que acude. Muchos no cobran nada del ayuntamiento."
-          : `Como máximo ${eur(t.tope)} al año: es el tope que fija la Ley 31/2022 para municipios ${t.label}.` +
-            (real ? ` En la práctica la mitad de los alcaldes de este tamaño cobra ${eur(real.mediana)} o menos, según las retribuciones oficiales de ${real.n} municipios.` : ""),
-      },
-      { q: "¿Ese tope es lo que cobran de verdad?", a: "No. La ley solo fija el máximo; por debajo decide cada ayuntamiento en un pleno. Por eso dos municipios del mismo tamaño pueden pagar cantidades muy distintas, y algunos alcaldes no cobran nada." },
-      { q: "¿Todos los alcaldes cobran sueldo?", a: "No. El alcalde solo cobra si el pleno le aprueba una dedicación, exclusiva o parcial. Si no, únicamente percibe asistencias por acudir a los plenos. En España uno de cada tres alcaldes no cobra sueldo del ayuntamiento." },
-      { q: "¿Quién decide el sueldo del alcalde?", a: "El pleno del ayuntamiento, dentro del tope máximo que fija la Ley de Presupuestos Generales del Estado según los habitantes del municipio." },
-    ].map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })),
+    mainEntity: faqTramo({ habitantes: hab, tope: t.tope, tramoLabel: t.label, real: real ? { mediana: real.mediana, n: real.n } : null }).map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })),
   };
 
   const articleLd = {

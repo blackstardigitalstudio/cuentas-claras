@@ -94,8 +94,8 @@ export default function ItaliaPage() {
             Dove vanno <span className="neon-text">i soldi pubblici</span> dei comuni italiani?
           </h1>
           <p className="mt-4 text-base md:text-lg text-muted max-w-2xl">
-            Entrate e spese reali dei comuni italiani, in linguaggio chiaro, con dati ufficiali e il dettaglio della spesa
-            pubblica per missione. Cerca il tuo comune e segui ogni euro.
+            Quanto incassa e quanto spende il tuo comune. Dati ufficiali, detti in parole semplici. Vedi la spesa pubblica
+            divisa per missione, cioè per area. Cerca il tuo comune e segui ogni euro.
           </p>
         </header>
 
@@ -149,17 +149,17 @@ export default function ItaliaPage() {
           <h2 className="text-xl font-semibold">Sui dati italiani: fonti e veridicità</h2>
           <div className="text-sm text-muted mt-3 space-y-3">
             <p>
-              <strong className="text-fg">Cuentas Claras</strong> mostra entrate e spese reali dei comuni italiani con dati
-              ufficiali, in linguaggio chiaro, con il dettaglio della spesa pubblica per missione e programma.
+              <strong className="text-fg">Cuentas Claras</strong> mostra entrate e spese vere dei comuni italiani. Usa solo
+              dati ufficiali, detti in parole semplici. La spesa pubblica è divisa per missione e programma, cioè per area e voce.
             </p>
             <p>
-              <strong className="text-fg">Fonti ufficiali:</strong> portali open data dei comuni (Comune di Milano, Comune di
-              Bologna). Ogni città indica la fonte e l&apos;anno. Per ogni comune verifichiamo la quadratura (entrate ≈ uscite) e
-              non pubblichiamo mai cifre non verificabili.
+              <strong className="text-fg">Fonti ufficiali:</strong> i portali open data dei comuni, cioè i dati aperti
+              (Comune di Milano, Comune di Bologna). Ogni città indica la fonte e l&apos;anno. Per ogni comune controlliamo che i
+              conti tornino (entrate ≈ uscite). Una cifra che non si può controllare non la pubblichiamo mai.
             </p>
             <p>
-              <strong className="text-fg">Sempre aggiornati:</strong> il sito si rigenera automaticamente e mostra l&apos;ultima
-              pubblicazione ufficiale. Stiamo aggiungendo nuovi comuni man mano che pubblicano dati leggibili e verificabili.
+              <strong className="text-fg">Sempre aggiornati:</strong> il sito si aggiorna da solo. Mostra sempre gli ultimi
+              dati ufficiali usciti. Aggiungiamo nuovi comuni appena pubblicano dati chiari e controllabili.
             </p>
           </div>
         </section>

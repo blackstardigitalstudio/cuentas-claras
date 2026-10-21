@@ -7,6 +7,7 @@ import SimpleExplainer from "@/components/SimpleExplainer";
 import ShareBar from "@/components/ShareBar";
 import ShareFact from "@/components/ShareFact";
 import { FUENTE_ES, TAGLIE_ES, nEu } from "@/data/fasce-sindaci";
+import { faqTramo, lugar } from "./faq";
 
 export type Municipio = { name: string; slug: string; poblacion: number; anual: number };
 
@@ -36,7 +37,7 @@ export default function TramoClient(p: Props) {
         <header className="pt-8">
           <p className="text-xs uppercase tracking-widest text-cyan/70">🏛️ Sueldo del alcalde · tope legal y realidad</p>
           <h1 className="text-2xl md:text-4xl font-bold mt-2 leading-tight">
-            ¿Cuánto cobra el alcalde de un pueblo de <span className="neon-text">{hab} habitantes</span>?
+            ¿Cuánto cobra un alcalde de {lugar(p.habitantes)} de <span className="neon-text">{hab} habitantes</span>?
           </h1>
 
           {/* La respuesta, entera y en la primera frase. */}
@@ -191,27 +192,7 @@ export default function TramoClient(p: Props) {
         <section className="mt-10">
           <h2 className="text-lg font-semibold mb-3">Preguntas frecuentes</h2>
           <div className="space-y-2.5">
-            {[
-              {
-                q: `¿Cuánto cobra el alcalde de un pueblo de ${hab} habitantes?`,
-                a: p.tope === null
-                  ? `En municipios de menos de 1.000 habitantes el alcalde no puede tener dedicación exclusiva. Como mucho dedicación parcial, o solo asistencias por cada pleno. Muchos no cobran nada del ayuntamiento.`
-                  : `Como máximo ${eur(p.tope)} al año: es el tope que fija la ley para municipios ${p.tramoLabel}.` +
-                    (p.real ? ` En la práctica la mitad de los alcaldes de este tamaño cobra ${eur(p.real.mediana)} o menos.` : ""),
-              },
-              {
-                q: "¿Ese tope es lo que cobran de verdad?",
-                a: "No. La ley solo fija el máximo; por debajo decide cada ayuntamiento en un pleno. Por eso dos municipios del mismo tamaño pueden pagar cantidades muy distintas, y algunos alcaldes no cobran nada.",
-              },
-              {
-                q: "¿Todos los alcaldes cobran sueldo?",
-                a: "No. El alcalde solo cobra si el pleno le aprueba una dedicación, exclusiva o parcial. Si no, únicamente percibe asistencias por acudir a los plenos. En España uno de cada tres alcaldes no cobra sueldo del ayuntamiento.",
-              },
-              {
-                q: "¿Quién decide el sueldo del alcalde?",
-                a: "El pleno del ayuntamiento, dentro del tope máximo que fija la Ley de Presupuestos Generales del Estado según los habitantes del municipio.",
-              },
-            ].map((f, i) => (
+            {faqTramo({ habitantes: p.habitantes, tope: p.tope, tramoLabel: p.tramoLabel, real: p.real }).map((f, i) => (
               <details key={i} className="glass p-4" {...(i === 0 ? { open: true } : {})}>
                 <summary className="font-medium cursor-pointer marker:text-cyan">{f.q}</summary>
                 <p className="text-sm text-muted mt-2">{f.a}</p>

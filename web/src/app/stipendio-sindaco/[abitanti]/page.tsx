@@ -65,18 +65,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const anno = lordoAnnuoIT(f);
   const n = nEu(ab);
   return {
-    // Numero + domanda aperta: il numero dà credibilità, la domanda ("e al
-    // netto?") Google non la può chiudere nello snippet.
-    title: `Sindaco di ${n} abitanti: ${eur(mese)} al mese. E netti?`,
+    // Numero + domanda aperta. Il title parte con le parole che la gente
+    // digita ("stipendio sindaco 15.000 abitanti"); il netto resta la domanda
+    // che Google non chiude nello snippet. Sopra i 50.000 c'e' il caso
+    // capoluogo, quindi "da": la cifra e' il minimo, non l'unica.
+    title: `Stipendio sindaco ${n} abitanti: ${serveRuoloIT(ab) ? "da " : ""}${eur(mese)}, e netto?`,
     description:
-      `Quanto guadagna il sindaco di un comune con ${n} abitanti? ${eur(mese)} lordi al mese, cioè ${eur(anno)} l'anno: è l'indennità fissata per legge per i comuni ${f.label}.` +
+      `Stipendio del sindaco di un comune di ${n} abitanti: ${eur(mese)} lordi al mese, ${eur(anno)} l'anno, fissati per legge.` +
       (serveRuoloIT(ab)
-        ? ` Attenzione: se il comune è capoluogo la cifra sale (fino a ${eur(Math.round(BASE_IT * 0.8))} al mese per un capoluogo di regione).`
+        ? ` Se il comune è capoluogo sale (fino a ${eur(Math.round(BASE_IT * 0.8))} al mese per un capoluogo di regione).`
         : "") +
-      ` Qui trovi anche la stima al netto con il calcolo in chiaro, e i comuni veri di questa dimensione con lo stipendio del loro sindaco.`,
+      ` Quanto gli resta in tasca? Il netto con il calcolo in chiaro e i comuni veri di questa dimensione.`,
     keywords: [
       `stipendio sindaco ${n} abitanti`,
       `quanto guadagna un sindaco con ${n} abitanti`,
+      `stipendio sindaco comune di ${n} abitanti`,
+      `stipendio netto sindaco ${n} abitanti`,
       `indennità sindaco ${n} abitanti`,
       "quanto guadagna un sindaco netto",
       "stipendio sindaco piccolo comune",
@@ -115,24 +119,24 @@ export default async function StipendioSindacoPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: [
-      { q: `Quanto guadagna un sindaco con ${n} abitanti?`, a: `${eur(lordoMese)} lordi al mese, cioè ${eur(lordoAnno)} lordi all'anno. È il ${f.pct}% del trattamento dei Presidenti di Regione (13.800 € al mese), la percentuale che la legge assegna ai comuni ${f.label}.` },
-      { q: `Quanto guadagna al netto un sindaco di un comune con ${n} abitanti?`, a: `Circa ${eur(Math.round(nettoStimato / 12))} al mese, togliendo l'IRPEF secondo gli scaglioni 2026 (23% fino a 28.000 €, 33% fino a 50.000 €, 43% oltre). È una stima: il netto reale cambia con le addizionali regionali e comunali e con le detrazioni personali.` },
+      { q: `Quanto guadagna il sindaco di un comune di ${n} abitanti?`, a: `${eur(lordoMese)} lordi al mese, cioè ${eur(lordoAnno)} lordi all'anno. È il ${f.pct}% del trattamento dei Presidenti di Regione (13.800 € al mese), la percentuale che la legge assegna ai comuni ${f.label}.` },
+      { q: `E al netto quanto prende il sindaco di un comune di ${n} abitanti?`, a: `Circa ${eur(Math.round(nettoStimato / 12))} al mese (${eur(nettoStimato)} l'anno), togliendo l'IRPEF secondo gli scaglioni 2026: 23% fino a 28.000 €, 33% fino a 50.000 €, 43% oltre. È una stima: il netto vero cambia con le addizionali del proprio comune e con le detrazioni personali.` },
       ...(ruoli.length
         ? [{
             q: `E se il comune di ${n} abitanti è capoluogo?`,
-            a: `La percentuale sale: ${ruoli.map((r) => `${r.label} ${eur(r.lordoMese)} al mese (${r.pct}%)`).join("; ")}. La cifra di ${eur(lordoMese)} vale per un comune di questa dimensione che non è capoluogo.`,
+            a: `La cifra sale: ${ruoli.map((r) => `${r.label} ${eur(r.lordoMese)} al mese (${r.pct}%)`).join("; ")}. I ${eur(lordoMese)} valgono per un comune di questa dimensione che non è capoluogo.`,
           }]
         : []),
-      { q: "Il sindaco prende sempre tutta l'indennità?", a: "No. Se resta al suo lavoro da dipendente senza chiedere l'aspettativa, l'indennità è dimezzata." },
-      { q: "Chi decide quanto guadagna un sindaco?", a: "La legge, non il comune: è una percentuale fissa del trattamento dei Presidenti di Regione, stabilita in base agli abitanti dalla L. 234/2021 e dal DM Interno del 30/05/2022." },
-      { q: "Un sindaco prende la tredicesima?", a: "No: l'indennità di funzione si percepisce per 12 mensilità, senza tredicesima né TFR." },
+      { q: "Il sindaco prende sempre tutta l'indennità?", a: "No. Se resta al suo lavoro da dipendente senza chiedere l'aspettativa, l'indennità è dimezzata. Molti sindaci di piccoli comuni prendono quindi la metà della cifra di legge." },
+      { q: "Chi decide quanto guadagna un sindaco?", a: "La legge, non il comune. L'importo è una percentuale fissa del trattamento dei Presidenti di Regione, stabilita in base agli abitanti dalla L. 234/2021 e dal DM Interno del 30/05/2022, a regime dal 2024." },
+      { q: "Un sindaco prende la tredicesima?", a: "No. L'indennità di funzione si prende per 12 mensilità: non è uno stipendio da dipendente e non ha tredicesima né TFR." },
     ].map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })),
   };
 
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: `Quanto guadagna il sindaco di un comune con ${n} abitanti`,
+    headline: `Quanto guadagna il sindaco di un comune di ${n} abitanti`,
     inLanguage: "it",
     isPartOf: { "@type": "WebSite", name: "Cuentas Claras", url: SITE },
     citation: { "@type": "CreativeWork", name: FONTE_IT.name, url: FONTE_IT.url },

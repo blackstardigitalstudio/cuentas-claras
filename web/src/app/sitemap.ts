@@ -116,11 +116,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const seen = new Set<string>();
   for (const p of ["es", "it"] as CountryCode[]) {
     for (const r of Object.values(COUNTRIES[p].regions)) {
+      // Las fichas de ejemplo van con noindex → no las incluimos en el sitemap.
+      // Ojo: hay que saltarlas ANTES de marcar el slug como visto. La provincia
+      // «Roma» de ejemplo y la ciudad real «roma» comparten slug: si la de
+      // ejemplo llegaba primero, Roma, Napoli, Torino… se quedaban fuera.
+      if (r.isSample) continue;
       const key = `${p}/${r.slug}`;
       if (seen.has(key)) continue;
       seen.add(key);
-      // Las fichas de ejemplo van con noindex → no las incluimos en el sitemap.
-      if (r.isSample) continue;
       urls.push({
         url: `${SITE}/${p}/${r.slug}/`,
         lastModified,

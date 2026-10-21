@@ -177,7 +177,7 @@ sulle schede città, non si rompe per un caso.
 **Eccezione (21/10/2026):** dove la Search Console mostra ricerche a zero clic sul
 nome o sullo stipendio del sindaco, il title diventa «persona + quanto guadagna».
 Solo per gli slug in `TITOLO_SINDACO` (`src/app/[pais]/[ciudad]/page.tsx`): oggi
-Oleiros, Aldaia, Roma, Genova. Si aggiunge una città solo con la prova in GSC, e
+Oleiros, Aldaia, Roma, Genova, Torino, Prato. Si aggiunge una città solo con la prova in GSC, e
 dopo 3-4 settimane si confronta il CTR: se scende, si torna al titolo base.
 
 Aggiornamento: `cd web && npm run etl:alcaldes` (rilegge il registro ufficiale del

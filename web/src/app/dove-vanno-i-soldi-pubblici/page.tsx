@@ -70,7 +70,7 @@ export default function GuidaSpesaPage() {
           <p className="text-sm md:text-base text-muted mt-3">
             Il tuo Comune incassa soldi dalle tue tasse e dallo Stato. Poi li spende in servizi per la città. Qui vedi
             <span className="text-fg/90"> dove vanno questi soldi</span>, spiegato facile. Abbiamo già la spesa di{" "}
-            <span className="text-fg/90">{cityCount} comuni</span> ({formatCompact(realGastos)} in totale).
+            <span className="text-fg/90">{cityCount} comuni</span> ({formatCompact(realGastos, "it")} in totale).
           </p>
 
           <h2 className="text-lg md:text-xl font-semibold mt-8 mb-3">Le 5 grandi aree di spesa</h2>

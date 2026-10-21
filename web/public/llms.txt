@@ -1,0 +1,52 @@
+# Cuentas Claras
+
+> Sitio bilingüe (español / italiano) que explica en lenguaje sencillo a dónde va el dinero público en España e Italia: presupuestos de los ayuntamientos, deuda, sueldos de alcaldes y políticos, y el dinero del fútbol. Cada cifra viene de una fuente oficial (Ministerio de Hacienda, ISPA, Portal de Transparencia, Congreso, Senado, ISTAT, OpenCivitas, Camera, Senato) y cada página indica la fuente y el año del dato.
+
+Cuentas Claras no es un medio de opinión: publica datos oficiales y los explica. Cuando un dato no existe, la página lo dice en lugar de estimarlo. Los datos no son en tiempo real: cada cifra lleva el año al que se refiere.
+
+## España — ayuntamientos
+
+- [Presupuesto de cada ayuntamiento](https://www.cuentas-clara.com/es/madrid/): ingresos, gastos, deuda y sueldo del alcalde de cada municipio (una página por ciudad, /es/<ciudad>/)
+- [Deuda viva de los ayuntamientos](https://www.cuentas-clara.com/deuda-municipios/): ranking oficial de Hacienda, total y por habitante
+- [Sueldos de los alcaldes](https://www.cuentas-clara.com/sueldos-alcaldes/): ranking oficial (ISPA)
+- [Sueldo de un alcalde por número de habitantes](https://www.cuentas-clara.com/sueldo-alcalde/1000-habitantes/): límites legales por tamaño del municipio
+- [Cuánto cobra un concejal](https://www.cuentas-clara.com/cuanto-cobra-un-concejal/)
+- [Gasto por habitante](https://www.cuentas-clara.com/gasto-por-habitante/)
+- [Ranking de ciudades](https://www.cuentas-clara.com/ranking/)
+
+## España — Estado
+
+- [Sueldos de los políticos](https://www.cuentas-clara.com/sueldos-politicos/): presidente del Gobierno, ministros, diputados, senadores
+- [En qué se gasta el dinero público](https://www.cuentas-clara.com/en-que-se-gasta-el-dinero-publico/)
+- [Deuda nacional](https://www.cuentas-clara.com/deuda-nacional/)
+- [Gasto en pensiones](https://www.cuentas-clara.com/gasto-pensiones/) · [Gasto en sanidad](https://www.cuentas-clara.com/gasto-sanidad/)
+- [Fondos europeos](https://www.cuentas-clara.com/fondos-europeos/)
+- [Impuestos sobre el sueldo](https://www.cuentas-clara.com/impuestos-sueldo/)
+- [Sueldos por profesión](https://www.cuentas-clara.com/sueldos-profesiones/)
+
+## Italia
+
+- [Panoramica Italia](https://www.cuentas-clara.com/italia/)
+- [Bilancio di ogni comune](https://www.cuentas-clara.com/it/roma/): entrate, spese e stipendio del sindaco (una pagina per comune, /it/<comune>/)
+- [Stipendi dei sindaci](https://www.cuentas-clara.com/stipendi-sindaci/) · [Stipendio del sindaco per numero di abitanti](https://www.cuentas-clara.com/stipendio-sindaco/10000-abitanti/)
+- [Quanto guadagna un consigliere comunale](https://www.cuentas-clara.com/quanto-guadagna-un-consigliere-comunale/)
+- [Stipendi dei politici](https://www.cuentas-clara.com/stipendi-politici/)
+- [Spesa dei comuni](https://www.cuentas-clara.com/spesa-comuni/)
+- [Dove vanno i soldi pubblici](https://www.cuentas-clara.com/dove-vanno-i-soldi-pubblici/)
+- [Debito pubblico](https://www.cuentas-clara.com/debito-pubblico/)
+- [Spesa per pensioni](https://www.cuentas-clara.com/spesa-pensioni/) · [Spesa sanitaria](https://www.cuentas-clara.com/spesa-sanita/)
+- [Fondi europei e PNRR](https://www.cuentas-clara.com/fondi-europei-pnrr/)
+- [Tasse sullo stipendio](https://www.cuentas-clara.com/tasse-stipendio/) · [Tasse sulla benzina](https://www.cuentas-clara.com/tasse-benzina/)
+
+## Fútbol / Calcio
+
+- [El dinero de los clubes de fútbol](https://www.cuentas-clara.com/futbol/) · [I soldi del calcio](https://www.cuentas-clara.com/calcio/)
+- [Deuda de los clubes](https://www.cuentas-clara.com/deuda-clubes-futbol/) · [Debito dei club](https://www.cuentas-clara.com/debito-club-calcio/)
+- [Premios de la Champions League](https://www.cuentas-clara.com/champions-league/) · [Premi Champions League](https://www.cuentas-clara.com/premi-champions-league/)
+
+## Feeds
+
+- [Sitemap](https://www.cuentas-clara.com/sitemap.xml)
+- [RSS español](https://www.cuentas-clara.com/rss.xml) · [RSS italiano](https://www.cuentas-clara.com/rss-it.xml)
+
+Made in Italy 🇮🇹

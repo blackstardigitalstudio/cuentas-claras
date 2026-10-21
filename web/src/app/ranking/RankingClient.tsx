@@ -15,6 +15,7 @@ function ranked(p: CountryCode) {
 }
 
 function Section({ pais, title, flag }: { pais: CountryCode; title: string; flag: string }) {
+  const { locale } = useLocale();
   const rows = ranked(pais);
   if (!rows.length) return null;
   const max = rows[0].gastos;
@@ -35,8 +36,8 @@ function Section({ pais, title, flag }: { pais: CountryCode; title: string; flag
                 </span>
               </span>
               <span className="text-right shrink-0">
-                <span className="tabular block text-sm font-semibold text-magenta">{formatCompact(r.gastos)}</span>
-                <span className="tabular block text-[11px] text-green">{formatCompact(r.ingresos)}</span>
+                <span className="tabular block text-sm font-semibold text-magenta">{formatCompact(r.gastos, locale)}</span>
+                <span className="tabular block text-[11px] text-green">{formatCompact(r.ingresos, locale)}</span>
               </span>
             </Link>
           </li>
@@ -69,7 +70,7 @@ function Inner() {
           kicker={it ? "🇪🇸🇮🇹 Spagna e Italia · dati ufficiali" : "🇪🇸🇮🇹 España e Italia · datos oficiales"}
           title={it ? "CHI SPENDE PIÙ" : "¿QUÉ CIUDAD GASTA MÁS"}
           highlight={it ? "SOLDI PUBBLICI?" : "DINERO PÚBLICO?"}
-          stat={formatCompact(top.r.gastos)}
+          stat={formatCompact(top.r.gastos, locale)}
           statLabel={it ? `spende di più (${top.r.name})` : `la que más gasta (${top.r.name})`}
           accent="#22d3ee"
           accent2="#f472b6"

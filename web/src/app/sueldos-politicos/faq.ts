@@ -43,6 +43,10 @@ export const FAQ_ES: Faq[] = [
     a: "3.366,99 € brutos al mes de base (dato del Congreso, 2026). A eso se suma una indemnización para gastos: 2.162,85 € al mes si es de fuera de Madrid, 1.032,38 € si es de Madrid.",
   },
   {
+    q: "¿Cuánto cobra un senador al mes?",
+    a: "3.417,54 € brutos al mes de base, en 14 pagas: unos 47.846 € al año (dato del Senado, septiembre de 2026). A eso se suma una indemnización para gastos: 2.193,50 € al mes si es de fuera de Madrid, 1.046,08 € si es de Madrid.",
+  },
+  {
     q: "¿Cuánto gana un parlamentario en Italia?",
     a: "La indemnización es de 10.435 € brutos al mes (unos 125.220 € al año). Además: una dieta de 3.503 €/mes y otros reembolsos para gastos (no son sueldo).",
   },
@@ -76,6 +80,10 @@ export const FAQ_IT: Faq[] = [
   {
     q: "Quanto guadagna un deputato in Spagna?",
     a: "3.366,99 € lordi al mese di base (dato del Congreso, 2026). A questo si aggiunge un rimborso spese: 2.162,85 € al mese se è eletto fuori Madrid, 1.032,38 € se è eletto a Madrid.",
+  },
+  {
+    q: "Quanto guadagna un senatore in Spagna?",
+    a: "3.417,54 € lordi al mese di base, in 14 mensilità: circa 47.846 € l'anno (dato del Senado, settembre 2026). In più un rimborso spese: 2.193,50 € al mese se è fuori Madrid, 1.046,08 € se è di Madrid.",
   },
   {
     q: "Da dove escono questi soldi?",

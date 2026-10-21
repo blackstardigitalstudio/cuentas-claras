@@ -40,16 +40,19 @@ function find(pais: string, ciudad: string): { country: CountryCode; r: RegionDa
 type Props = { params: Promise<{ pais: string; ciudad: string }> };
 
 // Città dove il titolo parla del sindaco invece che del bilancio (vedi generateMetadata).
-const TITOLO_SINDACO = new Set(["es/oleiros", "es/aldaia", "it/roma", "it/genova"]);
+// Solo città con ricerche "stipendio sindaco <città>" in Search Console (ottobre 2026)
+// e con mayorSalary in city-extras.ts: prima la prova in GSC, poi lo slug qui.
+const TITOLO_SINDACO = new Set([
+  "es/oleiros", "es/aldaia",
+  "it/roma", "it/genova", "it/torino", "it/prato",
+]);
 
 // Oltre i ~58 caratteri Google taglia il titolo.
 const MAX_TITLE = 58;
 const pickTitle = (cands: string[], fallback: string) => cands.find((c) => c.length <= MAX_TITLE) || fallback;
 
-// In italiano «mil M€» non vuol dire niente: i miliardi si scrivono «mld €».
-const num1It = new Intl.NumberFormat("it-IT", { maximumFractionDigits: 1 });
-const compactIt = (n: number) =>
-  Math.abs(n) >= 1_000_000_000 ? `${num1It.format(n / 1_000_000_000)} mld €` : formatCompact(n);
+// In italiano «mil M€» non vuol dire niente: formatCompact scrive già «mld €».
+const compactIt = (n: number) => formatCompact(n, "it");
 
 // Stipendio al mese = annuo diviso 12. In Italia è il dato di legge (l'indennità
 // è mensile, il decreto la fissa al mese). In Spagna è solo una divisione: lo
@@ -64,8 +67,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const es = pais === "es";
   // Título base: el NÚMERO delante + pregunta (CTR 9-14% en las fichas).
   const base = es
-    ? `Presupuesto de ${r.name} ${r.year}: ¿en qué se gastan ${formatCompact(r.gastos)}?`
-    : `Bilancio di ${r.name} ${r.year}: dove vanno ${formatCompact(r.gastos)}?`;
+    ? `Presupuesto de ${r.name} ${r.year}: ¿en qué se gastan ${formatCompact(r.gastos, pais)}?`
+    : `Bilancio di ${r.name} ${r.year}: dove vanno ${formatCompact(r.gastos, pais)}?`;
   // Il titolo «persona + stipendio» SOLO dove la Search Console mostra ricerche
   // a zero clic sul nome o sullo stipendio del sindaco (ottobre 2026):
   // «alcalde de oleiros», «ángel garcía seoane», «stipendio sindaco roma/genova»…
@@ -110,11 +113,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       : "";
   const deuda = r.debt
     ? es
-      ? ` Deuda viva: ${r.debt.amount > 0 ? formatCompact(r.debt.amount) : "sin deuda"}.`
+      ? ` Deuda viva: ${r.debt.amount > 0 ? formatCompact(r.debt.amount, pais) : "sin deuda"}.`
       : ` Debito: ${r.debt.amount > 0 ? compactIt(r.debt.amount) : "nessuno"}.`
     : "";
   const description = (lead ? `${lead} ` : "") + (es
-    ? `Presupuesto ${r.year}: ingresos ${formatCompact(r.ingresos)} y gastos ${formatCompact(r.gastos)}, por capítulo y por área.${deuda} Datos ${r.isSample ? "de ejemplo" : "oficiales"}.`
+    ? `Presupuesto ${r.year}: ingresos ${formatCompact(r.ingresos, pais)} y gastos ${formatCompact(r.gastos, pais)}, por capítulo y por área.${deuda} Datos ${r.isSample ? "de ejemplo" : "oficiales"}.`
     : `Bilancio ${r.year}: entrate ${compactIt(r.ingresos)} e spese ${compactIt(r.gastos)}, per capitolo e missione.${deuda} Dati ${r.isSample ? "di esempio" : "ufficiali"}.`);
   return {
     title,
@@ -220,7 +223,7 @@ export default async function CityPage({ params }: Props) {
         },
         {
           q: `¿Cuánto ingresa y cuánto gasta ${subj} en ${r.year}?`,
-          a: `En ${r.year}, ${r.name} tiene unos ingresos de ${formatEuro(r.ingresos)} y unos gastos de ${formatEuro(r.gastos)}, ${bal === 0 ? "con un presupuesto equilibrado (ingresos = gastos)" : `con un ${bal > 0 ? "superávit" : "déficit"} de ${formatCompact(Math.abs(bal))}`}.`,
+          a: `En ${r.year}, ${r.name} tiene unos ingresos de ${formatEuro(r.ingresos)} y unos gastos de ${formatEuro(r.gastos)}, ${bal === 0 ? "con un presupuesto equilibrado (ingresos = gastos)" : `con un ${bal > 0 ? "superávit" : "déficit"} de ${formatCompact(Math.abs(bal), pais)}`}.`,
         },
         { q: `¿En qué se gasta el dinero público en ${r.name}?`, a: `Las principales áreas de gasto son: ${gList}.` },
         r.alcalde && {
@@ -256,7 +259,7 @@ export default async function CityPage({ params }: Props) {
         },
         {
           q: `Quanto incassa e quanto spende ${subj} nel ${r.year}?`,
-          a: `Nel ${r.year}, ${r.name} ha entrate per ${formatEuro(r.ingresos)} e spese per ${formatEuro(r.gastos)}, ${bal === 0 ? "con un bilancio in pareggio (entrate = spese)" : `con un ${bal > 0 ? "avanzo" : "disavanzo"} di ${formatCompact(Math.abs(bal))}`}.`,
+          a: `Nel ${r.year}, ${r.name} ha entrate per ${formatEuro(r.ingresos)} e spese per ${formatEuro(r.gastos)}, ${bal === 0 ? "con un bilancio in pareggio (entrate = spese)" : `con un ${bal > 0 ? "avanzo" : "disavanzo"} di ${formatCompact(Math.abs(bal), pais)}`}.`,
         },
         { q: `Dove vanno i soldi pubblici a ${r.name}?`, a: `Le principali aree di spesa sono: ${gList}.` },
         r.debt && {
@@ -382,10 +385,10 @@ export default async function CityPage({ params }: Props) {
               : `Immagina ${r.isCity ? "il Comune di " : ""}${r.name} come una famiglia: ogni anno gli entrano dei soldi (dalle tue tasse e dallo Stato) e li spende in cose per la città — scuole, strade, pulizia, aiuti…`}
           </p>
           <ul className="space-y-1">
-            <li>💶 <b>{es ? "Lo que entra" : "Ciò che entra"}</b>: {formatCompact(r.ingresos)} {es ? "al año" : "all'anno"}</li>
-            <li>💸 <b>{es ? "Lo que gasta" : "Ciò che spende"}</b>: {formatCompact(r.gastos)} {es ? "al año" : "all'anno"}{r.poblacion && r.poblacion > 0 ? <span className="text-muted"> — {es ? "unos" : "circa"} {formatEuro(Math.round(r.gastos / r.poblacion))} {es ? "por habitante" : "per abitante"}</span> : null}</li>
+            <li>💶 <b>{es ? "Lo que entra" : "Ciò che entra"}</b>: {formatCompact(r.ingresos, pais)} {es ? "al año" : "all'anno"}</li>
+            <li>💸 <b>{es ? "Lo que gasta" : "Ciò che spende"}</b>: {formatCompact(r.gastos, pais)} {es ? "al año" : "all'anno"}{r.poblacion && r.poblacion > 0 ? <span className="text-muted"> — {es ? "unos" : "circa"} {formatEuro(Math.round(r.gastos / r.poblacion))} {es ? "por habitante" : "per abitante"}</span> : null}</li>
             {r.debt ? (
-              <li>🏦 <b>{es ? "Lo que aún debe" : "Ciò che deve ancora"}</b> ({es ? "como una hipoteca" : "come un mutuo"}): {r.debt.amount > 0 ? formatCompact(r.debt.amount) : es ? "nada, sin deuda" : "niente, nessun debito"}</li>
+              <li>🏦 <b>{es ? "Lo que aún debe" : "Ciò che deve ancora"}</b> ({es ? "como una hipoteca" : "come un mutuo"}): {r.debt.amount > 0 ? formatCompact(r.debt.amount, pais) : es ? "nada, sin deuda" : "niente, nessun debito"}</li>
             ) : null}
             {r.mayorSalary ? (
               <li>👤 <b>{es ? "Lo que cobra quien lo dirige" : "Quanto guadagna chi lo amministra"}</b>: {formatEuro(r.mayorSalary.amount)}{es ? "/año" : "/anno"}</li>
@@ -488,7 +491,7 @@ export default async function CityPage({ params }: Props) {
       <ShareBar
         className="mt-6"
         lang={es ? "es" : "it"}
-        text={`🏛️ ${r.name}: ${es ? "gasta" : "spende"} ${formatCompact(r.gastos)}${r.mayorSalary ? ` · ${es ? "el alcalde cobra" : "il sindaco guadagna"} ${formatEuro(r.mayorSalary.amount)}` : ""} 👀 ${es ? "datos oficiales" : "dati ufficiali"}`}
+        text={`🏛️ ${r.name}: ${es ? "gasta" : "spende"} ${formatCompact(r.gastos, pais)}${r.mayorSalary ? ` · ${es ? "el alcalde cobra" : "il sindaco guadagna"} ${formatEuro(r.mayorSalary.amount)}` : ""} 👀 ${es ? "datos oficiales" : "dati ufficiali"}`}
       />
 
       <details data-claro="detail" className="mt-8 glass p-4 sm:p-5 group">

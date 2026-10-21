@@ -11,7 +11,7 @@ const RM = CLUB_DEBT.find((c) => c.club === "Real Madrid")!;
 const JUVE = CLUB_DEBT.find((c) => c.club === "Juventus")!;
 
 export const metadata: Metadata = {
-  title: `La Juve ha ${formatCompact(JUVE.amount)} di debiti. E l'Inter?`,
+  title: `La Juve ha ${formatCompact(JUVE.amount, "it")} di debiti. E l'Inter?`,
   description: `Quanti debiti ha davvero il tuo club? La Juventus dichiara ${formatEuro(JUVE.amount)} di indebitamento finanziario netto (${JUVE.year}), l'Inter ${formatEuro(248400000)}, il Milan ${formatEuro(108100000)}. Il Napoli non ha debiti: ha cassa. E il Real Madrid, a sorpresa, solo ${formatEuro(RM.amount)}. Cifre prese dai bilanci pubblicati dai club.`,
   keywords: [
     "quanti debiti ha la Juventus",

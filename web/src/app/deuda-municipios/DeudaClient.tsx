@@ -8,6 +8,7 @@ import SimpleExplainer from "@/components/SimpleExplainer";
 import { COUNTRIES, slugify } from "@/lib/data";
 import { formatEuro, formatCompact } from "@/lib/format";
 import ranks from "@/data/rankings-es.json";
+import { buildFaqs } from "./faq";
 
 const pct = Math.round((ranks.debtFree / ranks.debtCount) * 100);
 const esSlugs = new Set(Object.values(COUNTRIES.es.regions).filter((r) => !r.isSample).map((r) => r.slug));
@@ -25,23 +26,7 @@ function Inner() {
   const max = top[0].amount;
   const nf = (n: number) => n.toLocaleString(it ? "it" : "es");
 
-  const faqs = it
-    ? [
-        { q: "Qual è la città più indebitata di Spagna?", a: `${top[0].name}, con un debito residuo di ${formatEuro(top[0].amount)} al 31/12/${ranks.year}, seguita da ${top[1].name} (${formatEuro(top[1].amount)}) e ${top[2].name} (${formatEuro(top[2].amount)}).` },
-        { q: "Quanto debito hanno in totale i comuni spagnoli?", a: `Il debito residuo dell'insieme dei comuni somma circa ${formatEuro(ranks.debtTotal)} al 31/12/${ranks.year}, secondo il Ministero delle Finanze spagnolo.` },
-        { q: "Quanti comuni non hanno debito?", a: `${nf(ranks.debtFree)} comuni su ${nf(ranks.debtCount)} (${pct}%) non registrano alcun debito residuo. Il debito è concentrato nelle grandi città.` },
-        { q: "È un male che un comune abbia debito?", a: "Non sempre: come un mutuo, il debito serve per grandi investimenti (scuole, strade). Il problema è quando è troppo rispetto a quanto il comune incassa." },
-        { q: "Perché alcune città devono più di altre?", a: "Dipende dalla dimensione, dagli investimenti fatti e dalla gestione passata. Le grandi città concentrano quasi tutto il debito; molti comuni piccoli ne hanno zero." },
-        { q: "Cos'è il debito residuo di un comune?", a: `Sono i soldi che il comune ha preso in prestito (da banche o altri enti) e non ha ancora finito di restituire — come il mutuo di casa. Si misura al 31 dicembre. In Europa lo misurano tutti allo stesso modo, così i comuni si possono confrontare davvero.` },
-      ]
-    : [
-        { q: "¿Cuál es la ciudad más endeudada de España?", a: `${top[0].name}, con una deuda viva de ${formatEuro(top[0].amount)} a 31/12/${ranks.year}, seguida de ${top[1].name} (${formatEuro(top[1].amount)}) y ${top[2].name} (${formatEuro(top[2].amount)}).` },
-        { q: "¿Cuánta deuda tienen en total los ayuntamientos españoles?", a: `La deuda viva del conjunto de los ayuntamientos suma unos ${formatEuro(ranks.debtTotal)} a 31/12/${ranks.year}, según el Ministerio de Hacienda.` },
-        { q: "¿Cuántos municipios no tienen deuda?", a: `${nf(ranks.debtFree)} de ${nf(ranks.debtCount)} municipios (${pct}%) no registran ninguna deuda viva. La deuda se concentra en las grandes ciudades.` },
-        { q: "¿Es malo que un ayuntamiento tenga deuda?", a: "No siempre: como una hipoteca, la deuda sirve para grandes inversiones (colegios, calles). El problema es cuando es demasiada frente a lo que el ayuntamiento ingresa." },
-        { q: "¿Por qué unas ciudades deben más que otras?", a: "Depende del tamaño, de las inversiones hechas y de la gestión pasada. Las grandes ciudades concentran casi toda la deuda; muchos municipios pequeños tienen cero." },
-        { q: "¿Qué es la deuda viva de un ayuntamiento?", a: `Es el dinero que el ayuntamiento pidió prestado (a bancos u otras administraciones) y todavía no ha terminado de devolver — como lo que te queda de hipoteca. Se mide a 31 de diciembre. En toda Europa se mide igual, así que los municipios se pueden comparar de verdad. El dato lo publica el Ministerio de Hacienda.` },
-      ];
+  const faqs = buildFaqs(it);
 
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
@@ -55,7 +40,7 @@ function Inner() {
           kicker={it ? `🇪🇸 Spagna · dati ufficiali · ${ranks.year}` : `🇪🇸 España · datos oficiales · ${ranks.year}`}
           title={it ? "QUALI COMUNI HANNO PIÙ" : "¿QUÉ MUNICIPIOS TIENEN MÁS"}
           highlight={it ? "DEBITO?" : "DEUDA?"}
-          stat={formatCompact(top[0].amount)}
+          stat={formatCompact(top[0].amount, locale)}
           statLabel={it ? `la più indebitata (${top[0].name})` : `la más endeudada (${top[0].name})`}
           accent="#fdba74"
           accent2="#f472b6"
@@ -90,8 +75,8 @@ function Inner() {
 
       <div className="grid grid-cols-3 gap-3 mt-6">
         {[
-          { v: formatCompact(top[0].amount), l: it ? `Più indebitata (${top[0].name})` : `Más endeudado (${top[0].name})`, c: "#fdba74" },
-          { v: formatCompact(ranks.debtTotal), l: it ? "Debito totale (comuni)" : "Deuda total (ayuntamientos)", c: "#f472b6" },
+          { v: formatCompact(top[0].amount, locale), l: it ? `Più indebitata (${top[0].name})` : `Más endeudado (${top[0].name})`, c: "#fdba74" },
+          { v: formatCompact(ranks.debtTotal, locale), l: it ? "Debito totale (comuni)" : "Deuda total (ayuntamientos)", c: "#f472b6" },
           { v: `${pct}%`, l: it ? "Comuni senza debito" : "Municipios sin deuda", c: "#34d399" },
         ].map((k) => (
           <div key={k.l} className="glass p-4 text-center">
@@ -133,7 +118,7 @@ function Inner() {
                 <span className="tabular text-sm text-muted w-7 shrink-0 text-right">{i + 1}</span>
                 <span className="flex-1 min-w-0">
                   <span className="block truncate font-medium"><CityName name={d.name} /></span>
-                  <span className="text-[10px] text-muted">{formatCompact(d.debt)} · {nf(d.pop)} {it ? "ab." : "hab."}</span>
+                  <span className="text-[10px] text-muted">{formatCompact(d.debt, locale)} · {nf(d.pop)} {it ? "ab." : "hab."}</span>
                 </span>
                 <span className="tabular text-right shrink-0">
                   <span className="block text-sm font-semibold text-[#fdba74]">{formatEuro(d.perCapita)}</span>

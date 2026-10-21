@@ -289,7 +289,19 @@ function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[], extras: RealC
   return {
     regions,
     list: Object.values(regions).sort((a, b) => b.gastos - a.gastos),
-    realNames: reals.map((c) => c.provincia),
+    // TODAS las ciudades con datos reales: capitales (clave = provincia) y ciudades
+    // extra (clave = slug), una sola vez por slug. Antes solo iban las capitales y
+    // la portada, /italia/ y los totales contaban 2 comuni en vez de ~200.
+    realNames: (() => {
+      const seen = new Set<string>();
+      const keys: string[] = [];
+      for (const [key, c] of [...reals.map((c) => [c.provincia, c] as const), ...extras.map((c) => [c.slug, c] as const)]) {
+        if (seen.has(c.slug)) continue;
+        seen.add(c.slug);
+        keys.push(key);
+      }
+      return keys;
+    })(),
   };
 }
 

@@ -165,7 +165,7 @@ export default function RegionPanel({ region }: { region: RegionData }) {
         {m.panel.balance}{" "}
         <span className={positivo ? "text-green" : "text-amber"}>
           {positivo ? "+" : ""}
-          {formatCompact(balance)} {positivo ? m.panel.surplus : m.panel.deficit}
+          {formatCompact(balance, locale)} {positivo ? m.panel.surplus : m.panel.deficit}
         </span>
       </p>
 
@@ -183,7 +183,7 @@ export default function RegionPanel({ region }: { region: RegionData }) {
                 {locale === "it" ? "Debito (mutui in essere)" : "Deuda viva"}
               </p>
               <p className="tabular text-xl md:text-2xl font-semibold text-[#fdba74] mt-1">
-                {region.debt.amount > 0 ? formatCompact(region.debt.amount) : (locale === "it" ? "Zero" : "Cero")}
+                {region.debt.amount > 0 ? formatCompact(region.debt.amount, locale) : (locale === "it" ? "Zero" : "Cero")}
               </p>
               <p className="text-[10px] text-muted mt-0.5 tabular">
                 {region.debt.amount > 0 ? formatEuro(region.debt.amount) + " · " : ""}

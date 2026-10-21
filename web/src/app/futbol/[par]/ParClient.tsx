@@ -64,12 +64,12 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
   ].filter(Boolean) as { name: string; url: string }[];
   const uniqSources = Array.from(new Map(sources.map((s) => [s.url, s])).values());
   const heroImg = c.league === "laliga" ? "/photos/spain-stadium.jpg" : "/photos/italy-stadium.jpg";
-  const parts = [c.revenue && `${t("ingresa", "incassa")} ${formatCompact(c.revenue)}`, c.debt && `${t("deuda", "debito")} ${formatCompact(c.debt.amount)}`].filter(Boolean);
+  const parts = [c.revenue && `${t("ingresa", "incassa")} ${formatCompact(c.revenue, locale)}`, c.debt && `${t("deuda", "debito")} ${formatCompact(c.debt.amount, locale)}`].filter(Boolean);
   const shareMsg = `⚽ ${c.name}: ${parts.join(", ")} — ${t("datos oficiales", "dati ufficiali")} 👀`;
 
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      {faqs.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <nav className="text-sm text-muted pt-6 mb-4">
         <Link href="/" className="hover:text-fg neon-text font-semibold">Cuentas Claras</Link>{" "}
@@ -84,7 +84,7 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
         kicker={`${flag(c.league)} ${c.league === "laliga" ? "LaLiga" : "Serie A"} · ${t("cuentas oficiales", "conti ufficiali")}`}
         title={t("LAS CUENTAS DEL", "I CONTI DEL")}
         highlight={c.name.toUpperCase()}
-        stat={c.revenue ? formatCompact(c.revenue) : c.debt ? formatCompact(c.debt.amount) : undefined}
+        stat={c.revenue ? formatCompact(c.revenue, locale) : c.debt ? formatCompact(c.debt.amount, locale) : undefined}
         statLabel={c.revenue ? t("de ingresos al año", "di ricavi all'anno") : c.debt ? t("de deuda", "di debito") : undefined}
         accent="#34d399"
         accent2="#22d3ee"
@@ -118,6 +118,20 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
       </div>
 
       <ShareBar className="mt-5" text={shareMsg} />
+
+      {faqs.length > 0 && (
+        <section className="mt-8">
+          <h2 className="text-lg font-semibold mb-3">{t("Preguntas frecuentes", "Domande frequenti")}</h2>
+          <div className="space-y-2.5">
+            {faqs.map((f) => (
+              <div key={f.q} className="glass p-4">
+                <h3 className="font-medium">{f.q}</h3>
+                <p className="text-sm text-muted mt-2">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {compareLinks.length > 0 && (
         <section className="mt-6">

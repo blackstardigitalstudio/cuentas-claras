@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { formatEuro, formatCompact } from "@/lib/format";
 import ranks from "@/data/rankings-es.json";
 import DeudaClient from "./DeudaClient";
+import { buildFaqs } from "./faq";
 import { articleLd, FONTI } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
@@ -37,11 +38,7 @@ export const metadata: Metadata = {
 const top = ranks.topDebt;
 const faqLd = {
   "@context": "https://schema.org", "@type": "FAQPage",
-  mainEntity: [
-    { q: "¿Cuál es la ciudad más endeudada de España?", a: `${top[0].name}, con una deuda viva de ${formatEuro(top[0].amount)} a 31/12/${ranks.year}.` },
-    { q: "¿Cuántos municipios no tienen deuda?", a: `${ranks.debtFree.toLocaleString("es")} de ${ranks.debtCount.toLocaleString("es")} municipios (${pct}%) no registran ninguna deuda viva.` },
-    { q: "¿Qué es la deuda viva de un ayuntamiento?", a: "Es el dinero que el ayuntamiento pidió prestado (a bancos u otras administraciones) y todavía no ha terminado de devolver — como lo que te queda de hipoteca. Se mide a 31 de diciembre. En toda Europa se mide igual, así que los municipios se pueden comparar de verdad. El dato lo publica el Ministerio de Hacienda." },
-  ].map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  mainEntity: buildFaqs(false).map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
 };
 const itemListLd = { "@context": "https://schema.org", "@type": "ItemList", name: `Municipios más endeudados de España (${ranks.year})`, itemListElement: top.map((d, i) => ({ "@type": "ListItem", position: i + 1, name: `${d.name}: ${formatEuro(d.amount)}` })) };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Deuda de los municipios", item: `${SITE}/deuda-municipios/` }] };

@@ -6,7 +6,7 @@ import SiteNav from "@/components/SiteNav";
 import SimpleExplainer from "@/components/SimpleExplainer";
 import ShareBar from "@/components/ShareBar";
 import ShareFact from "@/components/ShareFact";
-import { FUENTE_ES, TAGLIE_ES, nEu } from "@/data/fasce-sindaci";
+import { FUENTE_ES, TAGLIE_ES, TRAMOS_ES, nEu } from "@/data/fasce-sindaci";
 import { faqTramo, lugar } from "./faq";
 
 export type Municipio = { name: string; slug: string; poblacion: number; anual: number };
@@ -119,6 +119,50 @@ export default function TramoClient(p: Props) {
             </div>
           </section>
         )}
+
+        {/* Tutti i tetti in una tabella vera: è il formato che Google e le IA
+            riprendono parola per parola. Riga evidenziata = la fascia di questa pagina. */}
+        <section className="mt-8">
+          <h2 className="text-lg md:text-xl font-semibold">📋 Sueldo máximo de un alcalde según los habitantes</h2>
+          <p className="text-[11px] text-cyan/70 mb-4">
+            Topes de la Ley 31/2022, en vigor en 2026 porque no hay presupuestos nuevos. Si el ayuntamiento paga en 14
+            pagas, el mes sale por el tope dividido entre 14.
+          </p>
+          <div className="glass overflow-x-auto">
+            <table className="w-full text-sm">
+              <caption className="sr-only">Sueldo máximo anual de un alcalde con dedicación exclusiva, por habitantes</caption>
+              <thead>
+                <tr className="text-left text-[11px] uppercase tracking-wider text-muted">
+                  <th scope="col" className="px-3 py-2.5 font-medium">Habitantes</th>
+                  <th scope="col" className="px-3 py-2.5 font-medium text-right">Máximo al año</th>
+                  <th scope="col" className="px-3 py-2.5 font-medium text-right">En 14 pagas</th>
+                </tr>
+              </thead>
+              <tbody>
+                {TRAMOS_ES.map((t) => {
+                  const aqui = p.habitantes >= t.min && (t.max === null || p.habitantes <= t.max);
+                  return (
+                    <tr
+                      key={t.min}
+                      className={`border-t border-[var(--panel-border)] ${aqui ? "bg-cyan/10 text-fg" : "text-muted"}`}
+                      {...(aqui ? { "aria-current": "true" } : {})}
+                    >
+                      <th scope="row" className="px-3 py-2.5 text-left font-normal">
+                        {t.label.replace(" habitantes", "")}
+                      </th>
+                      <td className="px-3 py-2.5 text-right tabular font-semibold">
+                        {t.tope === null ? "sin exclusiva" : eur(Math.round(t.tope))}
+                      </td>
+                      <td className="px-3 py-2.5 text-right tabular">
+                        {t.tope === null ? "—" : `${eur(Math.round(t.tope / 14))}/mes`}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
 
         <div className="mt-8">
           <SimpleExplainer title="En cristiano" by="te lo explica Claro">

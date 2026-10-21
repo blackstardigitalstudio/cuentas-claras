@@ -42,10 +42,20 @@ type Props = { params: Promise<{ pais: string; ciudad: string }> };
 // Città dove il titolo parla del sindaco invece che del bilancio (vedi generateMetadata).
 // Solo città con ricerche "stipendio sindaco <città>" in Search Console (ottobre 2026)
 // e con mayorSalary in city-extras.ts: prima la prova in GSC, poi lo slug qui.
+// Terzo giro (21/10/2026): Blanes, Xàtiva, Redondela, La Vall d'Uixó, Bologna,
+// Napoli, Firenze, Bari, Taranto. Milano no: in GSC solo 2 impressioni.
 const TITOLO_SINDACO = new Set([
-  "es/oleiros", "es/aldaia",
+  "es/oleiros", "es/aldaia", "es/blanes", "es/xativa", "es/redondela", "es/la-vall-d-uixo",
   "it/roma", "it/genova", "it/torino", "it/prato",
+  "it/bologna", "it/napoli", "it/firenze", "it/bari", "it/taranto",
 ]);
+
+// Comuni spagnoli guidati da una donna: si scrive «alcaldesa», non «alcalde».
+// Nei dati non c'è il genere: va aggiunto qui a mano, con il nome già verificato
+// in alcaldes-es.json (la gente cerca «sueldo alcaldesa redondela»).
+const ALCALDESA = new Set(["la-vall-d-uixo", "redondela"]);
+const elAlcalde = (slug: string) => (ALCALDESA.has(slug) ? "la alcaldesa" : "el alcalde");
+const ElAlcalde = (slug: string) => (ALCALDESA.has(slug) ? "La alcaldesa" : "El alcalde");
 
 // Oltre i ~58 caratteri Google taglia il titolo.
 const MAX_TITLE = 58;
@@ -75,16 +85,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Ovunque altrove resta il titolo base, che porta il 9-14% di CTR (AGENTS.md §3-bis).
   // Per aggiungere una città: prima la prova in GSC, poi lo slug qui.
   const n = r.alcalde?.nombre;
+  const cargo = ALCALDESA.has(r.slug) ? "alcaldesa" : "alcalde";
+  const Cargo = cargo[0].toUpperCase() + cargo.slice(1);
   const title = r.isSample || !r.mayorSalary || !TITOLO_SINDACO.has(`${pais}/${r.slug}`)
     ? base
     : es
       ? n
         ? pickTitle(
             [
-              `${n}: ¿cuánto cobra el alcalde de ${r.name}?`,
-              `Alcalde de ${r.name}: ¿cuánto cobra ${n}?`,
+              `${n}: ¿cuánto cobra ${cargo === "alcalde" ? "el" : "la"} ${cargo} de ${r.name}?`,
+              `${Cargo} de ${r.name}: ¿cuánto cobra ${n}?`,
               `${r.name}: ¿cuánto cobra ${n}?`,
-              `¿Cuánto cobra el alcalde de ${r.name}?`,
+              `¿Cuánto cobra ${cargo === "alcalde" ? "el" : "la"} ${cargo} de ${r.name}?`,
             ],
             base,
           )
@@ -102,11 +114,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const sal = r.mayorSalary;
   const lead = es
     ? n && sal
-      ? `${n}, alcalde de ${r.name}, cobra ${formatEuro(sal.amount)} brutos al año.`
+      ? `${n}, ${cargo} de ${r.name}, cobra ${formatEuro(sal.amount)} brutos al año.`
       : n
-        ? `Alcalde de ${r.name}: ${n}.`
+        ? `${Cargo} de ${r.name}: ${n}.`
         : sal
-          ? `El alcalde de ${r.name} cobra ${formatEuro(sal.amount)} brutos al año.`
+          ? `${ElAlcalde(r.slug)} de ${r.name} cobra ${formatEuro(sal.amount)} brutos al año.`
           : ""
     : sal
       ? `Stipendio del sindaco di ${r.name}: ${formatEuro(sal.amount)} lordi all'anno, ${formatEuro(monthly(sal.amount))} al mese.`
@@ -218,8 +230,8 @@ export default async function CityPage({ params }: Props) {
     ? [
         // Lo primero (y abierto): lo que más se busca, el sueldo y el nombre.
         r.mayorSalary && {
-          q: `¿Cuánto cobra el alcalde de ${r.name}${r.alcalde ? `, ${r.alcalde.nombre}` : ""}?`,
-          a: `${r.alcalde ? r.alcalde.nombre : `El alcalde de ${r.name}`} cobra ${formatEuro(r.mayorSalary.amount)} brutos al año${r.mayorSalary.dedicacion ? ` (${r.mayorSalary.dedicacion})` : ""}. Si lo repartes en 12 meses, son unos ${formatEuro(monthly(r.mayorSalary.amount))} al mes antes de impuestos (si cobra 14 pagas, cada una es menos). No se lo pone él: lo aprueba el pleno del ayuntamiento, con topes que marca la ley según el tamaño del municipio. Fuente: ${r.mayorSalary.source.name}.`,
+          q: `¿Cuánto cobra ${elAlcalde(r.slug)} de ${r.name}${r.alcalde ? `, ${r.alcalde.nombre}` : ""}?`,
+          a: `${r.alcalde ? r.alcalde.nombre : `${ElAlcalde(r.slug)} de ${r.name}`} cobra ${formatEuro(r.mayorSalary.amount)} brutos al año${r.mayorSalary.dedicacion ? ` (${r.mayorSalary.dedicacion})` : ""}. Si lo repartes en 12 meses, son unos ${formatEuro(monthly(r.mayorSalary.amount))} al mes antes de impuestos (si cobra 14 pagas, cada una es menos). No se lo pone él: lo aprueba el pleno del ayuntamiento, con topes que marca la ley según el tamaño del municipio. Fuente: ${r.mayorSalary.source.name}.`,
         },
         {
           q: `¿Cuánto ingresa y cuánto gasta ${subj} en ${r.year}?`,
@@ -227,7 +239,7 @@ export default async function CityPage({ params }: Props) {
         },
         { q: `¿En qué se gasta el dinero público en ${r.name}?`, a: `Las principales áreas de gasto son: ${gList}.` },
         r.alcalde && {
-          q: `¿Quién es el alcalde de ${r.name}?`,
+          q: `¿Quién es ${elAlcalde(r.slug)} de ${r.name}?`,
           a: `${r.alcalde.nombre}${r.alcalde.desde ? `, en el cargo desde el ${r.alcalde.desde}` : ""}.${r.mayorSalary ? ` Cobra ${formatEuro(r.mayorSalary.amount)} brutos al año.` : ""} Dato del registro oficial de cargos representativos locales del Ministerio de Política Territorial.`,
         },
         r.debt && {
@@ -444,7 +456,7 @@ export default async function CityPage({ params }: Props) {
                   frequenti e abbiamo il dato per centinaia di comuni. */}
               <h2 className="text-xs text-muted font-normal">
                 {es
-                  ? r.alcalde ? `¿Quién es el alcalde de ${r.name} y cuánto cobra?` : `¿Cuánto cobra el alcalde de ${r.name}?`
+                  ? r.alcalde ? `¿Quién es ${elAlcalde(r.slug)} de ${r.name} y cuánto cobra?` : `¿Cuánto cobra ${elAlcalde(r.slug)} de ${r.name}?`
                   : `Stipendio del sindaco di ${r.name}: quanto guadagna?`}
                 <span className="opacity-60"> · {r.year}</span>
               </h2>
@@ -480,7 +492,7 @@ export default async function CityPage({ params }: Props) {
                 className="mt-2"
                 lang={es ? "es" : "it"}
                 text={es
-                  ? `🏛️ El alcalde de ${r.name} cobra ${formatEuro(r.mayorSalary.amount)} al año. Dato oficial 👀`
+                  ? `🏛️ ${ElAlcalde(r.slug)} de ${r.name} cobra ${formatEuro(r.mayorSalary.amount)} al año. Dato oficial 👀`
                   : `🏛️ Il sindaco di ${r.name} guadagna ${formatEuro(r.mayorSalary.amount)} all'anno. Dato ufficiale 👀`}
               />
             </div>
@@ -491,7 +503,7 @@ export default async function CityPage({ params }: Props) {
       <ShareBar
         className="mt-6"
         lang={es ? "es" : "it"}
-        text={`🏛️ ${r.name}: ${es ? "gasta" : "spende"} ${formatCompact(r.gastos, pais)}${r.mayorSalary ? ` · ${es ? "el alcalde cobra" : "il sindaco guadagna"} ${formatEuro(r.mayorSalary.amount)}` : ""} 👀 ${es ? "datos oficiales" : "dati ufficiali"}`}
+        text={`🏛️ ${r.name}: ${es ? "gasta" : "spende"} ${formatCompact(r.gastos, pais)}${r.mayorSalary ? ` · ${es ? `${elAlcalde(r.slug)} cobra` : "il sindaco guadagna"} ${formatEuro(r.mayorSalary.amount)}` : ""} 👀 ${es ? "datos oficiales" : "dati ufficiali"}`}
       />
 
       <details data-claro="detail" className="mt-8 glass p-4 sm:p-5 group">

@@ -22,6 +22,15 @@ import extraCitiesEs from "@/data/real/extra-cities.json";
 import itExtraCities from "@/data/real/it-extra-cities.json";
 import esPopulation from "@/data/real/es-population.json";
 import ALCALDES_ES from "@/data/real/alcaldes-es.json";
+
+// Il registro del Ministero scrive i nomi senza accenti; qui la grafia giusta,
+// verificata sulla fonte ufficiale del comune (alcaldes-es.json si rigenera
+// con data/etl-alcaldes.mjs, quindi la correzione sta qui e non nel JSON).
+const NOMBRE_CORRECTO: Record<string, string> = {
+  redondela: "Digna Rosa Rivas Gómez", // concello de Redondela
+  xativa: "Roger Cerdà Boluda", // DOGV
+  blanes: "Jordi Hernández Martínez", // actas del Ple de Blanes, 26/03/2026
+};
 import { CITY_EXTRAS } from "@/data/real/city-extras";
 
 const ES_POP = esPopulation as Record<string, number>;
@@ -284,7 +293,7 @@ function buildCountry(geo: GeoFC, cats: CatSet, reals: RealCity[], extras: RealC
     if (!r.poblacion && ES_POP[r.slug]) r.poblacion = ES_POP[r.slug];
     // Nome del sindaco in carica (registro ufficiale del Ministerio).
     const al = (ALCALDES_ES.alcaldes as Record<string, { nombre: string; desde?: string | null }>)[r.slug];
-    if (al) r.alcalde = { nombre: al.nombre, desde: al.desde ?? null, source: ALCALDES_ES.fuente };
+    if (al) r.alcalde = { nombre: NOMBRE_CORRECTO[r.slug] ?? al.nombre, desde: al.desde ?? null, source: ALCALDES_ES.fuente };
   }
   return {
     regions,

@@ -64,6 +64,8 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "-85GSAaHegAcbda2Gmr-MzlgOHtpeP5JlQfLxoHnTrw",
+    // Bing Webmaster Tools (codice pubblico di verifica, non segreto)
+    other: { "msvalidate.01": "0E1E533E286583F151495BE243E3B210" },
   },
 };
 

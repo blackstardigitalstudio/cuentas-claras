@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description:
     "Quanto spende l'Italia per la difesa? 45,3 miliardi di euro nel 2025, il 2,01% del PIL: circa 770 € a testa. Nel 2014 erano 18,4 miliardi. Anno per anno, per cosa si spende e cosa vuol dire il 5% della NATO. Dati ufficiali NATO e SIPRI.",
   keywords: [
+    "quanto guadagna un soldato italiano",
     "spese militari italia",
     "spesa militare italia pil",
     "quanto spende l'italia per la difesa",
@@ -47,7 +48,7 @@ const artLd = articleLd({
   headline: metadata.title as string,
   lang: "it",
   url: `${SITE}/spese-militari/`,
-  source: [FONTI.nato, FONTI.sipri, FONTI.moncloaDefensa],
+  source: [FONTI.nato, FONTI.sipri, FONTI.moncloaDefensa, FONTI.difesaStipendi],
   about: "Spesa militare e per la difesa",
 });
 

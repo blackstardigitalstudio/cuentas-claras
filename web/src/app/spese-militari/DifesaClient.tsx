@@ -11,7 +11,7 @@ import ScoopSection from "@/components/ScoopSection";
 import { FONTI } from "@/lib/jsonld";
 import {
   ANNI, IT_SERIE, ES_SERIE, PIL, MILITARI, ABITANTI, VOCI, PIANO_ES, PIANO_ES_TOTALE, SIPRI, OBIETTIVO,
-  FAQ_IT, FAQ_ES, ultimo, penultimo, aTesta, type Voci,
+  FAQ_IT, FAQ_ES, STIPENDI_IT, STIPENDI_ES, ultimo, penultimo, aTesta, type Voci,
 } from "./dati";
 
 // Spesa militare (difesa, armi, soldati) di Italia e Spagna. Cifre NATO, SIPRI e
@@ -261,6 +261,60 @@ function Inner() {
           "Cálculo nuestro: el PIB de 2025 que se deduce de los datos OTAN, por el porcentaje. Sirve para hacerse una idea, no es una cifra oficial.",
           "Calcolo nostro: il PIL 2025 che si ricava dai dati NATO, per la percentuale. Serve a farsi un'idea, non è una cifra ufficiale.",
         )}</p>
+      </section>
+
+      {/* Quanto guadagna un militare: la gente lo cerca tantissimo */}
+      <section className="mt-10">
+        <h2 className="text-lg md:text-xl font-semibold">💶 {t("¿Cuánto cobra un militar?", "Quanto guadagna un militare?")}</h2>
+        <p className="text-[11px] text-cyan/70 mb-4">{t(
+          "La parte fija, antes de impuestos, igual para todos los del mismo empleo. Luego cada uno suma trienios, destino, misiones y guardias.",
+          "La parte fissa, prima delle tasse, uguale per tutti quelli dello stesso grado. Poi ognuno aggiunge anzianità, indennità, missioni e straordinari.",
+        )}</p>
+        <div className="country-flip gap-4 sm:grid sm:grid-cols-2">
+          <div className="country-es glass p-4">
+            <p className="text-sm font-semibold mb-3">🇪🇸 {t("España", "Spagna")} <span className="text-muted font-normal">· 2025</span></p>
+            <ul className="space-y-2">
+              {STIPENDI_ES.map((r) => (
+                <li key={r.grado} className="flex items-baseline justify-between gap-2">
+                  <span className="text-sm">{it ? r.gradoIt : r.grado}</span>
+                  <span className="text-right shrink-0">
+                    <span className="tabular text-sm font-semibold text-amber-300">{eur(r.mese, it)}</span>
+                    <span className="text-[11px] text-muted"> {t("/mes", "/mese")}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-[11px] text-muted mt-3">{t(
+              `Brutos al mes. Con las dos pagas extra, un soldado llega a unos ${eur(Math.round(STIPENDI_ES[0].anno / 100) * 100, false)} al año.`,
+              `Lordi al mese. Con le due mensilità extra, un soldato arriva a circa ${eur(Math.round(STIPENDI_ES[0].anno / 100) * 100, true)} l'anno.`,
+            )}</p>
+          </div>
+          <div className="country-it glass p-4">
+            <p className="text-sm font-semibold mb-3">🇮🇹 Italia <span className="text-muted font-normal">· 2026</span></p>
+            <ul className="space-y-2">
+              {STIPENDI_IT.map((r) => (
+                <li key={r.grado} className="flex items-baseline justify-between gap-2">
+                  <span className="text-sm">{it ? r.grado : r.gradoEs}</span>
+                  <span className="text-right shrink-0">
+                    <span className="tabular text-sm font-semibold text-rose-300">{eur(r.mese, it)}</span>
+                    <span className="text-[11px] text-muted"> {t("/mes", "/mese")}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-[11px] text-muted mt-3">{t(
+              `Brutos al mes, más la paga extra de Navidad («tredicesima»). Un graduado suma unos ${eur(Math.round(STIPENDI_IT[0].anno / 100) * 100, false)} al año sin contarla.`,
+              `Lordi al mese, più la tredicesima. Un graduato fa circa ${eur(Math.round(STIPENDI_IT[0].anno / 100) * 100, true)} l'anno senza contarla.`,
+            )}</p>
+          </div>
+        </div>
+        <p className="text-[11px] text-muted mt-3">
+          {t("Fuentes: ", "Fonti: ")}<Fonte f={FONTI.difesaStipendi} label={t("Ministerio de Defensa italiano, tablas del DPR 52/2025", "Ministero della Difesa, tabelle del DPR 52/2025")} />, <Fonte f={FONTI.sepg2025} label={t("Hacienda, retribuciones 2025", "Hacienda (Spagna), stipendi pubblici 2025")} />, <Fonte f={FONTI.rd248} label={t("BOE, Real Decreto 248/2025", "BOE, Real Decreto 248/2025")} />.
+          {t(
+            " Cálculo nuestro con esas tablas. Los soldados recién entrados en Italia (voluntarios en el primer contrato) cobran según otra tabla y no salen aquí.",
+            " Calcolo nostro su quelle tabelle. In Spagna è la somma di stipendio del gruppo, quota per il grado e parte fissa del complemento specifico. I volontari appena arruolati in Italia hanno un'altra tabella e qui non ci sono.",
+          )}
+        </p>
       </section>
 
       {/* Nel mondo */}

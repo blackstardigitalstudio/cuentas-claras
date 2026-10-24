@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description:
     "¿Cuánto gasta España en defensa? 33.123 millones de euros en 2025, el 2,00% del PIB: unos 675 € por habitante. En 2014 eran 9.508 millones. Año a año, en qué se gasta, el plan de 10.471 M€ y qué supone el 5% de la OTAN. Datos OTAN, SIPRI y La Moncloa.",
   keywords: [
+    "cuánto cobra un militar en españa",
     "gasto militar españa",
     "gasto en defensa españa",
     "cuánto gasta españa en defensa",
@@ -47,7 +48,7 @@ const artLd = articleLd({
   headline: metadata.title as string,
   lang: "es",
   url: `${SITE}/gasto-militar/`,
-  source: [FONTI.nato, FONTI.moncloaDefensa, FONTI.sipri],
+  source: [FONTI.nato, FONTI.moncloaDefensa, FONTI.sipri, FONTI.sepg2025, FONTI.rd248],
   about: "Gasto militar y en defensa",
 });
 

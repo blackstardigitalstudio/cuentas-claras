@@ -9,7 +9,7 @@ import type { NewsItem } from "@/lib/useLiveNews";
 // Tarjeta de un titular "scoop" (acento rojo). Reutilizada por la portada y la
 // página de escándalos. Si el titular menciona una ciudad con datos, añade un
 // enlace a su ficha con el desglose total ("interlazado").
-export default function ScoopCard({ n }: { n: NewsItem }) {
+export default function ScoopCard({ n, badge }: { n: NewsItem; badge?: string }) {
   const { locale, m } = useLocale();
   const city = cityLink(n.title);
   const fmt = new Intl.DateTimeFormat(locale === "it" ? "it-IT" : "es-ES", {
@@ -23,7 +23,7 @@ export default function ScoopCard({ n }: { n: NewsItem }) {
         <NewsCover title={n.title} />
         <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[var(--panel)] to-transparent" />
         <span className="absolute top-2.5 left-2.5 text-[10px] font-semibold uppercase tracking-wider text-[#ffd0d0] bg-[rgba(180,30,30,0.55)] backdrop-blur-sm rounded-full px-2.5 py-1">
-          {m.scoop.badge}
+          {badge ?? m.scoop.badge}
         </span>
         <span className="absolute top-2.5 right-2.5 text-[11px] font-medium text-fg/95 bg-black/40 backdrop-blur-sm rounded-full px-2.5 py-1 max-w-[55%] truncate">
           {n.source || "—"}

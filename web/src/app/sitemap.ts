@@ -74,6 +74,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/tasse-benzina/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/spesa-sanita/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/gasto-sanidad/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/spese-militari/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/gasto-militar/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/spesa-pensioni/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/gasto-pensiones/`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/tasse-stipendio/`, lastModified, changeFrequency: "weekly", priority: 0.9 },

@@ -304,6 +304,11 @@ def fonti_vive():
             except urllib.error.HTTPError as e:
                 if e.code in (404, 410):
                     esito = "morta"   # l'unica prova vera che la pagina non c'e' piu'
+                    # Ma solo se lo dice anche il GET: a ottobre 2026 il file ISPA ha
+                    # dato un 404 al volo e un secondo dopo si apriva (falso allarme).
+                    if metodo == "HEAD":
+                        time.sleep(2)
+                        continue
                     break
                 if e.code in (403, 405, 429):
                     esito = "viva"    # il sito blocca i robot, ma la pagina esiste

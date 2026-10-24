@@ -61,5 +61,8 @@ export const FONTI = {
   nato: { name: "NATO · Defence Expenditure of NATO Countries (2014-2025)", url: "https://www.nato.int/content/dam/nato/webready/documents/finance/def-exp-2025-en.pdf" },
   sipri: { name: "SIPRI · Trends in World Military Expenditure, 2025", url: "https://www.sipri.org/sites/default/files/2026-04/2604_milex_2025.pdf" },
   moncloaDefensa: { name: "La Moncloa · Plan Industrial y Tecnológico para la Seguridad y la Defensa (2025)", url: "https://lamoncloa.gob.es/consejodeministros/resumenes/Documents/2025/230425-plan-industrial-y-tecnologico-para-la-seguridad-y-la-defensa.pdf" },
+  difesaStipendi: { name: "Ministero della Difesa · Trattamento economico, tabelle DPR 52/2025", url: "https://www.difesa.it/amministrazione-trasparente/persomil/trattamento-economico-anno-2025/71246.html" },
+  sepg2025: { name: "Hacienda · SEPG, retribuciones del personal funcionario 2025 (RD-ley 14/2025)", url: "https://www.sepg.pap.hacienda.gob.es/sitios/sepg/es-ES/CostesPersonal/EstadisticasInformes/Documents/A%C3%91O%202025/Retribuciones%20del%20personal%20funcionario.%20Real%20Decreto-ley%2014%202025,%20de%202%20de%20diciembre.pdf" },
+  rd248: { name: "BOE · Real Decreto 248/2025, retribuciones de las Fuerzas Armadas", url: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-6002" },
   ocse: { name: "OCDE · Taxing Wages", url: "https://www.oecd.org/en/publications/taxing-wages-2026_3a5169ef-en.html" },
 } satisfies Record<string, Fonte>;

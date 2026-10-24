@@ -433,7 +433,13 @@ export default function Home() {
               Ministerio de Hacienda
             </a>
           </p>
-          <p>{m.footer.tagline} · Made in Italy 🇮🇹</p>
+          <p>
+            {m.footer.tagline} ·{" "}
+            <Link href={locale === "it" ? "/chi-lo-fa/" : "/quien-lo-hace/"} className="underline hover:text-fg">
+              {locale === "it" ? "Chi lo fa" : "Quién lo hace"}
+            </Link>{" "}
+            · Made in Italy 🇮🇹
+          </p>
         </div>
         {/* Disclaimer legal (texto pequeño) */}
         <p className="mt-6 text-[11px] leading-relaxed text-muted max-w-4xl">{m.footer.disclaimer}</p>

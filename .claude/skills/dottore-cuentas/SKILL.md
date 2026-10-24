@@ -124,5 +124,6 @@ propongo e perché. **Mai un elenco di numeri senza un verdetto.**
 | 2026-10-04 | UEFA fonte morta | blocco anti-robot | ✅ morta solo con 404/410 |
 | 2026-10-04 | Home INFLESZ 44 | menu con 724 città contato come frase | ✅ tolti select/option ed elenchi di nomi |
 | 2026-10-04 | Fasce senza hreflang | leggi diverse IT/ES, non traduzioni | ✅ escluse |
+| 2026-10-24 | File ISPA (sindaci ES) fonte morta | 404 al volo, un minuto dopo 200 | ✅ «morta» solo se anche il GET dà 404 |
 
 Made in Italy 🇮🇹

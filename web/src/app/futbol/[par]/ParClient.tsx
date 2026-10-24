@@ -11,6 +11,7 @@ import {
 } from "@/data/futbol";
 import { type Partita, compLabel, longDate, shortName, sourceName } from "@/data/partite";
 import { formatEuro, formatCompact } from "@/lib/format";
+import { articleLd } from "@/lib/jsonld";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com";
 const flag = (l: string) => (l === "laliga" ? "🇪🇸" : "🇮🇹");
@@ -63,6 +64,8 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
     c.debt && c.debt.source,
   ].filter(Boolean) as { name: string; url: string }[];
   const uniqSources = Array.from(new Map(sources.map((s) => [s.url, s])).values());
+  // La citazione delle fonti nei dati strutturati: i motori con l'AI ci citano invece di riassumerci.
+  const artLd = articleLd({ headline: c.name, lang: it ? "it" : "es", url: `${SITE}/futbol/${slug}/`, source: uniqSources, about: t("Cuentas de los clubes de fútbol", "Conti dei club di calcio") });
   const heroImg = c.league === "laliga" ? "/photos/spain-stadium.jpg" : "/photos/italy-stadium.jpg";
   const parts = [c.revenue && `${t("ingresa", "incassa")} ${formatCompact(c.revenue, locale)}`, c.debt && `${t("deuda", "debito")} ${formatCompact(c.debt.amount, locale)}`].filter(Boolean);
   const shareMsg = `⚽ ${c.name}: ${parts.join(", ")} — ${t("datos oficiales", "dati ufficiali")} 👀`;
@@ -71,6 +74,7 @@ function ClubDetail({ c, slug }: { c: ClubMetrics; slug: string }) {
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
       {faqs.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      {artLd.citation.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />}
       <nav className="text-sm text-muted pt-6 mb-4">
         <Link href="/" className="hover:text-fg neon-text font-semibold">Cuentas Claras</Link>{" "}
         <Link href="/futbol/" className="opacity-70 hover:text-fg">/ {t("Fútbol", "Calcio")}</Link>{" "}
@@ -248,12 +252,14 @@ function Comparison({ a, b, par, itPage, match }: { a: ClubMetrics; b: ClubMetri
     b.debt && b.debt.source,
   ].filter(Boolean) as { name: string; url: string }[];
   const uniqSources = Array.from(new Map(sources.map((s) => [s.url, s])).values());
+  const artLd = articleLd({ headline: `${a.name} vs ${b.name}`, lang: it ? "it" : "es", url: `${SITE}${self}`, source: uniqSources, about: t("Cuentas de los clubes de fútbol", "Conti dei club di calcio") });
   const filialNote = [a.slug, b.slug].some((s) => s === "real-sociedad" || s === "rc-celta");
 
   return (
     <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 py-8">
       {faqs.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      {artLd.citation.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(artLd) }} />}
       <nav className="text-sm text-muted mb-6">
         <Link href="/" className="hover:text-fg neon-text font-semibold">Cuentas Claras</Link>{" "}
         <Link href={hub} className="opacity-70 hover:text-fg">/ {t("Fútbol", "Calcio")}</Link>{" "}

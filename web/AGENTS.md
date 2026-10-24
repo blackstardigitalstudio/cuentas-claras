@@ -92,7 +92,7 @@ Coppie esistenti: `/sueldos-politicos/`↔`/stipendi-politici/` ·
 `/mundial-2026/`↔`/premi-mondiali-2026/` · `/futbol/`↔`/calcio/` ·
 `/records/`↔`/record-soldi-pubblici/` · `/futbol-mundial/`↔`/calcio-mondiale/` ·
 `/escandalos/`↔`/scandali-soldi-pubblici/` · `/bulos/`↔`/bufale-soldi-pubblici/` ·
-`/stipendi-motogp/`↔`/sueldos-motogp/`.
+`/stipendi-motogp/`↔`/sueldos-motogp/` · `/gasto-militar/`↔`/spese-militari/`.
 
 ⚠️ **Ogni pagina italiana DEVE dichiarare `openGraph: { locale: "it_IT" }`.**
 Il layout radice è uno solo, quindi l'HTML statico esce sempre con `<html lang="es">`.

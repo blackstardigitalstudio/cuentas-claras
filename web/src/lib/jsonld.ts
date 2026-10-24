@@ -58,5 +58,8 @@ export const FONTI = {
   sanidad: { name: "Ministerio de Sanidad · Estadística de Gasto Sanitario Público", url: "https://www.sanidad.gob.es/estadEstudios/estadisticas/inforRecopilaciones/gastoSanitario2005/home.htm" },
   istat: { name: "Istat · assistenza e previdenza", url: "https://www.istat.it/statistiche-per-tema/settori/assistenza-e-previdenza/" },
   segSocial: { name: "Seguridad Social · estadísticas y presupuestos", url: "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios" },
+  nato: { name: "NATO · Defence Expenditure of NATO Countries (2014-2025)", url: "https://www.nato.int/content/dam/nato/webready/documents/finance/def-exp-2025-en.pdf" },
+  sipri: { name: "SIPRI · Trends in World Military Expenditure, 2025", url: "https://www.sipri.org/sites/default/files/2026-04/2604_milex_2025.pdf" },
+  moncloaDefensa: { name: "La Moncloa · Plan Industrial y Tecnológico para la Seguridad y la Defensa (2025)", url: "https://lamoncloa.gob.es/consejodeministros/resumenes/Documents/2025/230425-plan-industrial-y-tecnologico-para-la-seguridad-y-la-defensa.pdf" },
   ocse: { name: "OCDE · Taxing Wages", url: "https://www.oecd.org/en/publications/taxing-wages-2026_3a5169ef-en.html" },
 } satisfies Record<string, Fonte>;

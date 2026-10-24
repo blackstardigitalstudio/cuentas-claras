@@ -26,6 +26,7 @@ export default function ScoopBoard() {
       </div>
 
       <ScoopSection theme="scoop" />
+      <ScoopSection theme="defense" />
       <ScoopSection theme="funds" />
       <ScoopSection theme="verdicts" />
       <ScoopSection theme="waste" />

@@ -50,7 +50,7 @@ export type Messages = {
     seeAll: string;
     empty: string;
     disclaimer: string;
-    themes: { scoop: string; funds: string; verdicts: string; waste: string; nepotism: string; sanctions: string; investigations: string; salaries: string; works: string; subsidies: string; taxes: string; transparency: string };
+    themes: { scoop: string; defense: string; funds: string; verdicts: string; waste: string; nepotism: string; sanctions: string; investigations: string; salaries: string; works: string; subsidies: string; taxes: string; transparency: string };
   };
 };
 
@@ -142,6 +142,7 @@ const es: Messages = {
       "Importante: estos son titulares publicados por medios de comunicación, recopilados de forma automática y enlazados a su fuente original. Cuentas Claras no acusa a ninguna persona ni entidad y respeta plenamente la presunción de inocencia: mientras no exista sentencia firme, toda persona es inocente. Verifica siempre la información en la fuente.",
     themes: {
       scoop: "Corrupción y fraude",
+      defense: "Guerra, armas y defensa",
       funds: "Fondos públicos y europeos",
       verdicts: "Sentencias y condenas",
       waste: "Despilfarro y sobrecostes",
@@ -245,6 +246,7 @@ const it: Messages = {
       "Importante: questi sono titoli pubblicati dai media, raccolti automaticamente e collegati alla fonte originale. Cuentas Claras non accusa nessuna persona o ente e rispetta pienamente la presunzione di innocenza: fino a sentenza definitiva, ogni persona è innocente. Verifica sempre l'informazione alla fonte.",
     themes: {
       scoop: "Corruzione e frode",
+      defense: "Guerra, armi e difesa",
       funds: "Fondi pubblici ed europei",
       verdicts: "Sentenze e condanne",
       waste: "Sprechi e sovrapprezzi",

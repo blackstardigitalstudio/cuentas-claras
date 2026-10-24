@@ -40,7 +40,7 @@ type NewsItem = { title: string; source: string; url: string; date: string | nul
 const NEWS = newsData as Record<string, NewsItem[]>;
 
 // ItemList con i titoli italiani per i dati strutturati.
-const top = ["it_scoop", "it_funds", "it_verdicts", "it_waste", "it_salaries", "it_works", "it_subsidies", "it_taxes", "it_transparency", "it_nepotism", "it_sanctions", "it_investigations"]
+const top = ["it_scoop", "it_defense", "it_funds", "it_verdicts", "it_waste", "it_salaries", "it_works", "it_subsidies", "it_taxes", "it_transparency", "it_nepotism", "it_sanctions", "it_investigations"]
   .flatMap((k) => NEWS[k] || [])
   .slice(0, 30);
 

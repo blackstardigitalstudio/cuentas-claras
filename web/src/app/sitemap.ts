@@ -34,6 +34,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/comparar/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/confronta/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/bulos/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE}/quien-lo-hace/`, lastModified, changeFrequency: "yearly", priority: 0.5, alternates: { languages: { "es-ES": `${SITE}/quien-lo-hace/`, "it-IT": `${SITE}/chi-lo-fa/` } } },
+    { url: `${SITE}/chi-lo-fa/`, lastModified, changeFrequency: "yearly", priority: 0.5, alternates: { languages: { "es-ES": `${SITE}/quien-lo-hace/`, "it-IT": `${SITE}/chi-lo-fa/` } } },
     { url: `${SITE}/futbol/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/futbol-mundial/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/deuda-clubes-futbol/`, lastModified, changeFrequency: "weekly", priority: 0.85 },

@@ -94,7 +94,7 @@ export default function RootLayout({
                   description:
                     "Visualización clara de los presupuestos públicos de los ayuntamientos de España e Italia: ingresos y gastos con datos oficiales.",
                 },
-                { "@type": "Organization", "@id": `${SITE}/#org`, name: "Cuentas Claras", url: SITE, logo: { "@type": "ImageObject", url: `${SITE}/logo.png`, width: 512, height: 512 } },
+                { "@type": "Organization", "@id": `${SITE}/#org`, name: "Cuentas Claras", url: SITE, logo: { "@type": "ImageObject", url: `${SITE}/logo.png`, width: 512, height: 512 }, founder: { "@type": "Person", "@id": "https://www.blackstardigitalstudio.com/cv/#matteo-stella", name: "Matteo Stella", url: `${SITE}/quien-lo-hace/` } },
               ],
             }),
           }}

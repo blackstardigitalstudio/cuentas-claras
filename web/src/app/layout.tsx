@@ -104,6 +104,12 @@ export default function RootLayout({
         {children}
         <ShareHighlight />
         <MascotGuide />
+        {/* Contatore visite Cloudflare Web Analytics: senza cookie, senza dati personali (token beacon pubblico). */}
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "aeda56fc072344069434b2abe13feebc"}'
+        />
       </body>
     </html>
   );

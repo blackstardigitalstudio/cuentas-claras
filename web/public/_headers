@@ -20,3 +20,9 @@
 
 /og.png
   Cache-Control: public, max-age=604800
+
+# Widget per giornali e blog: l'unico percorso che si può incorporare in altri siti.
+/widget/*
+  ! X-Frame-Options
+  ! Content-Security-Policy
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; frame-ancestors *; base-uri 'self'; object-src 'none'

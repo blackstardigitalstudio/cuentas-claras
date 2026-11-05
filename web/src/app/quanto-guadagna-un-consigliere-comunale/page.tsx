@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Quanto guadagna un consigliere comunale in Italia? Non ha uno stipendio fisso: prende un «gettone di presenza» per ogni seduta. Ti spieghiamo facile come funziona e dove vedere lo stipendio del sindaco.",
   keywords: ["quanto guadagna un consigliere comunale", "gettone di presenza consiglieri", "stipendio consigliere comunale", "indennità consiglieri"],
   alternates: { canonical: `${SITE}/quanto-guadagna-un-consigliere-comunale/` },
-  openGraph: { title: "Quanto guadagna un consigliere comunale?", description: "Il gettone di presenza spiegato facile.", url: `${SITE}/quanto-guadagna-un-consigliere-comunale/`, type: "article" },
+  openGraph: { title: "Quanto guadagna un consigliere comunale?", description: "Il gettone di presenza spiegato facile.", url: `${SITE}/quanto-guadagna-un-consigliere-comunale/`, type: "article", locale: "it_IT" },
 };
 
 // Dati strutturati con la CITAZIONE della fonte: è così che i motori con

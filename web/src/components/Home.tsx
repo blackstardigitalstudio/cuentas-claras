@@ -441,6 +441,10 @@ export default function Home() {
             <Link href={locale === "it" ? "/chi-lo-fa/" : "/quien-lo-hace/"} className="underline hover:text-fg">
               {locale === "it" ? "Chi lo fa" : "Quién lo hace"}
             </Link>{" "}
+            ·{" "}
+            <a href="/widget/crea/" className="underline hover:text-fg">
+              {locale === "it" ? "Widget per giornalisti" : "Widget para periodistas"}
+            </a>{" "}
             · Made in Italy 🇮🇹
           </p>
         </div>

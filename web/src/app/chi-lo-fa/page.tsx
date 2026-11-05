@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     description: "Un progetto indipendente di Matteo Stella, sviluppatore web a Las Palmas.",
     url: `${SITE}/chi-lo-fa/`,
     type: "website",
+    locale: "it_IT",
   },
 };
 

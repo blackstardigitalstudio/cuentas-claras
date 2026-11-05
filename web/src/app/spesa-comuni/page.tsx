@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     description: `Comuni che spendono di più, in totale e per abitante. Dati ufficiali SIOPE.`,
     url: `${SITE}/spesa-comuni/`,
     type: "website",
+    locale: "it_IT",
   },
 };
 

@@ -3,6 +3,7 @@
 // Mai un numero fermo dentro un testo che poi invecchia.
 import { formatEuro } from "@/lib/format";
 import { buildRecordsData, type Rec } from "./records-data";
+import ranksEs from "@/data/rankings-es.json";
 
 const trova = (rs: Rec[], key: string) => rs.find((r) => r.key === key);
 
@@ -24,8 +25,8 @@ function domande(lang: "es" | "it") {
     : { q: "Quale sindaco guadagna di più in Spagna?", a: `Quello di ${sEs.name}: ${formatEuro(sEs.v)} lordi all'anno, secondo la retribuzione ufficiale dichiarata all'ISPA.` });
 
   if (dEs) out.push(es
-    ? { q: "¿Qué ciudad española debe más dinero?", a: `${dEs.name}, con ${formatEuro(dEs.v)} de deuda viva —lo que todavía le queda por devolver— a 31/12/2024, según el Ministerio de Hacienda.` }
-    : { q: "Quale città spagnola ha più debiti?", a: `${dEs.name}, con ${formatEuro(dEs.v)} di debito ancora da restituire al 31/12/2024, secondo il Ministero delle Finanze spagnolo.` });
+    ? { q: "¿Qué ciudad española debe más dinero?", a: `${dEs.name}, con ${formatEuro(dEs.v)} de deuda viva —lo que todavía le queda por devolver— a 31/12/${ranksEs.debtYear}, según el Ministerio de Hacienda.` }
+    : { q: "Quale città spagnola ha più debiti?", a: `${dEs.name}, con ${formatEuro(dEs.v)} di debito ancora da restituire al 31/12/${ranksEs.debtYear}, secondo il Ministero delle Finanze spagnolo.` });
 
   if (gEs) out.push(es
     ? { q: "¿Qué ayuntamiento gasta más en España?", a: `${gEs.name}, con ${formatEuro(gEs.v)} de gasto en su último presupuesto publicado.` }

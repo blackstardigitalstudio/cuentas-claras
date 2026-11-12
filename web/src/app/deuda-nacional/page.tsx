@@ -36,7 +36,7 @@ const faqLd = {
   "@context": "https://schema.org", "@type": "FAQPage",
   mainEntity: [
     { q: "¿Cuánto debe España?", a: "A cierre de 2025 la deuda pública española era de 1,7 billones de euros (100,8% del PIB), unos 35.000 € por habitante. Fuente: Banco de España." },
-    { q: "¿Cuánto debe Italia?", a: "A cierre de 2025 la deuda pública italiana era de 3.095 miles de millones de euros (137,1% del PIB), la segunda más alta de la UE tras Grecia. Unos 53.000 € por habitante." },
+    { q: "¿Cuánto debe Italia?", a: "En agosto de 2026 la deuda pública italiana llegó a 3,2 billones de euros, según Banca d'Italia (dato provisional). A cierre de 2025 era de 3.095 miles de millones de euros (137,1% del PIB), la segunda más alta de la UE tras Grecia. A cierre de 2025 eran unos 53.000 € por habitante." },
     { q: "¿Es malo tener deuda?", a: "Un poco es normal; el problema es cuando es demasiada y los intereses se comen parte del presupuesto. La regla europea es no pasar del 60% del PIB." },
   ].map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
 };

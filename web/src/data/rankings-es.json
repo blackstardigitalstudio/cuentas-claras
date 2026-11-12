@@ -5,8 +5,8 @@
   "url": "https://digital.gob.es/content/dam/portal-mtdfp/funcion-publica/dgfp/ispa/ispa2025/retrib_2024/retribuciones_alcaldes.xlsx"
  },
  "debtSource": {
-  "name": "Ministerio de Hacienda · Deuda viva de las EELL (31/12/2024)",
-  "url": "https://www.hacienda.gob.es/CDI/Sist%20Financiacion%20y%20Deuda/InformacionEELLs/2024/Deuda-viva-ayuntamientos-202412.xlsx"
+  "name": "Ministerio de Hacienda · Deuda viva de las EELL (31/12/2025)",
+  "url": "https://www.hacienda.gob.es/CDI/Sist%20Financiacion%20y%20Deuda/InformacionEELLs/2025/Deuda-viva-ayuntamientos-202512.xlsx"
  },
  "salaryReporting": 6934,
  "salaryAvg": 23850,
@@ -224,311 +224,311 @@
    "amount": 80643
   }
  ],
- "debtCount": 8131,
- "debtFree": 5163,
- "debtTotal": 17827519626,
+ "debtCount": 8132,
+ "debtFree": 5245,
+ "debtTotal": 16215456963,
  "topDebt": [
   {
    "name": "Madrid",
-   "amount": 1943172266
+   "amount": 1560729607
   },
   {
    "name": "Barcelona",
-   "amount": 1389567987
+   "amount": 1287410462
   },
   {
    "name": "Jerez de la Frontera",
-   "amount": 966839807
+   "amount": 968383022
   },
   {
    "name": "Jaén",
-   "amount": 570705764
+   "amount": 587963832
   },
   {
    "name": "Zaragoza",
-   "amount": 567995652
+   "amount": 531575963
   },
   {
    "name": "Parla",
-   "amount": 515805920
-  },
-  {
-   "name": "Sevilla",
-   "amount": 266326775
-  },
-  {
-   "name": "Murcia",
-   "amount": 259023589
-  },
-  {
-   "name": "Gandia",
-   "amount": 257842527
-  },
-  {
-   "name": "Málaga",
-   "amount": 256348792
+   "amount": 520280349
   },
   {
    "name": "Algeciras",
-   "amount": 256253391
+   "amount": 257182834
+  },
+  {
+   "name": "Gandia",
+   "amount": 252844699
+  },
+  {
+   "name": "Murcia",
+   "amount": 250758861
+  },
+  {
+   "name": "Málaga",
+   "amount": 197252948
   },
   {
    "name": "Barrios (Los)",
-   "amount": 194947065
-  },
-  {
-   "name": "Córdoba",
-   "amount": 172549414
-  },
-  {
-   "name": "Palma",
-   "amount": 157843931
+   "amount": 192923909
   },
   {
    "name": "Ceuta",
-   "amount": 152046343
+   "amount": 176419373
   },
   {
    "name": "Valladolid",
-   "amount": 149756508
+   "amount": 143526863
   },
   {
-   "name": "València",
-   "amount": 141607727
+   "name": "Santa Cruz de Tenerife",
+   "amount": 134470226
   },
   {
-   "name": "Burgos",
-   "amount": 139837527
+   "name": "Córdoba",
+   "amount": 130384213
   },
   {
-   "name": "Granada",
-   "amount": 130093446
-  },
-  {
-   "name": "Huelva",
-   "amount": 127518421
+   "name": "Sevilla",
+   "amount": 128923702
   },
   {
    "name": "Navalcarnero",
-   "amount": 126263256
+   "amount": 124417692
   },
   {
-   "name": "Alcorcón",
-   "amount": 123967706
+   "name": "Palma",
+   "amount": 122056984
+  },
+  {
+   "name": "Huelva",
+   "amount": 121364529
   },
   {
    "name": "Línea de la Concepción (La)",
-   "amount": 122103576
+   "amount": 117491725
   },
   {
-   "name": "Ejido (El)",
-   "amount": 116787254
-  },
-  {
-   "name": "Totana",
-   "amount": 112402509
-  },
-  {
-   "name": "Aranjuez",
-   "amount": 110282814
+   "name": "Granada",
+   "amount": 117064201
   },
   {
    "name": "Vitoria-Gasteiz",
-   "amount": 110183001
+   "amount": 112306225
+  },
+  {
+   "name": "Burgos",
+   "amount": 109626933
   },
   {
    "name": "Terrassa",
-   "amount": 105298929
+   "amount": 105319484
+  },
+  {
+   "name": "Totana",
+   "amount": 105126478
+  },
+  {
+   "name": "Aranjuez",
+   "amount": 101853908
+  },
+  {
+   "name": "Ejido (El)",
+   "amount": 99510189
+  },
+  {
+   "name": "Lleida",
+   "amount": 96682195
+  },
+  {
+   "name": "Donostia / San Sebastián",
+   "amount": 96543255
   },
   {
    "name": "Arganda del Rey",
-   "amount": 103591465
-  },
-  {
-   "name": "Tarragona",
-   "amount": 101616888
+   "amount": 94910229
   }
  ],
  "debtPerCapita": [
   {
    "name": "Barrios (Los)",
    "pop": 24449,
-   "debt": 194947065,
-   "perCapita": 7974
+   "debt": 192923909,
+   "perCapita": 7891
   },
   {
    "name": "Jaén",
    "pop": 112235,
-   "debt": 570705764,
-   "perCapita": 5085
+   "debt": 587963832,
+   "perCapita": 5239
   },
   {
    "name": "Jerez de la Frontera",
    "pop": 213634,
-   "debt": 966839807,
-   "perCapita": 4526
+   "debt": 968383022,
+   "perCapita": 4533
   },
   {
    "name": "Barbate",
    "pop": 22635,
-   "debt": 86970286,
-   "perCapita": 3842
-  },
-  {
-   "name": "Navalcarnero",
-   "pop": 33331,
-   "debt": 126263256,
-   "perCapita": 3788
+   "debt": 87039607,
+   "perCapita": 3845
   },
   {
    "name": "Parla",
    "pop": 137471,
-   "debt": 515805920,
-   "perCapita": 3752
+   "debt": 520280349,
+   "perCapita": 3785
   },
   {
-   "name": "Totana",
-   "pop": 33358,
-   "debt": 112402509,
-   "perCapita": 3370
+   "name": "Navalcarnero",
+   "pop": 33331,
+   "debt": 124417692,
+   "perCapita": 3733
   },
   {
    "name": "Chipiona",
    "pop": 20076,
-   "debt": 67239946,
-   "perCapita": 3349
+   "debt": 66053824,
+   "perCapita": 3290
+  },
+  {
+   "name": "Totana",
+   "pop": 33358,
+   "debt": 105126478,
+   "perCapita": 3151
   },
   {
    "name": "Gandia",
    "pop": 83135,
-   "debt": 257842527,
-   "perCapita": 3101
+   "debt": 252844699,
+   "perCapita": 3041
   },
   {
    "name": "Arcos de la Frontera",
    "pop": 31267,
-   "debt": 71292618,
-   "perCapita": 2280
-  },
-  {
-   "name": "Algeciras",
-   "pop": 126589,
-   "debt": 256253391,
-   "perCapita": 2024
-  },
-  {
-   "name": "Línea de la Concepción (La)",
-   "pop": 64499,
-   "debt": 122103576,
-   "perCapita": 1893
+   "debt": 71627863,
+   "perCapita": 2291
   },
   {
    "name": "Ceuta",
    "pop": 83595,
-   "debt": 152046343,
-   "perCapita": 1819
+   "debt": 176419373,
+   "perCapita": 2110
   },
   {
-   "name": "Aranjuez",
-   "pop": 63040,
-   "debt": 110282814,
-   "perCapita": 1749
+   "name": "Algeciras",
+   "pop": 126589,
+   "debt": 257182834,
+   "perCapita": 2032
+  },
+  {
+   "name": "Línea de la Concepción (La)",
+   "pop": 64499,
+   "debt": 117491725,
+   "perCapita": 1822
   },
   {
    "name": "Ayamonte",
    "pop": 22001,
-   "debt": 38152788,
-   "perCapita": 1734
+   "debt": 37289981,
+   "perCapita": 1695
+  },
+  {
+   "name": "Aranjuez",
+   "pop": 63040,
+   "debt": 101853908,
+   "perCapita": 1616
   },
   {
    "name": "Arganda del Rey",
    "pop": 60419,
-   "debt": 103591465,
-   "perCapita": 1715
+   "debt": 94910229,
+   "perCapita": 1571
   },
   {
    "name": "Palacios y Villafranca (Los)",
    "pop": 38761,
-   "debt": 60511008,
-   "perCapita": 1561
-  },
-  {
-   "name": "Puerto Real",
-   "pop": 42527,
-   "debt": 65556551,
-   "perCapita": 1542
+   "debt": 60067771,
+   "perCapita": 1550
   },
   {
    "name": "Almonte",
    "pop": 24864,
-   "debt": 35992993,
-   "perCapita": 1448
+   "debt": 31665573,
+   "perCapita": 1274
   },
   {
-   "name": "Ejido (El)",
-   "pop": 91440,
-   "debt": 116787254,
-   "perCapita": 1277
+   "name": "Puerto Real",
+   "pop": 42527,
+   "debt": 52797475,
+   "perCapita": 1242
   },
   {
    "name": "Maracena",
    "pop": 22294,
-   "debt": 26178632,
+   "debt": 26883990,
+   "perCapita": 1206
+  },
+  {
+   "name": "Rota",
+   "pop": 29289,
+   "debt": 34371935,
    "perCapita": 1174
   },
   {
    "name": "San Andrés del Rabanedo",
    "pop": 29944,
-   "debt": 34592385,
-   "perCapita": 1155
+   "debt": 33122115,
+   "perCapita": 1106
   },
   {
    "name": "Morón de la Frontera",
    "pop": 27210,
-   "debt": 30501331,
-   "perCapita": 1121
+   "debt": 29926669,
+   "perCapita": 1100
   },
   {
-   "name": "Algete",
-   "pop": 21144,
-   "debt": 22504774,
-   "perCapita": 1064
-  },
-  {
-   "name": "Rota",
-   "pop": 29289,
-   "debt": 30592635,
-   "perCapita": 1045
+   "name": "Ejido (El)",
+   "pop": 91440,
+   "debt": 99510189,
+   "perCapita": 1088
   },
   {
    "name": "Atarfe",
    "pop": 20914,
-   "debt": 21273561,
-   "perCapita": 1017
+   "debt": 20112126,
+   "perCapita": 962
+  },
+  {
+   "name": "Algete",
+   "pop": 21144,
+   "debt": 19892085,
+   "perCapita": 941
   },
   {
    "name": "Caravaca de la Cruz",
    "pop": 26126,
-   "debt": 24950923,
-   "perCapita": 955
+   "debt": 24047309,
+   "perCapita": 920
+  },
+  {
+   "name": "Lepe",
+   "pop": 29677,
+   "debt": 27185117,
+   "perCapita": 916
   },
   {
    "name": "Isla Cristina",
    "pop": 21525,
-   "debt": 20366457,
-   "perCapita": 946
+   "debt": 18751631,
+   "perCapita": 871
   },
   {
-   "name": "San Fernando de Henares",
-   "pop": 39059,
-   "debt": 35915856,
-   "perCapita": 920
-  },
-  {
-   "name": "Lebrija",
-   "pop": 27788,
-   "debt": 25489173,
-   "perCapita": 917
+   "name": "Rincón de la Victoria",
+   "pop": 52454,
+   "debt": 44934926,
+   "perCapita": 857
   }
  ],
  "debtPerCapitaMinPop": 20000,
@@ -747,5 +747,7 @@
  "gastoSource": {
   "name": "Presupuestos municipales (Min. Hacienda / portales oficiales)",
   "url": "https://www.hacienda.gob.es"
- }
+ },
+ "debtYear": 2025,
+ "debtPopYear": 2025
 }

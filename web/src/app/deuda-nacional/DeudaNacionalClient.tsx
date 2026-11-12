@@ -14,6 +14,10 @@ const DEBT = [
   { code: "es", flag: "🇪🇸", nameEs: "España", nameIt: "Spagna", totalEs: "1,7 billones €", totalIt: "1.699 miliardi €", pct: 100.8, perCapita: "~35.000 €", accent: "#a5b4fc" },
   { code: "it", flag: "🇮🇹", nameEs: "Italia", nameIt: "Italia", totalEs: "3,1 billones €", totalIt: "3.095 miliardi €", pct: 137.1, perCapita: "~53.000 €", accent: "#34d399" },
 ];
+// Ultimo dato mensile Banca d'Italia (agosto 2026, provvisorio): 3.200.848 milioni €.
+// Tavola «Debito delle Amministrazioni pubbliche», bollettino del 15/10/2026.
+// A testa: ÷ 58.943.000 abitanti (Istat, 1/1/2026 provvisorio) ≈ 54.300 €.
+const IT_LATEST_URL = "https://www.bancaditalia.it/pubblicazioni/finanza-pubblica/2026-finanza-pubblica/statistiche_FPI_20261015.pdf";
 const EU_LIMIT = 60; // regla europea (Maastricht): 60% del PIB.
 const SCALE = 150; // tope del gráfico de barras (% PIB)
 
@@ -34,8 +38,8 @@ function Inner() {
           kicker={t("🏦 Deuda pública · cifras oficiales", "🏦 Debito pubblico · cifre ufficiali")}
           title={t("¿CUÁNTO DEBE", "QUANTO DEVE")}
           highlight={t("EL ESTADO?", "LO STATO?")}
-          stat={t("1,7 billones €", "3.095 miliardi €")}
-          statLabel={t("lo que debe España (2025)", "quanto deve l'Italia (2025)")}
+          stat={t("1,7 billones €", "3.200 miliardi €")}
+          statLabel={t("lo que debe España (2025)", "quanto deve l'Italia (agosto 2026)")}
           accent="#fdba74"
           accent2="#f472b6"
         />
@@ -79,6 +83,13 @@ function Inner() {
           </div>
         ))}
       </div>
+      <p className="text-[12px] text-muted mt-3">
+        {t(
+          "🇮🇹 Último dato: en agosto de 2026 Italia ya debía 3,2 billones de euros (unos 54.000 € por habitante). Es un dato provisional. Arriba comparamos el cierre de 2025, el último año completo con el porcentaje sobre el PIB. Fuente: ",
+          "🇮🇹 Ultimo dato: ad agosto 2026 l'Italia doveva già 3.200,8 miliardi (circa 54.000 € a testa). È un dato provvisorio. Qui sopra confrontiamo la fine del 2025, l'ultimo anno chiuso con la percentuale sul PIL. Fonte: ",
+        )}
+        <a href={IT_LATEST_URL} target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">Banca d&apos;Italia, 15/10/2026</a>.
+      </p>
 
       {/* % del PIB vs límite UE */}
       <section className="mt-8">
@@ -102,7 +113,7 @@ function Inner() {
         </div>
       </section>
 
-      <ShareBar className="mt-6" text={t("🏦 España debe 1,7 billones € (100,8% del PIB, ~35.000 € por habitante). Italia, 3.095 miles de millones (137,1%). El límite europeo es 60%. 👀 Cifras oficiales", "🏦 L'Italia deve 3.095 miliardi € (137,1% del PIL, ~53.000 € a testa). La Spagna, 1.699 miliardi (100,8%). Il limite europeo è 60%. 👀 Cifre ufficiali")} />
+      <ShareBar className="mt-6" text={t("🏦 A cierre de 2025, España debía 1,7 billones € (100,8% del PIB, ~35.000 € por habitante). Italia, 3.095 miles de millones (137,1%). El límite europeo es 60%. 👀 Cifras oficiales", "🏦 A fine 2025 l'Italia doveva 3.095 miliardi € (137,1% del PIL, ~53.000 € a testa). La Spagna, 1.699 miliardi (100,8%). Il limite europeo è 60%. 👀 Cifre ufficiali")} />
 
       {/* FAQ */}
       <section className="mt-10">
@@ -110,17 +121,17 @@ function Inner() {
         <div className="space-y-2.5">
           {(it
             ? [
-                { q: "Quanto deve lo Stato italiano?", a: "A fine 2025 il debito pubblico italiano era di 3.095 miliardi di euro, pari al 137,1% del PIL: il secondo più alto dell'Unione Europea dopo la Grecia. Sono circa 53.000 € per ogni abitante. Fonte: Istat / Banca d'Italia / Eurostat." },
+                { q: "Quanto deve lo Stato italiano?", a: "Ad agosto 2026 il debito pubblico italiano era di 3.200,8 miliardi di euro (Banca d'Italia, dato provvisorio). A fine 2025 era di 3.095 miliardi, pari al 137,1% del PIL: il secondo più alto dell'Unione Europea dopo la Grecia. A fine 2025 erano circa 53.000 € per ogni abitante. Fonte: Istat / Banca d'Italia / Eurostat." },
                 { q: "Quanto deve la Spagna?", a: "A fine 2025 il debito pubblico spagnolo era di 1.699 miliardi di euro (100,8% del PIL), circa 35.000 € per abitante. Fonte: Banco de España." },
                 { q: "È un male avere debito?", a: "Un po' di debito è normale. Il problema è quando è troppo: gli interessi da pagare ogni anno si mangiano una fetta del bilancio, soldi che non vanno a scuole, sanità o strade. La regola europea è non superare il 60% del PIL." },
                 { q: "Chi presta questi soldi allo Stato?", a: "Investitori che comprano i titoli di Stato (BTP in Italia): banche, fondi, risparmiatori e altri Paesi. Lo Stato promette di restituire con gli interessi." },
-                { q: "Quanto debito pubblico c'è per ogni italiano?", a: "Circa 53.000 € a testa: si ottiene dividendo i 3.095 miliardi di debito per i quasi 59 milioni di abitanti. Non è una somma che devi pagare tu personalmente: è il debito dello Stato diviso per quanti siamo." },
+                { q: "Quanto debito pubblico c'è per ogni italiano?", a: "Circa 54.000 € a testa ad agosto 2026: si ottiene dividendo i 3.200,8 miliardi di debito per i quasi 59 milioni di abitanti. A fine 2025 erano circa 53.000 €. Non è una somma che devi pagare tu personalmente: è il debito dello Stato diviso per quanti siamo." },
                 { q: "Perché l'Italia ha un debito pubblico così alto?", a: "Si è accumulato in decenni: per molti anni lo Stato ha speso più di quanto incassava e ha coperto la differenza con nuovi prestiti. A quel punto scattano gli interessi, che fanno crescere il debito anche quando i conti dell'anno migliorano." },
                 { q: "Quando l'Italia finirà di pagare il debito pubblico?", a: "Uno Stato non estingue il debito come una famiglia estingue il mutuo: quando un titolo scade ne emette uno nuovo. Quello che conta non è azzerarlo, ma che cresca meno dell'economia — cioè che scenda il rapporto con il PIL (oggi 137,1%, contro un limite europeo del 60%)." },
               ]
             : [
                 { q: "¿Cuánto debe España?", a: "A cierre de 2025 la deuda pública española era de 1,7 billones de euros (1.699 miles de millones), el 100,8% del PIB: unos 35.000 € por habitante. Fuente: Banco de España." },
-                { q: "¿Cuánto debe Italia?", a: "A cierre de 2025 la deuda pública italiana era de 3.095 miles de millones de euros, el 137,1% del PIB: la segunda más alta de la UE tras Grecia. Unos 53.000 € por habitante. Fuente: Istat / Banca d'Italia / Eurostat." },
+                { q: "¿Cuánto debe Italia?", a: "En agosto de 2026 la deuda pública italiana llegó a 3,2 billones de euros, según Banca d'Italia (dato provisional). A cierre de 2025 era de 3.095 miles de millones de euros, el 137,1% del PIB: la segunda más alta de la UE tras Grecia. A cierre de 2025 eran unos 53.000 € por habitante. Fuente: Istat / Banca d'Italia / Eurostat." },
                 { q: "¿Es malo tener deuda?", a: "Un poco de deuda es normal. El problema es cuando es demasiada: los intereses que hay que pagar cada año se comen una parte del presupuesto, dinero que no va a colegios, sanidad o carreteras. La regla europea es no pasar del 60% del PIB." },
                 { q: "¿Quién presta ese dinero al Estado?", a: "Inversores que compran deuda del Estado (bonos): bancos, fondos, ahorradores y otros países. El Estado promete devolverlo con intereses." },
               ]
@@ -137,7 +148,7 @@ function Inner() {
         {t("Fuentes: ", "Fonti: ")}
         <a href="https://www.bde.es/" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">Banco de España</a>
         {" · "}
-        <a href="https://www.bancaditalia.it/" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">Banca d'Italia</a>
+        <a href="https://www.bancaditalia.it/" target="_blank" rel="noopener noreferrer" className="underline hover:text-fg">Banca d&apos;Italia</a>
         {" · Eurostat. "}
         {t("Cierre 2025.", "Chiusura 2025.")}
       </p>

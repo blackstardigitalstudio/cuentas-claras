@@ -6,9 +6,9 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cuentas-clara.com"
 
 // Versione ITALIANA della pagina sul debito pubblico nazionale.
 export const metadata: Metadata = {
-  title: "Quanto deve lo Stato? 3.095 miliardi, quanto a testa?",
+  title: "Quanto deve lo Stato? 3.200 miliardi, quanto a testa?",
   description:
-    "Quanto è il debito pubblico italiano? A fine 2025 era di 3.095 miliardi di euro, il 137,1% del PIL: il secondo più alto dell'Unione Europea. Sono circa 53.000 € per ogni abitante. Il limite europeo è il 60%. Cifre ufficiali di Istat, Banca d'Italia ed Eurostat.",
+    "Quanto è il debito pubblico italiano? Ad agosto 2026 era di 3.200,8 miliardi di euro: circa 54.000 € per ogni abitante. A fine 2025 valeva il 137,1% del PIL, il secondo più alto dell'Unione Europea. Il limite europeo è il 60%. Cifre ufficiali di Istat, Banca d'Italia ed Eurostat.",
   keywords: [
     "debito pubblico italiano",
     "quanto deve lo Stato",
@@ -25,19 +25,19 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Quanto deve lo Stato? Il debito pubblico spiegato",
-    description: "Italia 3.095 miliardi € (137,1% del PIL, ~53.000 € a testa). Il limite europeo è il 60%. Cifre ufficiali.",
+    description: "Italia 3.200,8 miliardi € ad agosto 2026 (~54.000 € a testa). A fine 2025 il 137,1% del PIL. Il limite europeo è il 60%. Cifre ufficiali.",
     url: `${SITE}/debito-pubblico/`,
     type: "article",
     locale: "it_IT",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Il debito pubblico di Italia e Spagna" }],
   },
-  twitter: { card: "summary_large_image", title: "Quanto deve lo Stato italiano?", description: "3.095 miliardi €, il 137,1% del PIL. Cifre ufficiali.", images: ["/og.png"] },
+  twitter: { card: "summary_large_image", title: "Quanto deve lo Stato italiano?", description: "3.200,8 miliardi € ad agosto 2026. Cifre ufficiali.", images: ["/og.png"] },
 };
 
 const faqLd = {
   "@context": "https://schema.org", "@type": "FAQPage",
   mainEntity: [
-    { q: "Quanto deve lo Stato italiano?", a: "A fine 2025 il debito pubblico italiano era di 3.095 miliardi di euro, pari al 137,1% del PIL: il secondo più alto dell'Unione Europea dopo la Grecia. Sono circa 53.000 € per ogni abitante. Fonte: Istat, Banca d'Italia, Eurostat." },
+    { q: "Quanto deve lo Stato italiano?", a: "Ad agosto 2026 il debito pubblico italiano era di 3.200,8 miliardi di euro (Banca d'Italia, dato provvisorio). A fine 2025 era di 3.095 miliardi, pari al 137,1% del PIL: il secondo più alto dell'Unione Europea dopo la Grecia. A fine 2025 erano circa 53.000 € per ogni abitante. Fonte: Istat, Banca d'Italia, Eurostat." },
     { q: "È un male avere debito?", a: "Un po' di debito è normale. Il problema è quando è troppo: gli interessi da pagare ogni anno si mangiano una fetta del bilancio, soldi che non vanno a scuole, sanità o strade. La regola europea è non superare il 60% del PIL." },
     { q: "Chi presta questi soldi allo Stato?", a: "Investitori che comprano i titoli di Stato (i BTP): banche, fondi, risparmiatori e altri Paesi. Lo Stato promette di restituire con gli interessi." },
   ].map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),

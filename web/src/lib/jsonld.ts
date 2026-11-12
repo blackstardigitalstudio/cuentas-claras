@@ -40,7 +40,7 @@ export function articleLd(opts: {
 // Le fonti ufficiali ricorrenti, in un posto solo: se un URL cambia si corregge
 // qui e non in venti pagine.
 export const FONTI = {
-  haciendaDeuda: { name: "Ministerio de Hacienda · Deuda viva de las Entidades Locales (31/12/2024)", url: "https://www.hacienda.gob.es/CDI/Sist%20Financiacion%20y%20Deuda/InformacionEELLs/2024/Deuda-viva-ayuntamientos-202412.xlsx" },
+  haciendaDeuda: { name: "Ministerio de Hacienda · Deuda viva de las Entidades Locales (31/12/2025)", url: "https://www.hacienda.gob.es/CDI/Sist%20Financiacion%20y%20Deuda/InformacionEELLs/2025/Deuda-viva-ayuntamientos-202512.xlsx" },
   ispa: { name: "MTDFP · ISPA, retribuciones de alcaldes (ejercicio 2024)", url: "https://digital.gob.es/content/dam/portal-mtdfp/funcion-publica/dgfp/ispa/ispa2025/retrib_2024/retribuciones_alcaldes.xlsx" },
   siope: { name: "SIOPE · Ragioneria Generale dello Stato (MEF)", url: "https://bdap-opendata.rgs.mef.gov.it" },
   alcaldes: { name: "Ministerio de Política Territorial · Cargos Representativos Locales", url: "https://concejales.redsara.es/consulta" },

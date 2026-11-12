@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   // CTR all'0,6% (854 impr / 5 clic, ott 2026): il vecchio titolo non diceva
   // «deuda viva», cioè proprio quello che la gente scrive. La description dava
   // già la risposta (chi è primo): ora la lascia per il clic.
-  title: `Deuda viva de los ayuntamientos ${ranks.year}: ¿quién debe más?`,
-  description: `¿Tu ayuntamiento debe dinero? Entre todos suman ${formatCompact(ranks.debtTotal)} de deuda viva, pero ${ranks.debtFree.toLocaleString("es")} de ${ranks.debtCount.toLocaleString("es")} no deben nada. Mira el ranking oficial ${ranks.year} de Hacienda.`,
+  title: `Deuda viva de los ayuntamientos ${ranks.debtYear}: ¿quién debe más?`,
+  description: `¿Tu ayuntamiento debe dinero? Entre todos suman ${formatCompact(ranks.debtTotal)} de deuda viva, pero ${ranks.debtFree.toLocaleString("es")} de ${ranks.debtCount.toLocaleString("es")} no deben nada. Mira el ranking oficial ${ranks.debtYear} de Hacienda.`,
   keywords: [
     "municipios más endeudados España",
     "deuda ayuntamiento",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: `${SITE}/deuda-municipios/` },
   openGraph: {
-    title: `Los municipios más endeudados de España (${ranks.year})`,
+    title: `Los municipios más endeudados de España (${ranks.debtYear})`,
     description: `${ranks.topDebt[0].name} lidera con ${formatEuro(ranks.topDebt[0].amount)}. ${pct}% de los municipios no tienen deuda.`,
     url: `${SITE}/deuda-municipios/`,
     type: "website",
@@ -40,7 +40,7 @@ const faqLd = {
   "@context": "https://schema.org", "@type": "FAQPage",
   mainEntity: buildFaqs(false).map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
 };
-const itemListLd = { "@context": "https://schema.org", "@type": "ItemList", name: `Municipios más endeudados de España (${ranks.year})`, itemListElement: top.map((d, i) => ({ "@type": "ListItem", position: i + 1, name: `${d.name}: ${formatEuro(d.amount)}` })) };
+const itemListLd = { "@context": "https://schema.org", "@type": "ItemList", name: `Municipios más endeudados de España (${ranks.debtYear})`, itemListElement: top.map((d, i) => ({ "@type": "ListItem", position: i + 1, name: `${d.name}: ${formatEuro(d.amount)}` })) };
 const breadcrumbLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Cuentas Claras", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "Deuda de los municipios", item: `${SITE}/deuda-municipios/` }] };
 
 // Dati strutturati con la CITAZIONE della fonte: è così che i motori con

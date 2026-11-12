@@ -37,7 +37,7 @@ function Inner() {
           as="h1"
           src="/photos/money.jpg"
           alt={it ? "Moneta da 2 euro" : "Moneda de 2 euros"}
-          kicker={it ? `🇪🇸 Spagna · dati ufficiali · ${ranks.year}` : `🇪🇸 España · datos oficiales · ${ranks.year}`}
+          kicker={it ? `🇪🇸 Spagna · dati ufficiali · ${ranks.debtYear}` : `🇪🇸 España · datos oficiales · ${ranks.debtYear}`}
           title={it ? "QUALI COMUNI HANNO PIÙ" : "¿QUÉ MUNICIPIOS TIENEN MÁS"}
           highlight={it ? "DEBITO?" : "DEUDA?"}
           stat={formatCompact(top[0].amount, locale)}

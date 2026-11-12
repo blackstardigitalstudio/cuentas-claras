@@ -182,8 +182,15 @@ export default function RegionPanel({ region }: { region: RegionData }) {
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#fb923c]" style={{ boxShadow: "0 0 6px #fb923c" }} />
                 {locale === "it" ? "Debito (mutui in essere)" : "Deuda viva"}
               </p>
+              {/* Debito sotto 100.000 €: cifra irrisoria (spesso l'arrotondamento di un quasi-zero,
+                  es. Las Palmas 61.793 €, San Bartolomé 187 €). La diciamo a parole, non come numero
+                  "da bug". La cifra ufficiale esatta resta nella riga grigia qui sotto. */}
               <p className="tabular text-xl md:text-2xl font-semibold text-[#fdba74] mt-1">
-                {region.debt.amount > 0 ? formatCompact(region.debt.amount, locale) : (locale === "it" ? "Zero" : "Cero")}
+                {region.debt.amount >= 100000
+                  ? formatCompact(region.debt.amount, locale)
+                  : region.debt.amount > 0
+                    ? (locale === "it" ? "Praticamente senza debito" : "Prácticamente sin deuda")
+                    : (locale === "it" ? "Zero" : "Cero")}
               </p>
               <p className="text-[10px] text-muted mt-0.5 tabular">
                 {region.debt.amount > 0 ? formatEuro(region.debt.amount) + " · " : ""}
@@ -192,7 +199,7 @@ export default function RegionPanel({ region }: { region: RegionData }) {
               <p className="text-[10px] text-muted mt-0.5 leading-tight">
                 {locale === "it" ? "quello che il comune deve ancora restituire (mutui e prestiti)" : "lo que el ayuntamiento aún debe devolver (préstamos)"}
               </p>
-              {region.poblacion && region.debt.amount > 0 && (
+              {region.poblacion && region.debt.amount >= 100000 && (
                 <p className="text-[11px] text-[#fdba74] mt-1 font-medium">
                   {locale === "it" ? "≈ " : "≈ "}{formatEuro(Math.round(region.debt.amount / region.poblacion))}{" "}
                   <span className="text-muted font-normal">{locale === "it" ? "per abitante" : "por habitante"}</span>
